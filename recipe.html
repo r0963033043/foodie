@@ -22,11 +22,13 @@
 
 </div>
 
+<script src="api.js"></script>
 <script>
   (function () {
     const LANG_KEY = "foodie.lang";
     const $ = function (id) { return document.getElementById(id); };
-    let index = null;
+    let ui = null;
+    let dishes = [];           // [{ id, name:{en,zh} }] from the API
     let lang = "en";
 
     function store(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
@@ -40,16 +42,16 @@
     }
 
     function render() {
-      const ui = index.ui[lang];
+      const t = ui[lang];
       document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
 
-      $("langBtn").textContent = ui.langToggle;
-      $("title").textContent = ui.recipesTitle;
-      $("subtitle").textContent = ui.recipesSubtitle;
+      $("langBtn").textContent = t.langToggle;
+      $("title").textContent = t.recipesTitle;
+      $("subtitle").textContent = t.recipesSubtitle;
 
       const grid = $("grid");
       grid.innerHTML = "";
-      index.dishes.forEach(function (d) {
+      dishes.forEach(function (d) {
         const card = el("a", "dish-card");
         card.href = "dish.html?id=" + encodeURIComponent(d.id);
 
@@ -63,20 +65,23 @@
       });
     }
 
-    fetch("i18n.json")
-      .then(function (r) { return r.json(); })
-      .then(function (json) {
-        index = json;
-        lang = index.ui[load(LANG_KEY)] ? load(LANG_KEY) : "en";
+    Promise.all([
+      fetch("i18n.json").then(function (r) { return r.json(); }),
+      FoodieApi.listDishes()
+    ])
+      .then(function (res) {
+        ui = res[0].ui;
+        dishes = res[1];
+        lang = ui[load(LANG_KEY)] ? load(LANG_KEY) : "en";
         render();
       })
       .catch(function () {
         $("grid").innerHTML =
-          "<p style='color:var(--muted)'>Could not load <code>i18n.json</code>. Serve this page over HTTP (e.g. <code>python -m http.server</code>) — browsers block fetch on file://.</p>";
+          "<p style='color:var(--muted)'>Could not load recipe data. Serve this page over HTTP (e.g. <code>python -m http.server</code>) — browsers block fetch on file://.</p>";
       });
 
     $("langBtn").addEventListener("click", function () {
-      if (!index) return;
+      if (!ui) return;
       lang = (lang === "zh") ? "en" : "zh";
       store(LANG_KEY, lang);
       render();

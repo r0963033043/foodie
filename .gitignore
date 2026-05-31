@@ -6,4 +6,7 @@
 .vscode/
 *.code-workspace
 
+# --- Claude ---
+.claude/settings.local.json
+
 test/

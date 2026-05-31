@@ -32,9 +32,5 @@
       "photo": "照片",
       "showPhotos": "照片"
     }
-  },
-  "dishes": [
-    { "id": "chawanmushi", "name": { "en": "Silky Steamed Egg (茶碗蒸)", "zh": "滑嫩茶碗蒸" } },
-    { "id": "honey-garlic-wings", "name": { "en": "Honey Garlic Baked Chicken Wings", "zh": "蜂蜜蒜香烤雞翅" } }
-  ]
+  }
 }

@@ -71,14 +71,14 @@
 
 </div>
 
+<script src="api.js"></script>
 <script>
   (function () {
     const LANG_KEY = "foodie.lang";
     const PHOTO_KEY = "foodie.showPhotos";
     const MIN_SERVINGS = 1, MAX_SERVINGS = 20;
     const $ = function (id) { return document.getElementById(id); };
-    let index = null;          // i18n.json: { ui, dishes:[{id,name}] }
-    const cache = {};          // id -> loaded dish file
+    let i18n = null;           // i18n.json ui block: { en:{…}, zh:{…} }
     let dish = null;           // currently rendered dish
     let dishId = null;
     let lang = "en";
@@ -128,15 +128,9 @@
       });
     }
 
-    function loadDish(id) {
-      if (cache[id]) return Promise.resolve(cache[id]);
-      return fetch("data/" + id + ".json")
-        .then(function (r) { return r.json(); })
-        .then(function (d) { cache[id] = d; return d; });
-    }
 
     function render() {
-      const ui = index.ui[lang];
+      const ui = i18n[lang];
       const L = dish[lang];
       const factor = servings / dish.servings;
 
@@ -223,13 +217,11 @@
     fetch("i18n.json")
       .then(function (r) { return r.json(); })
       .then(function (json) {
-        index = json;
-        const ids = index.dishes.map(function (d) { return d.id; });
-        const requested = new URLSearchParams(location.search).get("id");
-        dishId = ids.indexOf(requested) >= 0 ? requested : ids[0];
-        lang = index.ui[load(LANG_KEY)] ? load(LANG_KEY) : "en";
+        i18n = json.ui;
+        dishId = new URLSearchParams(location.search).get("id") || FoodieApi.dishIds[0];
+        lang = i18n[load(LANG_KEY)] ? load(LANG_KEY) : "en";
         showPhotos = load(PHOTO_KEY) !== "0";
-        return loadDish(dishId);
+        return FoodieApi.getDish(dishId);
       })
       .then(function (d) { dish = d; servings = d.servings; render(); })
       .catch(fail);
