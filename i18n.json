@@ -1,0 +1,40 @@
+{
+  "ui": {
+    "en": {
+      "langToggle": "中文",
+      "recipesTitle": "Recipes",
+      "recipesSubtitle": "Choose a dish to cook",
+      "serving": "serving",
+      "servings": "servings",
+      "back": "← All recipes",
+      "by": "by Chef",
+      "ingredients": "Ingredients",
+      "sauce": "Sauce",
+      "references": "References",
+      "video": "Video",
+      "steps": "Steps",
+      "photo": "photo",
+      "showPhotos": "Photos"
+    },
+    "zh": {
+      "langToggle": "EN",
+      "recipesTitle": "食譜",
+      "recipesSubtitle": "選擇想做的料理",
+      "serving": "人份",
+      "servings": "人份",
+      "back": "← 所有食譜",
+      "by": "主廚",
+      "ingredients": "食材",
+      "sauce": "醬料",
+      "references": "參考連結",
+      "video": "影片",
+      "steps": "步驟",
+      "photo": "照片",
+      "showPhotos": "照片"
+    }
+  },
+  "dishes": [
+    { "id": "chawanmushi", "name": { "en": "Silky Steamed Egg (茶碗蒸)", "zh": "滑嫩茶碗蒸" } },
+    { "id": "honey-garlic-wings", "name": { "en": "Honey Garlic Baked Chicken Wings", "zh": "蜂蜜蒜香烤雞翅" } }
+  ]
+}

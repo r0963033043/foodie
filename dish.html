@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chawanmushi · Dish</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button id="langBtn" class="lang-btn" type="button">中文</button>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="crumb"><a id="backLink" href="recipe.html"></a></div>
+    <div class="chef"><span class="avatar" id="chefAvatar"></span> <span id="chefBy"></span></div>
+    <h1 id="dishName"></h1>
+    <div class="tags">
+      <span class="tag method" id="tagMethod"></span>
+      <span class="serving-stepper">
+        <span class="ic">🍽</span>
+        <button type="button" id="servMinus" aria-label="Fewer servings">−</button>
+        <span class="count" id="servLabel"></span>
+        <button type="button" id="servPlus" aria-label="More servings">+</button>
+      </span>
+    </div>
+  </header>
+
+  <!-- Ingredients -->
+  <section class="card">
+    <h2><span class="ic">🥚</span> <span id="ingredientsTitle"></span></h2>
+    <div id="ingredientsBody"></div>
+  </section>
+
+  <!-- Sauce -->
+  <section class="card">
+    <h2><span class="ic">🥢</span> <span id="sauceTitle"></span></h2>
+    <ul class="list" id="sauceBody"></ul>
+  </section>
+
+  <!-- References -->
+  <section class="card refs">
+    <h2><span class="ic">🔗</span> <span id="refsTitle"></span></h2>
+    <div id="refsBody"></div>
+  </section>
+
+  <!-- Video -->
+  <section class="card">
+    <h2><span class="ic">🎬</span> <span id="videoTitle"></span></h2>
+    <div class="video">
+      <iframe id="videoFrame" title="Recipe video" loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <section class="card">
+    <h2>
+      <span class="ic">📋</span> <span id="stepsTitle"></span>
+      <span class="spacer"></span>
+      <label class="switch">
+        <span id="photoSwitchLabel"></span>
+        <input type="checkbox" id="photoSwitch" checked>
+        <span class="track"></span>
+      </label>
+    </h2>
+    <div id="stepsBody"></div>
+  </section>
+
+  <footer>foodie · dish</footer>
+
+</div>
+
+<script>
+  (function () {
+    const LANG_KEY = "foodie.lang";
+    const PHOTO_KEY = "foodie.showPhotos";
+    const MIN_SERVINGS = 1, MAX_SERVINGS = 20;
+    const $ = function (id) { return document.getElementById(id); };
+    let index = null;          // i18n.json: { ui, dishes:[{id,name}] }
+    const cache = {};          // id -> loaded dish file
+    let dish = null;           // currently rendered dish
+    let dishId = null;
+    let lang = "en";
+    let servings = 1;          // current (adjustable) serving count
+    let showPhotos = true;     // step photo visibility
+
+    function store(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
+    function load(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
+
+    function el(tag, className, text) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text != null) node.textContent = text;
+      return node;
+    }
+
+    // Format a scaled amount as a tidy number with common vulgar fractions.
+    const FRACTIONS = [
+      [0.125, "⅛"], [0.25, "¼"], [0.333, "⅓"], [0.375, "⅜"], [0.5, "½"],
+      [0.625, "⅝"], [0.667, "⅔"], [0.75, "¾"], [0.875, "⅞"]
+    ];
+    function fmtAmount(n) {
+      const r = Math.round(n * 1000) / 1000;
+      const whole = Math.floor(r + 1e-6);
+      const frac = r - whole;
+      if (frac <= 0.03) return String(whole);
+      for (let i = 0; i < FRACTIONS.length; i++) {
+        if (Math.abs(frac - FRACTIONS[i][0]) <= 0.03) {
+          return (whole > 0 ? whole + " " : "") + FRACTIONS[i][1];
+        }
+      }
+      return String(Math.round(r * 100) / 100);
+    }
+
+    // Quantity text for an item, scaled by the current serving factor.
+    function qtyText(it, factor) {
+      if (it.amount == null) return it.text || "";
+      return fmtAmount(it.amount * factor) + (it.unit ? " " + it.unit : "");
+    }
+
+    function rows(parent, items, factor) {
+      items.forEach(function (it) {
+        const li = el("li");
+        li.appendChild(el("span", null, it.name));
+        li.appendChild(el("span", "qty", qtyText(it, factor)));
+        parent.appendChild(li);
+      });
+    }
+
+    function loadDish(id) {
+      if (cache[id]) return Promise.resolve(cache[id]);
+      return fetch("data/" + id + ".json")
+        .then(function (r) { return r.json(); })
+        .then(function (d) { cache[id] = d; return d; });
+    }
+
+    function render() {
+      const ui = index.ui[lang];
+      const L = dish[lang];
+      const factor = servings / dish.servings;
+
+      document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+      document.title = L.name + " · dish";
+
+      // Header
+      $("langBtn").textContent = ui.langToggle;
+      $("backLink").textContent = ui.back;
+      $("chefAvatar").textContent = dish.chefInitial || "C";
+      $("chefBy").textContent = ui.by;
+      $("dishName").textContent = L.name;
+      $("tagMethod").textContent = L.method;
+
+      // Serving stepper
+      $("servLabel").textContent = servings + " " + (servings === 1 ? ui.serving : ui.servings);
+      $("servMinus").disabled = servings <= MIN_SERVINGS;
+      $("servPlus").disabled = servings >= MAX_SERVINGS;
+
+      // Section titles
+      $("ingredientsTitle").textContent = ui.ingredients;
+      $("sauceTitle").textContent = ui.sauce;
+      $("refsTitle").textContent = ui.references;
+      $("videoTitle").textContent = ui.video;
+      $("stepsTitle").textContent = ui.steps;
+      $("photoSwitchLabel").textContent = ui.showPhotos;
+      $("photoSwitch").checked = showPhotos;
+
+      // Ingredients (grouped, scaled)
+      const ing = $("ingredientsBody");
+      ing.innerHTML = "";
+      L.ingredients.forEach(function (g) {
+        ing.appendChild(el("div", "group-label", g.group));
+        const ul = el("ul", "list");
+        rows(ul, g.items, factor);
+        ing.appendChild(ul);
+      });
+
+      // Sauce (scaled)
+      const sauce = $("sauceBody");
+      sauce.innerHTML = "";
+      rows(sauce, L.sauce, factor);
+
+      // References
+      const refs = $("refsBody");
+      refs.innerHTML = "";
+      L.references.forEach(function (r) {
+        const a = el("a", null, r.label);
+        a.href = r.url;
+        a.target = "_blank";
+        a.rel = "noopener";
+        refs.appendChild(a);
+      });
+
+      // Video
+      $("videoFrame").src = "https://www.youtube.com/embed/" + dish.video;
+
+      // Steps (phases with continuous numbering)
+      const steps = $("stepsBody");
+      steps.innerHTML = "";
+      let offset = 0;
+      L.steps.forEach(function (phase) {
+        steps.appendChild(el("div", "phase", phase.phase));
+        const ol = el("ol", "steps");
+        ol.style.counterReset = "step " + offset;
+        phase.items.forEach(function (text) {
+          const li = el("li");
+          const body = el("div", "step-body");
+          body.appendChild(el("p", null, text));
+          if (showPhotos) body.appendChild(el("div", "photo-ph", ui.photo));
+          li.appendChild(body);
+          ol.appendChild(li);
+        });
+        steps.appendChild(ol);
+        offset += phase.items.length;
+      });
+    }
+
+    function fail() {
+      document.querySelector(".wrap").innerHTML =
+        "<p style='color:var(--muted)'>Could not load recipe data from <code>data/</code>. Serve this page over HTTP (e.g. <code>python -m http.server</code>) — browsers block fetch on file://.</p>";
+    }
+
+    fetch("i18n.json")
+      .then(function (r) { return r.json(); })
+      .then(function (json) {
+        index = json;
+        const ids = index.dishes.map(function (d) { return d.id; });
+        const requested = new URLSearchParams(location.search).get("id");
+        dishId = ids.indexOf(requested) >= 0 ? requested : ids[0];
+        lang = index.ui[load(LANG_KEY)] ? load(LANG_KEY) : "en";
+        showPhotos = load(PHOTO_KEY) !== "0";
+        return loadDish(dishId);
+      })
+      .then(function (d) { dish = d; servings = d.servings; render(); })
+      .catch(fail);
+
+    $("langBtn").addEventListener("click", function () {
+      if (!dish) return;
+      lang = (lang === "zh") ? "en" : "zh";
+      store(LANG_KEY, lang);
+      render();
+    });
+
+    function changeServings(delta) {
+      if (!dish) return;
+      const next = Math.min(MAX_SERVINGS, Math.max(MIN_SERVINGS, servings + delta));
+      if (next === servings) return;
+      servings = next;
+      render();
+    }
+    $("servMinus").addEventListener("click", function () { changeServings(-1); });
+    $("servPlus").addEventListener("click", function () { changeServings(1); });
+
+    $("photoSwitch").addEventListener("change", function (e) {
+      showPhotos = e.target.checked;
+      store(PHOTO_KEY, showPhotos ? "1" : "0");
+      render();
+    });
+  })();
+</script>
+</body>
+</html>

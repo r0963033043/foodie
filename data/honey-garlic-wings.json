@@ -1,0 +1,91 @@
+{
+  "chefInitial": "C",
+  "video": "8sJlYHpD8Wk",
+  "servings": 3,
+  "en": {
+    "name": "Honey Garlic Baked Chicken Wings",
+    "method": "Oven",
+    "ingredients": [
+      {
+        "group": "Base",
+        "items": [
+          { "name": "Chicken wings", "amount": 12, "unit": "pcs" },
+          { "name": "Salt", "amount": 1, "unit": "tsp" },
+          { "name": "Black pepper", "amount": 0.5, "unit": "tsp" },
+          { "name": "Garlic powder", "amount": 1, "unit": "tsp" }
+        ]
+      }
+    ],
+    "sauce": [
+      { "name": "Honey", "amount": 3, "unit": "tbsp" },
+      { "name": "Soy sauce", "amount": 2, "unit": "tbsp" },
+      { "name": "Minced garlic", "amount": 3, "unit": "cloves" },
+      { "name": "Lemon juice", "amount": 1, "unit": "tbsp" }
+    ],
+    "references": [
+      { "label": "Website", "url": "https://en.wikipedia.org/wiki/Chicken_wing" },
+      { "label": "YouTube", "url": "https://www.youtube.com/results?search_query=honey+garlic+baked+chicken+wings" }
+    ],
+    "steps": [
+      {
+        "phase": "Preparatory work",
+        "items": [
+          "Pat the wings dry and toss with salt, pepper, and garlic powder.",
+          "Arrange in a single layer on a lined baking tray.",
+          "Whisk honey, soy sauce, minced garlic, and lemon juice into a glaze."
+        ]
+      },
+      {
+        "phase": "Start cook",
+        "items": [
+          "Bake at 200°C (400°F) for 25 minutes, flipping halfway through.",
+          "Brush the glaze over the wings and bake another 10 minutes until sticky.",
+          "Rest for 5 minutes, then garnish and serve."
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "name": "蜂蜜蒜香烤雞翅",
+    "method": "烤箱",
+    "ingredients": [
+      {
+        "group": "基底",
+        "items": [
+          { "name": "雞翅", "amount": 12, "unit": "隻" },
+          { "name": "鹽", "amount": 1, "unit": "茶匙" },
+          { "name": "黑胡椒", "amount": 0.5, "unit": "茶匙" },
+          { "name": "蒜粉", "amount": 1, "unit": "茶匙" }
+        ]
+      }
+    ],
+    "sauce": [
+      { "name": "蜂蜜", "amount": 3, "unit": "大匙" },
+      { "name": "醬油", "amount": 2, "unit": "大匙" },
+      { "name": "蒜末", "amount": 3, "unit": "瓣" },
+      { "name": "檸檬汁", "amount": 1, "unit": "大匙" }
+    ],
+    "references": [
+      { "label": "網站", "url": "https://en.wikipedia.org/wiki/Chicken_wing" },
+      { "label": "YouTube", "url": "https://www.youtube.com/results?search_query=honey+garlic+baked+chicken+wings" }
+    ],
+    "steps": [
+      {
+        "phase": "前置作業",
+        "items": [
+          "將雞翅擦乾，加入鹽、黑胡椒與蒜粉拌勻。",
+          "單層排放在鋪好烘焙紙的烤盤上。",
+          "將蜂蜜、醬油、蒜末與檸檬汁攪打成醬汁。"
+        ]
+      },
+      {
+        "phase": "開始烹煮",
+        "items": [
+          "以 200°C 烤 25 分鐘，中途翻面一次。",
+          "刷上醬汁再烤 10 分鐘，至表面油亮黏稠。",
+          "靜置 5 分鐘，撒上裝飾後享用。"
+        ]
+      }
+    ]
+  }
+}

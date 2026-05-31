@@ -1,0 +1,103 @@
+{
+  "chefInitial": "C",
+  "video": "0ULnZJj9-Cs",
+  "servings": 2,
+  "en": {
+    "name": "Silky Steamed Egg (茶碗蒸)",
+    "method": "Steamer",
+    "ingredients": [
+      {
+        "group": "Base",
+        "items": [
+          { "name": "Egg", "amount": 3, "unit": "pcs" },
+          { "name": "Dashi stock (or water)", "amount": 270, "unit": "ml" },
+          { "name": "Salt", "amount": 0.25, "unit": "tsp" }
+        ]
+      },
+      {
+        "group": "Toppings (optional)",
+        "items": [
+          { "name": "Shrimp", "amount": 4, "unit": "pcs" },
+          { "name": "Shiitake mushroom", "amount": 2, "unit": "pcs" },
+          { "name": "Scallion", "amount": 1, "unit": "stalk" }
+        ]
+      }
+    ],
+    "sauce": [
+      { "name": "Soy sauce", "amount": 1, "unit": "tbsp" },
+      { "name": "Mirin", "amount": 1, "unit": "tsp" },
+      { "name": "Sesame oil", "text": "a few drops" }
+    ],
+    "references": [
+      { "label": "Website", "url": "https://en.wikipedia.org/wiki/Chawanmushi" },
+      { "label": "YouTube", "url": "https://www.youtube.com/results?search_query=chawanmushi+recipe" }
+    ],
+    "steps": [
+      {
+        "phase": "Preparatory work",
+        "items": [
+          "Crack the eggs into a bowl and beat gently — avoid making bubbles.",
+          "Mix in the cooled dashi stock and salt, then strain the mixture for a smooth texture.",
+          "Place shrimp, sliced shiitake, and scallion into heatproof cups, then pour in the egg mixture."
+        ]
+      },
+      {
+        "phase": "Start cook",
+        "items": [
+          "Cover each cup with foil and set into the steamer once the water is simmering.",
+          "Steam on low heat for about 12–15 minutes until just set with a slight wobble.",
+          "Drizzle with the sauce and serve warm."
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "name": "滑嫩茶碗蒸",
+    "method": "電鍋／蒸",
+    "ingredients": [
+      {
+        "group": "基底",
+        "items": [
+          { "name": "雞蛋", "amount": 3, "unit": "顆" },
+          { "name": "高湯（或清水）", "amount": 270, "unit": "毫升" },
+          { "name": "鹽", "amount": 0.25, "unit": "茶匙" }
+        ]
+      },
+      {
+        "group": "配料（可選）",
+        "items": [
+          { "name": "蝦仁", "amount": 4, "unit": "隻" },
+          { "name": "香菇", "amount": 2, "unit": "朵" },
+          { "name": "蔥", "amount": 1, "unit": "根" }
+        ]
+      }
+    ],
+    "sauce": [
+      { "name": "醬油", "amount": 1, "unit": "大匙" },
+      { "name": "味醂", "amount": 1, "unit": "茶匙" },
+      { "name": "香油", "text": "幾滴" }
+    ],
+    "references": [
+      { "label": "網站", "url": "https://en.wikipedia.org/wiki/Chawanmushi" },
+      { "label": "YouTube", "url": "https://www.youtube.com/results?search_query=chawanmushi+recipe" }
+    ],
+    "steps": [
+      {
+        "phase": "前置作業",
+        "items": [
+          "將蛋打入碗中輕輕打散，避免產生泡沫。",
+          "加入放涼的高湯與鹽拌勻，再過篩讓蛋液更滑順。",
+          "將蝦仁、香菇片與蔥放入耐熱杯中，再倒入蛋液。"
+        ]
+      },
+      {
+        "phase": "開始烹煮",
+        "items": [
+          "每杯蓋上鋁箔紙，待水滾後放入蒸鍋。",
+          "小火蒸約 12～15 分鐘，至蛋液凝固但略帶晃動。",
+          "淋上醬料，趁熱享用。"
+        ]
+      }
+    ]
+  }
+}
