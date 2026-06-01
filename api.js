@@ -35,9 +35,26 @@
     }));
   }
 
+  // Load the restaurant directory (cached). Returns an array of restaurants.
+  let restaurants = null;
+  function getRestaurants() {
+    if (restaurants) return Promise.resolve(restaurants);
+    return fetch(DATA_DIR + "restaurants.json")
+      .then(function (r) {
+        if (!r.ok) throw new Error("Restaurants not found");
+        return r.json();
+      })
+      .then(function (d) {
+        const all = Array.isArray(d) ? d : (d.restaurants || []);
+        restaurants = all.filter(function (r) { return !r.hidden; });
+        return restaurants;
+      });
+  }
+
   global.FoodieApi = {
     dishIds: DISH_IDS.slice(),
     getDish: getDish,
-    listDishes: listDishes
+    listDishes: listDishes,
+    getRestaurants: getRestaurants
   };
 })(window);

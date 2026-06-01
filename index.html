@@ -1,13 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=recipe.html">
-    <link rel="canonical" href="recipe.html">
-    <title>OOTD</title>
-    <script>location.replace("recipe.html");</script>
-  </head>
-  <body>
-    <a href="recipe.html">Continue to OOTD</a>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>foodie</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button id="langBtn" class="lang-btn" type="button">中文</button>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="brand">foodie</div>
+    <h1 id="title"></h1>
+  </header>
+
+  <div class="grid">
+    <a class="dish-card" href="maps.html">
+      <div class="meta">
+        <span class="ic">🍜</span>
+        <span>
+          <span class="name" id="navRestaurants"></span>
+          <span class="nav-desc" id="navRestaurantsDesc"></span>
+        </span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="dish-card" href="recipe.html">
+      <div class="meta">
+        <span class="ic">🍳</span>
+        <span>
+          <span class="name" id="navCook"></span>
+          <span class="nav-desc" id="navCookDesc"></span>
+        </span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+
+  <footer>foodie</footer>
+
+</div>
+
+<script>
+  (function () {
+    const LANG_KEY = "foodie.lang";
+    const $ = function (id) { return document.getElementById(id); };
+    let ui = null;
+    let lang = "en";
+
+    function store(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
+    function load(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
+
+    function render() {
+      const t = ui[lang];
+      document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+
+      $("langBtn").textContent = t.langToggle;
+      $("title").textContent = t.homeTitle;
+      $("navRestaurants").textContent = t.navRestaurants;
+      $("navRestaurantsDesc").textContent = t.navRestaurantsDesc;
+      $("navCook").textContent = t.navCook;
+      $("navCookDesc").textContent = t.navCookDesc;
+    }
+
+    fetch("i18n.json")
+      .then(function (r) { return r.json(); })
+      .then(function (json) {
+        ui = json.ui;
+        lang = ui[load(LANG_KEY)] ? load(LANG_KEY) : "en";
+        render();
+      })
+      .catch(function () {
+        $("title").textContent =
+          "Could not load text. Serve this page over HTTP (e.g. python -m http.server).";
+      });
+
+    $("langBtn").addEventListener("click", function () {
+      if (!ui) return;
+      lang = (lang === "zh") ? "en" : "zh";
+      store(LANG_KEY, lang);
+      render();
+    });
+  })();
+</script>
+</body>
 </html>

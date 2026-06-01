@@ -174,4 +174,81 @@ ol.steps li::before {
   background: var(--accent-soft); display: grid; place-items: center; font-size: 20px;
 }
 .dish-card .name { font-size: 16px; font-weight: 600; }
+.dish-card .nav-desc { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
 .dish-card .arrow { color: var(--accent); font-size: 20px; flex: none; }
+
+/* ===== Map (maps.html) ===== */
+#map {
+  height: 380px; margin-top: 28px;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow); overflow: hidden;
+  background: var(--card);
+}
+/* Tame Leaflet's default light chrome to fit the dark theme */
+.leaflet-container { background: var(--card); font: inherit; }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: var(--card); color: var(--ink);
+  border: 1px solid var(--line); box-shadow: var(--shadow);
+}
+.leaflet-popup-content { margin: 12px 14px; }
+.leaflet-popup-content .pop-name { display: block; font-weight: 600; }
+.leaflet-popup-content .pop-cuisine { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+.leaflet-popup-content .pop-links { display: grid; gap: 4px; margin-top: 8px; }
+.leaflet-popup-content .pop-link { font-size: 13px; font-weight: 600; }
+.leaflet-popup-content-wrapper a.leaflet-popup-close-button { color: var(--muted); }
+.leaflet-bar a, .leaflet-bar a:hover {
+  background: var(--card); color: var(--ink); border-bottom-color: var(--line);
+}
+
+/* ===== Filters (maps.html) ===== */
+.filters { margin-top: 24px; display: grid; gap: 10px; }
+.filter-group { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.filter-label {
+  font-size: 12px; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--muted); min-width: 72px;
+}
+.filter-chip {
+  font-size: 12px; padding: 4px 12px; border-radius: 999px; font-weight: 500;
+  border: 1px solid var(--line); background: transparent; color: var(--ink);
+  cursor: pointer; transition: border-color .15s, background .15s, color .15s;
+}
+.filter-chip:hover { border-color: var(--accent); color: var(--accent); }
+.filter-chip.on { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+/* ===== Restaurant listing (maps.html) ===== */
+.rest-card .empty, .grid .empty { color: var(--muted); font-size: 14px; }
+.rest-card {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 18px 20px; text-align: left; width: 100%;
+  color: var(--ink); cursor: pointer; font: inherit;
+  transition: border-color .15s, transform .15s;
+}
+.rest-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.rest-card.active { border-color: var(--accent); }
+.rest-card .ic {
+  width: 44px; height: 44px; flex: none; border-radius: 10px;
+  background: var(--accent-soft); display: grid; place-items: center; font-size: 22px;
+}
+.rest-card .body { min-width: 0; }
+.rest-card .name { font-size: 16px; font-weight: 600; }
+.rest-card .cuisine { color: var(--accent); font-size: 13px; margin: 2px 0 6px; }
+.rest-card .addr { color: var(--muted); font-size: 13px; }
+.rest-card .note { color: var(--muted); font-size: 13px; margin-top: 6px; }
+.rest-card .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.rest-card .chip {
+  font-size: 12px; padding: 3px 10px; border-radius: 999px; font-weight: 500;
+}
+.rest-card .chip-area {
+  background: transparent; color: var(--accent); border: 1px solid var(--accent);
+}
+.rest-card .chip-tag { background: var(--accent-soft); color: var(--accent); }
+.rest-card .chip-meal {
+  background: transparent; color: var(--muted); border: 1px solid var(--line);
+}
+.rest-card .chip-service { background: var(--line); color: var(--ink); }
+.rest-card .chip-dist { background: var(--accent); color: var(--bg); }
+.rest-card .chip-price { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+.rest-card .chip-party { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+.rest-card .chip-branch { background: var(--accent); color: var(--bg); }

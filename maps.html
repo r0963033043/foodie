@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Restaurants · foodie</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button id="langBtn" class="lang-btn" type="button">中文</button>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="brand">foodie</div>
+    <h1 id="title"></h1>
+    <p class="subtitle" id="subtitle"></p>
+  </header>
+
+  <div class="filters" id="filters"></div>
+
+  <div id="map"></div>
+
+  <div class="grid" id="grid"></div>
+
+  <footer>foodie · restaurants</footer>
+
+</div>
+
+<script src="assets.js"></script>
+<script src="api.js"></script>
+<script>
+  (function () {
+    const LANG_KEY = "foodie.lang";
+    const $ = function (id) { return document.getElementById(id); };
+    let ui = null;
+    let restaurants = [];       // [{ id, lat, lng, emoji, en:{…}, zh:{…} }]
+    let lang = "en";
+    let map = null;
+    const markers = {};         // id -> Leaflet marker
+
+    // Filterable dimensions. arr=true → the field is an array, else a scalar.
+    const DIMS = [
+      { key: "city",     arr: false, label: "filterCity" },
+      { key: "district", arr: false, label: "filterDistrict" },
+      { key: "foodArea", arr: true,  label: "filterFoodArea" },
+      { key: "mealtime", arr: true,  label: "filterMealtime" },
+      { key: "tags",     arr: true,  label: "filterTags" },
+      { key: "service",  arr: true,  label: "filterService" },
+      { key: "price",    arr: false, top: true, label: "filterPrice" }
+    ];
+    const filters = {};         // dimension key -> Set of selected values
+    DIMS.forEach(function (d) { filters[d.key] = new Set(); });
+
+    let userPos = null;         // { lat, lng } once located
+    let nearMe = false;         // sort & annotate by distance when true
+    let geoState = "idle";      // idle | locating | denied
+    const distances = {};       // restaurant id -> km from user
+
+    function store(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
+    function load(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
+
+    // Compose a display address from its parts, ordered per language:
+    // en → "street, district, city"; zh → "city district street" (no commas).
+    function fmtAddress(L_) {
+      const parts = lang === "zh"
+        ? [L_.city, L_.district, L_.address]
+        : [L_.address, L_.district, L_.city];
+      const sep = lang === "zh" ? "" : ", ";
+      return parts.filter(Boolean).join(sep);
+    }
+
+    // Great-circle distance in km between two lat/lng points (haversine).
+    function distanceKm(lat1, lng1, lat2, lng2) {
+      const R = 6371, toRad = Math.PI / 180;
+      const dLat = (lat2 - lat1) * toRad, dLng = (lng2 - lng1) * toRad;
+      const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * toRad) * Math.cos(lat2 * toRad) *
+        Math.sin(dLng / 2) * Math.sin(dLng / 2);
+      return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+
+    function fmtDistance(km) {
+      const t = ui[lang];
+      return km < 1 ? Math.round(km * 1000) + t.unitM : km.toFixed(1) + t.unitKm;
+    }
+
+    // Suitable party size, e.g. "2", "1–4", or "2+" (open-ended max).
+    function fmtPartySize(p) {
+      if (!p || p.min == null) return null;
+      if (p.max == null) return p.min + "+";
+      return p.min === p.max ? String(p.min) : p.min + "–" + p.max;
+    }
+
+    // Toggle the "near me" sort. Requests geolocation on first enable.
+    function toggleNearMe() {
+      if (nearMe) { nearMe = false; buildFilters(); applyFilters(); return; }
+      if (userPos) { nearMe = true; buildFilters(); applyFilters(); return; }
+      if (!navigator.geolocation) { geoState = "denied"; buildFilters(); return; }
+
+      geoState = "locating";
+      buildFilters();
+      navigator.geolocation.getCurrentPosition(
+        function (pos) {
+          userPos = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+          geoState = "idle";
+          nearMe = true;
+          buildFilters();
+          applyFilters();
+        },
+        function () { geoState = "denied"; nearMe = false; buildFilters(); },
+        { enableHighAccuracy: false, timeout: 8000, maximumAge: 600000 }
+      );
+    }
+
+    function el(tag, className, text) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text != null) node.textContent = text;
+      return node;
+    }
+
+    // Google Maps search URL for a restaurant (name + address finds the real
+    // place even though our stored coordinates are approximate).
+    function gmapsUrl(r) {
+      const L_ = r[lang];
+      const query = L_.name + " " + fmtAddress(L_);
+      return "https://www.google.com/maps/search/?api=1&query=" +
+        encodeURIComponent(query);
+    }
+
+    function openInGoogleMaps(r) {
+      window.open(gmapsUrl(r), "_blank", "noopener");
+    }
+
+    // Search queries use name + city to disambiguate chains.
+    function nameQuery(r) { return r[lang].name + " " + r[lang].city; }
+    function webUrl(r) {
+      return "https://www.google.com/search?q=" + encodeURIComponent(nameQuery(r));
+    }
+    function youtubeUrl(r) {
+      return "https://www.youtube.com/results?search_query=" + encodeURIComponent(nameQuery(r));
+    }
+
+    // Build an external link that opens safely in a new tab.
+    function extLink(className, text, href) {
+      const a = el("a", className, text);
+      a.href = href;
+      a.target = "_blank";
+      a.rel = "noopener";
+      return a;
+    }
+
+    function initMap() {
+      map = L.map("map", { scrollWheelZoom: false });
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(map);
+
+      const bounds = [];
+      restaurants.forEach(function (r) {
+        const m = L.marker([r.lat, r.lng]).addTo(map);
+        markers[r.id] = m;
+        bounds.push([r.lat, r.lng]);
+        m.on("click", function () { focus(r.id, false); });
+      });
+
+      if (bounds.length === 1) map.setView(bounds[0], 15);
+      else if (bounds.length) map.fitBounds(bounds, { padding: [40, 40] });
+      else map.setView([25.04, 121.54], 13);
+    }
+
+    // Bind a localized popup to each marker, refreshed on language change.
+    function bindPopups() {
+      const t = ui[lang];
+      restaurants.forEach(function (r) {
+        const L_ = r[lang];
+        const wrap = document.createElement("div");
+        wrap.appendChild(el("span", "pop-name", L_.name));
+        wrap.appendChild(el("span", "pop-cuisine", L_.cuisine));
+        const links = el("div", "pop-links");
+        links.appendChild(extLink("pop-link", t.openInMaps, gmapsUrl(r)));
+        links.appendChild(extLink("pop-link", t.searchWeb, webUrl(r)));
+        links.appendChild(extLink("pop-link", t.searchYoutube, youtubeUrl(r)));
+        wrap.appendChild(links);
+        markers[r.id].bindPopup(wrap);
+      });
+    }
+
+    // Pan/zoom to a restaurant and highlight its card.
+    function focus(id, openPopup) {
+      const r = restaurants.find(function (x) { return x.id === id; });
+      if (!r || !map) return;
+      map.setView([r.lat, r.lng], 16, { animate: true });
+      if (openPopup !== false && markers[id]) markers[id].openPopup();
+
+      Array.prototype.forEach.call(
+        document.querySelectorAll(".rest-card"),
+        function (c) { c.classList.toggle("active", c.dataset.id === id); }
+      );
+    }
+
+    // Values of a dimension for one restaurant. Top-level dims (e.g. price)
+    // are language-neutral; the rest live under the current language block.
+    function valuesFor(r, d) {
+      const v = d.top ? r[d.key] : r[lang][d.key];
+      if (v == null) return [];
+      return d.arr ? v : [v];
+    }
+
+    // A restaurant matches when, for every dimension with a selection, at
+    // least one of its values is selected (AND across dims, OR within a dim).
+    function matches(r) {
+      return DIMS.every(function (d) {
+        const sel = filters[d.key];
+        if (!sel.size) return true;
+        return valuesFor(r, d).some(function (v) { return sel.has(v); });
+      });
+    }
+
+    // Distinct values of a dimension across all restaurants (insertion order).
+    function distinctValues(d) {
+      const seen = [];
+      restaurants.forEach(function (r) {
+        valuesFor(r, d).forEach(function (v) {
+          if (seen.indexOf(v) === -1) seen.push(v);
+        });
+      });
+      // Price reads naturally low → high ($, $$, $$$).
+      if (d.key === "price") seen.sort(function (a, b) { return a.length - b.length; });
+      return seen;
+    }
+
+    // Build the filter panel: one group of toggle chips per dimension.
+    function buildFilters() {
+      const t = ui[lang];
+      const host = $("filters");
+      host.innerHTML = "";
+
+      // Location control: "Near me" toggle (sorts the list by distance).
+      const geoGroup = el("div", "filter-group");
+      geoGroup.appendChild(el("span", "filter-label", t.filterLocation));
+      const label = geoState === "locating" ? t.locating
+        : geoState === "denied" ? t.locationDenied
+        : t.nearMe;
+      const geoChip = el("button", "filter-chip" + (nearMe ? " on" : ""), "📍 " + label);
+      geoChip.type = "button";
+      geoChip.disabled = geoState === "locating";
+      geoChip.addEventListener("click", toggleNearMe);
+      geoGroup.appendChild(geoChip);
+      host.appendChild(geoGroup);
+
+      DIMS.forEach(function (d) {
+        const values = distinctValues(d);
+        if (!values.length) return;
+        const group = el("div", "filter-group");
+        group.appendChild(el("span", "filter-label", ui[lang][d.label]));
+        values.forEach(function (v) {
+          const chip = el("button", "filter-chip", v);
+          chip.type = "button";
+          if (filters[d.key].has(v)) chip.classList.add("on");
+          chip.addEventListener("click", function () {
+            if (filters[d.key].has(v)) filters[d.key].delete(v);
+            else filters[d.key].add(v);
+            chip.classList.toggle("on");
+            applyFilters();
+          });
+          group.appendChild(chip);
+        });
+        host.appendChild(group);
+      });
+    }
+
+    // Render the card list for the given (filtered) restaurants.
+    function renderList(list) {
+      const t = ui[lang];
+      const grid = $("grid");
+      grid.innerHTML = "";
+
+      if (!list.length) {
+        grid.appendChild(el("p", "empty", t.noResults));
+        return;
+      }
+
+      list.forEach(function (r) {
+        const L_ = r[lang];
+        const card = el("button", "rest-card");
+        card.type = "button";
+        card.dataset.id = r.id;
+
+        card.appendChild(el("span", "ic", r.emoji || "🍴"));
+
+        // Display order: name, address, mealtime, tags, hasBranches, cuisine, note.
+        const body = el("div", "body");
+        body.appendChild(el("div", "name", L_.name));
+        body.appendChild(el("div", "addr", fmtAddress(L_)));
+
+        // foodArea / mealtime / tags / service / branches rendered as chips (skip if all absent).
+        const areas = L_.foodArea || [];
+        const meals = L_.mealtime || [];
+        const tags = L_.tags || [];
+        const service = L_.service || [];
+        const hasDist = nearMe && userPos && distances[r.id] != null;
+        const party = fmtPartySize(r.partySize);
+        if (hasDist || r.price || party || areas.length || meals.length || tags.length || service.length || r.hasBranches) {
+          const chips = el("div", "chips");
+          if (hasDist) chips.appendChild(el("span", "chip chip-dist", "📏 " + fmtDistance(distances[r.id])));
+          if (r.price) chips.appendChild(el("span", "chip chip-price", r.price));
+          if (party) chips.appendChild(el("span", "chip chip-party", "👥 " + party));
+          areas.forEach(function (a) { chips.appendChild(el("span", "chip chip-area", "📍 " + a)); });
+          meals.forEach(function (m) { chips.appendChild(el("span", "chip chip-meal", m)); });
+          tags.forEach(function (g) { chips.appendChild(el("span", "chip chip-tag", g)); });
+          service.forEach(function (s) { chips.appendChild(el("span", "chip chip-service", s)); });
+          if (r.hasBranches) chips.appendChild(el("span", "chip chip-branch", "🏬 " + t.branches));
+          body.appendChild(chips);
+        }
+
+        body.appendChild(el("div", "cuisine", L_.cuisine));
+        if (L_.note) body.appendChild(el("div", "note", L_.note));
+        card.appendChild(body);
+
+        card.title = t.openInMaps;
+        // First click selects & pans the map; clicking the selected card opens
+        // it in Google Maps.
+        card.addEventListener("click", function () {
+          if (card.classList.contains("active")) openInGoogleMaps(r);
+          else focus(r.id);
+        });
+        grid.appendChild(card);
+      });
+    }
+
+    // Show only matching markers and refit the map to them.
+    function updateMarkers(list) {
+      if (!map) return;
+      const visible = {};
+      list.forEach(function (r) { visible[r.id] = true; });
+      const bounds = [];
+      restaurants.forEach(function (r) {
+        const m = markers[r.id];
+        if (!m) return;
+        if (visible[r.id]) {
+          if (!map.hasLayer(m)) m.addTo(map);
+          bounds.push([r.lat, r.lng]);
+        } else if (map.hasLayer(m)) {
+          map.removeLayer(m);
+        }
+      });
+      if (bounds.length) map.fitBounds(bounds, { padding: [40, 40], maxZoom: 16 });
+    }
+
+    // Apply current filters to both the list and the map.
+    function applyFilters() {
+      let list = restaurants.filter(matches);
+      if (nearMe && userPos) {
+        restaurants.forEach(function (r) {
+          distances[r.id] = distanceKm(userPos.lat, userPos.lng, r.lat, r.lng);
+        });
+        list = list.slice().sort(function (a, b) {
+          return distances[a.id] - distances[b.id];
+        });
+      }
+      renderList(list);
+      updateMarkers(list);
+    }
+
+    function render() {
+      const t = ui[lang];
+      document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+
+      $("langBtn").textContent = t.langToggle;
+      $("title").textContent = t.mapsTitle;
+      $("subtitle").textContent = t.mapsSubtitle;
+
+      buildFilters();
+      if (map) bindPopups();
+      applyFilters();
+    }
+
+    Promise.all([
+      fetch("i18n.json").then(function (r) { return r.json(); }),
+      FoodieApi.getRestaurants(),
+      FoodieAssets.loadLeaflet()
+    ])
+      .then(function (res) {
+        ui = res[0].ui;
+        restaurants = res[1];
+        lang = ui[load(LANG_KEY)] ? load(LANG_KEY) : "en";
+        initMap();
+        render();
+      })
+      .catch(function () {
+        $("grid").innerHTML =
+          "<p style='color:var(--muted)'>Could not load restaurant data. Serve this page over HTTP (e.g. <code>python -m http.server</code>) — browsers block fetch on file://.</p>";
+      });
+
+    $("langBtn").addEventListener("click", function () {
+      if (!ui) return;
+      lang = (lang === "zh") ? "en" : "zh";
+      store(LANG_KEY, lang);
+      // Filter values are language-specific, so reset selections on switch.
+      DIMS.forEach(function (d) { filters[d.key].clear(); });
+      render();
+    });
+  })();
+</script>
+</body>
+</html>
