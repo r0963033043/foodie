@@ -6,13 +6,16 @@
   "hasBranches": false,
   "price": "$",
   "partySize": { "min": 1, "max": 4 },
+  "website": [
+    { "platform": "facebook", "url": "https://www.facebook.com/p/%E9%A3%9F%E8%BC%9D%E5%91%B3%E8%95%BEfoodstop-100093074212164/" }
+  ],
   "en": {
     "name": "FoodStop",
     "cuisine": "Dumplings · Rice & Noodles",
     "city": "Taipei",
     "district": "Zhongzheng District",
     "address": "1F, No. 75, Yanping S Rd",
-    "foodArea": ["Ximen"],
+    "shoppingDistrict": ["Ximen"],
     "mealtime": ["Lunch", "Dinner"],
     "tags": ["Taiwanese"],
     "service": ["Indoor", "Takeout"],
@@ -24,7 +27,7 @@
     "city": "台北市",
     "district": "中正區",
     "address": "延平南路75號1樓",
-    "foodArea": ["西門"],
+    "shoppingDistrict": ["西門"],
     "mealtime": ["午餐", "晚餐"],
     "tags": ["台式"],
     "service": ["室內", "外帶"],

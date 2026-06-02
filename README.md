@@ -15,14 +15,15 @@ Hosted on GitHub Pages from the `gh-pages` branch.
 | `index.html` | Landing page — choose **Restaurants** (map) or **Cook** (recipes). |
 | `maps.html` | Leaflet map + restaurant list with filters and a "near me" sort. |
 | `recipe.html` | Grid of dishes to cook. |
-| `dish.html` | A single recipe (ingredients, steps, video) with serving scaling. |
+| `dish.html` | A single recipe (ingredients, steps) with serving scaling. |
 
 ## Restaurant map (`maps.html`)
 
-- **Map + list stay in sync.** Click a card to pan/zoom and open a poptip on the card linking to the restaurant's **Menu** (`menu.html`), **Google Maps**, and **Web** / **YouTube** searches; clicking a map marker shows the same links in its popup.
-- **Filters:** city, district, foodArea, mealtime, tags, service, and price. Logic is **AND across dimensions, OR within a dimension**. Both the list and the map markers update.
+- **Map + list stay in sync.** Click a card to open that restaurant's **Menu** page (`menu.html`), which links out to **Google Maps**, **Reserve**, and **Web** / **YouTube** searches.
+- **Filters:** city, district, shoppingDistrict, mealtime, tags, service, and price. Logic is **AND across dimensions, OR within a dimension**. Both the list and the map markers update.
 - **Near me:** a geolocation toggle that sorts the list by distance and shows each spot's distance.
 - Map tiles use **Leaflet + OpenStreetMap** (no API key). The CDN dependency is centralized in `assets.js` — no hardcoded URLs in the HTML.
+- External link/search URLs (Google Maps, web/YouTube search) and the map-tile URL live in `links.js` (`FoodieLinks`), keeping raw `https` endpoints out of the page markup.
 
 ## Language
 
@@ -42,12 +43,14 @@ One file per restaurant, registered by id in `api.js` (`RESTAURANT_IDS`); the fi
 | `hasBranches` | top | boolean — has other branches |
 | `price` | top | `$` … `$$$$` |
 | `partySize` | top | `{ "min", "max" }` (`max: null` = open-ended) |
+| `website` | top | optional — array of `{ "platform", "url" }` links (`platform`: `official`, `facebook`, `instagram`, …); each is shown on `menu.html`. A bare URL string is treated as `official`. |
+| `reservationUrl` | top | optional — array of `{ "platform", "url" }` booking links. One usable link → **Reserve** opens it directly; several → each platform is shown as an option; none/absent → no Reserve link shown. A bare URL string also works. |
 | `hidden` | top | optional — `true` excludes it from the list/map |
 | `name`, `cuisine`, `city`, `district`, `address`, `note` | `en`/`zh` | text |
-| `foodArea`, `mealtime`, `tags`, `service` | `en`/`zh` | arrays |
+| `shoppingDistrict`, `mealtime`, `tags`, `service` | `en`/`zh` | arrays |
 | `menu` | `en`/`zh` | optional — array of `{ "name", "price", "note"? }` shown on `menu.html` |
 
-`district` is the administrative region (e.g. 萬華區); `foodArea` is the colloquial food neighborhood (e.g. 西門).
+`district` is the administrative region (e.g. 萬華區); `shoppingDistrict` (商圈) is the colloquial commercial/dining district (e.g. 西門).
 
 ### `data/dish-*.json`
 

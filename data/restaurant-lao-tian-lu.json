@@ -7,13 +7,16 @@
   "hasBranches": true,
   "price": "$",
   "partySize": { "min": 1, "max": 2 },
+  "website": [
+    { "platform": "official", "url": "https://www.laotienlu.com.tw/" }
+  ],
   "en": {
     "name": "Lao Tian Lu",
     "cuisine": "Braised Deli · Snacks",
     "city": "Taipei",
     "district": "Wanhua District",
     "address": "No. 56, Chengdu Rd",
-    "foodArea": ["Ximen"],
+    "shoppingDistrict": ["Ximen"],
     "mealtime": ["Lunch", "Dinner", "Late-night"],
     "tags": ["Taiwanese"],
     "service": ["Takeout"],
@@ -25,7 +28,7 @@
     "city": "台北市",
     "district": "萬華區",
     "address": "成都路56號",
-    "foodArea": ["西門"],
+    "shoppingDistrict": ["西門"],
     "mealtime": ["午餐", "晚餐", "宵夜"],
     "tags": ["台式"],
     "service": ["外帶"],

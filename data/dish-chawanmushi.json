@@ -1,6 +1,5 @@
 {
   "chefInitial": "C",
-  "video": "0ULnZJj9-Cs",
   "servings": 2,
   "en": {
     "name": "Silky Steamed Egg (茶碗蒸)",
@@ -27,10 +26,6 @@
       { "name": "Soy sauce", "amount": 1, "unit": "tbsp" },
       { "name": "Mirin", "amount": 1, "unit": "tsp" },
       { "name": "Sesame oil", "text": "a few drops" }
-    ],
-    "references": [
-      { "label": "Website", "url": "https://en.wikipedia.org/wiki/Chawanmushi" },
-      { "label": "YouTube", "url": "https://www.youtube.com/results?search_query=chawanmushi+recipe" }
     ],
     "steps": [
       {
@@ -76,10 +71,6 @@
       { "name": "醬油", "amount": 1, "unit": "大匙" },
       { "name": "味醂", "amount": 1, "unit": "茶匙" },
       { "name": "香油", "text": "幾滴" }
-    ],
-    "references": [
-      { "label": "網站", "url": "https://en.wikipedia.org/wiki/Chawanmushi" },
-      { "label": "YouTube", "url": "https://www.youtube.com/results?search_query=chawanmushi+recipe" }
     ],
     "steps": [
       {

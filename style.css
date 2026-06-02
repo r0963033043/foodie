@@ -121,11 +121,7 @@ ul.list .qty { color: var(--muted); white-space: nowrap; }
 }
 .group-label:first-child { margin-top: 0; }
 
-/* Video */
-.video { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 10px; overflow: hidden; }
-.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-
-/* References */
+/* Inline link rows (dish/menu link sections) */
 .refs a { display: inline-block; margin-right: 16px; }
 
 /* Steps */
@@ -228,20 +224,6 @@ ol.steps li::before {
 
 /* ===== Restaurant listing (maps.html) ===== */
 .rest-card .empty, .grid .empty { color: var(--muted); font-size: 14px; }
-.rest-card-wrap { position: relative; }
-
-/* Action poptip anchored under a card (menu / maps / web / video) */
-.card-poptip {
-  display: none; position: absolute; z-index: 5;
-  left: 16px; right: 16px; top: calc(100% - 8px);
-  background: var(--card); border: 1px solid var(--accent);
-  border-radius: 12px; box-shadow: var(--shadow); padding: 10px 14px;
-}
-.card-poptip.open { display: grid; gap: 6px; }
-.card-poptip .pop-link {
-  font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none;
-}
-.card-poptip .pop-link:hover { text-decoration: underline; }
 .rest-card {
   display: flex; align-items: flex-start; gap: 14px;
   background: var(--card); border: 1px solid var(--line);
@@ -261,19 +243,19 @@ ol.steps li::before {
 .rest-card .cuisine { color: var(--accent); font-size: 13px; margin: 2px 0 6px; }
 .rest-card .addr { color: var(--muted); font-size: 13px; }
 .rest-card .note { color: var(--muted); font-size: 13px; margin-top: 6px; }
-.rest-card .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-.rest-card .chip {
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.chip {
   font-size: 12px; padding: 3px 10px; border-radius: 999px; font-weight: 500;
 }
-.rest-card .chip-area {
+.chip-area {
   background: transparent; color: var(--accent); border: 1px solid var(--accent);
 }
-.rest-card .chip-tag { background: var(--accent-soft); color: var(--accent); }
-.rest-card .chip-meal {
+.chip-tag { background: var(--accent-soft); color: var(--accent); }
+.chip-meal {
   background: transparent; color: var(--muted); border: 1px solid var(--line);
 }
-.rest-card .chip-service { background: var(--line); color: var(--ink); }
-.rest-card .chip-dist { background: var(--accent); color: var(--bg); }
-.rest-card .chip-price { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
-.rest-card .chip-party { background: transparent; color: var(--muted); border: 1px solid var(--line); }
-.rest-card .chip-branch { background: var(--accent); color: var(--bg); }
+.chip-service { background: var(--line); color: var(--ink); }
+.chip-dist { background: var(--accent); color: var(--bg); }
+.chip-price { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+.chip-party { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+.chip-branch { background: var(--accent); color: var(--bg); }

@@ -6,13 +6,16 @@
   "hasBranches": false,
   "price": "$$$",
   "partySize": { "min": 1, "max": 4 },
+  "website": [
+    { "platform": "official", "url": "https://www.addiction.com.tw/" }
+  ],
   "en": {
     "name": "Addiction Aquatic Development",
     "cuisine": "Seafood · Sushi",
     "city": "Taipei",
     "district": "Zhongshan District",
     "address": "No. 18, Alley 2, Ln 410, Minzu E Rd",
-    "foodArea": ["Zhongshan"],
+    "shoppingDistrict": ["Zhongshan"],
     "mealtime": ["Lunch", "Dinner", "Late-night"],
     "tags": ["Japanese"],
     "service": ["Indoor", "Outdoor", "Takeout"],
@@ -30,7 +33,7 @@
     "city": "台北市",
     "district": "中山區",
     "address": "民族東路410巷2弄18號",
-    "foodArea": ["中山"],
+    "shoppingDistrict": ["中山"],
     "mealtime": ["午餐", "晚餐", "宵夜"],
     "tags": ["日式"],
     "service": ["室內", "室外", "外帶"],

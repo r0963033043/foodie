@@ -1,6 +1,5 @@
 {
   "chefInitial": "C",
-  "video": "8sJlYHpD8Wk",
   "servings": 3,
   "en": {
     "name": "Honey Garlic Baked Chicken Wings",
@@ -21,10 +20,6 @@
       { "name": "Soy sauce", "amount": 2, "unit": "tbsp" },
       { "name": "Minced garlic", "amount": 3, "unit": "cloves" },
       { "name": "Lemon juice", "amount": 1, "unit": "tbsp" }
-    ],
-    "references": [
-      { "label": "Website", "url": "https://en.wikipedia.org/wiki/Chicken_wing" },
-      { "label": "YouTube", "url": "https://www.youtube.com/results?search_query=honey+garlic+baked+chicken+wings" }
     ],
     "steps": [
       {
@@ -64,10 +59,6 @@
       { "name": "醬油", "amount": 2, "unit": "大匙" },
       { "name": "蒜末", "amount": 3, "unit": "瓣" },
       { "name": "檸檬汁", "amount": 1, "unit": "大匙" }
-    ],
-    "references": [
-      { "label": "網站", "url": "https://en.wikipedia.org/wiki/Chicken_wing" },
-      { "label": "YouTube", "url": "https://www.youtube.com/results?search_query=honey+garlic+baked+chicken+wings" }
     ],
     "steps": [
       {

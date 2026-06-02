@@ -28,6 +28,7 @@
 
 <script src="assets.js"></script>
 <script src="api.js"></script>
+<script src="links.js"></script>
 <script>
   (function () {
     const LANG_KEY = "foodie.lang";
@@ -42,12 +43,17 @@
     const DIMS = [
       { key: "city",     arr: false, label: "filterCity" },
       { key: "district", arr: false, label: "filterDistrict" },
-      { key: "foodArea", arr: true,  label: "filterFoodArea" },
+      { key: "shoppingDistrict", arr: true,  label: "filterShoppingDistrict" },
       { key: "mealtime", arr: true,  label: "filterMealtime" },
       { key: "tags",     arr: true,  label: "filterTags" },
       { key: "service",  arr: true,  label: "filterService" },
       { key: "price",    arr: false, top: true, label: "filterPrice" }
     ];
+    // Mealtime chips read in day order rather than insertion order.
+    const MEALTIME_ORDER = {
+      en: ["Breakfast", "Lunch", "Dinner", "Late-night"],
+      zh: ["早餐", "午餐", "晚餐", "宵夜"]
+    };
     const filters = {};         // dimension key -> Set of selected values
     DIMS.forEach(function (d) { filters[d.key] = new Set(); });
 
@@ -123,9 +129,7 @@
     // place even though our stored coordinates are approximate).
     function gmapsUrl(r) {
       const L_ = r[lang];
-      const query = L_.name + " " + fmtAddress(L_);
-      return "https://www.google.com/maps/search/?api=1&query=" +
-        encodeURIComponent(query);
+      return FoodieLinks.gmaps(L_.name + " " + fmtAddress(L_));
     }
 
     // Internal link to this restaurant's menu page.
@@ -133,17 +137,8 @@
 
     // Search queries use name + city to disambiguate chains.
     function nameQuery(r) { return r[lang].name + " " + r[lang].city; }
-    function webUrl(r) {
-      return "https://www.google.com/search?q=" + encodeURIComponent(nameQuery(r));
-    }
-    function youtubeUrl(r) {
-      return "https://www.youtube.com/results?search_query=" + encodeURIComponent(nameQuery(r));
-    }
-    // No booking API here, so point at a reservation-scoped web search.
-    function reserveUrl(r) {
-      const kw = lang === "zh" ? "訂位" : "reservation";
-      return "https://www.google.com/search?q=" + encodeURIComponent(nameQuery(r) + " " + kw);
-    }
+    function webUrl(r) { return FoodieLinks.webSearch(nameQuery(r)); }
+    function youtubeUrl(r) { return FoodieLinks.youtubeSearch(nameQuery(r)); }
 
     // Build an external link that opens safely in a new tab.
     function extLink(className, text, href) {
@@ -154,19 +149,11 @@
       return a;
     }
 
-    // Hide any open card poptips.
-    function closeAllPoptips() {
-      Array.prototype.forEach.call(
-        document.querySelectorAll(".card-poptip.open"),
-        function (p) { p.classList.remove("open"); }
-      );
-    }
-
     function initMap() {
       map = L.map("map", { scrollWheelZoom: false });
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      L.tileLayer(FoodieLinks.tileUrl, {
         maxZoom: 19,
-        attribution: "&copy; OpenStreetMap contributors"
+        attribution: FoodieLinks.tileAttribution
       }).addTo(map);
 
       const bounds = [];
@@ -245,6 +232,14 @@
       });
       // Price reads naturally low → high ($, $$, $$$).
       if (d.key === "price") seen.sort(function (a, b) { return a.length - b.length; });
+      // Mealtime reads in day order (breakfast → late-night).
+      if (d.key === "mealtime") {
+        const order = MEALTIME_ORDER[lang] || [];
+        seen.sort(function (a, b) {
+          const ia = order.indexOf(a), ib = order.indexOf(b);
+          return (ia === -1 ? order.length : ia) - (ib === -1 ? order.length : ib);
+        });
+      }
       return seen;
     }
 
@@ -301,7 +296,6 @@
 
       list.forEach(function (r) {
         const L_ = r[lang];
-        const wrap = el("div", "rest-card-wrap");
         const card = el("button", "rest-card");
         card.type = "button";
         card.dataset.id = r.id;
@@ -313,8 +307,8 @@
         body.appendChild(el("div", "name", L_.name));
         body.appendChild(el("div", "addr", fmtAddress(L_)));
 
-        // foodArea / mealtime / tags / service / branches rendered as chips (skip if all absent).
-        const areas = L_.foodArea || [];
+        // shoppingDistrict / mealtime / tags / service / branches rendered as chips (skip if all absent).
+        const areas = L_.shoppingDistrict || [];
         const meals = L_.mealtime || [];
         const tags = L_.tags || [];
         const service = L_.service || [];
@@ -322,12 +316,12 @@
         const party = fmtPartySize(r.partySize);
         if (hasDist || r.price || party || areas.length || meals.length || tags.length || service.length || r.hasBranches) {
           const chips = el("div", "chips");
+          areas.forEach(function (a) { chips.appendChild(el("span", "chip chip-area", "📍 " + a)); });
+          tags.forEach(function (g) { chips.appendChild(el("span", "chip chip-tag", g)); });
           if (hasDist) chips.appendChild(el("span", "chip chip-dist", "📏 " + fmtDistance(distances[r.id])));
           if (r.price) chips.appendChild(el("span", "chip chip-price", r.price));
           if (party) chips.appendChild(el("span", "chip chip-party", "👥 " + party));
-          areas.forEach(function (a) { chips.appendChild(el("span", "chip chip-area", "📍 " + a)); });
           meals.forEach(function (m) { chips.appendChild(el("span", "chip chip-meal", m)); });
-          tags.forEach(function (g) { chips.appendChild(el("span", "chip chip-tag", g)); });
           service.forEach(function (s) { chips.appendChild(el("span", "chip chip-service", s)); });
           if (r.hasBranches) chips.appendChild(el("span", "chip chip-branch", "🏬 " + t.branches));
           body.appendChild(chips);
@@ -337,29 +331,9 @@
         if (L_.note) body.appendChild(el("div", "note", L_.note));
         card.appendChild(body);
 
-        // A poptip anchored to the card holds the actions (menu / maps / web /
-        // video). Clicking the card pans the map and toggles its poptip — no
-        // new window opens until a link inside is chosen.
-        const tip = el("div", "card-poptip");
-        const menuLink = el("a", "pop-link", t.menu);
-        menuLink.href = menuUrl(r);
-        tip.appendChild(menuLink);
-        tip.appendChild(extLink("pop-link", t.openInMaps, gmapsUrl(r)));
-        tip.appendChild(extLink("pop-link", t.reservations, reserveUrl(r)));
-        tip.appendChild(extLink("pop-link", t.searchWeb, webUrl(r)));
-        tip.appendChild(extLink("pop-link", t.searchYoutube, youtubeUrl(r)));
-
-        card.addEventListener("click", function (e) {
-          e.stopPropagation();
-          const open = tip.classList.contains("open");
-          closeAllPoptips();
-          focus(r.id, false);
-          if (!open) tip.classList.add("open");
-        });
-
-        wrap.appendChild(card);
-        wrap.appendChild(tip);
-        grid.appendChild(wrap);
+        // Clicking a card opens that restaurant's menu page.
+        card.addEventListener("click", function () { location.href = menuUrl(r); });
+        grid.appendChild(card);
       });
     }
 
@@ -426,9 +400,6 @@
         $("grid").innerHTML =
           "<p style='color:var(--muted)'>Could not load restaurant data. Serve this page over HTTP (e.g. <code>python -m http.server</code>) — browsers block fetch on file://.</p>";
       });
-
-    // A click anywhere outside a card dismisses any open poptip.
-    document.addEventListener("click", closeAllPoptips);
 
     $("langBtn").addEventListener("click", function () {
       if (!ui) return;

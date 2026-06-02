@@ -40,6 +40,7 @@
 </div>
 
 <script src="api.js"></script>
+<script src="links.js"></script>
 <script>
   (function () {
     const LANG_KEY = "foodie.lang";
@@ -68,23 +69,69 @@
       return parts.filter(Boolean).join(sep);
     }
 
+    // Suitable party size, e.g. "2", "1–4", or "2+" (open-ended max).
+    function fmtPartySize(p) {
+      if (!p || p.min == null) return null;
+      if (p.max == null) return p.min + "+";
+      return p.min === p.max ? String(p.min) : p.min + "–" + p.max;
+    }
+
     // External search/links — same queries the map popup uses.
     function gmapsUrl(r) {
       const L_ = r[lang];
-      const query = L_.name + " " + fmtAddress(L_);
-      return "https://www.google.com/maps/search/?api=1&query=" +
-        encodeURIComponent(query);
+      return FoodieLinks.gmaps(L_.name + " " + fmtAddress(L_));
     }
     function nameQuery(r) { return r[lang].name + " " + r[lang].city; }
-    function webUrl(r) {
-      return "https://www.google.com/search?q=" + encodeURIComponent(nameQuery(r));
+    function webUrl(r) { return FoodieLinks.webSearch(nameQuery(r)); }
+    function youtubeUrl(r) { return FoodieLinks.youtubeSearch(nameQuery(r)); }
+    // Reservation platform display names (brand names like "inline" pass through).
+    const PLATFORM = {
+      en: { inline: "inline", official: "Official site", other: "Other" },
+      zh: { inline: "inline", official: "官方訂位", other: "其他" }
+    };
+
+    // Website/social link display names. "official" is localized; brand names
+    // are the same in both languages.
+    const WEBSITE_LABEL = {
+      facebook: "Facebook", instagram: "Instagram", line: "LINE",
+      youtube: "YouTube", threads: "Threads", tiktok: "TikTok", x: "X"
+    };
+    function siteLabel(platform) {
+      if (platform === "official") return ui[lang].website;
+      return WEBSITE_LABEL[platform] || platform;
     }
-    function youtubeUrl(r) {
-      return "https://www.youtube.com/results?search_query=" + encodeURIComponent(nameQuery(r));
+
+    // Append one link per website entry ({ platform, url }); also accepts a bare
+    // url string (treated as an official site). Skips blanks.
+    function appendWebsites(host, r) {
+      const raw = r.website;
+      const list = Array.isArray(raw) ? raw
+        : (typeof raw === "string" && raw ? [{ platform: "official", url: raw }] : []);
+      list.forEach(function (w) {
+        if (w && w.url) host.appendChild(extLink(siteLabel(w.platform) + " ↗", w.url));
+      });
     }
-    function reserveUrl(r) {
-      const kw = lang === "zh" ? "訂位" : "reservation";
-      return "https://www.google.com/search?q=" + encodeURIComponent(nameQuery(r) + " " + kw);
+
+    // Booking links from data: an array of { platform, url } (a bare url string
+    // is also accepted). Returns only the entries that actually have a url.
+    function reserveOptions(r) {
+      const raw = r.reservationUrl;
+      const list = Array.isArray(raw) ? raw
+        : (typeof raw === "string" && raw ? [{ platform: "other", url: raw }] : []);
+      return list.filter(function (o) { return o && o.url; });
+    }
+
+    // Append the reservation link(s): nothing when there's no booking link, a
+    // single direct link for one option, or one labeled link per platform when
+    // several are available.
+    function appendReservation(host, r) {
+      const t = ui[lang];
+      const opts = reserveOptions(r);
+      if (opts.length === 0) return;
+      if (opts.length === 1) { host.appendChild(extLink(t.reservations + " ↗", opts[0].url)); return; }
+      opts.forEach(function (o) {
+        host.appendChild(extLink(t.reservations + " · " + (PLATFORM[lang][o.platform] || o.platform) + " ↗", o.url));
+      });
     }
 
     function extLink(text, href) {
@@ -109,9 +156,21 @@
       $("cuisine").textContent = L_.cuisine;
       $("addr").textContent = fmtAddress(L_);
 
+      // Header chips, mirroring the map card (no distance chip — that's map-only).
       const tags = $("tags");
       tags.innerHTML = "";
-      if (rest.price) tags.appendChild(el("span", "tag", rest.price));
+      const areas = L_.shoppingDistrict || [];
+      const meals = L_.mealtime || [];
+      const gtags = L_.tags || [];
+      const service = L_.service || [];
+      const party = fmtPartySize(rest.partySize);
+      areas.forEach(function (a) { tags.appendChild(el("span", "chip chip-area", "📍 " + a)); });
+      gtags.forEach(function (g) { tags.appendChild(el("span", "chip chip-tag", g)); });
+      if (rest.price) tags.appendChild(el("span", "chip chip-price", rest.price));
+      if (party) tags.appendChild(el("span", "chip chip-party", "👥 " + party));
+      meals.forEach(function (m) { tags.appendChild(el("span", "chip chip-meal", m)); });
+      service.forEach(function (s) { tags.appendChild(el("span", "chip chip-service", s)); });
+      if (rest.hasBranches) tags.appendChild(el("span", "chip chip-branch", "🏬 " + t.branches));
 
       // Menu items (per-language list of { name, price, note }).
       $("menuTitle").textContent = t.menu;
@@ -135,11 +194,12 @@
       }
 
       // Links
-      $("linksTitle").textContent = t.menuLinks;
+      $("linksTitle").textContent = t.links;
       const links = $("linksBody");
       links.innerHTML = "";
+      appendReservation(links, rest);
+      appendWebsites(links, rest);
       links.appendChild(extLink(t.openInMaps, gmapsUrl(rest)));
-      links.appendChild(extLink(t.reservations, reserveUrl(rest)));
       links.appendChild(extLink(t.searchWeb, webUrl(rest)));
       links.appendChild(extLink(t.searchYoutube, youtubeUrl(rest)));
     }

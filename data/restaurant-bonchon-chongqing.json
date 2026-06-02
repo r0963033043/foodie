@@ -6,13 +6,19 @@
   "hasBranches": true,
   "price": "$$",
   "partySize": { "min": 2, "max": 6 },
+  "website": [
+    { "platform": "official", "url": "https://bonchon.tw/" }
+  ],
+  "reservationUrl": [
+    { "platform": "inline", "url": "https://inline.app/booking/bonchon/bonchon02" }
+  ],
   "en": {
     "name": "Bonchon Chicken (Chongqing S)",
     "cuisine": "Korean Fried Chicken",
     "city": "Taipei",
     "district": "Zhongzheng District",
     "address": "No. 121, Sec. 1, Chongqing S Rd",
-    "foodArea": ["Ximen"],
+    "shoppingDistrict": ["Ximen"],
     "mealtime": ["Lunch", "Dinner"],
     "tags": ["Korean"],
     "service": ["Indoor", "Takeout"],
@@ -24,7 +30,7 @@
     "city": "台北市",
     "district": "中正區",
     "address": "重慶南路一段121號",
-    "foodArea": ["西門"],
+    "shoppingDistrict": ["西門"],
     "mealtime": ["午餐", "晚餐"],
     "tags": ["韓式"],
     "service": ["室內", "外帶"],
