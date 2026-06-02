@@ -316,9 +316,9 @@
         const party = fmtPartySize(r.partySize);
         if (hasDist || r.price || party || areas.length || meals.length || tags.length || service.length || r.hasBranches) {
           const chips = el("div", "chips");
+          if (hasDist) chips.appendChild(el("span", "chip chip-dist", "📏 " + fmtDistance(distances[r.id])));
           areas.forEach(function (a) { chips.appendChild(el("span", "chip chip-area", "📍 " + a)); });
           tags.forEach(function (g) { chips.appendChild(el("span", "chip chip-tag", g)); });
-          if (hasDist) chips.appendChild(el("span", "chip chip-dist", "📏 " + fmtDistance(distances[r.id])));
           if (r.price) chips.appendChild(el("span", "chip chip-price", r.price));
           if (party) chips.appendChild(el("span", "chip chip-party", "👥 " + party));
           meals.forEach(function (m) { chips.appendChild(el("span", "chip chip-meal", m)); });
