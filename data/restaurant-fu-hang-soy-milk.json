@@ -1,0 +1,45 @@
+{
+  "id": "fu-hang-soy-milk",
+  "lat": 25.0447,
+  "lng": 121.5293,
+  "emoji": "🥛",
+  "hasBranches": false,
+  "price": "$",
+  "partySize": { "min": 1, "max": 3 },
+  "en": {
+    "name": "Fu Hang Soy Milk",
+    "cuisine": "Breakfast · Soy Milk",
+    "city": "Taipei",
+    "district": "Zhongzheng District",
+    "address": "2F, No. 108, Sec. 1, Zhongxiao E Rd",
+    "foodArea": ["Huashan"],
+    "mealtime": ["Breakfast"],
+    "tags": ["Taiwanese"],
+    "service": ["Indoor", "Takeout"],
+    "note": "Morning queues for warm soy milk and crispy shaobing.",
+    "menu": [
+      { "name": "Warm Soy Milk", "price": "NT$35" },
+      { "name": "Salty Soy Milk", "price": "NT$45", "note": "With dough fritter & dried shrimp" },
+      { "name": "Shaobing with Egg & Youtiao", "price": "NT$70" },
+      { "name": "Thick Shaobing", "price": "NT$40" }
+    ]
+  },
+  "zh": {
+    "name": "阜杭豆漿",
+    "cuisine": "豆漿",
+    "city": "台北市",
+    "district": "中正區",
+    "address": "忠孝東路一段108號2樓",
+    "foodArea": ["華山"],
+    "mealtime": ["早餐"],
+    "tags": ["台式"],
+    "service": ["室內", "外帶"],
+    "note": "排隊名店，熱豆漿配酥脆燒餅。",
+    "menu": [
+      { "name": "熱豆漿", "price": "NT$35" },
+      { "name": "鹹豆漿", "price": "NT$45", "note": "加油條、蝦皮" },
+      { "name": "燒餅夾蛋油條", "price": "NT$70" },
+      { "name": "厚燒餅", "price": "NT$40" }
+    ]
+  }
+}

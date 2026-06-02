@@ -1,0 +1,34 @@
+{
+  "hidden": true,
+  "id": "ya-rou-bian",
+  "lat": 25.0440,
+  "lng": 121.5071,
+  "emoji": "🦆",
+  "hasBranches": false,
+  "price": "$$",
+  "partySize": { "min": 1, "max": 4 },
+  "en": {
+    "name": "Ya Rou Bian",
+    "cuisine": "Goose Noodle · Taiwanese",
+    "city": "Taipei",
+    "district": "Wanhua District",
+    "address": "No. 98-2, Sec. 1, Zhonghua Rd",
+    "foodArea": ["Ximen"],
+    "mealtime": ["Lunch", "Dinner"],
+    "tags": ["Taiwanese"],
+    "service": ["Indoor", "Takeout"],
+    "note": "Long-standing Ximending shop for sliced goose and noodle soup."
+  },
+  "zh": {
+    "name": "鴨肉扁",
+    "cuisine": "鵝肉麵",
+    "city": "台北市",
+    "district": "萬華區",
+    "address": "中華路一段98-2號",
+    "foodArea": ["西門"],
+    "mealtime": ["午餐", "晚餐"],
+    "tags": ["台式"],
+    "service": ["室內", "外帶"],
+    "note": "西門町老字號，招牌切鵝肉與湯麵。"
+  }
+}

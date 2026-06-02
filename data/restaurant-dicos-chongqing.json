@@ -1,0 +1,33 @@
+{
+  "id": "dicos-chongqing",
+  "lat": 25.0440,
+  "lng": 121.5100,
+  "emoji": "🍗",
+  "hasBranches": true,
+  "price": "$",
+  "partySize": { "min": 1, "max": 4 },
+  "en": {
+    "name": "Dicos (Chongqing S)",
+    "cuisine": "Fried Chicken · Fast Food",
+    "city": "Taipei",
+    "district": "Zhongzheng District",
+    "address": "No. 100, Sec. 1, Chongqing S Rd",
+    "foodArea": ["Ximen"],
+    "mealtime": ["Breakfast", "Lunch", "Dinner"],
+    "tags": ["Fast Food"],
+    "service": ["Indoor", "Takeout"],
+    "note": "Crispy fried-chicken fast-food chain (Taipei / New Taipei only)."
+  },
+  "zh": {
+    "name": "德克士脆皮炸雞（台北重慶南店）",
+    "cuisine": "炸雞 · 速食",
+    "city": "台北市",
+    "district": "中正區",
+    "address": "重慶南路一段100號",
+    "foodArea": ["西門"],
+    "mealtime": ["早餐", "午餐", "晚餐"],
+    "tags": ["速食"],
+    "service": ["室內", "外帶"],
+    "note": "雙北限定脆皮炸雞速食店。"
+  }
+}

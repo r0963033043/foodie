@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Menu · foodie</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button id="langBtn" class="lang-btn" type="button">中文</button>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="crumb"><a id="backLink" href="maps.html"></a></div>
+    <div class="rest-head">
+      <span class="ic" id="emoji"></span>
+      <div>
+        <h1 id="name"></h1>
+        <p class="subtitle" id="cuisine"></p>
+      </div>
+    </div>
+    <p class="addr" id="addr"></p>
+    <div class="tags" id="tags"></div>
+  </header>
+
+  <!-- Links -->
+  <section class="card refs">
+    <h2><span class="ic">🔗</span> <span id="linksTitle"></span></h2>
+    <div id="linksBody"></div>
+  </section>
+
+  <!-- Menu -->
+  <section class="card">
+    <h2><span class="ic">🍽</span> <span id="menuTitle"></span></h2>
+    <div id="menuBody"></div>
+  </section>
+
+  <footer>foodie · menu</footer>
+
+</div>
+
+<script src="api.js"></script>
+<script>
+  (function () {
+    const LANG_KEY = "foodie.lang";
+    const $ = function (id) { return document.getElementById(id); };
+    let ui = null;             // i18n.json ui block: { en:{…}, zh:{…} }
+    let rest = null;           // the restaurant being shown
+    let lang = "en";
+
+    function store(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
+    function load(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
+
+    function el(tag, className, text) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text != null) node.textContent = text;
+      return node;
+    }
+
+    // Compose a display address from its parts, ordered per language:
+    // en → "street, district, city"; zh → "city district street" (no commas).
+    function fmtAddress(L_) {
+      const parts = lang === "zh"
+        ? [L_.city, L_.district, L_.address]
+        : [L_.address, L_.district, L_.city];
+      const sep = lang === "zh" ? "" : ", ";
+      return parts.filter(Boolean).join(sep);
+    }
+
+    // External search/links — same queries the map popup uses.
+    function gmapsUrl(r) {
+      const L_ = r[lang];
+      const query = L_.name + " " + fmtAddress(L_);
+      return "https://www.google.com/maps/search/?api=1&query=" +
+        encodeURIComponent(query);
+    }
+    function nameQuery(r) { return r[lang].name + " " + r[lang].city; }
+    function webUrl(r) {
+      return "https://www.google.com/search?q=" + encodeURIComponent(nameQuery(r));
+    }
+    function youtubeUrl(r) {
+      return "https://www.youtube.com/results?search_query=" + encodeURIComponent(nameQuery(r));
+    }
+    function reserveUrl(r) {
+      const kw = lang === "zh" ? "訂位" : "reservation";
+      return "https://www.google.com/search?q=" + encodeURIComponent(nameQuery(r) + " " + kw);
+    }
+
+    function extLink(text, href) {
+      const a = el("a", null, text);
+      a.href = href;
+      a.target = "_blank";
+      a.rel = "noopener";
+      return a;
+    }
+
+    function render() {
+      const t = ui[lang];
+      const L_ = rest[lang];
+
+      document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+      document.title = L_.name + " · menu";
+
+      $("langBtn").textContent = t.langToggle;
+      $("backLink").textContent = t.backToMaps;
+      $("emoji").textContent = rest.emoji || "🍴";
+      $("name").textContent = L_.name;
+      $("cuisine").textContent = L_.cuisine;
+      $("addr").textContent = fmtAddress(L_);
+
+      const tags = $("tags");
+      tags.innerHTML = "";
+      if (rest.price) tags.appendChild(el("span", "tag", rest.price));
+
+      // Menu items (per-language list of { name, price, note }).
+      $("menuTitle").textContent = t.menu;
+      const body = $("menuBody");
+      body.innerHTML = "";
+      const items = L_.menu || [];
+      if (!items.length) {
+        body.appendChild(el("p", "empty", t.menuSoon));
+      } else {
+        const list = el("ul", "list");
+        items.forEach(function (it) {
+          const li = el("li");
+          const name = el("div", "menu-name");
+          name.appendChild(el("span", null, it.name));
+          if (it.note) name.appendChild(el("span", "sub", it.note));
+          li.appendChild(name);
+          li.appendChild(el("span", "qty", it.price || ""));
+          list.appendChild(li);
+        });
+        body.appendChild(list);
+      }
+
+      // Links
+      $("linksTitle").textContent = t.menuLinks;
+      const links = $("linksBody");
+      links.innerHTML = "";
+      links.appendChild(extLink(t.openInMaps, gmapsUrl(rest)));
+      links.appendChild(extLink(t.reservations, reserveUrl(rest)));
+      links.appendChild(extLink(t.searchWeb, webUrl(rest)));
+      links.appendChild(extLink(t.searchYoutube, youtubeUrl(rest)));
+    }
+
+    function fail(msg) {
+      document.querySelector(".wrap").innerHTML =
+        "<p style='color:var(--muted)'>" + msg + "</p>";
+    }
+
+    const restId = new URLSearchParams(location.search).get("id");
+    Promise.all([
+      fetch("i18n.json").then(function (r) { return r.json(); }),
+      restId ? FoodieApi.getRestaurant(restId)
+             : FoodieApi.getRestaurants().then(function (rs) { return rs[0]; })
+    ])
+      .then(function (res) {
+        ui = res[0].ui;
+        rest = res[1];
+        lang = ui[load(LANG_KEY)] ? load(LANG_KEY) : "en";
+        if (!rest) { fail("Restaurant not found."); return; }
+        render();
+      })
+      .catch(function () {
+        fail("Could not load restaurant data. Serve this page over HTTP (e.g. <code>python -m http.server</code>) — browsers block fetch on file://.");
+      });
+
+    $("langBtn").addEventListener("click", function () {
+      if (!ui) return;
+      lang = (lang === "zh") ? "en" : "zh";
+      store(LANG_KEY, lang);
+      render();
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{
+  "id": "gan-mei-alley",
+  "lat": 25.0447,
+  "lng": 121.5062,
+  "emoji": "🥟",
+  "hasBranches": true,
+  "price": "$$",
+  "partySize": { "min": 2, "max": 6 },
+  "en": {
+    "name": "Gan Mei Alley",
+    "cuisine": "Hakka · Fusion",
+    "city": "Taipei",
+    "district": "Wanhua District",
+    "address": "No. 130, Kunming St",
+    "foodArea": ["Ximen"],
+    "mealtime": ["Breakfast", "Lunch", "Dinner"],
+    "tags": ["Hakka"],
+    "service": ["Indoor", "Takeout"],
+    "note": "Hakka–Shanghai fusion near Ximen, famed for iron-plate soup buns."
+  },
+  "zh": {
+    "name": "甘妹弄堂（西門店）",
+    "cuisine": "客家菜",
+    "city": "台北市",
+    "district": "萬華區",
+    "address": "昆明街130號",
+    "foodArea": ["西門"],
+    "mealtime": ["早餐", "午餐", "晚餐"],
+    "tags": ["客家"],
+    "service": ["室內", "外帶"],
+    "note": "西門客家上海風味，招牌鐵板湯包。"
+  }
+}

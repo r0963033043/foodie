@@ -19,7 +19,7 @@ Hosted on GitHub Pages from the `gh-pages` branch.
 
 ## Restaurant map (`maps.html`)
 
-- **Map + list stay in sync.** Click a card to pan/zoom and open its marker; click the already-selected card (or the popup link) to open it in **Google Maps**. Popups also link to **Web** and **YouTube** searches.
+- **Map + list stay in sync.** Click a card to pan/zoom and open a poptip on the card linking to the restaurant's **Menu** (`menu.html`), **Google Maps**, and **Web** / **YouTube** searches; clicking a map marker shows the same links in its popup.
 - **Filters:** city, district, foodArea, mealtime, tags, service, and price. Logic is **AND across dimensions, OR within a dimension**. Both the list and the map markers update.
 - **Near me:** a geolocation toggle that sorts the list by distance and shows each spot's distance.
 - Map tiles use **Leaflet + OpenStreetMap** (no API key). The CDN dependency is centralized in `assets.js` — no hardcoded URLs in the HTML.
@@ -32,9 +32,9 @@ A 中文 / EN toggle (top-right) switches all UI text and data between `en` and 
 
 All content is JSON loaded at runtime via `api.js` (`FoodieApi`).
 
-### `data/restaurants.json`
+### `data/restaurant-*.json`
 
-An array of restaurants. Top-level fields are language-neutral; `en` / `zh` blocks hold localized text.
+One file per restaurant, registered by id in `api.js` (`RESTAURANT_IDS`); the file name is `restaurant-<id>.json`. Add a restaurant by dropping its file and listing its id. Top-level fields are language-neutral; `en` / `zh` blocks hold localized text.
 
 | Field | Scope | Notes |
 | --- | --- | --- |
@@ -42,9 +42,10 @@ An array of restaurants. Top-level fields are language-neutral; `en` / `zh` bloc
 | `hasBranches` | top | boolean — has other branches |
 | `price` | top | `$` … `$$$$` |
 | `partySize` | top | `{ "min", "max" }` (`max: null` = open-ended) |
-| `hidden` | top | optional — `true` excludes it from the app |
+| `hidden` | top | optional — `true` excludes it from the list/map |
 | `name`, `cuisine`, `city`, `district`, `address`, `note` | `en`/`zh` | text |
 | `foodArea`, `mealtime`, `tags`, `service` | `en`/`zh` | arrays |
+| `menu` | `en`/`zh` | optional — array of `{ "name", "price", "note"? }` shown on `menu.html` |
 
 `district` is the administrative region (e.g. 萬華區); `foodArea` is the colloquial food neighborhood (e.g. 西門).
 

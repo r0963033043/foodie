@@ -1,0 +1,33 @@
+{
+  "id": "foodstop",
+  "lat": 25.0432,
+  "lng": 121.5093,
+  "emoji": "🥟",
+  "hasBranches": false,
+  "price": "$",
+  "partySize": { "min": 1, "max": 4 },
+  "en": {
+    "name": "FoodStop",
+    "cuisine": "Dumplings · Rice & Noodles",
+    "city": "Taipei",
+    "district": "Zhongzheng District",
+    "address": "1F, No. 75, Yanping S Rd",
+    "foodArea": ["Ximen"],
+    "mealtime": ["Lunch", "Dinner"],
+    "tags": ["Taiwanese"],
+    "service": ["Indoor", "Takeout"],
+    "note": "Dumplings, rice and noodle dishes; an office-lunch favorite."
+  },
+  "zh": {
+    "name": "食輝味蕾 FOODSTOP 餃子•飯麵•好菜",
+    "cuisine": "餃子 · 飯麵",
+    "city": "台北市",
+    "district": "中正區",
+    "address": "延平南路75號1樓",
+    "foodArea": ["西門"],
+    "mealtime": ["午餐", "晚餐"],
+    "tags": ["台式"],
+    "service": ["室內", "外帶"],
+    "note": "餃子、飯麵與家常好菜，上班族午餐愛店。"
+  }
+}

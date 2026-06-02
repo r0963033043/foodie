@@ -1,0 +1,47 @@
+{
+  "id": "din-tai-fung-xinyi",
+  "lat": 25.0330,
+  "lng": 121.5645,
+  "emoji": "🥟",
+  "hasBranches": true,
+  "price": "$$$",
+  "partySize": { "min": 1, "max": 6 },
+  "en": {
+    "name": "Din Tai Fung (Xinyi)",
+    "cuisine": "Xiaolongbao · Taiwanese",
+    "city": "Taipei",
+    "district": "Da'an District",
+    "address": "No. 194, Sec. 2, Xinyi Rd",
+    "foodArea": ["Dongmen"],
+    "mealtime": ["Lunch", "Dinner"],
+    "tags": ["Taiwanese"],
+    "service": ["Indoor", "Takeout"],
+    "note": "Flagship branch famed for 18-fold soup dumplings.",
+    "menu": [
+      { "name": "Pork Xiaolongbao (10 pcs)", "price": "NT$240" },
+      { "name": "Truffle & Pork Xiaolongbao (5 pcs)", "price": "NT$420", "note": "Seasonal favorite" },
+      { "name": "Shrimp & Pork Shao Mai (10 pcs)", "price": "NT$280" },
+      { "name": "Hot & Sour Soup", "price": "NT$140" },
+      { "name": "Egg Fried Rice", "price": "NT$220" }
+    ]
+  },
+  "zh": {
+    "name": "鼎泰豐（信義店）",
+    "cuisine": "小籠包",
+    "city": "台北市",
+    "district": "大安區",
+    "address": "信義路二段194號",
+    "foodArea": ["東門"],
+    "mealtime": ["午餐", "晚餐"],
+    "tags": ["台式"],
+    "service": ["室內", "外帶"],
+    "note": "招牌十八摺小籠包的創始本店。",
+    "menu": [
+      { "name": "小籠包（10顆）", "price": "NT$240" },
+      { "name": "松露小籠包（5顆）", "price": "NT$420", "note": "季節限定" },
+      { "name": "蝦肉燒賣（10顆）", "price": "NT$280" },
+      { "name": "酸辣湯", "price": "NT$140" },
+      { "name": "蛋炒飯", "price": "NT$220" }
+    ]
+  }
+}

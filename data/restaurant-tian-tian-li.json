@@ -1,0 +1,33 @@
+{
+  "id": "tian-tian-li",
+  "lat": 25.0436,
+  "lng": 121.5070,
+  "emoji": "🍚",
+  "hasBranches": false,
+  "price": "$",
+  "partySize": { "min": 1, "max": 4 },
+  "en": {
+    "name": "Tian Tian Li",
+    "cuisine": "Lu Rou Fan · Taiwanese",
+    "city": "Taipei",
+    "district": "Wanhua District",
+    "address": "No. 1, Ln 32, Hanzhong St",
+    "foodArea": ["Ximen"],
+    "mealtime": ["Lunch", "Dinner"],
+    "tags": ["Street Food"],
+    "service": ["Indoor", "Takeout"],
+    "note": "30-year Ximen shop for lu rou fan with soft-boiled egg and oyster omelette."
+  },
+  "zh": {
+    "name": "天天利美食坊",
+    "cuisine": "滷肉飯 · 小吃",
+    "city": "台北市",
+    "district": "萬華區",
+    "address": "漢中街32巷1號",
+    "foodArea": ["西門"],
+    "mealtime": ["午餐", "晚餐"],
+    "tags": ["小吃"],
+    "service": ["室內", "外帶"],
+    "note": "西門30年老店，必點半熟蛋滷肉飯與蚵仔煎。"
+  }
+}

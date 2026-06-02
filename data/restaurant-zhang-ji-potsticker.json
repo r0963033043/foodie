@@ -1,0 +1,33 @@
+{
+  "id": "zhang-ji-potsticker",
+  "lat": 25.0427,
+  "lng": 121.5090,
+  "emoji": "🥟",
+  "hasBranches": true,
+  "price": "$",
+  "partySize": { "min": 1, "max": 4 },
+  "en": {
+    "name": "Zhang Ji Potsticker & Beef Noodle",
+    "cuisine": "Potstickers · Beef Noodle",
+    "city": "Taipei",
+    "district": "Zhongzheng District",
+    "address": "No. 79-1, Hengyang Rd",
+    "foodArea": ["Ximen"],
+    "mealtime": ["Lunch", "Dinner"],
+    "tags": ["Taiwanese"],
+    "service": ["Indoor", "Takeout"],
+    "note": "Alley shop near Zhongshan Hall; cheap potstickers famous in Japan."
+  },
+  "zh": {
+    "name": "張記鍋貼牛肉麵",
+    "cuisine": "鍋貼 · 牛肉麵",
+    "city": "台北市",
+    "district": "中正區",
+    "address": "衡陽路79-1號",
+    "foodArea": ["西門"],
+    "mealtime": ["午餐", "晚餐"],
+    "tags": ["台式"],
+    "service": ["室內", "外帶"],
+    "note": "中山堂旁巷弄小店，鍋貼紅到日本。"
+  }
+}

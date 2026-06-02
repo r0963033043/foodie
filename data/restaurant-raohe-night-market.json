@@ -1,0 +1,45 @@
+{
+  "id": "raohe-night-market",
+  "lat": 25.0506,
+  "lng": 121.5773,
+  "emoji": "🏮",
+  "hasBranches": false,
+  "price": "$",
+  "partySize": { "min": 1, "max": null },
+  "en": {
+    "name": "Raohe Street Night Market",
+    "cuisine": "Night Market · Street Food",
+    "city": "Taipei",
+    "district": "Songshan District",
+    "address": "Raohe St",
+    "foodArea": ["Raohe"],
+    "mealtime": ["Dinner", "Late-night"],
+    "tags": ["Street Food"],
+    "service": ["Outdoor", "Takeout"],
+    "note": "Try the black pepper buns at the temple-end entrance.",
+    "menu": [
+      { "name": "Fuzhou Black Pepper Bun", "price": "NT$60", "note": "Temple-end entrance" },
+      { "name": "Stinky Tofu", "price": "NT$70" },
+      { "name": "Oyster Vermicelli", "price": "NT$65" },
+      { "name": "Herbal Pork Ribs Soup", "price": "NT$90" }
+    ]
+  },
+  "zh": {
+    "name": "饒河街觀光夜市",
+    "cuisine": "夜市",
+    "city": "台北市",
+    "district": "松山區",
+    "address": "饒河街",
+    "foodArea": ["饒河"],
+    "mealtime": ["晚餐", "宵夜"],
+    "tags": ["小吃"],
+    "service": ["室外", "外帶"],
+    "note": "廟口入口的胡椒餅必嚐。",
+    "menu": [
+      { "name": "福州胡椒餅", "price": "NT$60", "note": "廟口入口" },
+      { "name": "臭豆腐", "price": "NT$70" },
+      { "name": "蚵仔麵線", "price": "NT$65" },
+      { "name": "藥燉排骨", "price": "NT$90" }
+    ]
+  }
+}

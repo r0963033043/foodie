@@ -128,9 +128,8 @@
         encodeURIComponent(query);
     }
 
-    function openInGoogleMaps(r) {
-      window.open(gmapsUrl(r), "_blank", "noopener");
-    }
+    // Internal link to this restaurant's menu page.
+    function menuUrl(r) { return "menu.html?id=" + encodeURIComponent(r.id); }
 
     // Search queries use name + city to disambiguate chains.
     function nameQuery(r) { return r[lang].name + " " + r[lang].city; }
@@ -140,6 +139,11 @@
     function youtubeUrl(r) {
       return "https://www.youtube.com/results?search_query=" + encodeURIComponent(nameQuery(r));
     }
+    // No booking API here, so point at a reservation-scoped web search.
+    function reserveUrl(r) {
+      const kw = lang === "zh" ? "訂位" : "reservation";
+      return "https://www.google.com/search?q=" + encodeURIComponent(nameQuery(r) + " " + kw);
+    }
 
     // Build an external link that opens safely in a new tab.
     function extLink(className, text, href) {
@@ -148,6 +152,14 @@
       a.target = "_blank";
       a.rel = "noopener";
       return a;
+    }
+
+    // Hide any open card poptips.
+    function closeAllPoptips() {
+      Array.prototype.forEach.call(
+        document.querySelectorAll(".card-poptip.open"),
+        function (p) { p.classList.remove("open"); }
+      );
     }
 
     function initMap() {
@@ -179,9 +191,14 @@
         wrap.appendChild(el("span", "pop-name", L_.name));
         wrap.appendChild(el("span", "pop-cuisine", L_.cuisine));
         const links = el("div", "pop-links");
+        /*
+        const menuLink = el("a", "pop-link", t.menu);
+        menuLink.href = menuUrl(r);
+        links.appendChild(menuLink);
         links.appendChild(extLink("pop-link", t.openInMaps, gmapsUrl(r)));
         links.appendChild(extLink("pop-link", t.searchWeb, webUrl(r)));
         links.appendChild(extLink("pop-link", t.searchYoutube, youtubeUrl(r)));
+         */
         wrap.appendChild(links);
         markers[r.id].bindPopup(wrap);
       });
@@ -284,6 +301,7 @@
 
       list.forEach(function (r) {
         const L_ = r[lang];
+        const wrap = el("div", "rest-card-wrap");
         const card = el("button", "rest-card");
         card.type = "button";
         card.dataset.id = r.id;
@@ -319,14 +337,29 @@
         if (L_.note) body.appendChild(el("div", "note", L_.note));
         card.appendChild(body);
 
-        card.title = t.openInMaps;
-        // First click selects & pans the map; clicking the selected card opens
-        // it in Google Maps.
-        card.addEventListener("click", function () {
-          if (card.classList.contains("active")) openInGoogleMaps(r);
-          else focus(r.id);
+        // A poptip anchored to the card holds the actions (menu / maps / web /
+        // video). Clicking the card pans the map and toggles its poptip — no
+        // new window opens until a link inside is chosen.
+        const tip = el("div", "card-poptip");
+        const menuLink = el("a", "pop-link", t.menu);
+        menuLink.href = menuUrl(r);
+        tip.appendChild(menuLink);
+        tip.appendChild(extLink("pop-link", t.openInMaps, gmapsUrl(r)));
+        tip.appendChild(extLink("pop-link", t.reservations, reserveUrl(r)));
+        tip.appendChild(extLink("pop-link", t.searchWeb, webUrl(r)));
+        tip.appendChild(extLink("pop-link", t.searchYoutube, youtubeUrl(r)));
+
+        card.addEventListener("click", function (e) {
+          e.stopPropagation();
+          const open = tip.classList.contains("open");
+          closeAllPoptips();
+          focus(r.id, false);
+          if (!open) tip.classList.add("open");
         });
-        grid.appendChild(card);
+
+        wrap.appendChild(card);
+        wrap.appendChild(tip);
+        grid.appendChild(wrap);
       });
     }
 
@@ -393,6 +426,9 @@
         $("grid").innerHTML =
           "<p style='color:var(--muted)'>Could not load restaurant data. Serve this page over HTTP (e.g. <code>python -m http.server</code>) — browsers block fetch on file://.</p>";
       });
+
+    // A click anywhere outside a card dismisses any open poptip.
+    document.addEventListener("click", closeAllPoptips);
 
     $("langBtn").addEventListener("click", function () {
       if (!ui) return;

@@ -1,0 +1,45 @@
+{
+  "id": "addiction-aquatic",
+  "lat": 25.0664,
+  "lng": 121.5380,
+  "emoji": "🍣",
+  "hasBranches": false,
+  "price": "$$$",
+  "partySize": { "min": 1, "max": 4 },
+  "en": {
+    "name": "Addiction Aquatic Development",
+    "cuisine": "Seafood · Sushi",
+    "city": "Taipei",
+    "district": "Zhongshan District",
+    "address": "No. 18, Alley 2, Ln 410, Minzu E Rd",
+    "foodArea": ["Zhongshan"],
+    "mealtime": ["Lunch", "Dinner", "Late-night"],
+    "tags": ["Japanese"],
+    "service": ["Indoor", "Outdoor", "Takeout"],
+    "note": "Fish-market complex with standing sushi bars.",
+    "menu": [
+      { "name": "Chef's Sushi Set", "price": "NT$680" },
+      { "name": "Salmon Sashimi", "price": "NT$320" },
+      { "name": "Grilled Hokkaido Scallop", "price": "NT$160", "note": "Per piece" },
+      { "name": "Seafood Hot Pot", "price": "NT$880" }
+    ]
+  },
+  "zh": {
+    "name": "上引水產",
+    "cuisine": "海鮮 · 壽司",
+    "city": "台北市",
+    "district": "中山區",
+    "address": "民族東路410巷2弄18號",
+    "foodArea": ["中山"],
+    "mealtime": ["午餐", "晚餐", "宵夜"],
+    "tags": ["日式"],
+    "service": ["室內", "室外", "外帶"],
+    "note": "結合魚市場的立食壽司吧。",
+    "menu": [
+      { "name": "主廚握壽司套餐", "price": "NT$680" },
+      { "name": "鮭魚生魚片", "price": "NT$320" },
+      { "name": "碳烤北海道干貝", "price": "NT$160", "note": "每顆" },
+      { "name": "海鮮鍋", "price": "NT$880" }
+    ]
+  }
+}

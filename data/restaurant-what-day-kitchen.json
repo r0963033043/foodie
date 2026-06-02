@@ -1,0 +1,33 @@
+{
+  "id": "what-day-kitchen",
+  "lat": 25.0456,
+  "lng": 121.5058,
+  "emoji": "🍳",
+  "hasBranches": false,
+  "price": "$",
+  "partySize": { "min": 1, "max": 4 },
+  "en": {
+    "name": "What Day Kitchen",
+    "cuisine": "Brunch · Fusion",
+    "city": "Taipei",
+    "district": "Wanhua District",
+    "address": "No. 214-1, Kunming St",
+    "foodArea": ["Ximen"],
+    "mealtime": ["Breakfast", "Lunch", "Dinner"],
+    "tags": ["Western"],
+    "service": ["Indoor", "Takeout"],
+    "note": "Popular budget all-day brunch spot near Ximending."
+  },
+  "zh": {
+    "name": "花嘴廚房",
+    "cuisine": "早午餐",
+    "city": "台北市",
+    "district": "萬華區",
+    "address": "昆明街214-1號",
+    "foodArea": ["西門"],
+    "mealtime": ["早餐", "午餐", "晚餐"],
+    "tags": ["西式"],
+    "service": ["室內", "外帶"],
+    "note": "西門町人氣平價早午餐，從早供應到晚。"
+  }
+}

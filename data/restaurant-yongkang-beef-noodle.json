@@ -1,0 +1,45 @@
+{
+  "id": "yongkang-beef-noodle",
+  "lat": 25.0327,
+  "lng": 121.5298,
+  "emoji": "🍜",
+  "hasBranches": false,
+  "price": "$$",
+  "partySize": { "min": 1, "max": 4 },
+  "en": {
+    "name": "Yong Kang Beef Noodle",
+    "cuisine": "Beef Noodle Soup",
+    "city": "Taipei",
+    "district": "Da'an District",
+    "address": "No. 17, Ln 31, Sec. 2, Jinshan S Rd",
+    "foodArea": ["Yongkang"],
+    "mealtime": ["Lunch", "Dinner"],
+    "tags": ["Taiwanese"],
+    "service": ["Indoor", "Takeout"],
+    "note": "Long-running shop for braised beef noodle soup.",
+    "menu": [
+      { "name": "Braised Beef Noodle Soup", "price": "NT$240" },
+      { "name": "Beef Tendon Noodle", "price": "NT$280" },
+      { "name": "Half Beef / Half Tendon", "price": "NT$300", "note": "Most popular" },
+      { "name": "Pickled Mustard Greens", "price": "NT$50" }
+    ]
+  },
+  "zh": {
+    "name": "永康牛肉麵",
+    "cuisine": "牛肉麵",
+    "city": "台北市",
+    "district": "大安區",
+    "address": "金山南路二段31巷17號",
+    "foodArea": ["東門"],
+    "mealtime": ["午餐", "晚餐"],
+    "tags": ["台式"],
+    "service": ["室內", "外帶"],
+    "note": "老字號紅燒牛肉麵。",
+    "menu": [
+      { "name": "紅燒牛肉麵", "price": "NT$240" },
+      { "name": "牛筋麵", "price": "NT$280" },
+      { "name": "半筋半肉麵", "price": "NT$300", "note": "人氣首選" },
+      { "name": "酸菜", "price": "NT$50" }
+    ]
+  }
+}
