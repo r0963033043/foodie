@@ -167,7 +167,7 @@
       // Links — web & YouTube search for the dish recipe.
       const links = $("linksBody");
       links.innerHTML = "";
-      const q = L.name + (lang === "zh" ? " 食譜" : " recipe");
+      const q = L.name + " " + ui.recipeKeyword;
       [[ui.searchWeb, FoodieLinks.webSearch(q)], [ui.searchYoutube, FoodieLinks.youtubeSearch(q)]]
         .forEach(function (pair) {
           const a = el("a", null, pair[0]);
