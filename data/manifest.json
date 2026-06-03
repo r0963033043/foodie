@@ -1,0 +1,31 @@
+{
+  "dishes": [
+    "dish-chawanmushi",
+    "dish-honey-garlic-wings"
+  ],
+  "restaurants": [
+    "addiction-aquatic",
+    "ay-chung-misua",
+    "bonchon-chongqing",
+    "da-wan-roast",
+    "dc-shawarma",
+    "dicos-chongqing",
+    "din-tai-fung-xinyi",
+    "foodstop",
+    "fu-hang-soy-milk",
+    "gan-mei-alley",
+    "lao-tian-lu",
+    "liulanxiang-buffet",
+    "mian-zu-fan-bao",
+    "puzzle-kitchen-xining",
+    "qiaoxi-fried-rice",
+    "raohe-night-market",
+    "tangshen-beef-noodle",
+    "tian-tian-li",
+    "today-fish-market-syntrend",
+    "what-day-kitchen",
+    "ya-rou-bian",
+    "yongkang-beef-noodle",
+    "zhang-ji-potsticker"
+  ]
+}

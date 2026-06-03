@@ -3,37 +3,38 @@
    Each id maps to a file in data/:
      dishes      -> "dish-chawanmushi"      -> data/dish-chawanmushi.json
      restaurants -> "din-tai-fung-xinyi"    -> data/restaurant-din-tai-fung-xinyi.json
-   (A static host can't list a directory, so the files are registered here;
-   add a new dish/restaurant by dropping its file and listing its id.)
+   The id lists are NOT hardcoded here: they live in data/manifest.json, which
+   tools/build-manifest.mjs regenerates by scanning data/. Add a dish/restaurant
+   by dropping its file in data/ and re-running that script.
 */
 (function (global) {
   const DATA_DIR = "data/";
+  const MANIFEST_URL = DATA_DIR + "manifest.json";
 
-  const DISH_IDS = [
-    "dish-chawanmushi",
-    "dish-honey-garlic-wings"
+  /** Restaurant display order, by shopping district. Keyed off the English
+   * shoppingDistrict value (language-neutral); unknown/absent districts sort
+   * last. Within a district, manifest order is kept (sort is stable).
+   */
+  const DISTRICT_ORDER = [
+    "DongmenYongkang", "Guanghua", "Huashan", "Ximen", "Zhongshan", "Raohe"
   ];
 
-  // Restaurant ids, in display order. File name is "restaurant-" + id + ".json".
-  const RESTAURANT_IDS = [
-    "din-tai-fung-xinyi",
-    "fu-hang-soy-milk",
-    "raohe-night-market",
-    "addiction-aquatic",
-    "yongkang-beef-noodle",
-    "what-day-kitchen",
-    "puzzle-kitchen-xining",
-    "gan-mei-alley",
-    "tian-tian-li",
-    "da-wan-roast",
-    "zhang-ji-potsticker",
-    "dicos-chongqing",
-    "bonchon-chongqing",
-    "foodstop",
-    "ay-chung-misua",
-    "ya-rou-bian",
-    "lao-tian-lu"
-  ];
+  // Fetch the generated id lists once. { dishes: [...], restaurants: [...] }.
+  let manifestPromise = null;
+  function loadManifest() {
+    if (manifestPromise) return manifestPromise;
+    manifestPromise = fetch(MANIFEST_URL).then(function (r) {
+      if (!r.ok) throw new Error("Manifest not found: " + MANIFEST_URL);
+      return r.json();
+    });
+    return manifestPromise;
+  }
+  function getDishIds() {
+    return loadManifest().then(function (m) { return (m.dishes || []).slice(); });
+  }
+  function getRestaurantIds() {
+    return loadManifest().then(function (m) { return (m.restaurants || []).slice(); });
+  }
 
   const cache = {};
 
@@ -50,11 +51,13 @@
 
   // List all dishes as { id, name: { en, zh } }, name pulled from each file.
   function listDishes() {
-    return Promise.all(DISH_IDS.map(function (id) {
-      return getDish(id).then(function (d) {
-        return { id: id, name: { en: d.en.name, zh: d.zh.name } };
-      });
-    }));
+    return getDishIds().then(function (ids) {
+      return Promise.all(ids.map(function (id) {
+        return getDish(id).then(function (d) {
+          return { id: id, name: { en: d.en.name, zh: d.zh.name } };
+        });
+      }));
+    });
   }
 
   // Load one restaurant file (cached).
@@ -69,21 +72,32 @@
       .then(function (d) { restCache[id] = d; return d; });
   }
 
-  // Load the restaurant directory (cached). Returns visible restaurants in
-  // registration order; hidden ones are still reachable via getRestaurant(id).
+  // Rank a restaurant by its shopping district for display ordering.
+  function districtRank(r) {
+    const d = (r.en && r.en.shoppingDistrict && r.en.shoppingDistrict[0]) || "";
+    const i = DISTRICT_ORDER.indexOf(d);
+    return i === -1 ? DISTRICT_ORDER.length : i;
+  }
+
+  // Load the restaurant directory (cached). Returns visible restaurants sorted
+  // by shopping district (DISTRICT_ORDER), keeping manifest order within a
+  // district; hidden ones are excluded but still reachable via getRestaurant(id).
   let restaurants = null;
   function getRestaurants() {
     if (restaurants) return Promise.resolve(restaurants);
-    return Promise.all(RESTAURANT_IDS.map(getRestaurant))
+    return getRestaurantIds()
+      .then(function (ids) { return Promise.all(ids.map(getRestaurant)); })
       .then(function (all) {
-        restaurants = all.filter(function (r) { return !r.hidden; });
+        restaurants = all
+          .filter(function (r) { return !r.hidden; })
+          .sort(function (a, b) { return districtRank(a) - districtRank(b); });
         return restaurants;
       });
   }
 
   global.FoodieApi = {
-    dishIds: DISH_IDS.slice(),
-    restaurantIds: RESTAURANT_IDS.slice(),
+    getDishIds: getDishIds,
+    getRestaurantIds: getRestaurantIds,
     getDish: getDish,
     listDishes: listDishes,
     getRestaurant: getRestaurant,

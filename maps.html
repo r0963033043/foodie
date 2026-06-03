@@ -296,9 +296,19 @@
 
       list.forEach(function (r) {
         const L_ = r[lang];
-        const card = el("button", "rest-card");
-        card.type = "button";
+        const card = el("a", "rest-card");
+        card.href = menuUrl(r);
+        card.target = "_blank";
+        card.rel = "noopener";
         card.dataset.id = r.id;
+        // Clicking the card also pans the map to this restaurant. We don't
+        // preventDefault, so the menu page still opens in its new tab.
+        // "click" covers left-click; "auxclick" (button 1) covers the
+        // middle-click that opens a background tab.
+        card.addEventListener("click", function () { focus(r.id); });
+        card.addEventListener("auxclick", function (e) {
+          if (e.button === 1) focus(r.id);
+        });
 
         card.appendChild(el("span", "ic", r.emoji || "🍴"));
 
@@ -331,8 +341,8 @@
         if (L_.note) body.appendChild(el("div", "note", L_.note));
         card.appendChild(body);
 
-        // Clicking a card opens that restaurant's menu page.
-        card.addEventListener("click", function () { location.href = menuUrl(r); });
+        // Card is an <a href target="_blank"> to the menu page, so a click
+        // opens it in a new tab.
         grid.appendChild(card);
       });
     }

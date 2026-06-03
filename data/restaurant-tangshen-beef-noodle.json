@@ -1,0 +1,53 @@
+{
+  "id": "tangshen-beef-noodle",
+  "lat": 25.0448,
+  "lng": 121.5341,
+  "emoji": "🍜",
+  "hasBranches": false,
+  "price": "$$$",
+  "partySize": { "min": 1, "max": 4 },
+  "website": [
+    { "platform": "facebook", "url": "https://www.facebook.com/taipeithompson/" }
+  ],
+  "reservationUrl": [
+    { "platform": "other", "url": "https://www.myfunnow.com/en/branches/3040286121746" }
+  ],
+  "en": {
+    "name": "Tang Shen Premium Wagyu Beef Noodle",
+    "cuisine": "Beef Noodle Soup",
+    "city": "Taipei",
+    "district": "Da'an District",
+    "address": "No. 11, Sec. 2, Bade Rd",
+    "shoppingDistrict": ["Guanghua"],
+    "mealtime": ["Lunch", "Dinner"],
+    "tags": ["Taiwanese"],
+    "service": ["Indoor", "Takeout"],
+    "note": "Premium wagyu beef noodles in a dripped beef-essence broth; free drinks dine-in.",
+    "menu": [
+      { "name": "Beef Essence Noodle", "price": "NT$320", "note": "Signature broth" },
+      { "name": "Tomato Beef Noodle", "price": "NT$300" },
+      { "name": "Braised Beef Noodle", "price": "NT$280" },
+      { "name": "M9 Wagyu Beef Noodle", "price": "NT$580" },
+      { "name": "Handmade Beef Balls", "price": "NT$120" }
+    ]
+  },
+  "zh": {
+    "name": "湯神—頂級和牛牛肉麵",
+    "cuisine": "牛肉麵",
+    "city": "台北市",
+    "district": "大安區",
+    "address": "八德路二段11號",
+    "shoppingDistrict": ["光華"],
+    "mealtime": ["午餐", "晚餐"],
+    "tags": ["台式"],
+    "service": ["室內", "外帶"],
+    "note": "以滴牛精熬製湯頭的頂級和牛牛肉麵，內用飲料無限暢飲。",
+    "menu": [
+      { "name": "滴牛精麵", "price": "NT$320", "note": "招牌湯頭" },
+      { "name": "番茄牛肉麵", "price": "NT$300" },
+      { "name": "紅燒牛肉麵", "price": "NT$280" },
+      { "name": "M9和牛牛肉麵", "price": "NT$580" },
+      { "name": "手工潮州牛肉丸", "price": "NT$120" }
+    ]
+  }
+}

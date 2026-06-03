@@ -1,0 +1,47 @@
+{
+  "id": "today-fish-market-syntrend",
+  "lat": 25.0444,
+  "lng": 121.5316,
+  "emoji": "🍣",
+  "hasBranches": true,
+  "price": "$$",
+  "partySize": { "min": 1, "max": 4 },
+  "en": {
+    "name": "Today Fish Market (Syntrend)",
+    "cuisine": "Seafood Donburi · Sashimi",
+    "city": "Taipei",
+    "district": "Zhongzheng District",
+    "address": "No. 39, Sec. 1, Bade Rd",
+    "shoppingDistrict": ["Guanghua"],
+    "mealtime": ["Lunch", "Dinner"],
+    "tags": ["Japanese"],
+    "service": ["Indoor", "Takeout"],
+    "note": "Budget-friendly seafood rice bowls near Guanghua; free fish soup refills.",
+    "menu": [
+      { "name": "Premium Seafood Donburi", "price": "NT$390", "note": "Signature box" },
+      { "name": "Salmon Donburi", "price": "NT$220" },
+      { "name": "Tuna & Salmon Donburi", "price": "NT$280" },
+      { "name": "Scallop Sashimi", "price": "NT$160" },
+      { "name": "Fish Soup", "price": "Free", "note": "Free refills, dine-in" }
+    ]
+  },
+  "zh": {
+    "name": "今日魚市 光華三創店",
+    "cuisine": "海鮮丼 · 生魚片",
+    "city": "台北市",
+    "district": "中正區",
+    "address": "八德路一段39號",
+    "shoppingDistrict": ["光華"],
+    "mealtime": ["午餐", "晚餐"],
+    "tags": ["日式"],
+    "service": ["室內", "外帶"],
+    "note": "光華商圈高CP值海鮮丼飯，內用魚湯免費無限續。",
+    "menu": [
+      { "name": "極上海鮮丼", "price": "NT$390", "note": "招牌寶盒" },
+      { "name": "鮭魚丼", "price": "NT$220" },
+      { "name": "鮪魚鮭魚雙拼丼", "price": "NT$280" },
+      { "name": "干貝生魚片", "price": "NT$160" },
+      { "name": "魚湯", "price": "免費", "note": "內用無限續" }
+    ]
+  }
+}

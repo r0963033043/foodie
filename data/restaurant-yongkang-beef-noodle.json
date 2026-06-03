@@ -1,7 +1,7 @@
 {
   "id": "yongkang-beef-noodle",
-  "lat": 25.0327,
-  "lng": 121.5298,
+  "lat": 25.0330,
+  "lng": 121.5285,
   "emoji": "🍜",
   "hasBranches": false,
   "price": "$$",
@@ -12,7 +12,7 @@
     "city": "Taipei",
     "district": "Da'an District",
     "address": "No. 17, Ln 31, Sec. 2, Jinshan S Rd",
-    "shoppingDistrict": ["Yongkang"],
+    "shoppingDistrict": ["DongmenYongkang"],
     "mealtime": ["Lunch", "Dinner"],
     "tags": ["Taiwanese"],
     "service": ["Indoor", "Takeout"],

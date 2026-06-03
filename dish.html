@@ -207,9 +207,13 @@
       .then(function (r) { return r.json(); })
       .then(function (json) {
         i18n = json.ui;
-        dishId = new URLSearchParams(location.search).get("id") || FoodieApi.dishIds[0];
         lang = i18n[load(LANG_KEY)] ? load(LANG_KEY) : "en";
         showPhotos = load(PHOTO_KEY) !== "0";
+        const qid = new URLSearchParams(location.search).get("id");
+        return qid ? qid : FoodieApi.getDishIds().then(function (ids) { return ids[0]; });
+      })
+      .then(function (id) {
+        dishId = id;
         return FoodieApi.getDish(dishId);
       })
       .then(function (d) { dish = d; servings = d.servings; render(); })

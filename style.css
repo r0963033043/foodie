@@ -229,7 +229,7 @@ ol.steps li::before {
   background: var(--card); border: 1px solid var(--line);
   border-radius: var(--radius); box-shadow: var(--shadow);
   padding: 18px 20px; text-align: left; width: 100%;
-  color: var(--ink); cursor: pointer; font: inherit;
+  color: var(--ink); cursor: pointer; font: inherit; text-decoration: none;
   transition: border-color .15s, transform .15s;
 }
 .rest-card:hover { border-color: var(--accent); transform: translateY(-2px); }

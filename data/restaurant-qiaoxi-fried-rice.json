@@ -1,0 +1,45 @@
+{
+  "id": "qiaoxi-fried-rice",
+  "lat": 25.0435,
+  "lng": 121.5321,
+  "emoji": "🍳",
+  "hasBranches": false,
+  "price": "$",
+  "partySize": { "min": 1, "max": 4 },
+  "en": {
+    "name": "Qiaoxi Egg Fried Rice",
+    "cuisine": "Fried Rice · Noodles",
+    "city": "Taipei",
+    "district": "Zhongzheng District",
+    "address": "No. 7, Ln 3, Linyi St",
+    "shoppingDistrict": ["Guanghua"],
+    "mealtime": ["Lunch", "Dinner"],
+    "tags": ["Taiwanese"],
+    "service": ["Indoor", "Takeout"],
+    "note": "Stir-fry specialist near Guanghua with 500+ fried-rice and noodle combos.",
+    "menu": [
+      { "name": "Egg Fried Rice", "price": "NT$80" },
+      { "name": "Beef Fried Rice", "price": "NT$110" },
+      { "name": "Seafood Fried Rice", "price": "NT$120" },
+      { "name": "Assorted Fried Noodles", "price": "NT$100" }
+    ]
+  },
+  "zh": {
+    "name": "喬喜蛋炒飯專賣店",
+    "cuisine": "炒飯 · 炒麵",
+    "city": "台北市",
+    "district": "中正區",
+    "address": "臨沂街3巷7號",
+    "shoppingDistrict": ["光華"],
+    "mealtime": ["午餐", "晚餐"],
+    "tags": ["台式"],
+    "service": ["室內", "外帶"],
+    "note": "光華商圈炒飯專賣，五百多種炒飯炒麵任選。",
+    "menu": [
+      { "name": "蛋炒飯", "price": "NT$80" },
+      { "name": "牛肉炒飯", "price": "NT$110" },
+      { "name": "海鮮炒飯", "price": "NT$120" },
+      { "name": "什錦炒麵", "price": "NT$100" }
+    ]
+  }
+}

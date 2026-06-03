@@ -1,0 +1,33 @@
+{
+  "id": "liulanxiang-buffet",
+  "lat": 25.0427,
+  "lng": 121.5312,
+  "emoji": "🍚",
+  "hasBranches": false,
+  "price": "$",
+  "partySize": { "min": 1, "max": 4 },
+  "en": {
+    "name": "Liulansiang Taiwanese Buffet",
+    "cuisine": "Self-serve · Home-style",
+    "city": "Taipei",
+    "district": "Zhongzheng District",
+    "address": "No. 112-1, Sec. 2, Zhongxiao E Rd",
+    "shoppingDistrict": ["Guanghua"],
+    "mealtime": ["Lunch", "Dinner"],
+    "tags": ["Taiwanese"],
+    "service": ["Indoor", "Takeout"],
+    "note": "Pay-by-the-dish Taiwanese self-serve cafeteria; closes around 8pm."
+  },
+  "zh": {
+    "name": "留蘭香自助餐",
+    "cuisine": "自助餐 · 家常菜",
+    "city": "台北市",
+    "district": "中正區",
+    "address": "忠孝東路二段112-1號",
+    "shoppingDistrict": ["光華"],
+    "mealtime": ["午餐", "晚餐"],
+    "tags": ["台式"],
+    "service": ["室內", "外帶"],
+    "note": "秤重夾菜的台式自助餐，約晚間八點打烊。"
+  }
+}

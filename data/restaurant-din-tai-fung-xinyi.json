@@ -1,7 +1,7 @@
 {
   "id": "din-tai-fung-xinyi",
-  "lat": 25.0330,
-  "lng": 121.5645,
+  "lat": 25.0336,
+  "lng": 121.5302,
   "emoji": "🥟",
   "hasBranches": true,
   "price": "$$$",
@@ -18,7 +18,7 @@
     "city": "Taipei",
     "district": "Da'an District",
     "address": "No. 194, Sec. 2, Xinyi Rd",
-    "shoppingDistrict": ["Dongmen"],
+    "shoppingDistrict": ["DongmenYongkang"],
     "mealtime": ["Lunch", "Dinner"],
     "tags": ["Taiwanese"],
     "service": ["Indoor", "Takeout"],
