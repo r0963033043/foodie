@@ -9,11 +9,12 @@
   "en": {
     "name": "Mian Zu Fan Bao",
     "cuisine": "Rice & Noodles · Bento",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Zhongzheng District",
     "address": "Ln 82, Sec. 1, Bade Rd",
     "shoppingDistrict": ["Guanghua"],
-    "mealtime": ["Lunch", "Dinner"],
+    "mealtime": ["Lunch"],
     "tags": ["Taiwanese"],
     "service": ["Indoor", "Takeout"],
     "note": "Generous rice and noodle plates in the Guanghua market food alley."
@@ -21,11 +22,12 @@
   "zh": {
     "name": "麵足飯飽",
     "cuisine": "飯麵 · 便當",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "中正區",
     "address": "八德路一段82巷",
     "shoppingDistrict": ["光華"],
-    "mealtime": ["午餐", "晚餐"],
+    "mealtime": ["午餐"],
     "tags": ["台式"],
     "service": ["室內", "外帶"],
     "note": "光華商場美食巷內，飯麵份量實在的平價小館。"

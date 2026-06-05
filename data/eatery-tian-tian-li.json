@@ -9,6 +9,7 @@
   "en": {
     "name": "Tian Tian Li",
     "cuisine": "Lu Rou Fan · Taiwanese",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Wanhua District",
     "address": "No. 1, Ln 32, Hanzhong St",
@@ -21,6 +22,7 @@
   "zh": {
     "name": "天天利美食坊",
     "cuisine": "滷肉飯 · 小吃",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "萬華區",
     "address": "漢中街32巷1號",

@@ -9,6 +9,7 @@
   "en": {
     "name": "Fu Hang Soy Milk",
     "cuisine": "Breakfast · Soy Milk",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Zhongzheng District",
     "address": "2F, No. 108, Sec. 1, Zhongxiao E Rd",
@@ -27,6 +28,7 @@
   "zh": {
     "name": "阜杭豆漿",
     "cuisine": "豆漿",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "中正區",
     "address": "忠孝東路一段108號2樓",

@@ -12,6 +12,7 @@
   "en": {
     "name": "Addiction Aquatic Development",
     "cuisine": "Seafood · Sushi",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Zhongshan District",
     "address": "No. 18, Alley 2, Ln 410, Minzu E Rd",
@@ -30,6 +31,7 @@
   "zh": {
     "name": "上引水產",
     "cuisine": "海鮮 · 壽司",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "中山區",
     "address": "民族東路410巷2弄18號",

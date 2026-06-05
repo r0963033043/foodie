@@ -12,6 +12,7 @@
   "en": {
     "name": "Puzzle Kitchen (Xining)",
     "cuisine": "Teppanyaki · DIY",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Wanhua District",
     "address": "2F, No. 46, Xining S Rd",
@@ -24,6 +25,7 @@
   "zh": {
     "name": "味道拼圖（西寧店）",
     "cuisine": "鐵板燒",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "萬華區",
     "address": "西寧南路46號2樓",

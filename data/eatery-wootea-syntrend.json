@@ -1,0 +1,90 @@
+{
+  "id": "wootea-syntrend",
+  "lat": 25.0440,
+  "lng": 121.5322,
+  "emoji": "🧋",
+  "hasBranches": true,
+  "price": "$",
+  "en": {
+    "name": "WooTea (Syntrend)",
+    "cuisine": "Bubble Tea · Tea",
+    "mainType": "Drinks",
+    "city": "Taipei",
+    "district": "Zhongzheng District",
+    "address": "No. 39, Sec. 1, Bade Rd",
+    "shoppingDistrict": [
+      "Guanghua"
+    ],
+    "tags": [
+      "Tea"
+    ],
+    "service": [
+      "Takeout"
+    ],
+    "note": "Popular Taiwanese tea chain known for its brown sugar boba fresh milk.",
+    "menu": [
+      {
+        "name": "Brown Sugar Boba Fresh Milk",
+        "price": "NT$70",
+        "note": "Signature"
+      },
+      {
+        "name": "Taisho Black Tea Latte",
+        "price": "NT$65"
+      },
+      {
+        "name": "Dongding Oolong Milk Tea",
+        "price": "NT$60"
+      },
+      {
+        "name": "Jade Pearl au Lait",
+        "price": "NT$65"
+      },
+      {
+        "name": "Osmanthus Oolong Green Tea",
+        "price": "NT$55"
+      }
+    ]
+  },
+  "zh": {
+    "name": "五桐號 WooTea（光華三創店）",
+    "cuisine": "手搖飲 · 茶飲",
+    "mainType": "飲品",
+    "city": "台北市",
+    "district": "中正區",
+    "address": "八德路一段39號",
+    "shoppingDistrict": [
+      "光華"
+    ],
+    "tags": [
+      "茶"
+    ],
+    "service": [
+      "外帶"
+    ],
+    "note": "主打黑糖珍珠鮮奶的人氣台灣手搖飲品牌。",
+    "menu": [
+      {
+        "name": "黑糖珍珠鮮奶",
+        "price": "NT$70",
+        "note": "招牌"
+      },
+      {
+        "name": "大正紅茶拿鐵",
+        "price": "NT$65"
+      },
+      {
+        "name": "凍頂烏龍鮮奶茶",
+        "price": "NT$60"
+      },
+      {
+        "name": "白玉歐蕾",
+        "price": "NT$65"
+      },
+      {
+        "name": "桂花烏龍青茶",
+        "price": "NT$55"
+      }
+    ]
+  }
+}

@@ -9,6 +9,7 @@
   "en": {
     "name": "Raohe Street Night Market",
     "cuisine": "Night Market · Street Food",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Songshan District",
     "address": "Raohe St",
@@ -27,6 +28,7 @@
   "zh": {
     "name": "饒河街觀光夜市",
     "cuisine": "夜市",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "松山區",
     "address": "饒河街",

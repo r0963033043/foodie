@@ -10,6 +10,7 @@
   "en": {
     "name": "Ay-Chung Flour-Rice Noodle",
     "cuisine": "Misua · Street Food",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Wanhua District",
     "address": "No. 8-1, Emei St",
@@ -22,6 +23,7 @@
   "zh": {
     "name": "阿宗麵線",
     "cuisine": "麵線",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "萬華區",
     "address": "峨眉街8-1號",

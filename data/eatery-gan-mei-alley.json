@@ -12,6 +12,7 @@
   "en": {
     "name": "Gan Mei Alley",
     "cuisine": "Hakka · Fusion",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Wanhua District",
     "address": "No. 130, Kunming St",
@@ -24,6 +25,7 @@
   "zh": {
     "name": "甘妹弄堂（西門店）",
     "cuisine": "客家菜",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "萬華區",
     "address": "昆明街130號",

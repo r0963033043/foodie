@@ -212,19 +212,19 @@ ol.steps li::before {
 .filter-chip.on { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 
 /* ===== Menu (menu.html) ===== */
-.rest-head { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
-.rest-head .ic {
+.eatery-head { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+.eatery-head .ic {
   width: 48px; height: 48px; flex: none; border-radius: 12px;
   background: var(--accent-soft); display: grid; place-items: center; font-size: 24px;
 }
-.rest-head h1 { margin: 0; font-size: 26px; }
+.eatery-head h1 { margin: 0; font-size: 26px; }
 .hero .addr { color: var(--muted); font-size: 14px; margin: 6px 0 10px; }
 .menu-name .sub { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
 #menuBody .empty { color: var(--muted); font-size: 14px; }
 
-/* ===== Restaurant listing (maps.html) ===== */
-.rest-card .empty, .grid .empty { color: var(--muted); font-size: 14px; }
-.rest-card {
+/* ===== Eatery listing (maps.html) ===== */
+.eatery-card .empty, .grid .empty { color: var(--muted); font-size: 14px; }
+.eatery-card {
   display: flex; align-items: flex-start; gap: 14px;
   background: var(--card); border: 1px solid var(--line);
   border-radius: var(--radius); box-shadow: var(--shadow);
@@ -232,17 +232,17 @@ ol.steps li::before {
   color: var(--ink); cursor: pointer; font: inherit; text-decoration: none;
   transition: border-color .15s, transform .15s;
 }
-.rest-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-.rest-card.active { border-color: var(--accent); }
-.rest-card .ic {
+.eatery-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.eatery-card.active { border-color: var(--accent); }
+.eatery-card .ic {
   width: 44px; height: 44px; flex: none; border-radius: 10px;
   background: var(--accent-soft); display: grid; place-items: center; font-size: 22px;
 }
-.rest-card .body { min-width: 0; }
-.rest-card .name { font-size: 16px; font-weight: 600; }
-.rest-card .cuisine { color: var(--accent); font-size: 13px; margin: 2px 0 6px; }
-.rest-card .addr { color: var(--muted); font-size: 13px; }
-.rest-card .note { color: var(--muted); font-size: 13px; margin-top: 6px; }
+.eatery-card .body { min-width: 0; }
+.eatery-card .name { font-size: 16px; font-weight: 600; }
+.eatery-card .cuisine { color: var(--accent); font-size: 13px; margin: 2px 0 6px; }
+.eatery-card .addr { color: var(--muted); font-size: 13px; }
+.eatery-card .note { color: var(--muted); font-size: 13px; margin-top: 6px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .chip {
   font-size: 12px; padding: 3px 10px; border-radius: 999px; font-weight: 500;

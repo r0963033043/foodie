@@ -12,6 +12,7 @@
   "en": {
     "name": "Dicos (Chongqing S)",
     "cuisine": "Fried Chicken · Fast Food",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Zhongzheng District",
     "address": "No. 100, Sec. 1, Chongqing S Rd",
@@ -24,6 +25,7 @@
   "zh": {
     "name": "德克士脆皮炸雞（台北重慶南店）",
     "cuisine": "炸雞 · 速食",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "中正區",
     "address": "重慶南路一段100號",

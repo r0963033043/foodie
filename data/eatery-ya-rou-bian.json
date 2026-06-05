@@ -10,6 +10,7 @@
   "en": {
     "name": "Ya Rou Bian",
     "cuisine": "Goose Noodle · Taiwanese",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Wanhua District",
     "address": "No. 98-2, Sec. 1, Zhonghua Rd",
@@ -22,6 +23,7 @@
   "zh": {
     "name": "鴨肉扁",
     "cuisine": "鵝肉麵",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "萬華區",
     "address": "中華路一段98-2號",

@@ -13,6 +13,7 @@
   "en": {
     "name": "What Day Kitchen",
     "cuisine": "Brunch · Fusion",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Wanhua District",
     "address": "No. 214-1, Kunming St",
@@ -25,6 +26,7 @@
   "zh": {
     "name": "花嘴廚房",
     "cuisine": "早午餐",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "萬華區",
     "address": "昆明街214-1號",

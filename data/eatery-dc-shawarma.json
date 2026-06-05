@@ -12,6 +12,7 @@
   "en": {
     "name": "D.C Shawarma",
     "cuisine": "Shawarma · Street Food",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Zhongzheng District",
     "address": "No. 18, Ln 82, Sec. 1, Bade Rd, 1F",
@@ -29,6 +30,7 @@
   "zh": {
     "name": "迪司沙威瑪 D.C Shawarma",
     "cuisine": "沙威瑪 · 小吃",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "中正區",
     "address": "八德路一段82巷18號1樓",

@@ -13,6 +13,7 @@
   "en": {
     "name": "Lao Tian Lu",
     "cuisine": "Braised Deli · Snacks",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Wanhua District",
     "address": "No. 56, Chengdu Rd",
@@ -25,6 +26,7 @@
   "zh": {
     "name": "老天祿滷味",
     "cuisine": "滷味",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "萬華區",
     "address": "成都路56號",

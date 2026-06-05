@@ -9,6 +9,7 @@
   "en": {
     "name": "Liulansiang Taiwanese Buffet",
     "cuisine": "Self-serve · Home-style",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Zhongzheng District",
     "address": "No. 112-1, Sec. 2, Zhongxiao E Rd",
@@ -21,6 +22,7 @@
   "zh": {
     "name": "留蘭香自助餐",
     "cuisine": "自助餐 · 家常菜",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "中正區",
     "address": "忠孝東路二段112-1號",

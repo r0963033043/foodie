@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Restaurants · foodie</title>
+<title>Eateries · foodie</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,7 +22,7 @@
 
   <div class="grid" id="grid"></div>
 
-  <footer>foodie · restaurants</footer>
+  <footer>foodie · eateries</footer>
 
 </div>
 
@@ -34,19 +34,21 @@
     const LANG_KEY = "foodie.lang";
     const $ = function (id) { return document.getElementById(id); };
     let ui = null;
-    let restaurants = [];       // [{ id, lat, lng, emoji, en:{…}, zh:{…} }]
+    let eateries = [];       // [{ id, lat, lng, emoji, en:{…}, zh:{…} }]
     let lang = "en";
     let map = null;
     const markers = {};         // id -> Leaflet marker
 
     // Filterable dimensions. arr=true → the field is an array, else a scalar.
     const DIMS = [
+      { key: "mainType", arr: false, label: "filterMainType" },
       { key: "city",     arr: false, label: "filterCity" },
       { key: "district", arr: false, label: "filterDistrict" },
       { key: "shoppingDistrict", arr: true,  label: "filterShoppingDistrict" },
       { key: "mealtime", arr: true,  label: "filterMealtime" },
-      { key: "tags",     arr: true,  label: "filterTags" },
+      { key: "partySize", arr: true, top: true, label: "filterPartySize" },
       { key: "service",  arr: true,  label: "filterService" },
+      { key: "tags",     arr: true,  label: "filterTags" },
       { key: "price",    arr: false, top: true, label: "filterPrice" }
     ];
     // Mealtime chips read in day order rather than insertion order.
@@ -54,13 +56,18 @@
       en: ["Breakfast", "Lunch", "Dinner", "Late-night"],
       zh: ["早餐", "午餐", "晚餐", "宵夜"]
     };
+    // Main-type chips read in a fixed order rather than insertion order.
+    const MAINTYPE_ORDER = {
+      en: ["Meal", "Drinks", "Dessert", "Bar"],
+      zh: ["正餐", "飲品", "甜點", "酒吧"]
+    };
     const filters = {};         // dimension key -> Set of selected values
     DIMS.forEach(function (d) { filters[d.key] = new Set(); });
 
     let userPos = null;         // { lat, lng } once located
     let nearMe = false;         // sort & annotate by distance when true
     let geoState = "idle";      // idle | locating | denied
-    const distances = {};       // restaurant id -> km from user
+    const distances = {};       // eatery id -> km from user
 
     function store(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
     function load(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
@@ -125,14 +132,14 @@
       return node;
     }
 
-    // Google Maps search URL for a restaurant (name + address finds the real
+    // Google Maps search URL for an eatery (name + address finds the real
     // place even though our stored coordinates are approximate).
     function gmapsUrl(r) {
       const L_ = r[lang];
       return FoodieLinks.gmaps(L_.name + " " + fmtAddress(L_));
     }
 
-    // Internal link to this restaurant's menu page.
+    // Internal link to this eatery's menu page.
     function menuUrl(r) { return "menu.html?id=" + encodeURIComponent(r.id); }
 
     // Search queries use name + city to disambiguate chains.
@@ -157,7 +164,7 @@
       }).addTo(map);
 
       const bounds = [];
-      restaurants.forEach(function (r) {
+      eateries.forEach(function (r) {
         const m = L.marker([r.lat, r.lng]).addTo(map);
         markers[r.id] = m;
         bounds.push([r.lat, r.lng]);
@@ -172,7 +179,7 @@
     // Bind a localized popup to each marker, refreshed on language change.
     function bindPopups() {
       const t = ui[lang];
-      restaurants.forEach(function (r) {
+      eateries.forEach(function (r) {
         const L_ = r[lang];
         const wrap = document.createElement("div");
         wrap.appendChild(el("span", "pop-name", L_.name));
@@ -191,28 +198,54 @@
       });
     }
 
-    // Pan/zoom to a restaurant and highlight its card.
+    // Pan/zoom to an eatery and highlight its card.
     function focus(id, openPopup) {
-      const r = restaurants.find(function (x) { return x.id === id; });
+      const r = eateries.find(function (x) { return x.id === id; });
       if (!r || !map) return;
       map.setView([r.lat, r.lng], 16, { animate: true });
       if (openPopup !== false && markers[id]) markers[id].openPopup();
 
       Array.prototype.forEach.call(
-        document.querySelectorAll(".rest-card"),
+        document.querySelectorAll(".eatery-card"),
         function (c) { c.classList.toggle("active", c.dataset.id === id); }
       );
     }
 
-    // Values of a dimension for one restaurant. Top-level dims (e.g. price)
+    /** partySize is a {min,max} range, not a chip string. Expand it into the
+     * discrete head-counts a place seats so the standard set-filter can match
+     * "fits a party of N". An open-ended max (null) fills up to the largest
+     * finite capacity in the data; that cap also bounds the chip list.
+     */
+    let _partyCap = null;
+    function partyCap() {
+      if (_partyCap == null) {
+        let m = 0;
+        eateries.forEach(function (r) {
+          const p = r.partySize;
+          if (p && p.max != null) m = Math.max(m, p.max);
+        });
+        _partyCap = m || 6;
+      }
+      return _partyCap;
+    }
+    function partySizeValues(p) {
+      if (!p || p.min == null) return [];
+      const hi = p.max == null ? partyCap() : Math.min(p.max, partyCap());
+      const out = [];
+      for (let n = p.min; n <= hi; n++) out.push(String(n));
+      return out;
+    }
+
+    // Values of a dimension for one eatery. Top-level dims (e.g. price)
     // are language-neutral; the rest live under the current language block.
     function valuesFor(r, d) {
+      if (d.key === "partySize") return partySizeValues(r.partySize);
       const v = d.top ? r[d.key] : r[lang][d.key];
       if (v == null) return [];
       return d.arr ? v : [v];
     }
 
-    // A restaurant matches when, for every dimension with a selection, at
+    // A eatery matches when, for every dimension with a selection, at
     // least one of its values is selected (AND across dims, OR within a dim).
     function matches(r) {
       return DIMS.every(function (d) {
@@ -222,16 +255,26 @@
       });
     }
 
-    // Distinct values of a dimension across all restaurants (insertion order).
+    // Distinct values of a dimension across all eateries (insertion order).
     function distinctValues(d) {
       const seen = [];
-      restaurants.forEach(function (r) {
+      eateries.forEach(function (r) {
         valuesFor(r, d).forEach(function (v) {
           if (seen.indexOf(v) === -1) seen.push(v);
         });
       });
       // Price reads naturally low → high ($, $$, $$$).
       if (d.key === "price") seen.sort(function (a, b) { return a.length - b.length; });
+      // Party size reads low → high (1, 2, 3 …).
+      if (d.key === "partySize") seen.sort(function (a, b) { return (+a) - (+b); });
+      // Main type reads in a fixed order (meal → drinks → dessert → bar).
+      if (d.key === "mainType") {
+        const order = MAINTYPE_ORDER[lang] || [];
+        seen.sort(function (a, b) {
+          const ia = order.indexOf(a), ib = order.indexOf(b);
+          return (ia === -1 ? order.length : ia) - (ib === -1 ? order.length : ib);
+        });
+      }
       // Mealtime reads in day order (breakfast → late-night).
       if (d.key === "mealtime") {
         const order = MEALTIME_ORDER[lang] || [];
@@ -283,7 +326,7 @@
       });
     }
 
-    // Render the card list for the given (filtered) restaurants.
+    // Render the card list for the given (filtered) eateries.
     function renderList(list) {
       const t = ui[lang];
       const grid = $("grid");
@@ -296,12 +339,12 @@
 
       list.forEach(function (r) {
         const L_ = r[lang];
-        const card = el("a", "rest-card");
+        const card = el("a", "eatery-card");
         card.href = menuUrl(r);
         card.target = "_blank";
         card.rel = "noopener";
         card.dataset.id = r.id;
-        // Clicking the card also pans the map to this restaurant. We don't
+        // Clicking the card also pans the map to this eatery. We don't
         // preventDefault, so the menu page still opens in its new tab.
         // "click" covers left-click; "auxclick" (button 1) covers the
         // middle-click that opens a background tab.
@@ -353,7 +396,7 @@
       const visible = {};
       list.forEach(function (r) { visible[r.id] = true; });
       const bounds = [];
-      restaurants.forEach(function (r) {
+      eateries.forEach(function (r) {
         const m = markers[r.id];
         if (!m) return;
         if (visible[r.id]) {
@@ -368,9 +411,9 @@
 
     // Apply current filters to both the list and the map.
     function applyFilters() {
-      let list = restaurants.filter(matches);
+      let list = eateries.filter(matches);
       if (nearMe && userPos) {
-        restaurants.forEach(function (r) {
+        eateries.forEach(function (r) {
           distances[r.id] = distanceKm(userPos.lat, userPos.lng, r.lat, r.lng);
         });
         list = list.slice().sort(function (a, b) {
@@ -396,19 +439,19 @@
 
     Promise.all([
       fetch("i18n.json").then(function (r) { return r.json(); }),
-      FoodieApi.getRestaurants(),
+      FoodieApi.getEateries(),
       FoodieAssets.loadLeaflet()
     ])
       .then(function (res) {
         ui = res[0].ui;
-        restaurants = res[1];
+        eateries = res[1];
         lang = ui[load(LANG_KEY)] ? load(LANG_KEY) : "en";
         initMap();
         render();
       })
       .catch(function () {
         $("grid").innerHTML =
-          "<p style='color:var(--muted)'>Could not load restaurant data. Serve this page over HTTP (e.g. <code>python -m http.server</code>) — browsers block fetch on file://.</p>";
+          "<p style='color:var(--muted)'>Could not load eatery data. Serve this page over HTTP (e.g. <code>python -m http.server</code>) — browsers block fetch on file://.</p>";
       });
 
     $("langBtn").addEventListener("click", function () {

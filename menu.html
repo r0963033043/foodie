@@ -12,7 +12,7 @@
 
   <header class="hero">
     <div class="crumb"><a id="backLink" href="maps.html"></a></div>
-    <div class="rest-head">
+    <div class="eatery-head">
       <span class="ic" id="emoji"></span>
       <div>
         <h1 id="name"></h1>
@@ -46,7 +46,7 @@
     const LANG_KEY = "foodie.lang";
     const $ = function (id) { return document.getElementById(id); };
     let ui = null;             // i18n.json ui block: { en:{…}, zh:{…} }
-    let rest = null;           // the restaurant being shown
+    let eatery = null;           // the eatery being shown
     let lang = "en";
 
     function store(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
@@ -116,6 +116,20 @@
       return list.filter(function (o) { return o && o.url; });
     }
 
+    // inline.app booking pages honor a `language` query param. inline.app already
+    // defaults to English, so only force it when the UI is in Chinese (zh-tw);
+    // English and other platforms pass through unchanged.
+    function reserveHref(o) {
+      if (o.platform !== "inline" || lang !== "zh") return o.url;
+      try {
+        const u = new URL(o.url);
+        u.searchParams.set("language", "zh-tw");
+        return u.toString();
+      } catch (e) {
+        return o.url;
+      }
+    }
+
     // Append the reservation link(s): nothing when there's no booking link, a
     // single direct link for one option, or one labeled link per platform when
     // several are available.
@@ -123,10 +137,10 @@
       const t = ui[lang];
       const opts = reserveOptions(r);
       if (opts.length === 0) return;
-      if (opts.length === 1) { host.appendChild(extLink(t.reservations + " ↗", opts[0].url)); return; }
+      if (opts.length === 1) { host.appendChild(extLink(t.reservations + " ↗", reserveHref(opts[0]))); return; }
       opts.forEach(function (o) {
         const key = "reservePlatform" + o.platform.charAt(0).toUpperCase() + o.platform.slice(1);
-        host.appendChild(extLink(t.reservations + " · " + (t[key] || o.platform) + " ↗", o.url));
+        host.appendChild(extLink(t.reservations + " · " + (t[key] || o.platform) + " ↗", reserveHref(o)));
       });
     }
 
@@ -140,14 +154,14 @@
 
     function render() {
       const t = ui[lang];
-      const L_ = rest[lang];
+      const L_ = eatery[lang];
 
       document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
       document.title = L_.name + " · menu";
 
       $("langBtn").textContent = t.langToggle;
       $("backLink").textContent = t.backToMaps;
-      $("emoji").textContent = rest.emoji || "🍴";
+      $("emoji").textContent = eatery.emoji || "🍴";
       $("name").textContent = L_.name;
       $("cuisine").textContent = L_.cuisine;
       $("addr").textContent = fmtAddress(L_);
@@ -159,14 +173,14 @@
       const meals = L_.mealtime || [];
       const gtags = L_.tags || [];
       const service = L_.service || [];
-      const party = fmtPartySize(rest.partySize);
+      const party = fmtPartySize(eatery.partySize);
       areas.forEach(function (a) { tags.appendChild(el("span", "chip chip-area", "📍 " + a)); });
       gtags.forEach(function (g) { tags.appendChild(el("span", "chip chip-tag", g)); });
-      if (rest.price) tags.appendChild(el("span", "chip chip-price", rest.price));
+      if (eatery.price) tags.appendChild(el("span", "chip chip-price", eatery.price));
       if (party) tags.appendChild(el("span", "chip chip-party", "👥 " + party));
       meals.forEach(function (m) { tags.appendChild(el("span", "chip chip-meal", m)); });
       service.forEach(function (s) { tags.appendChild(el("span", "chip chip-service", s)); });
-      if (rest.hasBranches) tags.appendChild(el("span", "chip chip-branch", "🏬 " + t.branches));
+      if (eatery.hasBranches) tags.appendChild(el("span", "chip chip-branch", "🏬 " + t.branches));
 
       // Menu items (per-language list of { name, price, note }).
       $("menuTitle").textContent = t.menu;
@@ -193,11 +207,11 @@
       $("linksTitle").textContent = t.links;
       const links = $("linksBody");
       links.innerHTML = "";
-      appendReservation(links, rest);
-      appendWebsites(links, rest);
-      links.appendChild(extLink(t.openInMaps, gmapsUrl(rest)));
-      links.appendChild(extLink(t.searchWeb, webUrl(rest)));
-      links.appendChild(extLink(t.searchYoutube, youtubeUrl(rest)));
+      appendReservation(links, eatery);
+      appendWebsites(links, eatery);
+      links.appendChild(extLink(t.openInMaps, gmapsUrl(eatery)));
+      links.appendChild(extLink(t.searchWeb, webUrl(eatery)));
+      links.appendChild(extLink(t.searchYoutube, youtubeUrl(eatery)));
     }
 
     function fail(msg) {
@@ -205,21 +219,21 @@
         "<p style='color:var(--muted)'>" + msg + "</p>";
     }
 
-    const restId = new URLSearchParams(location.search).get("id");
+    const eateryId = new URLSearchParams(location.search).get("id");
     Promise.all([
       fetch("i18n.json").then(function (r) { return r.json(); }),
-      restId ? FoodieApi.getRestaurant(restId)
-             : FoodieApi.getRestaurants().then(function (rs) { return rs[0]; })
+      eateryId ? FoodieApi.getEatery(eateryId)
+             : FoodieApi.getEateries().then(function (rs) { return rs[0]; })
     ])
       .then(function (res) {
         ui = res[0].ui;
-        rest = res[1];
+        eatery = res[1];
         lang = ui[load(LANG_KEY)] ? load(LANG_KEY) : "en";
-        if (!rest) { fail("Restaurant not found."); return; }
+        if (!eatery) { fail("Eatery not found."); return; }
         render();
       })
       .catch(function () {
-        fail("Could not load restaurant data. Serve this page over HTTP (e.g. <code>python -m http.server</code>) — browsers block fetch on file://.");
+        fail("Could not load eatery data. Serve this page over HTTP (e.g. <code>python -m http.server</code>) — browsers block fetch on file://.");
       });
 
     $("langBtn").addEventListener("click", function () {

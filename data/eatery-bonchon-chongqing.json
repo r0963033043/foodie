@@ -15,6 +15,7 @@
   "en": {
     "name": "Bonchon Chicken (Chongqing S)",
     "cuisine": "Korean Fried Chicken",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Zhongzheng District",
     "address": "No. 121, Sec. 1, Chongqing S Rd",
@@ -27,6 +28,7 @@
   "zh": {
     "name": "Bonchon 本村韓食炸雞（重慶南店）",
     "cuisine": "韓式炸雞",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "中正區",
     "address": "重慶南路一段121號",

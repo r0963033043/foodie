@@ -1,17 +1,17 @@
 /* ===== foodie — data API =====
-   Single source of truth for the dish and restaurant catalogues.
+   Single source of truth for the dish and eatery catalogues.
    Each id maps to a file in data/:
      dishes      -> "dish-chawanmushi"      -> data/dish-chawanmushi.json
-     restaurants -> "din-tai-fung-xinyi"    -> data/restaurant-din-tai-fung-xinyi.json
+     eateries -> "din-tai-fung-xinyi"    -> data/eatery-din-tai-fung-xinyi.json
    The id lists are NOT hardcoded here: they live in data/manifest.json, which
-   tools/build-manifest.mjs regenerates by scanning data/. Add a dish/restaurant
+   tools/build-manifest.mjs regenerates by scanning data/. Add a dish/eatery
    by dropping its file in data/ and re-running that script.
 */
 (function (global) {
   const DATA_DIR = "data/";
   const MANIFEST_URL = DATA_DIR + "manifest.json";
 
-  /** Restaurant display order, by shopping district. Keyed off the English
+  /** Eatery display order, by shopping district. Keyed off the English
    * shoppingDistrict value (language-neutral); unknown/absent districts sort
    * last. Within a district, manifest order is kept (sort is stable).
    */
@@ -19,7 +19,7 @@
     "DongmenYongkang", "Guanghua", "Huashan", "Ximen", "Zhongshan", "Raohe"
   ];
 
-  // Fetch the generated id lists once. { dishes: [...], restaurants: [...] }.
+  // Fetch the generated id lists once. { dishes: [...], eateries: [...] }.
   let manifestPromise = null;
   function loadManifest() {
     if (manifestPromise) return manifestPromise;
@@ -32,8 +32,8 @@
   function getDishIds() {
     return loadManifest().then(function (m) { return (m.dishes || []).slice(); });
   }
-  function getRestaurantIds() {
-    return loadManifest().then(function (m) { return (m.restaurants || []).slice(); });
+  function getEateryIds() {
+    return loadManifest().then(function (m) { return (m.eateries || []).slice(); });
   }
 
   const cache = {};
@@ -60,47 +60,47 @@
     });
   }
 
-  // Load one restaurant file (cached).
-  const restCache = {};
-  function getRestaurant(id) {
-    if (restCache[id]) return Promise.resolve(restCache[id]);
-    return fetch(DATA_DIR + "restaurant-" + id + ".json")
+  // Load one eatery file (cached).
+  const eateryCache = {};
+  function getEatery(id) {
+    if (eateryCache[id]) return Promise.resolve(eateryCache[id]);
+    return fetch(DATA_DIR + "eatery-" + id + ".json")
       .then(function (r) {
-        if (!r.ok) throw new Error("Restaurant not found: " + id);
+        if (!r.ok) throw new Error("Eatery not found: " + id);
         return r.json();
       })
-      .then(function (d) { restCache[id] = d; return d; });
+      .then(function (d) { eateryCache[id] = d; return d; });
   }
 
-  // Rank a restaurant by its shopping district for display ordering.
+  // Rank an eatery by its shopping district for display ordering.
   function districtRank(r) {
     const d = (r.en && r.en.shoppingDistrict && r.en.shoppingDistrict[0]) || "";
     const i = DISTRICT_ORDER.indexOf(d);
     return i === -1 ? DISTRICT_ORDER.length : i;
   }
 
-  // Load the restaurant directory (cached). Returns visible restaurants sorted
+  // Load the eatery directory (cached). Returns visible eateries sorted
   // by shopping district (DISTRICT_ORDER), keeping manifest order within a
-  // district; hidden ones are excluded but still reachable via getRestaurant(id).
-  let restaurants = null;
-  function getRestaurants() {
-    if (restaurants) return Promise.resolve(restaurants);
-    return getRestaurantIds()
-      .then(function (ids) { return Promise.all(ids.map(getRestaurant)); })
+  // district; hidden ones are excluded but still reachable via getEatery(id).
+  let eateries = null;
+  function getEateries() {
+    if (eateries) return Promise.resolve(eateries);
+    return getEateryIds()
+      .then(function (ids) { return Promise.all(ids.map(getEatery)); })
       .then(function (all) {
-        restaurants = all
+        eateries = all
           .filter(function (r) { return !r.hidden; })
           .sort(function (a, b) { return districtRank(a) - districtRank(b); });
-        return restaurants;
+        return eateries;
       });
   }
 
   global.FoodieApi = {
     getDishIds: getDishIds,
-    getRestaurantIds: getRestaurantIds,
+    getEateryIds: getEateryIds,
     getDish: getDish,
     listDishes: listDishes,
-    getRestaurant: getRestaurant,
-    getRestaurants: getRestaurants
+    getEatery: getEatery,
+    getEateries: getEateries
   };
 })(window);

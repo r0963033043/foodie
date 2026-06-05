@@ -1,14 +1,18 @@
 {
   "id": "qiaoxi-fried-rice",
-  "lat": 25.0435,
-  "lng": 121.5321,
+  "lat": 25.0434,
+  "lng": 121.5313,
   "emoji": "🍳",
   "hasBranches": false,
   "price": "$",
   "partySize": { "min": 1, "max": 4 },
+  "website": [
+    { "platform": "facebook", "url": "https://www.facebook.com/%E5%96%AC%E5%96%9C%E7%82%92%E9%A3%AF%E5%B0%88%E8%B3%A3%E5%BA%97-1464100270582411/" }
+  ],
   "en": {
     "name": "Qiaoxi Egg Fried Rice",
     "cuisine": "Fried Rice · Noodles",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Zhongzheng District",
     "address": "No. 7, Ln 3, Linyi St",
@@ -27,6 +31,7 @@
   "zh": {
     "name": "喬喜蛋炒飯專賣店",
     "cuisine": "炒飯 · 炒麵",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "中正區",
     "address": "臨沂街3巷7號",

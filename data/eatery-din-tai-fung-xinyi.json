@@ -15,6 +15,7 @@
   "en": {
     "name": "Din Tai Fung (Xinyi)",
     "cuisine": "Xiaolongbao · Taiwanese",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Da'an District",
     "address": "No. 194, Sec. 2, Xinyi Rd",
@@ -34,6 +35,7 @@
   "zh": {
     "name": "鼎泰豐（信義店）",
     "cuisine": "小籠包",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "大安區",
     "address": "信義路二段194號",

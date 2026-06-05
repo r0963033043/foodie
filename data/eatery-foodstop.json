@@ -12,6 +12,7 @@
   "en": {
     "name": "FoodStop",
     "cuisine": "Dumplings · Rice & Noodles",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Zhongzheng District",
     "address": "1F, No. 75, Yanping S Rd",
@@ -24,6 +25,7 @@
   "zh": {
     "name": "食輝味蕾 FOODSTOP 餃子•飯麵•好菜",
     "cuisine": "餃子 · 飯麵",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "中正區",
     "address": "延平南路75號1樓",

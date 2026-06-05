@@ -9,6 +9,7 @@
   "en": {
     "name": "Yong Kang Beef Noodle",
     "cuisine": "Beef Noodle Soup",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Da'an District",
     "address": "No. 17, Ln 31, Sec. 2, Jinshan S Rd",
@@ -27,6 +28,7 @@
   "zh": {
     "name": "永康牛肉麵",
     "cuisine": "牛肉麵",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "大安區",
     "address": "金山南路二段31巷17號",

@@ -9,6 +9,7 @@
   "en": {
     "name": "Zhang Ji Potsticker & Beef Noodle",
     "cuisine": "Potstickers · Beef Noodle",
+    "mainType": "Meal",
     "city": "Taipei",
     "district": "Zhongzheng District",
     "address": "No. 79-1, Hengyang Rd",
@@ -21,6 +22,7 @@
   "zh": {
     "name": "張記鍋貼牛肉麵",
     "cuisine": "鍋貼 · 牛肉麵",
+    "mainType": "正餐",
     "city": "台北市",
     "district": "中正區",
     "address": "衡陽路79-1號",
