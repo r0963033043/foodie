@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My Ingredients · foodie</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button id="langBtn" class="lang-btn" type="button">中文</button>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="crumb"><a id="backLink" href="index.html"></a></div>
+    <h1 id="title"></h1>
+    <p class="subtitle" id="subtitle"></p>
+    <p class="edit-hint" id="editHint"></p>
+    <div class="view-toggle" id="viewToggle"></div>
+  </header>
+
+  <button id="addBtn" class="add-btn" type="button"></button>
+
+  <div id="groups"></div>
+
+  <footer>foodie · ingredients</footer>
+
+</div>
+
+<dialog id="editDialog" class="edit-dialog">
+  <form id="editForm" method="dialog">
+    <h2 id="editTitle"></h2>
+    <div class="field create-only">
+      <span class="field-label" id="editNameLabel"></span>
+      <div class="suggest-wrap">
+        <input type="text" id="editNameInput" maxlength="40" autocomplete="off">
+        <div class="suggest" id="nameSuggest" hidden></div>
+      </div>
+    </div>
+    <div class="field">
+      <span class="field-label" id="editTypeLabel"></span>
+      <select id="editTypeSelect" class="create-only"></select>
+      <span class="type-chip edit-only" id="editType"></span>
+    </div>
+    <div class="field">
+      <span class="field-label" id="editStorageLabel"></span>
+      <div class="chips" id="editStorageChips"></div>
+    </div>
+    <div class="field">
+      <span class="field-label" id="editAmountLabel"></span>
+      <span class="amount-input">
+        <input type="number" id="editAmount" min="0" step="any" inputmode="decimal">
+        <span class="amount-unit edit-only" id="editUnit"></span>
+        <input type="text" id="editUnitInput" class="unit-input create-only" maxlength="10">
+      </span>
+    </div>
+    <div class="field">
+      <span class="field-label" id="editBoughtLabel"></span>
+      <input type="date" id="editBought">
+    </div>
+    <div class="field">
+      <span class="field-label" id="editExpiryLabel"></span>
+      <input type="date" id="editExpiry">
+    </div>
+    <p class="edit-updated edit-only"><span id="editUpdatedLabel"></span> <span class="val" id="editUpdated"></span></p>
+    <div class="edit-actions">
+      <button type="button" id="editDelete" class="btn-danger edit-only"></button>
+      <button type="button" id="editReset" class="btn-ghost edit-only"></button>
+      <span class="spacer"></span>
+      <button type="button" id="editCancel" class="btn-ghost"></button>
+      <button type="submit" id="editSave" class="btn-primary"></button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+  (function () {
+    const LANG_KEY = "foodie.lang";
+    const MOVES_KEY = "foodie.pantryMoves";
+    const AMOUNTS_KEY = "foodie.pantryAmounts";
+    const META_KEY = "foodie.pantryMeta";
+    const DELETED_KEY = "foodie.pantryDeleted";
+    const CUSTOM_KEY = "foodie.pantryCustom";
+    const VIEW_KEY = "foodie.pantryView";
+    const $ = function (id) { return document.getElementById(id); };
+    let ui = null;             // i18n.json ui block: { en:{…}, zh:{…} }
+    let pantry = null;         // data/pantry.json: { en:{…}, zh:{…} }
+    let tips = null;           // data/storage-tips.json: { en:[{code,unit,tip}], zh:[…] }
+    let tipIndex = {};         // { en:{code:{unit,tip}}, zh:{…} } built from tips
+    let foodTypes = [];        // data/food-types.json: [{ code, en, zh, ingredients }]
+    let typeOfCode = {};       // ingredient code -> food-type code (from ingredients lists)
+    let typeName = {};         // { en:{type:label}, zh:{…} } built from food-types
+    let moves = {};            // code -> storage override (editor)
+    let amounts = {};          // code -> amount override (editor)
+    let meta = {};             // code -> { bought, expiry, updated } (editor; ISO dates)
+    let deleted = {};          // code -> true for data items hidden via the editor
+    let custom = [];           // user-created items: [{ code, name, storage, amount, unit, type }]
+    let homeStorage = {};      // code -> original storage (data file + custom base)
+    let homeAmount = {};       // code -> original amount (data file + custom base)
+    let editingCode = null;    // code open in the edit dialog
+    let editStorage = null;    // storage chosen in the dialog
+    let editMode = null;       // "edit" | "create"
+    let pickedCode = null;     // catalogue code chosen from the name dropdown (create)
+    let suggestItems = [];     // currently shown name suggestions
+    let suggestActive = -1;    // highlighted suggestion index (keyboard nav)
+    let viewMode = "storage";  // "storage" | "type" | "expiry"
+    let lang = "en";
+
+    // Per-storage presentation, keyed off the language-neutral storage value.
+    const STORAGE = {
+      fridge: { ic: "🧊", labelKey: "storageFridge" },
+      freezer: { ic: "❄️", labelKey: "storageFreezer" },
+      pantry: { ic: "🫙", labelKey: "storagePantry" }
+    };
+
+    function store(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
+    function load(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
+
+    function el(tag, className, text) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text != null) node.textContent = text;
+      return node;
+    }
+
+    // Flatten the data file (for the current language) and the custom items into
+    // one list, each tagged with its base storage. Names come per-language from
+    // the data file; custom items carry a single name used in both languages.
+    function allItems() {
+      const list = [];
+      const info = tipIndex[lang] || {};
+      const groups = (pantry[lang] && pantry[lang].groups) || [];
+      groups.forEach(function (g) {
+        g.items.forEach(function (it) {
+          const entry = info[it.code] || {};
+          list.push({ code: it.code, name: it.name, amount: it.amount, unit: entry.unit, base: g.storage, type: typeOfCode[it.code] });
+        });
+      });
+      custom.forEach(function (c) {
+        list.push({ code: c.code, name: c.name, amount: c.amount, unit: c.unit, base: c.storage, type: c.type });
+      });
+      return list;
+    }
+
+    function typeLabel(code) {
+      return (code && typeName[lang] && typeName[lang][code]) || "";
+    }
+
+    function findItem(code) {
+      const list = allItems();
+      for (let i = 0; i < list.length; i++) {
+        if (list[i].code === code) return list[i];
+      }
+      return null;
+    }
+
+    // Known ingredients (data file joined with their tips) for the name dropdown.
+    function catalogueItems() {
+      const out = [];
+      const info = tipIndex[lang] || {};
+      const groups = (pantry[lang] && pantry[lang].groups) || [];
+      groups.forEach(function (g) {
+        g.items.forEach(function (it) {
+          const e = info[it.code] || {};
+          out.push({ code: it.code, name: it.name, unit: e.unit });
+        });
+      });
+      return out;
+    }
+
+    // Register custom items' base storage/amount so the editor's override and
+    // prune logic treats them exactly like data-file items.
+    function registerCustom() {
+      custom.forEach(function (c) {
+        homeStorage[c.code] = c.storage;
+        homeAmount[c.code] = c.amount;
+      });
+    }
+
+    function newCode() {
+      let c;
+      do {
+        c = "C" + Date.now().toString(36).toUpperCase() + Math.floor(Math.random() * 1000);
+      } while (homeStorage[c]);
+      return c;
+    }
+
+    function render() {
+      const t = ui[lang];
+      const p = pantry[lang];
+      const info = tipIndex[lang] || {};
+      document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+      document.title = p.name + " · foodie";
+
+      $("langBtn").textContent = t.langToggle;
+      $("backLink").textContent = t.homeCrumb;
+      $("title").textContent = p.name;
+      $("subtitle").textContent = p.subtitle;
+      $("editHint").textContent = t.editHint;
+      $("addBtn").textContent = t.addItem;
+      renderViewChips(t);
+
+      const items = allItems().filter(function (it) { return !deleted[it.code]; });
+      const groups = $("groups");
+      groups.innerHTML = "";
+
+      function effStorage(it) {
+        return (moves[it.code] && STORAGE[moves[it.code]]) ? moves[it.code] : it.base;
+      }
+
+      // Build one item's <li> (row + tip + meta) — shared across view modes.
+      function buildItemLi(it) {
+        const li = el("li");
+        li.dataset.code = it.code;
+
+        const row = el("div", "item-row");
+        const leftSide = el("span", "row-left");
+        leftSide.appendChild(el("span", "name", it.name));
+        const typeLab = typeLabel(it.type);
+        if (typeLab) leftSide.appendChild(el("span", "type-chip", typeLab));
+        row.appendChild(leftSide);
+        const amt = (amounts[it.code] != null) ? amounts[it.code] : it.amount;
+        if (amt != null) {
+          row.appendChild(el("span", "qty", amt + (it.unit ? " " + it.unit : "")));
+        }
+        li.appendChild(row);
+
+        const entry = info[it.code];
+        const tipText = entry && entry.tip;
+        if (tipText) li.appendChild(el("div", "tip", tipText));
+
+        const md = meta[it.code] || {};
+        if (md.bought || md.expiry || md.updated) {
+          const metaRow = el("div", "meta-row");
+          if (md.bought) metaRow.appendChild(el("span", "m-bought", t.metaBought + " " + md.bought));
+          if (md.expiry) {
+            const status = expiryStatus(md.expiry);
+            const label = t.metaExpiry + " " + md.expiry + (status === "expired" ? " · " + t.expired : "");
+            metaRow.appendChild(el("span", "m-expiry" + (status ? " " + status : ""), label));
+          }
+          if (md.updated) metaRow.appendChild(el("span", "m-updated", t.metaUpdated + " " + fmtDateTime(md.updated)));
+          li.appendChild(metaRow);
+        }
+        return li;
+      }
+
+      function section(icon, title, members) {
+        const card = el("section", "card");
+        const h2 = el("h2");
+        if (icon) h2.appendChild(el("span", "ic", icon));
+        h2.appendChild(el("span", null, title));
+        card.appendChild(h2);
+        const ul = el("ul", "pantry");
+        members.forEach(function (it) { ul.appendChild(buildItemLi(it)); });
+        card.appendChild(ul);
+        groups.appendChild(card);
+      }
+
+      if (viewMode === "expiry") {
+        // Soonest best-before first; items without a date sink to the bottom.
+        const sorted = items.slice().sort(function (a, b) {
+          const ea = (meta[a.code] || {}).expiry || "";
+          const eb = (meta[b.code] || {}).expiry || "";
+          if (ea && eb) return ea < eb ? -1 : (ea > eb ? 1 : 0);
+          if (ea) return -1;
+          if (eb) return 1;
+          return 0;
+        });
+        section("⏳", t.viewExpiry, sorted);
+      } else if (viewMode === "type") {
+        foodTypes.forEach(function (ft) {
+          const members = items.filter(function (it) { return it.type === ft.code; });
+          if (members.length) section("🏷", (lang === "zh") ? ft.zh : ft.en, members);
+        });
+        const untyped = items.filter(function (it) { return !typeName[lang] || !typeName[lang][it.type]; });
+        if (untyped.length) section("🏷", t.untyped, untyped);
+      } else {
+        Object.keys(STORAGE).forEach(function (storage) {
+          const pres = STORAGE[storage];
+          const members = items.filter(function (it) { return effStorage(it) === storage; });
+          section(pres.ic, t[pres.labelKey], members);
+        });
+      }
+    }
+
+    function renderViewChips(t) {
+      const box = $("viewToggle");
+      box.innerHTML = "";
+      box.appendChild(el("span", "view-label", t.orderBy));
+      [["storage", t.viewStorage], ["type", t.viewType], ["expiry", t.viewExpiry]].forEach(function (pair) {
+        const chip = el("button", "filter-chip" + (viewMode === pair[0] ? " on" : ""), pair[1]);
+        chip.type = "button";
+        chip.dataset.view = pair[0];
+        box.appendChild(chip);
+      });
+    }
+
+    Promise.all([
+      fetch("i18n.json").then(function (r) { return r.json(); }),
+      fetch("data/pantry.json").then(function (r) { return r.json(); }),
+      fetch("data/storage-tips.json").then(function (r) { return r.json(); }),
+      fetch("data/food-types.json").then(function (r) { return r.json(); })
+    ])
+      .then(function (res) {
+        ui = res[0].ui;
+        pantry = res[1];
+        tips = res[2];
+        foodTypes = res[3] || [];
+        Object.keys(tips).forEach(function (l) {
+          tipIndex[l] = {};
+          (tips[l] || []).forEach(function (e) { tipIndex[l][e.code] = e; });
+        });
+        typeName = { en: {}, zh: {} };
+        foodTypes.forEach(function (ft) {
+          typeName.en[ft.code] = ft.en;
+          typeName.zh[ft.code] = ft.zh;
+          (ft.ingredients || []).forEach(function (code) { typeOfCode[code] = ft.code; });
+        });
+        ((pantry.en && pantry.en.groups) || []).forEach(function (g) {
+          g.items.forEach(function (it) {
+            homeStorage[it.code] = g.storage;
+            homeAmount[it.code] = it.amount;
+          });
+        });
+        try { moves = JSON.parse(load(MOVES_KEY)) || {}; } catch (e) { moves = {}; }
+        try { amounts = JSON.parse(load(AMOUNTS_KEY)) || {}; } catch (e) { amounts = {}; }
+        try { meta = JSON.parse(load(META_KEY)) || {}; } catch (e) { meta = {}; }
+        try { deleted = JSON.parse(load(DELETED_KEY)) || {}; } catch (e) { deleted = {}; }
+        try { custom = JSON.parse(load(CUSTOM_KEY)) || []; } catch (e) { custom = []; }
+        registerCustom();
+        const savedView = load(VIEW_KEY);
+        if (savedView === "type" || savedView === "expiry" || savedView === "storage") viewMode = savedView;
+        lang = ui[load(LANG_KEY)] ? load(LANG_KEY) : "en";
+        render();
+      })
+      .catch(function () {
+        $("groups").innerHTML =
+          "<p style='color:var(--muted)'>Could not load ingredient data from <code>data/</code>. Serve this page over HTTP (e.g. <code>python -m http.server</code>) — browsers block fetch on file://.</p>";
+      });
+
+    $("langBtn").addEventListener("click", function () {
+      if (!ui) return;
+      lang = (lang === "zh") ? "en" : "zh";
+      store(LANG_KEY, lang);
+      render();
+    });
+
+    // ===== Overrides (persisted per code) =====
+
+    // Apply a storage change. Choosing the original section clears the override.
+    function setMove(code, target) {
+      if (homeStorage[code] === target) delete moves[code];
+      else moves[code] = target;
+      store(MOVES_KEY, JSON.stringify(moves));
+    }
+
+    // Apply an amount change. Clearing it (or matching the original) drops the
+    // entry so the base value shows through again.
+    function setAmount(code, val) {
+      if (val == null || val === homeAmount[code]) delete amounts[code];
+      else amounts[code] = val;
+      store(AMOUNTS_KEY, JSON.stringify(amounts));
+    }
+
+    // Save the purchase / best-before dates and stamp the update time.
+    function setMeta(code, bought, expiry) {
+      const m = {};
+      if (bought) m.bought = bought;
+      if (expiry) m.expiry = expiry;
+      m.updated = new Date().toISOString();
+      meta[code] = m;
+      store(META_KEY, JSON.stringify(meta));
+    }
+
+    // ISO timestamp -> "YYYY-MM-DD HH:mm" in local time.
+    function fmtDateTime(iso) {
+      const d = new Date(iso);
+      if (isNaN(d.getTime())) return "";
+      const p = function (n) { return (n < 10 ? "0" : "") + n; };
+      return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()) +
+        " " + p(d.getHours()) + ":" + p(d.getMinutes());
+    }
+
+    // "" | "soon" (within 3 days) | "expired" (past) for an ISO date string.
+    function expiryStatus(dateStr) {
+      const exp = new Date(dateStr + "T00:00:00");
+      if (isNaN(exp.getTime())) return "";
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const days = Math.round((exp.getTime() - today.getTime()) / 86400000);
+      if (days < 0) return "expired";
+      if (days <= 3) return "soon";
+      return "";
+    }
+
+    // ===== Edit / create dialog =====
+
+    function setEditorLabels(t) {
+      $("editNameLabel").textContent = t.editNameLabel;
+      $("editTypeLabel").textContent = t.editTypeLabel;
+      $("editStorageLabel").textContent = t.editStorageLabel;
+      $("editAmountLabel").textContent = t.editAmountLabel;
+      $("editBoughtLabel").textContent = t.metaBought;
+      $("editExpiryLabel").textContent = t.metaExpiry;
+      $("editUpdatedLabel").textContent = t.metaUpdated;
+      $("editReset").textContent = t.editReset;
+      $("editCancel").textContent = t.editCancel;
+      $("editSave").textContent = t.editSave;
+      $("editDelete").textContent = t.editDelete;
+    }
+
+    function buildStorageChips(t) {
+      const chips = $("editStorageChips");
+      chips.innerHTML = "";
+      Object.keys(STORAGE).forEach(function (s) {
+        const chip = el("button", "filter-chip" + (s === editStorage ? " on" : ""), t[STORAGE[s].labelKey]);
+        chip.type = "button";
+        chip.dataset.storage = s;
+        chips.appendChild(chip);
+      });
+    }
+
+    function buildTypeOptions() {
+      const sel = $("editTypeSelect");
+      sel.innerHTML = "";
+      foodTypes.forEach(function (ft) {
+        const opt = document.createElement("option");
+        opt.value = ft.code;
+        opt.textContent = (lang === "zh") ? ft.zh : ft.en;
+        sel.appendChild(opt);
+      });
+    }
+
+    // ----- Name autocomplete (create mode) -----
+
+    function hideSuggest() {
+      suggestItems = [];
+      suggestActive = -1;
+      const box = $("nameSuggest");
+      box.hidden = true;
+      box.innerHTML = "";
+    }
+
+    function showSuggest(query) {
+      const q = query.trim().toLowerCase();
+      const matches = catalogueItems().filter(function (c) {
+        return q === "" || c.name.toLowerCase().indexOf(q) !== -1;
+      }).slice(0, 8);
+      suggestItems = matches;
+      suggestActive = -1;
+      const box = $("nameSuggest");
+      box.innerHTML = "";
+      if (!matches.length) { box.hidden = true; return; }
+      matches.forEach(function (c, i) {
+        const btn = el("button");
+        btn.type = "button";
+        btn.dataset.index = i;
+        btn.appendChild(el("span", "s-name", c.name));
+        if (c.unit) btn.appendChild(el("span", "s-unit", c.unit));
+        box.appendChild(btn);
+      });
+      box.hidden = false;
+    }
+
+    function highlightSuggest() {
+      const btns = $("nameSuggest").children;
+      for (let i = 0; i < btns.length; i++) {
+        btns[i].classList.toggle("active", i === suggestActive);
+      }
+    }
+
+    function pickSuggest(item) {
+      pickedCode = item.code;
+      $("editNameInput").value = item.name;
+      $("editUnitInput").value = item.unit || "";
+      if (typeOfCode[item.code]) $("editTypeSelect").value = typeOfCode[item.code];
+      hideSuggest();
+    }
+
+    function openEditor(code) {
+      const it = findItem(code);
+      if (!it) return;
+      const t = ui[lang];
+      editMode = "edit";
+      editingCode = code;
+      editStorage = (moves[code] && STORAGE[moves[code]]) ? moves[code] : homeStorage[code];
+
+      setEditorLabels(t);
+      $("editForm").className = "mode-edit";
+      $("editTitle").textContent = it.name;
+      $("editType").textContent = typeLabel(it.type) || "—";
+      $("editUnit").textContent = it.unit || "";
+
+      const amt = (amounts[code] != null) ? amounts[code] : it.amount;
+      $("editAmount").value = (amt != null) ? amt : "";
+
+      const md = meta[code] || {};
+      $("editBought").value = md.bought || "";
+      $("editExpiry").value = md.expiry || "";
+      $("editUpdated").textContent = md.updated ? fmtDateTime(md.updated) : "—";
+
+      buildStorageChips(t);
+      $("editDialog").showModal();
+    }
+
+    function openCreate() {
+      const t = ui[lang];
+      editMode = "create";
+      editingCode = null;
+      pickedCode = null;
+      editStorage = Object.keys(STORAGE)[0];
+
+      setEditorLabels(t);
+      $("editForm").className = "mode-create";
+      $("editTitle").textContent = t.createTitle;
+      $("editNameInput").value = "";
+      $("editNameInput").placeholder = t.editNamePlaceholder;
+      buildTypeOptions();
+      $("editTypeSelect").value = "OTHER";
+      $("editUnitInput").value = "";
+      $("editUnitInput").placeholder = t.editUnitPlaceholder;
+      $("editAmount").value = "";
+      $("editBought").value = "";
+      $("editExpiry").value = "";
+      $("editUpdated").textContent = "—";
+      hideSuggest();
+
+      buildStorageChips(t);
+      $("editDialog").showModal();
+      $("editNameInput").focus();
+    }
+
+    function closeEditor() {
+      editingCode = null;
+      editMode = null;
+      pickedCode = null;
+      hideSuggest();
+      $("editDialog").close();
+    }
+
+    // Click a row to edit it; the add button opens a blank create form.
+    const groupsEl = $("groups");
+    groupsEl.addEventListener("click", function (e) {
+      const li = e.target.closest("li[data-code]");
+      if (li) openEditor(li.dataset.code);
+    });
+    $("addBtn").addEventListener("click", openCreate);
+
+    // Switch how the list is grouped / ordered.
+    $("viewToggle").addEventListener("click", function (e) {
+      const chip = e.target.closest(".filter-chip");
+      if (!chip || chip.dataset.view === viewMode) return;
+      viewMode = chip.dataset.view;
+      store(VIEW_KEY, viewMode);
+      render();
+    });
+
+    $("editStorageChips").addEventListener("click", function (e) {
+      const chip = e.target.closest(".filter-chip");
+      if (!chip) return;
+      editStorage = chip.dataset.storage;
+      const all = this.querySelectorAll(".filter-chip");
+      Array.prototype.forEach.call(all, function (c) {
+        c.classList.toggle("on", c.dataset.storage === editStorage);
+      });
+    });
+
+    // Name autocomplete: typing filters the catalogue; editing clears any pick.
+    $("editNameInput").addEventListener("input", function () {
+      pickedCode = null;
+      showSuggest(this.value);
+    });
+    $("editNameInput").addEventListener("focus", function () {
+      if (editMode === "create") showSuggest(this.value);
+    });
+    $("editNameInput").addEventListener("keydown", function (e) {
+      if ($("nameSuggest").hidden || !suggestItems.length) return;
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        suggestActive = (suggestActive + 1) % suggestItems.length;
+        highlightSuggest();
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        suggestActive = (suggestActive - 1 + suggestItems.length) % suggestItems.length;
+        highlightSuggest();
+      } else if (e.key === "Enter") {
+        if (suggestActive >= 0) { e.preventDefault(); pickSuggest(suggestItems[suggestActive]); }
+      } else if (e.key === "Escape") {
+        e.preventDefault();
+        hideSuggest();
+      }
+    });
+    // mousedown (not click) so the pick lands before the input blurs.
+    $("nameSuggest").addEventListener("mousedown", function (e) {
+      const btn = e.target.closest("button[data-index]");
+      if (!btn) return;
+      e.preventDefault();
+      pickSuggest(suggestItems[+btn.dataset.index]);
+    });
+    $("editNameInput").addEventListener("blur", function () {
+      setTimeout(hideSuggest, 120);
+    });
+
+    $("editForm").addEventListener("submit", function (e) {
+      if (editMode === "create") {
+        const name = $("editNameInput").value.trim();
+        if (!name) { e.preventDefault(); $("editNameInput").focus(); return; }
+        const raw = $("editAmount").value;
+        const val = raw === "" ? null : parseFloat(raw);
+        const amt = (val != null && !isNaN(val)) ? val : null;
+
+        if (pickedCode) {
+          // Re-add a known catalogue item: reuse its code so its unit/tip
+          // carry through, un-hide it if it was deleted, and apply the chosen
+          // storage / amount / dates as overrides.
+          const code = pickedCode;
+          if (deleted[code]) { delete deleted[code]; store(DELETED_KEY, JSON.stringify(deleted)); }
+          setMove(code, editStorage);
+          setAmount(code, amt);
+          setMeta(code, $("editBought").value, $("editExpiry").value);
+        } else {
+          const code = newCode();
+          custom.push({
+            code: code,
+            name: name,
+            storage: editStorage,
+            amount: amt,
+            unit: $("editUnitInput").value.trim(),
+            type: $("editTypeSelect").value
+          });
+          store(CUSTOM_KEY, JSON.stringify(custom));
+          registerCustom();
+          setMeta(code, $("editBought").value, $("editExpiry").value);
+        }
+        editingCode = null;
+        editMode = null;
+        pickedCode = null;
+        render();
+        return;                      // dialog auto-closes (form method="dialog")
+      }
+
+      if (!editingCode) return;
+      const raw = $("editAmount").value;
+      const val = raw === "" ? null : parseFloat(raw);
+      setMove(editingCode, editStorage);
+      setAmount(editingCode, (val != null && !isNaN(val)) ? val : null);
+      setMeta(editingCode, $("editBought").value, $("editExpiry").value);
+      editingCode = null;
+      editMode = null;
+      render();
+    });
+
+    $("editCancel").addEventListener("click", closeEditor);
+
+    $("editDelete").addEventListener("click", function () {
+      if (!editingCode) return;
+      if (!window.confirm(ui[lang].confirmDelete)) return;
+      let removed = false;
+      for (let i = 0; i < custom.length; i++) {
+        if (custom[i].code === editingCode) { custom.splice(i, 1); removed = true; break; }
+      }
+      if (removed) store(CUSTOM_KEY, JSON.stringify(custom));
+      else { deleted[editingCode] = true; store(DELETED_KEY, JSON.stringify(deleted)); }
+      delete moves[editingCode];
+      delete amounts[editingCode];
+      delete meta[editingCode];
+      store(MOVES_KEY, JSON.stringify(moves));
+      store(AMOUNTS_KEY, JSON.stringify(amounts));
+      store(META_KEY, JSON.stringify(meta));
+      closeEditor();
+      render();
+    });
+
+    $("editReset").addEventListener("click", function () {
+      if (!editingCode) return;
+      delete moves[editingCode];
+      delete amounts[editingCode];
+      delete meta[editingCode];
+      store(MOVES_KEY, JSON.stringify(moves));
+      store(AMOUNTS_KEY, JSON.stringify(amounts));
+      store(META_KEY, JSON.stringify(meta));
+      closeEditor();
+      render();
+    });
+
+    // Click outside the form (on the backdrop) closes without saving.
+    $("editDialog").addEventListener("click", function (e) {
+      if (e.target === this) closeEditor();
+    });
+  })();
+</script>
+</body>
+</html>

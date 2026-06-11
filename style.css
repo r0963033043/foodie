@@ -8,6 +8,7 @@
   --line: #332f27;
   --accent: #e8924a;
   --accent-soft: #3a2a1a;
+  --warn: #e26d5c;
   --radius: 14px;
   --shadow: 0 1px 3px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
 }
@@ -123,6 +124,123 @@ ul.list .qty { color: var(--muted); white-space: nowrap; }
 
 /* Inline link rows (dish/menu link sections) */
 .refs a { display: inline-block; margin-right: 16px; }
+
+/* ===== My ingredients (ingredients.html) ===== */
+ul.pantry { list-style: none; margin: 0; padding: 0; }
+ul.pantry li { padding: 12px 0; border-bottom: 1px dashed var(--line); }
+ul.pantry li:last-child { border-bottom: 0; }
+ul.pantry .item-row { display: flex; justify-content: space-between; gap: 16px; }
+ul.pantry .name { font-weight: 500; }
+ul.pantry .qty { color: var(--muted); white-space: nowrap; }
+ul.pantry .tip { color: var(--muted); font-size: 13px; margin-top: 4px; }
+ul.pantry .tip::before { content: "💡 "; }
+
+/* Click a row to edit its storage and amount */
+.edit-hint { color: var(--muted); font-size: 13px; margin: 6px 0 0; }
+.edit-hint::before { content: "✎ "; }
+.view-toggle { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; }
+.view-label {
+  font-size: 12px; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--muted); margin-right: 2px;
+}
+ul.pantry li { cursor: pointer; }
+ul.pantry li:hover .name { color: var(--accent); }
+ul.pantry .row-left { display: inline-flex; align-items: center; gap: 8px; min-width: 0; }
+.type-chip {
+  font-size: 11px; padding: 2px 9px; border-radius: 999px; white-space: nowrap;
+  background: var(--accent-soft); color: var(--accent); font-weight: 500;
+}
+ul.pantry .meta-row {
+  display: flex; flex-wrap: wrap; gap: 4px 14px;
+  margin-top: 6px; font-size: 12px; color: var(--muted);
+}
+ul.pantry .meta-row .m-expiry.soon { color: var(--accent); }
+ul.pantry .meta-row .m-expiry.expired { color: var(--warn); font-weight: 600; }
+
+/* Edit dialog (click a row) */
+.edit-dialog {
+  width: min(420px, calc(100vw - 32px));
+  background: var(--card); color: var(--ink);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 22px 24px;
+}
+.edit-dialog::backdrop { background: rgba(0,0,0,.55); }
+.edit-dialog h2 { font-size: 20px; margin: 0 0 16px; }
+.edit-dialog .field { margin-bottom: 18px; }
+.edit-dialog .field-label {
+  display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--muted); margin-bottom: 8px;
+}
+.amount-input { display: flex; align-items: center; gap: 10px; }
+.amount-input input {
+  width: 7em; background: var(--bg); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 10px;
+  padding: 8px 12px; font: inherit;
+}
+.amount-input input:focus { outline: none; border-color: var(--accent); }
+.amount-unit { color: var(--muted); font-size: 14px; }
+.edit-dialog input[type="date"] {
+  background: var(--bg); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 10px;
+  padding: 8px 12px; font: inherit;
+}
+.edit-dialog input[type="date"]:focus { outline: none; border-color: var(--accent); }
+.edit-dialog input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(.7); cursor: pointer; }
+.edit-updated { font-size: 13px; color: var(--muted); margin: -4px 0 4px; }
+.edit-updated .val { color: var(--ink); }
+.edit-actions { display: flex; align-items: center; gap: 10px; margin-top: 22px; }
+.edit-actions .spacer { flex: 1; }
+.btn-ghost, .btn-primary {
+  border-radius: 999px; padding: 8px 18px; font: inherit; font-weight: 600;
+  font-size: 14px; cursor: pointer; border: 1px solid var(--line);
+}
+.btn-ghost { background: transparent; color: var(--ink); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-danger { background: transparent; color: var(--warn); border-color: var(--warn); }
+.btn-danger:hover { background: var(--warn); color: var(--bg); cursor: pointer; }
+
+/* Add-item button + create/edit dialog modes */
+.add-btn {
+  margin-top: 20px; background: var(--accent); color: var(--bg);
+  border: 1px solid var(--accent); border-radius: 999px;
+  padding: 10px 22px; font: inherit; font-weight: 600; font-size: 14px; cursor: pointer;
+  transition: filter .15s;
+}
+.add-btn:hover { filter: brightness(1.08); }
+#editNameInput, .unit-input {
+  background: var(--bg); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 10px;
+  padding: 8px 12px; font: inherit;
+}
+#editNameInput { width: 100%; }
+.unit-input { width: 5em; }
+#editNameInput:focus, .unit-input:focus { outline: none; border-color: var(--accent); }
+#editTypeSelect {
+  background: var(--bg); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 10px;
+  padding: 8px 12px; font: inherit; cursor: pointer;
+}
+#editTypeSelect:focus { outline: none; border-color: var(--accent); }
+.edit-dialog form.mode-create .edit-only { display: none; }
+.edit-dialog form.mode-edit .create-only { display: none; }
+
+/* Name autocomplete dropdown */
+.suggest-wrap { position: relative; }
+.suggest {
+  position: absolute; top: 100%; left: 0; right: 0; z-index: 5;
+  margin-top: 4px; max-height: 220px; overflow: auto;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 10px; box-shadow: var(--shadow);
+}
+.suggest button {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  width: 100%; text-align: left; background: transparent; border: 0;
+  color: var(--ink); font: inherit; padding: 8px 12px; cursor: pointer;
+}
+.suggest button:hover, .suggest button.active { background: var(--accent-soft); color: var(--accent); }
+.suggest .s-unit { color: var(--muted); font-size: 12px; white-space: nowrap; }
 
 /* Steps */
 .phase { font-size: 14px; font-weight: 600; color: var(--accent); margin: 22px 0 12px; }

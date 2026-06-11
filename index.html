@@ -36,6 +36,16 @@
       </div>
       <span class="arrow">→</span>
     </a>
+    <a class="dish-card" href="ingredients.html">
+      <div class="meta">
+        <span class="ic">🧺</span>
+        <span>
+          <span class="name" id="navIngredients"></span>
+          <span class="nav-desc" id="navIngredientsDesc"></span>
+        </span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
   </div>
 
   <footer>foodie</footer>
@@ -62,6 +72,8 @@
       $("navEateriesDesc").textContent = t.navEateriesDesc;
       $("navCook").textContent = t.navCook;
       $("navCookDesc").textContent = t.navCookDesc;
+      $("navIngredients").textContent = t.navIngredients;
+      $("navIngredientsDesc").textContent = t.navIngredientsDesc;
     }
 
     fetch("i18n.json")
