@@ -280,7 +280,7 @@
         render();
       })
       .catch(function () {
-        fail("Could not load eatery data. Serve this page over HTTP (e.g. <code>python -m http.server</code>) — browsers block fetch on file://.");
+        fail("Could not load eatery data. Serve this page over HTTP — browsers block fetch on file://.");
       });
 
     $("langBtn").addEventListener("click", function () {

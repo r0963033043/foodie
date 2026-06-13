@@ -436,7 +436,7 @@
       })
       .catch(function () {
         $("groups").innerHTML =
-          "<p style='color:var(--muted)'>Could not load ingredient data from <code>data/</code>. Serve this page over HTTP (e.g. <code>python -m http.server</code>) — browsers block fetch on file://.</p>";
+          "<p style='color:var(--muted)'>Could not load ingredient data from <code>data/</code>. Serve this page over HTTP — browsers block fetch on file://.</p>";
       });
 
     $("langBtn").addEventListener("click", function () {

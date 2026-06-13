@@ -50,7 +50,7 @@
       <span class="spacer"></span>
       <label class="switch">
         <span id="photoSwitchLabel"></span>
-        <input type="checkbox" id="photoSwitch" checked>
+        <input type="checkbox" id="photoSwitch">
         <span class="track"></span>
       </label>
     </h2>
@@ -200,7 +200,7 @@
 
     function fail() {
       document.querySelector(".wrap").innerHTML =
-        "<p style='color:var(--muted)'>Could not load recipe data from <code>data/</code>. Serve this page over HTTP (e.g. <code>python -m http.server</code>) — browsers block fetch on file://.</p>";
+        "<p style='color:var(--muted)'>Could not load recipe data from <code>data/</code>. Serve this page over HTTP — browsers block fetch on file://.</p>";
     }
 
     fetch("i18n.json")

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>foodie</title>
+<title>Ingredient Guide · foodie</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,54 +11,35 @@
 <div class="wrap">
 
   <header class="hero">
-    <div class="brand">foodie</div>
+    <div class="crumb"><a id="backLink" href="index.html"></a></div>
     <h1 id="title"></h1>
+    <p class="subtitle" id="subtitle"></p>
   </header>
 
   <div class="grid">
-    <a class="dish-card" href="maps.html">
+    <a class="dish-card" href="cuts.html">
       <div class="meta">
-        <span class="ic">🍜</span>
+        <span class="ic">🥩</span>
         <span>
-          <span class="name" id="navEateries"></span>
-          <span class="nav-desc" id="navEateriesDesc"></span>
+          <span class="name" id="navCuts"></span>
+          <span class="nav-desc" id="navCutsDesc"></span>
         </span>
       </div>
       <span class="arrow">→</span>
     </a>
-    <a class="dish-card" href="recipe.html">
+    <a class="dish-card" href="alliums.html">
       <div class="meta">
-        <span class="ic">🍳</span>
+        <span class="ic">🧅</span>
         <span>
-          <span class="name" id="navCook"></span>
-          <span class="nav-desc" id="navCookDesc"></span>
-        </span>
-      </div>
-      <span class="arrow">→</span>
-    </a>
-    <a class="dish-card" href="ingredients.html">
-      <div class="meta">
-        <span class="ic">🧺</span>
-        <span>
-          <span class="name" id="navIngredients"></span>
-          <span class="nav-desc" id="navIngredientsDesc"></span>
-        </span>
-      </div>
-      <span class="arrow">→</span>
-    </a>
-    <a class="dish-card" href="guide.html">
-      <div class="meta">
-        <span class="ic">📖</span>
-        <span>
-          <span class="name" id="navGuide"></span>
-          <span class="nav-desc" id="navGuideDesc"></span>
+          <span class="name" id="navAlliums"></span>
+          <span class="nav-desc" id="navAlliumsDesc"></span>
         </span>
       </div>
       <span class="arrow">→</span>
     </a>
   </div>
 
-  <footer>foodie</footer>
+  <footer>foodie · guide</footer>
 
 </div>
 
@@ -77,15 +58,13 @@
       document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
 
       $("langBtn").textContent = t.langToggle;
-      $("title").textContent = t.homeTitle;
-      $("navEateries").textContent = t.navEateries;
-      $("navEateriesDesc").textContent = t.navEateriesDesc;
-      $("navCook").textContent = t.navCook;
-      $("navCookDesc").textContent = t.navCookDesc;
-      $("navIngredients").textContent = t.navIngredients;
-      $("navIngredientsDesc").textContent = t.navIngredientsDesc;
-      $("navGuide").textContent = t.navGuide;
-      $("navGuideDesc").textContent = t.navGuideDesc;
+      $("backLink").textContent = t.homeCrumb;
+      $("title").textContent = t.guideTitle;
+      $("subtitle").textContent = t.guideSubtitle;
+      $("navCuts").textContent = t.navCuts;
+      $("navCutsDesc").textContent = t.navCutsDesc;
+      $("navAlliums").textContent = t.navAlliums;
+      $("navAlliumsDesc").textContent = t.navAlliumsDesc;
     }
 
     fetch("i18n.json")

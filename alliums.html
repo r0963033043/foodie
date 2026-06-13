@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Meat Cuts · foodie</title>
+<title>Onions & Alliums · foodie</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,7 +18,7 @@
 
   <div id="sections"></div>
 
-  <footer>foodie · cuts</footer>
+  <footer>foodie · alliums</footer>
 
 </div>
 
@@ -27,8 +27,7 @@
     const LANG_KEY = "foodie.lang";
     const $ = function (id) { return document.getElementById(id); };
     let ui = null;             // i18n.json ui block: { en:{…}, zh:{…} }
-    let cuts = null;           // data/cuts.json
-    let methodIndex = {};      // cooking-method code -> { code, en, zh }
+    let data = null;           // data/alliums.json
     let lang = "en";
 
     function store(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
@@ -41,8 +40,8 @@
       return node;
     }
 
-    // Animal names are stored as an array of single-language objects,
-    // e.g. [{ "en": "Pork" }, { "zh": "豬肉" }]; pick the current language.
+    // Group names are stored as an array of single-language objects,
+    // e.g. [{ "en": "Garlic & chives" }, { "zh": "蒜與韭" }]; pick the language.
     function pickLang(arr) {
       if (!Array.isArray(arr)) return "";
       for (let i = 0; i < arr.length; i++) {
@@ -51,21 +50,9 @@
       return "";
     }
 
-    // One "Best / Avoid" line: a label plus a chip per cooking-method code.
-    function cookRow(cls, label, codes) {
-      if (!Array.isArray(codes) || !codes.length) return null;
-      const row = el("div", "cut-cook " + cls);
-      row.appendChild(el("span", "cook-label", label));
-      codes.forEach(function (code) {
-        const m = methodIndex[code] || {};
-        row.appendChild(el("span", "cook-chip", m[lang] || code));
-      });
-      return row;
-    }
-
     function render() {
       const t = ui[lang];
-      const meta = cuts[lang] || {};
+      const meta = data[lang] || {};
       document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
       document.title = (meta.name || "") + " · foodie";
 
@@ -77,16 +64,16 @@
       const wrap = $("sections");
       wrap.innerHTML = "";
 
-      (cuts.animals || []).forEach(function (animal) {
+      (data.groups || []).forEach(function (group) {
         const card = el("section", "card");
         const h2 = el("h2");
-        if (animal.emoji) h2.appendChild(el("span", "ic", animal.emoji));
-        h2.appendChild(el("span", null, pickLang(animal.name)));
+        if (group.emoji) h2.appendChild(el("span", "ic", group.emoji));
+        h2.appendChild(el("span", null, pickLang(group.name)));
         card.appendChild(h2);
 
         const ul = el("ul", "cuts");
-        (animal.cuts || []).forEach(function (cut) {
-          const c = cut[lang] || {};
+        (group.items || []).forEach(function (item) {
+          const c = item[lang] || {};
           const li = el("li");
 
           const nameRow = el("div", "cut-head");
@@ -95,12 +82,6 @@
           li.appendChild(nameRow);
 
           if (c.desc) li.appendChild(el("div", "cut-desc", c.desc));
-
-          const best = cookRow("cook-best", t.cookBest, cut.best);
-          if (best) li.appendChild(best);
-          const worst = cookRow("cook-worst", t.cookWorst, cut.worst);
-          if (worst) li.appendChild(worst);
-
           ul.appendChild(li);
         });
         card.appendChild(ul);
@@ -110,18 +91,17 @@
 
     Promise.all([
       fetch("i18n.json").then(function (r) { return r.json(); }),
-      fetch("data/cuts.json").then(function (r) { return r.json(); })
+      fetch("data/alliums.json").then(function (r) { return r.json(); })
     ])
       .then(function (res) {
         ui = res[0].ui;
-        cuts = res[1];
-        (cuts.methods || []).forEach(function (m) { methodIndex[m.code] = m; });
+        data = res[1];
         lang = ui[load(LANG_KEY)] ? load(LANG_KEY) : "en";
         render();
       })
       .catch(function () {
         $("sections").innerHTML =
-          "<p style='color:var(--muted)'>Could not load cut data from <code>data/</code>. Serve this page over HTTP — browsers block fetch on file://.</p>";
+          "<p style='color:var(--muted)'>Could not load allium data from <code>data/</code>. Serve this page over HTTP — browsers block fetch on file://.</p>";
       });
 
     $("langBtn").addEventListener("click", function () {
