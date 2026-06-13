@@ -4,7 +4,7 @@
   { "code": "DAIRY", "en": "Dairy", "zh": "乳製品", "ingredients": ["MILK"] },
   { "code": "EGG", "en": "Egg", "zh": "蛋", "ingredients": ["EGGS"] },
   { "code": "BEAN", "en": "Bean & soy", "zh": "豆製品", "ingredients": ["TOFU"] },
-  { "code": "MEAT", "en": "Meat", "zh": "肉類", "ingredients": ["CHICKEN"] },
+  { "code": "MEAT", "en": "Meat", "zh": "肉類", "ingredients": ["CHICKEN", "PORK_NECK", "PORK_CAP"] },
   { "code": "SEAFOOD", "en": "Seafood", "zh": "海鮮", "ingredients": [] },
   { "code": "GRAIN", "en": "Grain", "zh": "穀物", "ingredients": ["BREAD", "RICE"] },
   { "code": "PREPARED", "en": "Prepared", "zh": "加工食品", "ingredients": ["DUMPLINGS"] },

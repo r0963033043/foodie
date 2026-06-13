@@ -11,6 +11,7 @@
 <div class="wrap">
 
   <header class="hero">
+    <div class="crumb"><a id="backLink" href="index.html"></a></div>
     <div class="brand">foodie</div>
     <h1 id="title"></h1>
     <p class="subtitle" id="subtitle"></p>
@@ -46,6 +47,7 @@
       document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
 
       $("langBtn").textContent = t.langToggle;
+      $("backLink").textContent = t.homeCrumb;
       $("title").textContent = t.recipesTitle;
       $("subtitle").textContent = t.recipesSubtitle;
 

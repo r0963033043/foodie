@@ -1,0 +1,102 @@
+{
+  "chefInitial": "C",
+  "servings": 2,
+  "main": ["PORK_NECK"],
+  "uses": ["PORK_NECK", "ONIONS", "GARLIC", "SCALLIONS"],
+  "en": {
+    "name": "Sesame Pork Neck (胡麻松阪豬)",
+    "method": "Pan-sear",
+    "ingredients": [
+      {
+        "group": "Main",
+        "items": [
+          { "name": "Marbled pork neck (松阪豬)", "amount": 190, "unit": "g" },
+          { "name": "Pink salt", "text": "to taste" },
+          { "name": "Black peppercorns, cracked", "text": "to taste" }
+        ]
+      },
+      {
+        "group": "To serve",
+        "items": [
+          { "name": "Onion, thinly sliced", "amount": 0.5, "unit": "pcs" },
+          { "name": "Garlic, minced", "amount": 1, "unit": "tsp" },
+          { "name": "Scallion, chopped", "amount": 1, "unit": "stalk" }
+        ]
+      }
+    ],
+    "sauce": [
+      { "name": "Sesame paste", "amount": 2, "unit": "tbsp" },
+      { "name": "Cool water, to loosen", "text": "as needed" }
+    ],
+    "steps": [
+      {
+        "phase": "Preparatory work",
+        "items": [
+          "Soak the sliced onion in ice water for about 10 minutes to crisp it and mellow the bite, then drain.",
+          "Loosen the sesame paste with a little cool water until it pours, and stir in half the minced garlic."
+        ]
+      },
+      {
+        "phase": "Start cook",
+        "items": [
+          "Heat a dry pan over medium — no oil, the pork renders its own fat. Sear the pork neck about 2–3 minutes per side until golden and just cooked through.",
+          "Rest briefly, then slice thinly across the grain and season with pink salt and cracked black pepper."
+        ]
+      },
+      {
+        "phase": "Plate",
+        "items": [
+          "Bed the iced onion on a plate, lay the pork over it, drizzle with the sesame sauce, and scatter the remaining garlic and the scallion. Serve."
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "name": "胡麻松阪豬",
+    "method": "煎",
+    "ingredients": [
+      {
+        "group": "主食材",
+        "items": [
+          { "name": "松阪豬（雪花豬頸肉）", "amount": 190, "unit": "克" },
+          { "name": "玫瑰鹽", "text": "適量" },
+          { "name": "黑胡椒粒", "text": "適量" }
+        ]
+      },
+      {
+        "group": "搭配",
+        "items": [
+          { "name": "洋蔥絲", "amount": 0.5, "unit": "顆" },
+          { "name": "蒜末", "amount": 1, "unit": "茶匙" },
+          { "name": "蔥花", "amount": 1, "unit": "根" }
+        ]
+      }
+    ],
+    "sauce": [
+      { "name": "芝麻醬", "amount": 2, "unit": "大匙" },
+      { "name": "冷開水（調稀用）", "text": "適量" }
+    ],
+    "steps": [
+      {
+        "phase": "前置作業",
+        "items": [
+          "洋蔥絲泡冰水約 10 分鐘，去除嗆味並更爽脆，瀝乾備用。",
+          "芝麻醬以少許冷開水調稀至可流動，拌入一半的蒜末。"
+        ]
+      },
+      {
+        "phase": "開始烹煮",
+        "items": [
+          "乾鍋中火加熱，免放油——松阪豬會逼出自身油脂。每面煎約 2～3 分鐘，至金黃且剛熟。",
+          "略為靜置後逆紋切薄片，撒上玫瑰鹽與黑胡椒粒調味。"
+        ]
+      },
+      {
+        "phase": "盛盤",
+        "items": [
+          "盤底鋪上冰鎮洋蔥絲，擺上豬肉片，淋上胡麻醬，再撒上剩餘蒜末與蔥花即可享用。"
+        ]
+      }
+    ]
+  }
+}

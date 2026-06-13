@@ -132,8 +132,47 @@ ul.pantry li:last-child { border-bottom: 0; }
 ul.pantry .item-row { display: flex; justify-content: space-between; gap: 16px; }
 ul.pantry .name { font-weight: 500; }
 ul.pantry .qty { color: var(--muted); white-space: nowrap; }
+ul.pantry .desc { color: var(--ink); font-size: 13px; margin-top: 4px; }
 ul.pantry .tip { color: var(--muted); font-size: 13px; margin-top: 4px; }
 ul.pantry .tip::before { content: "💡 "; }
+
+/* ===== Meat cuts (cuts.html) ===== */
+ul.cuts { list-style: none; margin: 0; padding: 0; }
+ul.cuts li { padding: 12px 0; border-bottom: 1px dashed var(--line); }
+ul.cuts li:last-child { border-bottom: 0; }
+ul.cuts .cut-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
+ul.cuts .cut-name { font-weight: 600; }
+ul.cuts .cut-alt { color: var(--muted); font-size: 13px; }
+ul.cuts .cut-desc { color: var(--muted); font-size: 14px; margin-top: 4px; }
+ul.cuts .cut-cook { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 6px; font-size: 12px; }
+ul.cuts .cook-label {
+  color: var(--muted); text-transform: uppercase; letter-spacing: .04em; margin-right: 2px;
+}
+ul.cuts .cook-chip { padding: 2px 9px; border-radius: 999px; font-weight: 500; border: 1px solid var(--line); }
+ul.cuts .cook-best .cook-chip { color: var(--accent); background: var(--accent-soft); border-color: var(--accent-soft); }
+ul.cuts .cook-best .cook-chip::before { content: "✓ "; }
+ul.cuts .cook-worst .cook-chip { color: var(--warn); border-color: var(--warn); }
+ul.cuts .cook-worst .cook-chip::before { content: "✗ "; }
+
+/* "What you can cook" suggestions (ingredients.html) */
+ul.cook-suggest { list-style: none; margin: 0; padding: 0; }
+ul.cook-suggest li {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px;
+  padding: 10px 0; border-bottom: 1px dashed var(--line);
+}
+ul.cook-suggest li:last-child { border-bottom: 0; }
+ul.cook-suggest .cook-dish { font-weight: 600; text-decoration: none; }
+ul.cook-suggest .cook-dish:hover { text-decoration: underline; }
+ul.cook-suggest .cook-ok { font-size: 12px; color: var(--accent); }
+ul.cook-suggest .cook-ok::before { content: "✓ "; }
+ul.cook-suggest .cook-missing {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--muted);
+}
+ul.cook-suggest .miss-chip {
+  padding: 2px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted);
+}
+ul.cook-suggest .miss-chip::before { content: "✗ "; color: var(--warn); }
 
 /* Click a row to edit its storage and amount */
 .edit-hint { color: var(--muted); font-size: 13px; margin: 6px 0 0; }

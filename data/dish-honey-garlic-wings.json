@@ -1,6 +1,8 @@
 {
   "chefInitial": "C",
   "servings": 3,
+  "main": ["CHICKEN"],
+  "uses": ["CHICKEN", "GARLIC", "SOY_SAUCE"],
   "en": {
     "name": "Honey Garlic Baked Chicken Wings",
     "method": "Oven",

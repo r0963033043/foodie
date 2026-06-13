@@ -1,6 +1,8 @@
 {
   "chefInitial": "C",
   "servings": 2,
+  "main": ["EGGS"],
+  "uses": ["EGGS", "SHIITAKE", "SCALLIONS", "SOY_SAUCE"],
   "en": {
     "name": "Silky Steamed Egg (茶碗蒸)",
     "method": "Steamer",

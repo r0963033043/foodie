@@ -49,12 +49,19 @@
       .then(function (d) { cache[id] = d; return d; });
   }
 
-  // List all dishes as { id, name: { en, zh } }, name pulled from each file.
+  // List all dishes as { id, name: { en, zh }, uses: [pantryCode…] }, pulled
+  // from each file. `uses` is the language-neutral list of pantry-item codes a
+  // dish needs, used by ingredients.html to suggest what you can cook.
   function listDishes() {
     return getDishIds().then(function (ids) {
       return Promise.all(ids.map(function (id) {
         return getDish(id).then(function (d) {
-          return { id: id, name: { en: d.en.name, zh: d.zh.name } };
+          return {
+            id: id,
+            name: { en: d.en.name, zh: d.zh.name },
+            main: (d.main || []).slice(),
+            uses: (d.uses || []).slice()
+          };
         });
       }));
     });

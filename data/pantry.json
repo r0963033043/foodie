@@ -1,82 +1,48 @@
 {
   "en": {
     "name": "My Ingredients",
-    "subtitle": "What's in the kitchen, and how to keep it fresh",
-    "groups": [
-      {
-        "storage": "fridge",
-        "items": [
-          { "code": "EGGS", "name": "Eggs", "amount": 6 },
-          { "code": "MILK", "name": "Milk", "amount": 1 },
-          { "code": "TOFU", "name": "Tofu", "amount": 1 },
-          { "code": "SCALLIONS", "name": "Scallions", "amount": 1 },
-          { "code": "LEAFY_GREENS", "name": "Leafy greens", "amount": 1 },
-          { "code": "SHIITAKE", "name": "Shiitake mushrooms", "amount": 1 },
-          { "code": "CABBAGE", "name": "Cabbage", "amount": 1 },
-          { "code": "DAIKON", "name": "Daikon radish", "amount": 1 },
-          { "code": "CARROT", "name": "Carrots", "amount": 3 }
-        ]
-      },
-      {
-        "storage": "freezer",
-        "items": [
-          { "code": "DUMPLINGS", "name": "Dumplings", "amount": 20 },
-          { "code": "CHICKEN", "name": "Chicken", "amount": 500 },
-          { "code": "BREAD", "name": "Sliced bread", "amount": 1 }
-        ]
-      },
-      {
-        "storage": "pantry",
-        "items": [
-          { "code": "RICE", "name": "Rice", "amount": 2 },
-          { "code": "ONIONS", "name": "Onions", "amount": 3 },
-          { "code": "POTATOES", "name": "Potatoes", "amount": 5 },
-          { "code": "SWEET_POTATOES", "name": "Sweet potatoes", "amount": 3 },
-          { "code": "GARLIC", "name": "Garlic", "amount": 1 },
-          { "code": "SOY_SAUCE", "name": "Soy sauce (unopened)", "amount": 1 },
-          { "code": "COOKING_OIL", "name": "Cooking oil", "amount": 1 }
-        ]
-      }
-    ]
+    "subtitle": "What's in the kitchen, and how to keep it fresh"
   },
   "zh": {
     "name": "我的食材",
-    "subtitle": "家裡有什麼，又該怎麼保存",
-    "groups": [
-      {
-        "storage": "fridge",
-        "items": [
-          { "code": "EGGS", "name": "雞蛋", "amount": 6 },
-          { "code": "MILK", "name": "鮮奶", "amount": 1 },
-          { "code": "TOFU", "name": "豆腐", "amount": 1 },
-          { "code": "SCALLIONS", "name": "蔥", "amount": 1 },
-          { "code": "LEAFY_GREENS", "name": "葉菜", "amount": 1 },
-          { "code": "SHIITAKE", "name": "香菇", "amount": 1 },
-          { "code": "CABBAGE", "name": "高麗菜", "amount": 1 },
-          { "code": "DAIKON", "name": "白蘿蔔", "amount": 1 },
-          { "code": "CARROT", "name": "紅蘿蔔", "amount": 3 }
-        ]
-      },
-      {
-        "storage": "freezer",
-        "items": [
-          { "code": "DUMPLINGS", "name": "水餃", "amount": 20 },
-          { "code": "CHICKEN", "name": "雞肉", "amount": 500 },
-          { "code": "BREAD", "name": "吐司", "amount": 1 }
-        ]
-      },
-      {
-        "storage": "pantry",
-        "items": [
-          { "code": "RICE", "name": "白米", "amount": 2 },
-          { "code": "ONIONS", "name": "洋蔥", "amount": 3 },
-          { "code": "POTATOES", "name": "馬鈴薯", "amount": 5 },
-          { "code": "SWEET_POTATOES", "name": "地瓜", "amount": 3 },
-          { "code": "GARLIC", "name": "大蒜", "amount": 1 },
-          { "code": "SOY_SAUCE", "name": "醬油（未開封）", "amount": 1 },
-          { "code": "COOKING_OIL", "name": "食用油", "amount": 1 }
-        ]
-      }
-    ]
-  }
+    "subtitle": "家裡有什麼，又該怎麼保存"
+  },
+  "groups": [
+    {
+      "storage": "fridge",
+      "items": [
+        { "code": "EGGS", "amount": 6, "en": { "name": "Eggs" }, "zh": { "name": "雞蛋" } },
+        { "code": "MILK", "amount": 1, "en": { "name": "Milk" }, "zh": { "name": "鮮奶" } },
+        { "code": "TOFU", "amount": 1, "en": { "name": "Tofu" }, "zh": { "name": "豆腐" } },
+        { "code": "SCALLIONS", "amount": 1, "en": { "name": "Scallions" }, "zh": { "name": "蔥" } },
+        { "code": "LEAFY_GREENS", "amount": 1, "en": { "name": "Leafy greens" }, "zh": { "name": "葉菜" } },
+        { "code": "SHIITAKE", "amount": 1, "en": { "name": "Shiitake mushrooms" }, "zh": { "name": "香菇" } },
+        { "code": "CABBAGE", "amount": 1, "en": { "name": "Cabbage" }, "zh": { "name": "高麗菜" } },
+        { "code": "DAIKON", "amount": 1, "en": { "name": "Daikon radish" }, "zh": { "name": "白蘿蔔" } },
+        { "code": "CARROT", "amount": 3, "en": { "name": "Carrots" }, "zh": { "name": "紅蘿蔔" } },
+        { "code": "PORK_NECK", "amount": 190, "en": { "name": "Marbled pork neck" }, "zh": { "name": "雪花豬頸肉" } },
+        { "code": "PORK_CAP", "amount": 150, "en": { "name": "Frost-marbled pork cap" }, "zh": { "name": "霜降僧帽肉" } }
+      ]
+    },
+    {
+      "storage": "freezer",
+      "items": [
+        { "code": "DUMPLINGS", "amount": 20, "en": { "name": "Dumplings" }, "zh": { "name": "水餃" } },
+        { "code": "CHICKEN", "amount": 500, "en": { "name": "Chicken" }, "zh": { "name": "雞肉" } },
+        { "code": "BREAD", "amount": 1, "en": { "name": "Sliced bread" }, "zh": { "name": "吐司" } }
+      ]
+    },
+    {
+      "storage": "pantry",
+      "items": [
+        { "code": "RICE", "amount": 2, "en": { "name": "Rice" }, "zh": { "name": "白米" } },
+        { "code": "ONIONS", "amount": 3, "en": { "name": "Onions" }, "zh": { "name": "洋蔥" } },
+        { "code": "POTATOES", "amount": 5, "en": { "name": "Potatoes" }, "zh": { "name": "馬鈴薯" } },
+        { "code": "SWEET_POTATOES", "amount": 3, "en": { "name": "Sweet potatoes" }, "zh": { "name": "地瓜" } },
+        { "code": "GARLIC", "amount": 1, "en": { "name": "Garlic" }, "zh": { "name": "大蒜" } },
+        { "code": "SOY_SAUCE", "amount": 1, "en": { "name": "Soy sauce (unopened)" }, "zh": { "name": "醬油（未開封）" } },
+        { "code": "COOKING_OIL", "amount": 1, "en": { "name": "Cooking oil" }, "zh": { "name": "食用油" } }
+      ]
+    }
+  ]
 }

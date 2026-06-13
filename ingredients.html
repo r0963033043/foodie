@@ -18,6 +18,8 @@
     <div class="view-toggle" id="viewToggle"></div>
   </header>
 
+  <section id="cookSuggest"></section>
+
   <button id="addBtn" class="add-btn" type="button"></button>
 
   <div id="groups"></div>
@@ -58,6 +60,10 @@
       <input type="date" id="editBought">
     </div>
     <div class="field">
+      <span class="field-label" id="editSourceLabel"></span>
+      <input type="text" id="editSource" maxlength="40" autocomplete="off">
+    </div>
+    <div class="field">
       <span class="field-label" id="editExpiryLabel"></span>
       <input type="date" id="editExpiry">
     </div>
@@ -72,6 +78,7 @@
   </form>
 </dialog>
 
+<script src="api.js"></script>
 <script>
   (function () {
     const LANG_KEY = "foodie.lang";
@@ -103,6 +110,7 @@
     let suggestItems = [];     // currently shown name suggestions
     let suggestActive = -1;    // highlighted suggestion index (keyboard nav)
     let viewMode = "storage";  // "storage" | "type" | "expiry"
+    let dishes = [];           // recipes from FoodieApi.listDishes(): { id, name, uses }
     let lang = "en";
 
     // Per-storage presentation, keyed off the language-neutral storage value.
@@ -128,11 +136,12 @@
     function allItems() {
       const list = [];
       const info = tipIndex[lang] || {};
-      const groups = (pantry[lang] && pantry[lang].groups) || [];
+      const groups = pantry.groups || [];
       groups.forEach(function (g) {
         g.items.forEach(function (it) {
           const entry = info[it.code] || {};
-          list.push({ code: it.code, name: it.name, amount: it.amount, unit: entry.unit, base: g.storage, type: typeOfCode[it.code] });
+          const name = (it[lang] && it[lang].name) || "";
+          list.push({ code: it.code, name: name, amount: it.amount, unit: entry.unit, base: g.storage, type: typeOfCode[it.code] });
         });
       });
       custom.forEach(function (c) {
@@ -157,11 +166,11 @@
     function catalogueItems() {
       const out = [];
       const info = tipIndex[lang] || {};
-      const groups = (pantry[lang] && pantry[lang].groups) || [];
+      const groups = pantry.groups || [];
       groups.forEach(function (g) {
         g.items.forEach(function (it) {
           const e = info[it.code] || {};
-          out.push({ code: it.code, name: it.name, unit: e.unit });
+          out.push({ code: it.code, name: (it[lang] && it[lang].name) || "", unit: e.unit });
         });
       });
       return out;
@@ -182,6 +191,89 @@
         c = "C" + Date.now().toString(36).toUpperCase() + Math.floor(Math.random() * 1000);
       } while (homeStorage[c]);
       return c;
+    }
+
+    // ===== "What you can cook" suggestions (pantry vs recipe `uses`) =====
+
+    // Set of pantry-item codes currently on hand (present and not deleted).
+    function presentCodes() {
+      const set = {};
+      allItems().forEach(function (it) { if (!deleted[it.code]) set[it.code] = true; });
+      return set;
+    }
+
+    // Current-language display name for a pantry code (data item or custom).
+    function nameForCode(code) {
+      const groups = (pantry && pantry.groups) || [];
+      for (let i = 0; i < groups.length; i++) {
+        const items = groups[i].items || [];
+        for (let j = 0; j < items.length; j++) {
+          if (items[j].code === code) return (items[j][lang] && items[j][lang].name) || code;
+        }
+      }
+      for (let k = 0; k < custom.length; k++) {
+        if (custom[k].code === code) return custom[k].name;
+      }
+      return code;
+    }
+
+    // Suggest dishes whose `uses` overlap the pantry: ready ones (all
+    // ingredients on hand) first, each linking to its recipe.
+    function renderCookSuggest() {
+      const box = $("cookSuggest");
+      if (!box) return;
+      box.innerHTML = "";
+      if (!dishes.length) return;
+      const t = ui[lang];
+      const present = presentCodes();
+
+      // Hide a dish unless its main ingredient(s) are on hand — no point
+      // suggesting a pork dish when there's no pork. Other missing items just
+      // show as chips. (No `main`? fall back to "any ingredient on hand".)
+      const entries = dishes.map(function (d) {
+        const uses = d.uses || [];
+        const main = d.main || [];
+        const have = uses.filter(function (c) { return present[c]; });
+        const missing = uses.filter(function (c) { return !present[c]; });
+        const mainOk = main.length
+          ? main.every(function (c) { return present[c]; })
+          : have.length > 0;
+        return { d: d, have: have, missing: missing, mainOk: mainOk };
+      }).filter(function (e) { return e.mainOk; });
+
+      entries.sort(function (a, b) {
+        const ar = a.missing.length === 0 ? 0 : 1;
+        const br = b.missing.length === 0 ? 0 : 1;
+        if (ar !== br) return ar - br;                       // ready first
+        if (a.missing.length !== b.missing.length) return a.missing.length - b.missing.length;
+        return b.have.length - a.have.length;
+      });
+      if (!entries.length) return;
+
+      const card = el("section", "card");
+      const h2 = el("h2");
+      h2.appendChild(el("span", "ic", "🍳"));
+      h2.appendChild(el("span", null, t.canCook));
+      card.appendChild(h2);
+
+      const ul = el("ul", "cook-suggest");
+      entries.forEach(function (e) {
+        const li = el("li");
+        const a = el("a", "cook-dish", e.d.name[lang]);
+        a.href = "dish.html?id=" + encodeURIComponent(e.d.id);
+        li.appendChild(a);
+        if (e.missing.length === 0) {
+          li.appendChild(el("span", "cook-ok", t.canCookHave));
+        } else {
+          const miss = el("span", "cook-missing");
+          miss.appendChild(el("span", "cook-missing-label", t.canCookMissing));
+          e.missing.forEach(function (c) { miss.appendChild(el("span", "miss-chip", nameForCode(c))); });
+          li.appendChild(miss);
+        }
+        ul.appendChild(li);
+      });
+      card.appendChild(ul);
+      box.appendChild(card);
     }
 
     function render() {
@@ -225,18 +317,21 @@
         li.appendChild(row);
 
         const entry = info[it.code];
+        const descText = entry && entry.description;
+        if (descText) li.appendChild(el("div", "desc", descText));
         const tipText = entry && entry.tip;
         if (tipText) li.appendChild(el("div", "tip", tipText));
 
         const md = meta[it.code] || {};
-        if (md.bought || md.expiry || md.updated) {
+        if (md.bought || md.source || md.expiry || md.updated) {
           const metaRow = el("div", "meta-row");
-          if (md.bought) metaRow.appendChild(el("span", "m-bought", t.metaBought + " " + md.bought));
           if (md.expiry) {
             const status = expiryStatus(md.expiry);
             const label = t.metaExpiry + " " + md.expiry + (status === "expired" ? " · " + t.expired : "");
             metaRow.appendChild(el("span", "m-expiry" + (status ? " " + status : ""), label));
           }
+          if (md.bought) metaRow.appendChild(el("span", "m-bought", t.metaBought + " " + md.bought));
+          if (md.source) metaRow.appendChild(el("span", "m-source", t.metaSource + " " + md.source));
           if (md.updated) metaRow.appendChild(el("span", "m-updated", t.metaUpdated + " " + fmtDateTime(md.updated)));
           li.appendChild(metaRow);
         }
@@ -280,6 +375,8 @@
           section(pres.ic, t[pres.labelKey], members);
         });
       }
+
+      renderCookSuggest();
     }
 
     function renderViewChips(t) {
@@ -315,7 +412,7 @@
           typeName.zh[ft.code] = ft.zh;
           (ft.ingredients || []).forEach(function (code) { typeOfCode[code] = ft.code; });
         });
-        ((pantry.en && pantry.en.groups) || []).forEach(function (g) {
+        (pantry.groups || []).forEach(function (g) {
           g.items.forEach(function (it) {
             homeStorage[it.code] = g.storage;
             homeAmount[it.code] = it.amount;
@@ -331,6 +428,11 @@
         if (savedView === "type" || savedView === "expiry" || savedView === "storage") viewMode = savedView;
         lang = ui[load(LANG_KEY)] ? load(LANG_KEY) : "en";
         render();
+        if (window.FoodieApi) {
+          FoodieApi.listDishes()
+            .then(function (d) { dishes = d; renderCookSuggest(); })
+            .catch(function () {});
+        }
       })
       .catch(function () {
         $("groups").innerHTML =
@@ -361,11 +463,12 @@
       store(AMOUNTS_KEY, JSON.stringify(amounts));
     }
 
-    // Save the purchase / best-before dates and stamp the update time.
-    function setMeta(code, bought, expiry) {
+    // Save the purchase source, dates and stamp the update time.
+    function setMeta(code, bought, expiry, source) {
       const m = {};
       if (bought) m.bought = bought;
       if (expiry) m.expiry = expiry;
+      if (source) m.source = source;
       m.updated = new Date().toISOString();
       meta[code] = m;
       store(META_KEY, JSON.stringify(meta));
@@ -400,6 +503,7 @@
       $("editStorageLabel").textContent = t.editStorageLabel;
       $("editAmountLabel").textContent = t.editAmountLabel;
       $("editBoughtLabel").textContent = t.metaBought;
+      $("editSourceLabel").textContent = t.metaSource;
       $("editExpiryLabel").textContent = t.metaExpiry;
       $("editUpdatedLabel").textContent = t.metaUpdated;
       $("editReset").textContent = t.editReset;
@@ -495,6 +599,7 @@
 
       const md = meta[code] || {};
       $("editBought").value = md.bought || "";
+      $("editSource").value = md.source || "";
       $("editExpiry").value = md.expiry || "";
       $("editUpdated").textContent = md.updated ? fmtDateTime(md.updated) : "—";
 
@@ -520,6 +625,7 @@
       $("editUnitInput").placeholder = t.editUnitPlaceholder;
       $("editAmount").value = "";
       $("editBought").value = "";
+      $("editSource").value = "";
       $("editExpiry").value = "";
       $("editUpdated").textContent = "—";
       hideSuggest();
@@ -616,7 +722,7 @@
           if (deleted[code]) { delete deleted[code]; store(DELETED_KEY, JSON.stringify(deleted)); }
           setMove(code, editStorage);
           setAmount(code, amt);
-          setMeta(code, $("editBought").value, $("editExpiry").value);
+          setMeta(code, $("editBought").value, $("editExpiry").value, $("editSource").value);
         } else {
           const code = newCode();
           custom.push({
@@ -629,7 +735,7 @@
           });
           store(CUSTOM_KEY, JSON.stringify(custom));
           registerCustom();
-          setMeta(code, $("editBought").value, $("editExpiry").value);
+          setMeta(code, $("editBought").value, $("editExpiry").value, $("editSource").value);
         }
         editingCode = null;
         editMode = null;
@@ -643,7 +749,7 @@
       const val = raw === "" ? null : parseFloat(raw);
       setMove(editingCode, editStorage);
       setAmount(editingCode, (val != null && !isNaN(val)) ? val : null);
-      setMeta(editingCode, $("editBought").value, $("editExpiry").value);
+      setMeta(editingCode, $("editBought").value, $("editExpiry").value, $("editSource").value);
       editingCode = null;
       editMode = null;
       render();
