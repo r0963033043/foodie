@@ -1,21 +1,23 @@
 {
-  "hidden": true,
   "id": "ay-chung-misua",
-  "lat": 25.0443,
-  "lng": 121.5076,
   "emoji": "🍲",
-  "hasBranches": true,
   "price": "$",
   "partySize": { "min": 1, "max": 2 },
+  "hidden": true,
+  "hasBranches": true,
+  "locations": [
+    {
+      "lat": 25.0443,
+      "lng": 121.5076,
+      "en": { "address": "No. 8-1, Emei St", "district": "Wanhua District", "city": "Taipei", "shoppingDistrict": ["Ximen"] },
+      "zh": { "address": "峨眉街8-1號", "district": "萬華區", "city": "台北市", "shoppingDistrict": ["西門"] }
+    }
+  ],
   "en": {
     "name": "Ay-Chung Flour-Rice Noodle",
     "cuisine": "Misua · Street Food",
     "mainType": "Meal",
-    "city": "Taipei",
-    "district": "Wanhua District",
-    "address": "No. 8-1, Emei St",
-    "shoppingDistrict": ["Ximen"],
-    "mealtime": ["Breakfast","Lunch", "Dinner", "Late-night"],
+    "mealtime": ["Breakfast", "Lunch", "Dinner", "Late-night"],
     "tags": ["Street Food"],
     "service": ["Outdoor", "Takeout"],
     "note": "Standing-only stall in Ximending famed for intestine misua."
@@ -24,11 +26,7 @@
     "name": "阿宗麵線",
     "cuisine": "麵線",
     "mainType": "正餐",
-    "city": "台北市",
-    "district": "萬華區",
-    "address": "峨眉街8-1號",
-    "shoppingDistrict": ["西門"],
-    "mealtime": ["早餐","午餐", "晚餐", "宵夜"],
+    "mealtime": ["早餐", "午餐", "晚餐", "宵夜"],
     "tags": ["小吃"],
     "service": ["室外", "外帶"],
     "note": "西門町站著吃的大腸麵線名店。"

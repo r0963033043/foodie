@@ -1,22 +1,24 @@
 {
   "id": "puzzle-kitchen-xining",
-  "lat": 25.0448,
-  "lng": 121.5067,
   "emoji": "🥩",
-  "hasBranches": true,
   "price": "$$",
   "partySize": { "min": 1, "max": 4 },
   "website": [
     { "platform": "instagram", "url": "https://www.instagram.com/peppercharm.tw/" }
   ],
+  "hasBranches": true,
+  "locations": [
+    {
+      "lat": 25.0448,
+      "lng": 121.5067,
+      "en": { "address": "2F, No. 46, Xining S Rd", "district": "Wanhua District", "city": "Taipei", "shoppingDistrict": ["Ximen"] },
+      "zh": { "address": "西寧南路46號2樓", "district": "萬華區", "city": "台北市", "shoppingDistrict": ["西門"] }
+    }
+  ],
   "en": {
     "name": "Puzzle Kitchen (Xining)",
     "cuisine": "Teppanyaki · DIY",
     "mainType": "Meal",
-    "city": "Taipei",
-    "district": "Wanhua District",
-    "address": "2F, No. 46, Xining S Rd",
-    "shoppingDistrict": ["Ximen"],
     "mealtime": ["Lunch", "Dinner"],
     "tags": ["Japanese"],
     "service": ["Indoor", "Takeout"],
@@ -26,10 +28,6 @@
     "name": "味道拼圖（西寧店）",
     "cuisine": "鐵板燒",
     "mainType": "正餐",
-    "city": "台北市",
-    "district": "萬華區",
-    "address": "西寧南路46號2樓",
-    "shoppingDistrict": ["西門"],
     "mealtime": ["午餐", "晚餐"],
     "tags": ["日式"],
     "service": ["室內", "外帶"],

@@ -1,0 +1,59 @@
+{
+  "id": "chicken-soup-life",
+  "emoji": "🍜",
+  "price": "$$",
+  "partySize": { "min": 1, "max": 4 },
+  "menuUpdated": "2026-06-13",
+  "website": [
+    { "platform": "instagram", "url": "https://www.instagram.com/chicken__soup__life/" },
+    { "platform": "facebook", "url": "https://www.facebook.com/people/%E9%9B%9E%E6%B9%AF%E4%BA%BA%E7%94%9F/61567462803616" }
+  ],
+  "reservationUrl": [
+    { "platform": "ubereats", "url": "https://www.ubereats.com/tw/store/%E9%9B%9E%E6%B9%AF%E4%BA%BA%E7%94%9F/Fyd660ONVwmPNsyVZ10MLg" }
+  ],
+  "hasBranches": false,
+  "locations": [
+    {
+      "lat": 25.0418,
+      "lng": 121.547,
+      "en": { "address": "No. 10, Ln 51, Sec. 1, Da'an Rd", "district": "Da'an District", "city": "Taipei", "shoppingDistrict": ["East District"] },
+      "zh": { "address": "大安路一段51巷10號", "district": "大安區", "city": "台北市", "shoppingDistrict": ["東區"] }
+    }
+  ],
+  "en": {
+    "name": "Chicken Soup Life",
+    "cuisine": "Chicken Soup · Noodles",
+    "mainType": "Meal",
+    "mealtime": ["Lunch", "Dinner"],
+    "tags": ["Taiwanese"],
+    "service": ["Indoor", "Takeout"],
+    "note": "Rich old-hen broth simmered eight hours, served as soup noodles.",
+    "menu": [
+      { "name": "Pickled Chili Chicken Soup Noodles", "price": "NT$270" },
+      { "name": "Sea Bass & Clam Chicken Soup Noodles", "price": "NT$270" },
+      { "name": "Pepper Pork Tripe Chicken Soup Noodles", "price": "NT$270" },
+      { "name": "Garlic & Clam Chicken Soup Noodles", "price": "NT$270" },
+      { "name": "Seasonal Greens in Chicken Oil", "price": "NT$75" },
+      { "name": "Smoked Boneless Chicken Feet", "price": "NT$75" },
+      { "name": "Braised Bamboo Shoots", "price": "NT$75" }
+    ]
+  },
+  "zh": {
+    "name": "雞湯人生",
+    "cuisine": "雞湯 · 麵食",
+    "mainType": "正餐",
+    "mealtime": ["午餐", "晚餐"],
+    "tags": ["台式"],
+    "service": ["室內", "外帶"],
+    "note": "每日熬煮八小時的老母雞湯頭，溫潤順口，做成雞湯麵。",
+    "menu": [
+      { "name": "老火剝皮辣椒雞湯（麵）", "price": "NT$270" },
+      { "name": "老火鱸魚蛤蜊雞湯（麵）", "price": "NT$270" },
+      { "name": "老火胡椒豬肚雞湯（麵）", "price": "NT$270" },
+      { "name": "老火蒜頭蛤蜊雞湯（麵）", "price": "NT$270" },
+      { "name": "雞油拌季節時蔬", "price": "NT$75" },
+      { "name": "煙燻無骨鳳爪", "price": "NT$75" },
+      { "name": "油悶桂竹筍", "price": "NT$75" }
+    ]
+  }
+}

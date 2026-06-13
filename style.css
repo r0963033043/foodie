@@ -307,6 +307,7 @@ ol.steps li::before {
 .leaflet-popup-content { margin: 12px 14px; }
 .leaflet-popup-content .pop-name { display: block; font-weight: 600; }
 .leaflet-popup-content .pop-cuisine { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+.leaflet-popup-content .pop-addr { display: block; color: var(--muted); font-size: 12px; margin-top: 4px; }
 .leaflet-popup-content .pop-links { display: grid; gap: 4px; margin-top: 8px; }
 .leaflet-popup-content .pop-link { font-size: 13px; font-weight: 600; }
 .leaflet-popup-content-wrapper a.leaflet-popup-close-button { color: var(--muted); }
@@ -337,8 +338,12 @@ ol.steps li::before {
 }
 .eatery-head h1 { margin: 0; font-size: 26px; }
 .hero .addr { color: var(--muted); font-size: 14px; margin: 6px 0 10px; }
+.hero .branches { display: grid; gap: 4px; margin: 6px 0 10px; }
+.hero .branch { color: var(--muted); font-size: 14px; }
+.hero .branch-name { font-weight: 600; color: var(--ink); margin-right: 6px; }
 .menu-name .sub { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
 #menuBody .empty { color: var(--muted); font-size: 14px; }
+#menuBody .menu-updated { color: var(--muted); font-size: 12px; margin-top: 10px; }
 
 /* ===== Eatery listing (maps.html) ===== */
 .eatery-card .empty, .grid .empty { color: var(--muted); font-size: 14px; }

@@ -1,0 +1,40 @@
+{
+  "id": "broth-master",
+  "emoji": "🍲",
+  "price": "$$",
+  "partySize": { "min": 1, "max": 6 },
+  "website": [
+    { "platform": "instagram", "url": "https://www.instagram.com/broth.master/" },
+    { "platform": "facebook", "url": "https://www.facebook.com/Broth.master/" }
+  ],
+  "reservationUrl": [
+    { "platform": "inline", "url": "https://inline.app/booking/-KyUwHjTtluQ2lMeO1f_?language=zh-tw" }
+  ],
+  "hasBranches": true,
+  "locations": [
+    {
+      "lat": 25.0518,
+      "lng": 121.549,
+      "en": { "address": "No. 100, Dunhua N Rd", "district": "Songshan District", "city": "Taipei", "shoppingDistrict": ["Songshan"] },
+      "zh": { "address": "敦化北路100號", "district": "松山區", "city": "台北市", "shoppingDistrict": ["松山"] }
+    }
+  ],
+  "en": {
+    "name": "Broth Master",
+    "cuisine": "Chicken Soup Hot Pot · French",
+    "mainType": "Meal",
+    "mealtime": ["Lunch", "Dinner", "Late-night"],
+    "tags": ["Hot Pot"],
+    "service": ["Indoor"],
+    "note": "French-style chicken-broth personal hot pot; signature clear vegetable and brandy-stewed chicken soups."
+  },
+  "zh": {
+    "name": "雞湯大叔",
+    "cuisine": "雞湯火鍋 · 法式",
+    "mainType": "正餐",
+    "mealtime": ["午餐", "晚餐", "宵夜"],
+    "tags": ["火鍋"],
+    "service": ["室內"],
+    "note": "主打法式雞湯的個人鍋，定番有清爽蔬果雞湯與白蘭地燉雞湯。"
+  }
+}

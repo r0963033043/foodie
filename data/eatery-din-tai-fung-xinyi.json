@@ -1,9 +1,6 @@
 {
   "id": "din-tai-fung-xinyi",
-  "lat": 25.0336,
-  "lng": 121.5302,
   "emoji": "🥟",
-  "hasBranches": true,
   "price": "$$$",
   "partySize": { "min": 1, "max": 6 },
   "website": [
@@ -12,14 +9,19 @@
   "reservationUrl": [
     { "platform": "inline", "url": "https://inline.app/order/-KNf3CgtuFU5cea5_nVg/-MduQ-lrFdsCoIYh040B?language=zh-tw" }
   ],
+  "hasBranches": true,
+  "locations": [
+    {
+      "lat": 25.0336,
+      "lng": 121.5302,
+      "en": { "address": "No. 194, Sec. 2, Xinyi Rd", "district": "Da'an District", "city": "Taipei", "shoppingDistrict": ["DongmenYongkang"] },
+      "zh": { "address": "信義路二段194號", "district": "大安區", "city": "台北市", "shoppingDistrict": ["東門永康"] }
+    }
+  ],
   "en": {
     "name": "Din Tai Fung (Xinyi)",
     "cuisine": "Xiaolongbao · Taiwanese",
     "mainType": "Meal",
-    "city": "Taipei",
-    "district": "Da'an District",
-    "address": "No. 194, Sec. 2, Xinyi Rd",
-    "shoppingDistrict": ["DongmenYongkang"],
     "mealtime": ["Lunch", "Dinner"],
     "tags": ["Taiwanese"],
     "service": ["Indoor", "Takeout"],
@@ -36,10 +38,6 @@
     "name": "鼎泰豐（信義店）",
     "cuisine": "小籠包",
     "mainType": "正餐",
-    "city": "台北市",
-    "district": "大安區",
-    "address": "信義路二段194號",
-    "shoppingDistrict": ["東門永康"],
     "mealtime": ["午餐", "晚餐"],
     "tags": ["台式"],
     "service": ["室內", "外帶"],

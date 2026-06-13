@@ -1,19 +1,21 @@
 {
   "id": "da-wan-roast",
-  "lat": 25.0429,
-  "lng": 121.5112,
   "emoji": "🍗",
-  "hasBranches": false,
   "price": "$",
   "partySize": { "min": 1, "max": 4 },
+  "hasBranches": false,
+  "locations": [
+    {
+      "lat": 25.0429,
+      "lng": 121.5112,
+      "en": { "address": "1F, No. 7, Ln 101, Yanping S Rd", "district": "Zhongzheng District", "city": "Taipei", "shoppingDistrict": ["Ximen"] },
+      "zh": { "address": "延平南路101巷7號1樓", "district": "中正區", "city": "台北市", "shoppingDistrict": ["西門"] }
+    }
+  ],
   "en": {
     "name": "Da Wan Roast & Hainan Chicken",
     "cuisine": "Roast Meat · Hainan Chicken",
     "mainType": "Meal",
-    "city": "Taipei",
-    "district": "Zhongzheng District",
-    "address": "1F, No. 7, Ln 101, Yanping S Rd",
-    "shoppingDistrict": ["Ximen"],
     "mealtime": ["Lunch", "Dinner"],
     "tags": ["Cantonese"],
     "service": ["Indoor", "Takeout"],
@@ -23,10 +25,6 @@
     "name": "大碗燒臘 海南雞飯",
     "cuisine": "燒臘 · 海南雞飯",
     "mainType": "正餐",
-    "city": "台北市",
-    "district": "中正區",
-    "address": "延平南路101巷7號1樓",
-    "shoppingDistrict": ["西門"],
     "mealtime": ["午餐", "晚餐"],
     "tags": ["粵式"],
     "service": ["室內", "外帶"],

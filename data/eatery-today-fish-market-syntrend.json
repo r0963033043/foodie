@@ -1,22 +1,24 @@
 {
   "id": "today-fish-market-syntrend",
-  "lat": 25.0444,
-  "lng": 121.5316,
   "emoji": "🍣",
-  "hasBranches": true,
   "price": "$$",
   "partySize": { "min": 1, "max": 4 },
   "reservationUrl": [
     { "platform": "inline", "url": "https://inline.app/booking/-NmQaQ38eeyOqL3hdnqL:inline-live-3/-NmQaQGf8bKtdmR81-0a" }
   ],
+  "hasBranches": true,
+  "locations": [
+    {
+      "lat": 25.0444,
+      "lng": 121.5316,
+      "en": { "address": "No. 39, Sec. 1, Bade Rd", "district": "Zhongzheng District", "city": "Taipei", "shoppingDistrict": ["Guanghua"] },
+      "zh": { "address": "八德路一段39號", "district": "中正區", "city": "台北市", "shoppingDistrict": ["光華"] }
+    }
+  ],
   "en": {
     "name": "Today Fish Market (Syntrend)",
     "cuisine": "Seafood Donburi · Sashimi",
     "mainType": "Meal",
-    "city": "Taipei",
-    "district": "Zhongzheng District",
-    "address": "No. 39, Sec. 1, Bade Rd",
-    "shoppingDistrict": ["Guanghua"],
     "mealtime": ["Lunch", "Dinner"],
     "tags": ["Japanese"],
     "service": ["Indoor", "Takeout"],
@@ -33,10 +35,6 @@
     "name": "今日魚市 光華三創店",
     "cuisine": "海鮮丼 · 生魚片",
     "mainType": "正餐",
-    "city": "台北市",
-    "district": "中正區",
-    "address": "八德路一段39號",
-    "shoppingDistrict": ["光華"],
     "mealtime": ["午餐", "晚餐"],
     "tags": ["日式"],
     "service": ["室內", "外帶"],

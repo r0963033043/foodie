@@ -1,22 +1,24 @@
 {
   "id": "gan-mei-alley",
-  "lat": 25.0435,
-  "lng": 121.5052,
   "emoji": "🥟",
-  "hasBranches": false,
   "price": "$$",
   "partySize": { "min": 2, "max": 6 },
   "website": [
     { "platform": "facebook", "url": "https://www.facebook.com/ganmeialley/" }
   ],
+  "hasBranches": false,
+  "locations": [
+    {
+      "lat": 25.0435,
+      "lng": 121.5052,
+      "en": { "address": "No. 130, Kunming St", "district": "Wanhua District", "city": "Taipei", "shoppingDistrict": ["Ximen"] },
+      "zh": { "address": "昆明街130號", "district": "萬華區", "city": "台北市", "shoppingDistrict": ["西門"] }
+    }
+  ],
   "en": {
     "name": "Gan Mei Alley",
     "cuisine": "Hakka · Fusion",
     "mainType": "Meal",
-    "city": "Taipei",
-    "district": "Wanhua District",
-    "address": "No. 130, Kunming St",
-    "shoppingDistrict": ["Ximen"],
     "mealtime": ["Breakfast", "Lunch", "Dinner"],
     "tags": ["Hakka"],
     "service": ["Indoor", "Takeout"],
@@ -26,10 +28,6 @@
     "name": "甘妹弄堂（西門店）",
     "cuisine": "客家菜",
     "mainType": "正餐",
-    "city": "台北市",
-    "district": "萬華區",
-    "address": "昆明街130號",
-    "shoppingDistrict": ["西門"],
     "mealtime": ["早餐", "午餐", "晚餐"],
     "tags": ["客家"],
     "service": ["室內", "外帶"],

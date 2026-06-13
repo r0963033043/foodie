@@ -1,0 +1,58 @@
+{
+  "id": "tori-san",
+  "emoji": "🍜",
+  "price": "$$",
+  "partySize": { "min": 1, "max": 4 },
+  "website": [
+    { "platform": "instagram", "url": "https://www.instagram.com/torisan.tw/" },
+    { "platform": "facebook", "url": "https://www.facebook.com/Torisan.tw/" }
+  ],
+  "reservationUrl": [
+    { "platform": "inline", "url": "https://inline.app/booking/-NTO1PaXeOIeDB1OP6tr:inline-live-3" }
+  ],
+  "hasBranches": true,
+  "locations": [
+    {
+      "lat": 25.0518,
+      "lng": 121.543,
+      "en": { "name": "Nanjing", "address": "No. 275, Sec. 3, Nanjing E Rd", "district": "Songshan District", "city": "Taipei", "shoppingDistrict": ["Songshan"] },
+      "zh": { "name": "南京一店", "address": "南京東路三段275號", "district": "松山區", "city": "台北市", "shoppingDistrict": ["松山"] }
+    },
+    {
+      "lat": 25.077,
+      "lng": 121.5755,
+      "en": { "name": "Gangqian", "address": "No. 157, Gangqian Rd", "district": "Neihu District", "city": "Taipei", "shoppingDistrict": ["Neihu"] },
+      "zh": { "name": "港墘店", "address": "港墘路157號", "district": "內湖區", "city": "台北市", "shoppingDistrict": ["內湖"] }
+    },
+    {
+      "lat": 25.0577,
+      "lng": 121.5215,
+      "en": { "name": "Zhongshan", "address": "No. 10, Minsheng W Rd", "district": "Zhongshan District", "city": "Taipei", "shoppingDistrict": ["Zhongshan"] },
+      "zh": { "name": "中山店", "address": "民生西路10號", "district": "中山區", "city": "台北市", "shoppingDistrict": ["中山"] }
+    },
+    {
+      "lat": 25.0608,
+      "lng": 121.533,
+      "en": { "name": "Xingtian Temple", "address": "1F, No. 273, Songjiang Rd", "district": "Zhongshan District", "city": "Taipei", "shoppingDistrict": ["Xingtian Temple"] },
+      "zh": { "name": "行天宮店", "address": "松江路273號1樓", "district": "中山區", "city": "台北市", "shoppingDistrict": ["行天宮"] }
+    }
+  ],
+  "en": {
+    "name": "Tori San",
+    "cuisine": "Ramen · Chicken Broth",
+    "mainType": "Meal",
+    "mealtime": ["Lunch", "Dinner"],
+    "tags": ["Japanese"],
+    "service": ["Indoor"],
+    "note": "Creamy chicken-paitan ramen from the Broth Master group; flavors include sakura yuzu, truffle porcini and Tokyo chicken-white."
+  },
+  "zh": {
+    "name": "雞湯桑 Tori San",
+    "cuisine": "拉麵 · 雞白湯",
+    "mainType": "正餐",
+    "mealtime": ["午餐", "晚餐"],
+    "tags": ["日式"],
+    "service": ["室內"],
+    "note": "雞湯大叔集團的雞白湯拉麵品牌，主打櫻花柚子、松露牛肝菌、東京雞白湯。"
+  }
+}

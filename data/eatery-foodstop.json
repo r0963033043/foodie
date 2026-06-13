@@ -1,22 +1,24 @@
 {
   "id": "foodstop",
-  "lat": 25.0445,
-  "lng": 121.5106,
   "emoji": "🥟",
-  "hasBranches": false,
   "price": "$",
   "partySize": { "min": 1, "max": 4 },
   "website": [
     { "platform": "facebook", "url": "https://www.facebook.com/p/%E9%A3%9F%E8%BC%9D%E5%91%B3%E8%95%BEfoodstop-100093074212164/" }
   ],
+  "hasBranches": false,
+  "locations": [
+    {
+      "lat": 25.0445,
+      "lng": 121.5106,
+      "en": { "address": "1F, No. 75, Yanping S Rd", "district": "Zhongzheng District", "city": "Taipei", "shoppingDistrict": ["Ximen"] },
+      "zh": { "address": "延平南路75號1樓", "district": "中正區", "city": "台北市", "shoppingDistrict": ["西門"] }
+    }
+  ],
   "en": {
     "name": "FoodStop",
     "cuisine": "Dumplings · Rice & Noodles",
     "mainType": "Meal",
-    "city": "Taipei",
-    "district": "Zhongzheng District",
-    "address": "1F, No. 75, Yanping S Rd",
-    "shoppingDistrict": ["Ximen"],
     "mealtime": ["Lunch", "Dinner"],
     "tags": ["Taiwanese"],
     "service": ["Indoor", "Takeout"],
@@ -26,10 +28,6 @@
     "name": "食輝味蕾 FOODSTOP 餃子•飯麵•好菜",
     "cuisine": "餃子 · 飯麵",
     "mainType": "正餐",
-    "city": "台北市",
-    "district": "中正區",
-    "address": "延平南路75號1樓",
-    "shoppingDistrict": ["西門"],
     "mealtime": ["午餐", "晚餐"],
     "tags": ["台式"],
     "service": ["室內", "外帶"],

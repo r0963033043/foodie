@@ -1,5 +1,5 @@
 [
-  { "code": "VEGETABLE", "en": "Vegetable", "zh": "蔬菜", "ingredients": ["SCALLIONS", "LEAFY_GREENS", "SHIITAKE", "CABBAGE", "ONIONS", "POTATOES", "SWEET_POTATOES", "GARLIC"] },
+  { "code": "VEGETABLE", "en": "Vegetable", "zh": "蔬菜", "ingredients": ["SCALLIONS", "LEAFY_GREENS", "SHIITAKE", "CABBAGE", "ONIONS", "POTATOES", "SWEET_POTATOES", "GARLIC", "DAIKON", "CARROT"] },
   { "code": "FRUIT", "en": "Fruit", "zh": "水果", "ingredients": [] },
   { "code": "DAIRY", "en": "Dairy", "zh": "乳製品", "ingredients": ["MILK"] },
   { "code": "EGG", "en": "Egg", "zh": "蛋", "ingredients": ["EGGS"] },

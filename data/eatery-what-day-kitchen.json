@@ -1,23 +1,25 @@
 {
   "id": "what-day-kitchen",
-  "lat": 25.0408,
-  "lng": 121.5044,
   "emoji": "🍳",
-  "hasBranches": false,
   "price": "$",
   "partySize": { "min": 1, "max": 4 },
   "website": [
     { "platform": "facebook", "url": "https://www.facebook.com/whatdaykitchen/" },
     { "platform": "instagram", "url": "https://www.instagram.com/what_day_kitchen/" }
   ],
+  "hasBranches": false,
+  "locations": [
+    {
+      "lat": 25.0408,
+      "lng": 121.5044,
+      "en": { "address": "No. 214-1, Kunming St", "district": "Wanhua District", "city": "Taipei", "shoppingDistrict": ["Ximen"] },
+      "zh": { "address": "昆明街214-1號", "district": "萬華區", "city": "台北市", "shoppingDistrict": ["西門"] }
+    }
+  ],
   "en": {
     "name": "What Day Kitchen",
     "cuisine": "Brunch · Fusion",
     "mainType": "Meal",
-    "city": "Taipei",
-    "district": "Wanhua District",
-    "address": "No. 214-1, Kunming St",
-    "shoppingDistrict": ["Ximen"],
     "mealtime": ["Breakfast", "Lunch", "Dinner"],
     "tags": ["Western"],
     "service": ["Indoor", "Takeout"],
@@ -27,10 +29,6 @@
     "name": "花嘴廚房",
     "cuisine": "早午餐",
     "mainType": "正餐",
-    "city": "台北市",
-    "district": "萬華區",
-    "address": "昆明街214-1號",
-    "shoppingDistrict": ["西門"],
     "mealtime": ["早餐", "午餐", "晚餐"],
     "tags": ["西式"],
     "service": ["室內", "外帶"],

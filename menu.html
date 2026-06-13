@@ -20,6 +20,7 @@
       </div>
     </div>
     <p class="addr" id="addr"></p>
+    <div class="branches" id="branchList"></div>
     <div class="tags" id="tags"></div>
   </header>
 
@@ -69,6 +70,32 @@
       return parts.filter(Boolean).join(sep);
     }
 
+    // An eatery's locations for display in the current language: { name, parts }
+    // where parts feeds fmtAddress. name is null for an unnamed (single) location.
+    function branchInfos(r) {
+      return (r.locations || []).map(function (b) {
+        const L_ = b[lang] || {};
+        return { name: L_.name || null, parts: L_ };
+      });
+    }
+
+    // The eatery's main (first) location address, formatted.
+    function mainAddr(r) {
+      const loc = (r.locations || [])[0];
+      return loc ? fmtAddress(loc[lang] || {}) : "";
+    }
+
+    // Union of a per-location field (current language) across all locations.
+    function locField(r, key) {
+      const out = [];
+      (r.locations || []).forEach(function (loc) {
+        const v = loc[lang] && loc[lang][key];
+        if (v == null) return;
+        (Array.isArray(v) ? v : [v]).forEach(function (x) { if (out.indexOf(x) === -1) out.push(x); });
+      });
+      return out;
+    }
+
     // Suitable party size, e.g. "2", "1–4", or "2+" (open-ended max).
     function fmtPartySize(p) {
       if (!p || p.min == null) return null;
@@ -78,10 +105,13 @@
 
     // External search/links — same queries the map popup uses.
     function gmapsUrl(r) {
-      const L_ = r[lang];
-      return FoodieLinks.gmaps(L_.name + " " + fmtAddress(L_));
+      return FoodieLinks.gmaps(r[lang].name + " " + mainAddr(r));
     }
-    function nameQuery(r) { return r[lang].name + " " + r[lang].city; }
+    function nameQuery(r) {
+      const loc = (r.locations || [])[0];
+      const city = (loc && loc[lang] && loc[lang].city) || "";
+      return r[lang].name + " " + city;
+    }
     function webUrl(r) { return FoodieLinks.webSearch(nameQuery(r)); }
     function youtubeUrl(r) { return FoodieLinks.youtubeSearch(nameQuery(r)); }
 
@@ -164,12 +194,26 @@
       $("emoji").textContent = eatery.emoji || "🍴";
       $("name").textContent = L_.name;
       $("cuisine").textContent = L_.cuisine;
-      $("addr").textContent = fmtAddress(L_);
+      $("addr").textContent = mainAddr(eatery);
+
+      // Location list: when the eatery has multiple locations, list each one's
+      // name + address and hide the single (main) address line.
+      const branchHost = $("branchList");
+      branchHost.innerHTML = "";
+      const infos = branchInfos(eatery);
+      const multi = infos.length > 1;
+      $("addr").style.display = multi ? "none" : "";
+      if (multi) infos.forEach(function (b) {
+        const row = el("div", "branch");
+        if (b.name) row.appendChild(el("span", "branch-name", b.name));
+        row.appendChild(el("span", "branch-addr", fmtAddress(b.parts)));
+        branchHost.appendChild(row);
+      });
 
       // Header chips, mirroring the map card (no distance chip — that's map-only).
       const tags = $("tags");
       tags.innerHTML = "";
-      const areas = L_.shoppingDistrict || [];
+      const areas = locField(eatery, "shoppingDistrict");
       const meals = L_.mealtime || [];
       const gtags = L_.tags || [];
       const service = L_.service || [];
@@ -201,6 +245,9 @@
           list.appendChild(li);
         });
         body.appendChild(list);
+        if (eatery.menuUpdated) {
+          body.appendChild(el("p", "menu-updated", t.menuUpdated + " · " + eatery.menuUpdated));
+        }
       }
 
       // Links

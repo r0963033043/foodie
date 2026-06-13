@@ -1,19 +1,21 @@
 {
   "id": "tian-tian-li",
-  "lat": 25.0452,
-  "lng": 121.5077,
   "emoji": "🍚",
-  "hasBranches": false,
   "price": "$",
   "partySize": { "min": 1, "max": 4 },
+  "hasBranches": false,
+  "locations": [
+    {
+      "lat": 25.0452,
+      "lng": 121.5077,
+      "en": { "address": "No. 1, Ln 32, Hanzhong St", "district": "Wanhua District", "city": "Taipei", "shoppingDistrict": ["Ximen"] },
+      "zh": { "address": "漢中街32巷1號", "district": "萬華區", "city": "台北市", "shoppingDistrict": ["西門"] }
+    }
+  ],
   "en": {
     "name": "Tian Tian Li",
     "cuisine": "Lu Rou Fan · Taiwanese",
     "mainType": "Meal",
-    "city": "Taipei",
-    "district": "Wanhua District",
-    "address": "No. 1, Ln 32, Hanzhong St",
-    "shoppingDistrict": ["Ximen"],
     "mealtime": ["Lunch", "Dinner"],
     "tags": ["Street Food"],
     "service": ["Indoor", "Takeout"],
@@ -23,10 +25,6 @@
     "name": "天天利美食坊",
     "cuisine": "滷肉飯 · 小吃",
     "mainType": "正餐",
-    "city": "台北市",
-    "district": "萬華區",
-    "address": "漢中街32巷1號",
-    "shoppingDistrict": ["西門"],
     "mealtime": ["午餐", "晚餐"],
     "tags": ["小吃"],
     "service": ["室內", "外帶"],

@@ -37,14 +37,16 @@
     let eateries = [];       // [{ id, lat, lng, emoji, en:{…}, zh:{…} }]
     let lang = "en";
     let map = null;
-    const markers = {};         // id -> Leaflet marker
+    const markers = {};         // id -> [Leaflet marker per branch]
 
     // Filterable dimensions. arr=true → the field is an array, else a scalar.
+    // loc=true → the field lives per-location (union across all of an eatery's
+    // locations); top=true → language-neutral top-level; else current-lang block.
     const DIMS = [
       { key: "mainType", arr: false, label: "filterMainType" },
-      { key: "city",     arr: false, label: "filterCity" },
-      { key: "district", arr: false, label: "filterDistrict" },
-      { key: "shoppingDistrict", arr: true,  label: "filterShoppingDistrict" },
+      { key: "city",     arr: false, loc: true, label: "filterCity" },
+      { key: "district", arr: false, loc: true, label: "filterDistrict" },
+      { key: "shoppingDistrict", arr: true,  loc: true, label: "filterShoppingDistrict" },
       { key: "mealtime", arr: true,  label: "filterMealtime" },
       { key: "partySize", arr: true, top: true, label: "filterPartySize" },
       { key: "service",  arr: true,  label: "filterService" },
@@ -80,6 +82,38 @@
         : [L_.address, L_.district, L_.city];
       const sep = lang === "zh" ? "" : ", ";
       return parts.filter(Boolean).join(sep);
+    }
+
+    // An eatery's location points (language-neutral coordinates), one per
+    // location. Every eatery has a locations[] (single-location ones hold one).
+    function branchCoords(r) {
+      return (r.locations || []).map(function (b) { return { lat: b.lat, lng: b.lng }; });
+    }
+
+    // An eatery's locations for display in the current language: { name, parts }
+    // where parts feeds fmtAddress. name is null for an unnamed (single) location.
+    function branchInfos(r) {
+      return (r.locations || []).map(function (b) {
+        const L_ = b[lang] || {};
+        return { name: L_.name || null, parts: L_ };
+      });
+    }
+
+    // The eatery's main (first) location address, formatted for the card/popup.
+    function mainAddr(r) {
+      const loc = (r.locations || [])[0];
+      return loc ? fmtAddress(loc[lang] || {}) : "";
+    }
+
+    // Union of a per-location field (current language) across all locations.
+    function locField(r, key) {
+      const out = [];
+      (r.locations || []).forEach(function (loc) {
+        const v = loc[lang] && loc[lang][key];
+        if (v == null) return;
+        (Array.isArray(v) ? v : [v]).forEach(function (x) { if (out.indexOf(x) === -1) out.push(x); });
+      });
+      return out;
     }
 
     // Great-circle distance in km between two lat/lng points (haversine).
@@ -135,15 +169,18 @@
     // Google Maps search URL for an eatery (name + address finds the real
     // place even though our stored coordinates are approximate).
     function gmapsUrl(r) {
-      const L_ = r[lang];
-      return FoodieLinks.gmaps(L_.name + " " + fmtAddress(L_));
+      return FoodieLinks.gmaps(r[lang].name + " " + mainAddr(r));
     }
 
     // Internal link to this eatery's menu page.
     function menuUrl(r) { return "menu.html?id=" + encodeURIComponent(r.id); }
 
     // Search queries use name + city to disambiguate chains.
-    function nameQuery(r) { return r[lang].name + " " + r[lang].city; }
+    function nameQuery(r) {
+      const loc = (r.locations || [])[0];
+      const city = (loc && loc[lang] && loc[lang].city) || "";
+      return r[lang].name + " " + city;
+    }
     function webUrl(r) { return FoodieLinks.webSearch(nameQuery(r)); }
     function youtubeUrl(r) { return FoodieLinks.youtubeSearch(nameQuery(r)); }
 
@@ -165,10 +202,12 @@
 
       const bounds = [];
       eateries.forEach(function (r) {
-        const m = L.marker([r.lat, r.lng]).addTo(map);
-        markers[r.id] = m;
-        bounds.push([r.lat, r.lng]);
-        m.on("click", function () { focus(r.id, false); });
+        markers[r.id] = branchCoords(r).map(function (p) {
+          const m = L.marker([p.lat, p.lng]).addTo(map);
+          bounds.push([p.lat, p.lng]);
+          m.on("click", function () { focus(r.id, false); });
+          return m;
+        });
       });
 
       if (bounds.length === 1) map.setView(bounds[0], 15);
@@ -177,24 +216,21 @@
     }
 
     // Bind a localized popup to each marker, refreshed on language change.
+    // Branch markers get the branch name appended and their own address.
     function bindPopups() {
-      const t = ui[lang];
       eateries.forEach(function (r) {
         const L_ = r[lang];
-        const wrap = document.createElement("div");
-        wrap.appendChild(el("span", "pop-name", L_.name));
-        wrap.appendChild(el("span", "pop-cuisine", L_.cuisine));
-        const links = el("div", "pop-links");
-        /*
-        const menuLink = el("a", "pop-link", t.menu);
-        menuLink.href = menuUrl(r);
-        links.appendChild(menuLink);
-        links.appendChild(extLink("pop-link", t.openInMaps, gmapsUrl(r)));
-        links.appendChild(extLink("pop-link", t.searchWeb, webUrl(r)));
-        links.appendChild(extLink("pop-link", t.searchYoutube, youtubeUrl(r)));
-         */
-        wrap.appendChild(links);
-        markers[r.id].bindPopup(wrap);
+        const ms = markers[r.id] || [];
+        const infos = branchInfos(r);
+        ms.forEach(function (m, i) {
+          const info = infos[i];
+          const wrap = document.createElement("div");
+          const name = (info && info.name) ? L_.name + " · " + info.name : L_.name;
+          wrap.appendChild(el("span", "pop-name", name));
+          wrap.appendChild(el("span", "pop-cuisine", L_.cuisine));
+          wrap.appendChild(el("span", "pop-addr", fmtAddress(info ? info.parts : L_)));
+          m.bindPopup(wrap);
+        });
       });
     }
 
@@ -202,8 +238,10 @@
     function focus(id, openPopup) {
       const r = eateries.find(function (x) { return x.id === id; });
       if (!r || !map) return;
-      map.setView([r.lat, r.lng], 16, { animate: true });
-      if (openPopup !== false && markers[id]) markers[id].openPopup();
+      const c = branchCoords(r)[0];
+      if (c) map.setView([c.lat, c.lng], 16, { animate: true });
+      const ms = markers[id];
+      if (openPopup !== false && ms && ms[0]) ms[0].openPopup();
 
       Array.prototype.forEach.call(
         document.querySelectorAll(".eatery-card"),
@@ -236,10 +274,12 @@
       return out;
     }
 
-    // Values of a dimension for one eatery. Top-level dims (e.g. price)
-    // are language-neutral; the rest live under the current language block.
+    // Values of a dimension for one eatery. top=language-neutral top-level;
+    // loc=per-location (unioned across the eatery's locations); else the
+    // current-language eatery block.
     function valuesFor(r, d) {
       if (d.key === "partySize") return partySizeValues(r.partySize);
+      if (d.loc) return locField(r, d.key);
       const v = d.top ? r[d.key] : r[lang][d.key];
       if (v == null) return [];
       return d.arr ? v : [v];
@@ -358,10 +398,10 @@
         // Display order: name, address, mealtime, tags, hasBranches, cuisine, note.
         const body = el("div", "body");
         body.appendChild(el("div", "name", L_.name));
-        body.appendChild(el("div", "addr", fmtAddress(L_)));
+        body.appendChild(el("div", "addr", mainAddr(r)));
 
         // shoppingDistrict / mealtime / tags / service / branches rendered as chips (skip if all absent).
-        const areas = L_.shoppingDistrict || [];
+        const areas = locField(r, "shoppingDistrict");
         const meals = L_.mealtime || [];
         const tags = L_.tags || [];
         const service = L_.service || [];
@@ -397,14 +437,17 @@
       list.forEach(function (r) { visible[r.id] = true; });
       const bounds = [];
       eateries.forEach(function (r) {
-        const m = markers[r.id];
-        if (!m) return;
-        if (visible[r.id]) {
-          if (!map.hasLayer(m)) m.addTo(map);
-          bounds.push([r.lat, r.lng]);
-        } else if (map.hasLayer(m)) {
-          map.removeLayer(m);
-        }
+        const ms = markers[r.id];
+        if (!ms) return;
+        const pts = branchCoords(r);
+        ms.forEach(function (m, i) {
+          if (visible[r.id]) {
+            if (!map.hasLayer(m)) m.addTo(map);
+            if (pts[i]) bounds.push([pts[i].lat, pts[i].lng]);
+          } else if (map.hasLayer(m)) {
+            map.removeLayer(m);
+          }
+        });
       });
       if (bounds.length) map.fitBounds(bounds, { padding: [40, 40], maxZoom: 16 });
     }
@@ -414,7 +457,11 @@
       let list = eateries.filter(matches);
       if (nearMe && userPos) {
         eateries.forEach(function (r) {
-          distances[r.id] = distanceKm(userPos.lat, userPos.lng, r.lat, r.lng);
+          let best = Infinity;
+          branchCoords(r).forEach(function (p) {
+            best = Math.min(best, distanceKm(userPos.lat, userPos.lng, p.lat, p.lng));
+          });
+          distances[r.id] = best;
         });
         list = list.slice().sort(function (a, b) {
           return distances[a.id] - distances[b.id];

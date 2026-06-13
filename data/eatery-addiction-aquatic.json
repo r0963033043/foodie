@@ -1,22 +1,25 @@
 {
   "id": "addiction-aquatic",
-  "lat": 25.0669,
-  "lng": 121.5372,
   "emoji": "🍣",
-  "hasBranches": false,
   "price": "$$$",
   "partySize": { "min": 1, "max": 4 },
   "website": [
     { "platform": "official", "url": "https://www.addiction.com.tw/" }
   ],
+  "hidden": true,
+  "hasBranches": false,
+  "locations": [
+    {
+      "lat": 25.0669,
+      "lng": 121.5372,
+      "en": { "address": "No. 18, Alley 2, Ln 410, Minzu E Rd", "district": "Zhongshan District", "city": "Taipei", "shoppingDistrict": ["Zhongshan"] },
+      "zh": { "address": "民族東路410巷2弄18號", "district": "中山區", "city": "台北市", "shoppingDistrict": ["中山"] }
+    }
+  ],
   "en": {
     "name": "Addiction Aquatic Development",
     "cuisine": "Seafood · Sushi",
     "mainType": "Meal",
-    "city": "Taipei",
-    "district": "Zhongshan District",
-    "address": "No. 18, Alley 2, Ln 410, Minzu E Rd",
-    "shoppingDistrict": ["Zhongshan"],
     "mealtime": ["Lunch", "Dinner", "Late-night"],
     "tags": ["Japanese"],
     "service": ["Indoor", "Outdoor", "Takeout"],
@@ -32,10 +35,6 @@
     "name": "上引水產",
     "cuisine": "海鮮 · 壽司",
     "mainType": "正餐",
-    "city": "台北市",
-    "district": "中山區",
-    "address": "民族東路410巷2弄18號",
-    "shoppingDistrict": ["中山"],
     "mealtime": ["午餐", "晚餐", "宵夜"],
     "tags": ["日式"],
     "service": ["室內", "室外", "外帶"],

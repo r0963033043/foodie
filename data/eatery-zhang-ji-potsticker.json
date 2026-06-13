@@ -1,19 +1,21 @@
 {
   "id": "zhang-ji-potsticker",
-  "lat": 25.0428,
-  "lng": 121.5110,
   "emoji": "🥟",
-  "hasBranches": true,
   "price": "$",
   "partySize": { "min": 1, "max": 4 },
+  "hasBranches": true,
+  "locations": [
+    {
+      "lat": 25.0428,
+      "lng": 121.511,
+      "en": { "address": "No. 79-1, Hengyang Rd", "district": "Zhongzheng District", "city": "Taipei", "shoppingDistrict": ["Ximen"] },
+      "zh": { "address": "衡陽路79-1號", "district": "中正區", "city": "台北市", "shoppingDistrict": ["西門"] }
+    }
+  ],
   "en": {
     "name": "Zhang Ji Potsticker & Beef Noodle",
     "cuisine": "Potstickers · Beef Noodle",
     "mainType": "Meal",
-    "city": "Taipei",
-    "district": "Zhongzheng District",
-    "address": "No. 79-1, Hengyang Rd",
-    "shoppingDistrict": ["Ximen"],
     "mealtime": ["Lunch", "Dinner"],
     "tags": ["Taiwanese"],
     "service": ["Indoor", "Takeout"],
@@ -23,10 +25,6 @@
     "name": "張記鍋貼牛肉麵",
     "cuisine": "鍋貼 · 牛肉麵",
     "mainType": "正餐",
-    "city": "台北市",
-    "district": "中正區",
-    "address": "衡陽路79-1號",
-    "shoppingDistrict": ["西門"],
     "mealtime": ["午餐", "晚餐"],
     "tags": ["台式"],
     "service": ["室內", "外帶"],

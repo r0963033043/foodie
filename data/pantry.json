@@ -12,7 +12,9 @@
           { "code": "SCALLIONS", "name": "Scallions", "amount": 1 },
           { "code": "LEAFY_GREENS", "name": "Leafy greens", "amount": 1 },
           { "code": "SHIITAKE", "name": "Shiitake mushrooms", "amount": 1 },
-          { "code": "CABBAGE", "name": "Cabbage", "amount": 1 }
+          { "code": "CABBAGE", "name": "Cabbage", "amount": 1 },
+          { "code": "DAIKON", "name": "Daikon radish", "amount": 1 },
+          { "code": "CARROT", "name": "Carrots", "amount": 3 }
         ]
       },
       {
@@ -50,7 +52,9 @@
           { "code": "SCALLIONS", "name": "蔥", "amount": 1 },
           { "code": "LEAFY_GREENS", "name": "葉菜", "amount": 1 },
           { "code": "SHIITAKE", "name": "香菇", "amount": 1 },
-          { "code": "CABBAGE", "name": "高麗菜", "amount": 1 }
+          { "code": "CABBAGE", "name": "高麗菜", "amount": 1 },
+          { "code": "DAIKON", "name": "白蘿蔔", "amount": 1 },
+          { "code": "CARROT", "name": "紅蘿蔔", "amount": 3 }
         ]
       },
       {

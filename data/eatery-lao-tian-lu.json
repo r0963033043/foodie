@@ -1,23 +1,25 @@
 {
-  "hidden": true,
   "id": "lao-tian-lu",
-  "lat": 25.0436,
-  "lng": 121.5066,
   "emoji": "🍢",
-  "hasBranches": true,
   "price": "$",
   "partySize": { "min": 1, "max": 2 },
   "website": [
     { "platform": "official", "url": "https://www.laotienlu.com.tw/" }
   ],
+  "hidden": true,
+  "hasBranches": true,
+  "locations": [
+    {
+      "lat": 25.0436,
+      "lng": 121.5066,
+      "en": { "address": "No. 56, Chengdu Rd", "district": "Wanhua District", "city": "Taipei", "shoppingDistrict": ["Ximen"] },
+      "zh": { "address": "成都路56號", "district": "萬華區", "city": "台北市", "shoppingDistrict": ["西門"] }
+    }
+  ],
   "en": {
     "name": "Lao Tian Lu",
     "cuisine": "Braised Deli · Snacks",
     "mainType": "Meal",
-    "city": "Taipei",
-    "district": "Wanhua District",
-    "address": "No. 56, Chengdu Rd",
-    "shoppingDistrict": ["Ximen"],
     "mealtime": ["Lunch", "Dinner", "Late-night"],
     "tags": ["Taiwanese"],
     "service": ["Takeout"],
@@ -27,10 +29,6 @@
     "name": "老天祿滷味",
     "cuisine": "滷味",
     "mainType": "正餐",
-    "city": "台北市",
-    "district": "萬華區",
-    "address": "成都路56號",
-    "shoppingDistrict": ["西門"],
     "mealtime": ["午餐", "晚餐", "宵夜"],
     "tags": ["台式"],
     "service": ["外帶"],

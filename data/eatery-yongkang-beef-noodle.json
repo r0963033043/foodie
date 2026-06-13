@@ -1,19 +1,21 @@
 {
   "id": "yongkang-beef-noodle",
-  "lat": 25.0330,
-  "lng": 121.5285,
   "emoji": "🍜",
-  "hasBranches": false,
   "price": "$$",
   "partySize": { "min": 1, "max": 4 },
+  "hasBranches": false,
+  "locations": [
+    {
+      "lat": 25.033,
+      "lng": 121.5285,
+      "en": { "address": "No. 17, Ln 31, Sec. 2, Jinshan S Rd", "district": "Da'an District", "city": "Taipei", "shoppingDistrict": ["DongmenYongkang"] },
+      "zh": { "address": "金山南路二段31巷17號", "district": "大安區", "city": "台北市", "shoppingDistrict": ["東門永康"] }
+    }
+  ],
   "en": {
     "name": "Yong Kang Beef Noodle",
     "cuisine": "Beef Noodle Soup",
     "mainType": "Meal",
-    "city": "Taipei",
-    "district": "Da'an District",
-    "address": "No. 17, Ln 31, Sec. 2, Jinshan S Rd",
-    "shoppingDistrict": ["DongmenYongkang"],
     "mealtime": ["Lunch", "Dinner"],
     "tags": ["Taiwanese"],
     "service": ["Indoor", "Takeout"],
@@ -29,10 +31,6 @@
     "name": "永康牛肉麵",
     "cuisine": "牛肉麵",
     "mainType": "正餐",
-    "city": "台北市",
-    "district": "大安區",
-    "address": "金山南路二段31巷17號",
-    "shoppingDistrict": ["東門永康"],
     "mealtime": ["午餐", "晚餐"],
     "tags": ["台式"],
     "service": ["室內", "外帶"],

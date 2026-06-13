@@ -1,20 +1,22 @@
 {
-  "hidden": true,
   "id": "ya-rou-bian",
-  "lat": 25.0440,
-  "lng": 121.5071,
   "emoji": "🦆",
-  "hasBranches": false,
   "price": "$$",
   "partySize": { "min": 1, "max": 4 },
+  "hidden": true,
+  "hasBranches": false,
+  "locations": [
+    {
+      "lat": 25.044,
+      "lng": 121.5071,
+      "en": { "address": "No. 98-2, Sec. 1, Zhonghua Rd", "district": "Wanhua District", "city": "Taipei", "shoppingDistrict": ["Ximen"] },
+      "zh": { "address": "中華路一段98-2號", "district": "萬華區", "city": "台北市", "shoppingDistrict": ["西門"] }
+    }
+  ],
   "en": {
     "name": "Ya Rou Bian",
     "cuisine": "Goose Noodle · Taiwanese",
     "mainType": "Meal",
-    "city": "Taipei",
-    "district": "Wanhua District",
-    "address": "No. 98-2, Sec. 1, Zhonghua Rd",
-    "shoppingDistrict": ["Ximen"],
     "mealtime": ["Lunch", "Dinner"],
     "tags": ["Taiwanese"],
     "service": ["Indoor", "Takeout"],
@@ -24,10 +26,6 @@
     "name": "鴨肉扁",
     "cuisine": "鵝肉麵",
     "mainType": "正餐",
-    "city": "台北市",
-    "district": "萬華區",
-    "address": "中華路一段98-2號",
-    "shoppingDistrict": ["西門"],
     "mealtime": ["午餐", "晚餐"],
     "tags": ["台式"],
     "service": ["室內", "外帶"],

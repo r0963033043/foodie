@@ -1,19 +1,21 @@
 {
   "id": "raohe-night-market",
-  "lat": 25.0511,
-  "lng": 121.5775,
   "emoji": "🏮",
-  "hasBranches": false,
   "price": "$",
   "partySize": { "min": 1, "max": null },
+  "hasBranches": false,
+  "locations": [
+    {
+      "lat": 25.0511,
+      "lng": 121.5775,
+      "en": { "address": "Raohe St", "district": "Songshan District", "city": "Taipei", "shoppingDistrict": ["Songshan"] },
+      "zh": { "address": "饒河街", "district": "松山區", "city": "台北市", "shoppingDistrict": ["松山"] }
+    }
+  ],
   "en": {
     "name": "Raohe Street Night Market",
     "cuisine": "Night Market · Street Food",
     "mainType": "Meal",
-    "city": "Taipei",
-    "district": "Songshan District",
-    "address": "Raohe St",
-    "shoppingDistrict": ["Raohe"],
     "mealtime": ["Dinner", "Late-night"],
     "tags": ["Street Food"],
     "service": ["Outdoor", "Takeout"],
@@ -29,10 +31,6 @@
     "name": "饒河街觀光夜市",
     "cuisine": "夜市",
     "mainType": "正餐",
-    "city": "台北市",
-    "district": "松山區",
-    "address": "饒河街",
-    "shoppingDistrict": ["饒河"],
     "mealtime": ["晚餐", "宵夜"],
     "tags": ["小吃"],
     "service": ["室外", "外帶"],

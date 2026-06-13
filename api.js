@@ -16,7 +16,7 @@
    * last. Within a district, manifest order is kept (sort is stable).
    */
   const DISTRICT_ORDER = [
-    "DongmenYongkang", "Guanghua", "Huashan", "Ximen", "Zhongshan", "Raohe"
+    "DongmenYongkang", "Guanghua", "Huashan", "Ximen", "Zhongshan", "Songshan"
   ];
 
   // Fetch the generated id lists once. { dishes: [...], eateries: [...] }.
@@ -74,7 +74,8 @@
 
   // Rank an eatery by its shopping district for display ordering.
   function districtRank(r) {
-    const d = (r.en && r.en.shoppingDistrict && r.en.shoppingDistrict[0]) || "";
+    const loc = (r.locations && r.locations[0]) || {};
+    const d = (loc.en && loc.en.shoppingDistrict && loc.en.shoppingDistrict[0]) || "";
     const i = DISTRICT_ORDER.indexOf(d);
     return i === -1 ? DISTRICT_ORDER.length : i;
   }

@@ -1,0 +1,64 @@
+{
+  "id": "m-one-cafe",
+  "emoji": "🥞",
+  "price": "$$",
+  "partySize": { "min": 1, "max": 4 },
+  "menuUpdated": "2026-06-13",
+  "website": [
+    { "platform": "instagram", "url": "https://www.instagram.com/m_one_cafe/" },
+    { "platform": "facebook", "url": "https://www.facebook.com/MOneCafetw/" }
+  ],
+  "reservationUrl": [
+    { "platform": "inline", "url": "https://inline.app/booking/-KlQrk_-A8GsWiFWM26u" },
+    { "platform": "ubereats", "url": "https://www.ubereats.com/tw/store/m-one-cafe/wYC8ou1rQ-qVA0iDYUK2TQ" }
+  ],
+  "hasBranches": true,
+  "locations": [
+    {
+      "lat": 25.0388,
+      "lng": 121.5451,
+      "en": { "name": "Da'an", "address": "No. 6-1, Ln 27, Sec. 4, Ren'ai Rd", "district": "Da'an District", "city": "Taipei", "shoppingDistrict": ["East District"] },
+      "zh": { "name": "大安本店", "address": "仁愛路四段27巷6-1號", "district": "大安區", "city": "台北市", "shoppingDistrict": ["東區"] }
+    },
+    {
+      "lat": 25.0372,
+      "lng": 121.5674,
+      "en": { "name": "Xinyi A11", "address": "3F, No. 11, Songshou Rd", "district": "Xinyi District", "city": "Taipei", "shoppingDistrict": ["Xinyi"] },
+      "zh": { "name": "信義 A11", "address": "松壽路11號3樓", "district": "信義區", "city": "台北市", "shoppingDistrict": ["信義"] }
+    }
+  ],
+  "en": {
+    "name": "M One Cafe",
+    "cuisine": "Brunch · American",
+    "mainType": "Meal",
+    "mealtime": ["Breakfast", "Lunch", "Dinner"],
+    "tags": ["Western"],
+    "service": ["Indoor", "Takeout"],
+    "note": "East District brunch favorite known for hand-made hash-brown rosti and omelettes.",
+    "menu": [
+      { "name": "M One Mixed Omelette", "price": "NT$470", "note": "Signature" },
+      { "name": "Beef Short Rib Breakfast", "price": "NT$750" },
+      { "name": "Beef & Hash Brown Breakfast", "price": "NT$480" },
+      { "name": "Bacon American Breakfast", "price": "NT$430" },
+      { "name": "Heaven Burger", "price": "NT$490" },
+      { "name": "Shrimp & Mentaiko Pasta", "price": "NT$510" }
+    ]
+  },
+  "zh": {
+    "name": "M One Cafe",
+    "cuisine": "早午餐 · 美式",
+    "mainType": "正餐",
+    "mealtime": ["早餐", "午餐", "晚餐"],
+    "tags": ["西式"],
+    "service": ["室內", "外帶"],
+    "note": "東區人氣早午餐，以手工薯絲餅與蛋捲聞名。",
+    "menu": [
+      { "name": "M One 什錦蛋捲", "price": "NT$470", "note": "招牌" },
+      { "name": "牛小排早餐", "price": "NT$750" },
+      { "name": "牛肉馬鈴薯餅早餐", "price": "NT$480" },
+      { "name": "培根美式早餐", "price": "NT$430" },
+      { "name": "天堂堡", "price": "NT$490" },
+      { "name": "鮮蝦明太子義大利麵", "price": "NT$510" }
+    ]
+  }
+}

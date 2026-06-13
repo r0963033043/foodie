@@ -1,19 +1,21 @@
 {
   "id": "mian-zu-fan-bao",
-  "lat": 25.0436,
-  "lng": 121.5318,
   "emoji": "🍜",
-  "hasBranches": false,
   "price": "$",
   "partySize": { "min": 1, "max": 4 },
+  "hasBranches": false,
+  "locations": [
+    {
+      "lat": 25.0436,
+      "lng": 121.5318,
+      "en": { "address": "Ln 82, Sec. 1, Bade Rd", "district": "Zhongzheng District", "city": "Taipei", "shoppingDistrict": ["Guanghua"] },
+      "zh": { "address": "八德路一段82巷", "district": "中正區", "city": "台北市", "shoppingDistrict": ["光華"] }
+    }
+  ],
   "en": {
     "name": "Mian Zu Fan Bao",
     "cuisine": "Rice & Noodles · Bento",
     "mainType": "Meal",
-    "city": "Taipei",
-    "district": "Zhongzheng District",
-    "address": "Ln 82, Sec. 1, Bade Rd",
-    "shoppingDistrict": ["Guanghua"],
     "mealtime": ["Lunch"],
     "tags": ["Taiwanese"],
     "service": ["Indoor", "Takeout"],
@@ -23,10 +25,6 @@
     "name": "麵足飯飽",
     "cuisine": "飯麵 · 便當",
     "mainType": "正餐",
-    "city": "台北市",
-    "district": "中正區",
-    "address": "八德路一段82巷",
-    "shoppingDistrict": ["光華"],
     "mealtime": ["午餐"],
     "tags": ["台式"],
     "service": ["室內", "外帶"],
