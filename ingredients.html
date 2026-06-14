@@ -819,12 +819,27 @@
         }
 
         if (code) {
-          // Re-add a known catalogue item: reuse its code so its unit/tip
-          // carry through, un-hide it if it was deleted, and apply the chosen
-          // storage / amount / dates as overrides.
+          // Re-add a known catalogue item: reuse its code so its unit/tip/shelf
+          // life carry through, and un-hide it if it was deleted.
           if (deleted[code]) { delete deleted[code]; store(DELETED_KEY, JSON.stringify(deleted)); }
-          setMove(code, editStorage);
-          setAmount(code, amt);
+          if (homeStorage[code] == null) {
+            // Guide ingredient that isn't part of the seed pantry (e.g. fruit):
+            // store it as a custom item so it renders, keeping the guide code.
+            const info = (tipIndex[lang] && tipIndex[lang][code]) || {};
+            custom.push({
+              code: code,
+              name: info.name || name,
+              storage: editStorage,
+              amount: amt,
+              unit: info.unit || $("editUnitInput").value.trim(),
+              type: typeOfCode[code] || $("editTypeSelect").value
+            });
+            store(CUSTOM_KEY, JSON.stringify(custom));
+            registerCustom();
+          } else {
+            setMove(code, editStorage);
+            setAmount(code, amt);
+          }
           setMeta(code, $("editBought").value, $("editExpiry").value, $("editSource").value);
         } else {
           code = newCode();
