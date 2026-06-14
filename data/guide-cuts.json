@@ -38,6 +38,7 @@
         {
           "pantryCode": "PORK_BELLY",
           "shelfLife": { "fridge": 4, "freezer": 180 },
+          "unitCode": "GRAM",
           "best": ["BRAISE", "ROAST", "HOTPOT"], "worst": ["FLASH"],
           "en": { "name": "Pork belly", "alt": "五花肉", "desc": "Alternating layers of fat and lean from the underside. Stays succulent through long cooking — the classic choice for red-braised pork (滷肉), Dongpo pork, and hot-pot slices." },
           "zh": { "name": "五花肉", "alt": "三層肉", "desc": "豬腹部、肥瘦相間的層次肉。耐久煮而不柴，是滷肉、東坡肉與火鍋肉片的經典首選。" }
@@ -45,6 +46,7 @@
         {
           "pantryCode": "PORK_SHOULDER",
           "shelfLife": { "fridge": 4, "freezer": 180 },
+          "unitCode": "GRAM",
           "best": ["STIRFRY", "BRAISE", "GRILL"], "worst": ["OVERCOOK"],
           "en": { "name": "Pork shoulder (butt)", "alt": "梅花肉 / 胛心肉", "desc": "From the upper shoulder, finely marbled and forgiving. Slice for stir-fry and grilling, or braise for char siu and pulled pork." },
           "zh": { "name": "梅花肉", "alt": "胛心肉", "desc": "豬上肩部位，油花細密、不易煮老。切片快炒、燒烤，或滷成叉燒、手撕豬肉皆宜。" }
@@ -66,6 +68,7 @@
         {
           "pantryCode": "PORK_SHOULDER_TRIANGLE",
           "shelfLife": { "fridge": 4, "freezer": 180 },
+          "unitCode": "GRAM",
           "best": ["PANFRY", "GRILL", "BLANCH"], "worst": ["LONGCOOK"],
           "en": { "name": "Pork shoulder triangle", "alt": "翅仔肉 / 玻璃肉", "desc": "A triangular cut between the front leg and the shoulder, part of the same shoulder-neck group. Lean with a light marbling and a crisp bite; slice thin and pan-fry, grill, or blanch and dip — don't overcook." },
           "zh": { "name": "翅仔肉", "alt": "玻璃肉", "desc": "位於豬前腿與肩頰之間、呈三角形，同屬肩頸肉。瘦中帶油、脆嫩有咬勁；切薄片乾煎、燒烤或川燙沾醬皆宜，避免久煮。" }
@@ -73,6 +76,7 @@
         {
           "pantryCode": "PORK_LOIN",
           "shelfLife": { "fridge": 5, "freezer": 180 },
+          "unitCode": "GRAM",
           "best": ["DEEPFRY", "PANFRY", "BRAISE"], "worst": ["OVERCOOK"],
           "en": { "name": "Pork loin", "alt": "大里肌", "desc": "The long, lean muscle along the back — mild and firm. The cut for pork chops, tonkatsu cutlets, and braised pork-chop rice (排骨飯)." },
           "zh": { "name": "大里肌", "alt": "里肌肉", "desc": "背脊上的長條瘦肉，肉質緊實清爽。炸豬排、煎里肌、排骨飯都用這塊。" }
@@ -80,6 +84,7 @@
         {
           "pantryCode": "PORK_TENDERLOIN",
           "shelfLife": { "fridge": 4, "freezer": 180 },
+          "unitCode": "GRAM",
           "best": ["ROAST", "STIRFRY", "PANFRY"], "worst": ["OVERCOOK"],
           "en": { "name": "Pork tenderloin", "alt": "小里肌 / 腰內肉", "desc": "The slender muscle beneath the loin — the leanest and most tender. Cooks fast; best roasted whole or sliced for quick stir-fries." },
           "zh": { "name": "小里肌", "alt": "腰內肉", "desc": "里肌下方的細長肌肉，最瘦也最嫩。熟得快，整條烘烤或切片快炒皆宜。" }
@@ -87,6 +92,7 @@
         {
           "pantryCode": "PORK_RIBS",
           "shelfLife": { "fridge": 4, "freezer": 120 },
+          "unitCode": "GRAM",
           "best": ["SOUP", "STEAM", "DEEPFRY"], "worst": ["STIRFRY"],
           "en": { "name": "Pork ribs", "alt": "肋排 / 子排", "desc": "Rib bones with meat between, sweet on the bone. For rib soup (排骨湯), steamed spare ribs, and sweet-and-sour ribs." },
           "zh": { "name": "排骨", "alt": "肋排 / 子排", "desc": "帶肉的肋骨段，帶骨更鮮甜。煮排骨湯、粉蒸排骨、糖醋排骨都靠它。" }
@@ -94,6 +100,7 @@
         {
           "pantryCode": "PORK_HOCK_TROTTER",
           "shelfLife": { "fridge": 4, "freezer": 120 },
+          "unitCode": "GRAM",
           "best": ["BRAISE", "STEW", "SOUP"], "worst": ["QUICK"],
           "en": { "name": "Pork hock & trotter", "alt": "蹄膀 / 豬腳", "desc": "Skin, tendon and collagen-rich meat from the leg. Turns silky and sticky braised low and slow — peanut pork trotters, braised hock." },
           "zh": { "name": "蹄膀／豬腳", "alt": "腿庫", "desc": "腿部富含膠質的皮、筋與肉。慢火滷煮後軟糯黏口，花生豬腳、滷蹄膀必備。" }
@@ -101,6 +108,7 @@
         {
           "pantryCode": "GROUND_PORK",
           "shelfLife": { "fridge": 2, "freezer": 90 },
+          "unitCode": "GRAM",
           "best": ["FILLING", "MEATBALL", "STIRFRY"], "worst": ["RARE"],
           "en": { "name": "Ground pork", "alt": "絞肉", "desc": "Minced shoulder or leg — the all-purpose base for dumplings, meatballs (獅子頭), minced-pork rice (肉燥), and stuffings." },
           "zh": { "name": "絞肉", "alt": "豬絞肉", "desc": "多由肩肉或腿肉絞成，用途最廣。包水餃、做獅子頭、炒肉燥、做餡都靠它。" }
@@ -115,6 +123,7 @@
         {
           "pantryCode": "BEEF_SHANK",
           "shelfLife": { "fridge": 5, "freezer": 240 },
+          "unitCode": "GRAM",
           "best": ["BRAISE", "STEW", "SOUP"], "worst": ["SEAR"],
           "en": { "name": "Beef shank", "alt": "牛腱 / 腱子心", "desc": "The hard-working shin muscle threaded with tendon. Braises into firm, glossy slices — the star of soy-braised shank and beef noodle soup." },
           "zh": { "name": "牛腱", "alt": "腱子心", "desc": "小腿運動肌，筋肉交織。滷煮後切片彈韌透亮，是滷牛腱與牛肉麵的主角。" }
@@ -122,6 +131,7 @@
         {
           "pantryCode": "BEEF_BRISKET",
           "shelfLife": { "fridge": 5, "freezer": 240 },
+          "unitCode": "GRAM",
           "best": ["STEW", "BRAISE", "SOUP"], "worst": ["SEAR"],
           "en": { "name": "Beef brisket (flank)", "alt": "牛腩 / 牛肋條", "desc": "Fatty, connective belly and breast meat. Needs long stewing to melt — for red-braised beef noodle soup and tomato beef stew." },
           "zh": { "name": "牛腩", "alt": "牛肋條", "desc": "帶筋帶油的腹胸肉，需久燉才化口。紅燒牛肉麵、番茄燉牛肉的靈魂。" }
@@ -129,6 +139,7 @@
         {
           "pantryCode": "BEEF_RIBEYE",
           "shelfLife": { "fridge": 5, "freezer": 240 },
+          "unitCode": "GRAM",
           "best": ["SEAR", "GRILL"], "worst": ["STEW"],
           "en": { "name": "Ribeye", "alt": "肋眼 / 肋眼心", "desc": "Richly marbled muscle from the rib — juicy and full-flavored. The go-to pan or grill steak." },
           "zh": { "name": "肋眼", "alt": "肋眼心", "desc": "肋脊部位、油花豐富，多汁濃郁。是煎烤牛排的首選。" }
@@ -136,6 +147,7 @@
         {
           "pantryCode": "BEEF_TENDERLOIN",
           "shelfLife": { "fridge": 5, "freezer": 240 },
+          "unitCode": "GRAM",
           "best": ["SEAR", "ROAST"], "worst": ["OVERCOOK"],
           "en": { "name": "Tenderloin (filet)", "alt": "菲力 / 腰內肉", "desc": "The lean inner muscle that barely works — the most tender of all. Cook to medium-rare; quick sear or roast." },
           "zh": { "name": "菲力", "alt": "腰內肉", "desc": "幾乎不運動的內裡瘦肉，全牛最嫩。建議三至五分熟，快煎或爐烤。" }
@@ -143,6 +155,7 @@
         {
           "pantryCode": "BEEF_STRIPLOIN",
           "shelfLife": { "fridge": 5, "freezer": 240 },
+          "unitCode": "GRAM",
           "best": ["SEAR", "GRILL"], "worst": ["STEW"],
           "en": { "name": "Striploin (NY strip)", "alt": "紐約客 / 西冷", "desc": "Firm, beefy loin with a fat cap on one edge — balanced chew and flavor. A classic steakhouse cut." },
           "zh": { "name": "紐約客", "alt": "西冷", "desc": "腰脊部位、邊緣帶油脂，肉質緊實牛味足。嚼勁與風味均衡的經典牛排。" }
@@ -150,6 +163,7 @@
         {
           "pantryCode": "BEEF_SIRLOIN",
           "shelfLife": { "fridge": 5, "freezer": 240 },
+          "unitCode": "GRAM",
           "best": ["SEAR", "GRILL"], "worst": ["OVERCOOK"],
           "en": { "name": "Sirloin", "alt": "沙朗 / 後腰脊", "desc": "From the rear back behind the striploin. Leaner and firmer than ribeye yet full-flavored and well-priced — a great everyday grill or pan steak, and good sliced for stir-fry." },
           "zh": { "name": "沙朗", "alt": "後腰脊肉", "desc": "位於紐約客之後的後腰脊部位。比肋眼瘦而結實、牛味足又實惠，是日常煎烤牛排的好選擇，也可切片快炒。" }
@@ -157,6 +171,7 @@
         {
           "pantryCode": "BEEF_SHORT_RIB",
           "shelfLife": { "fridge": 5, "freezer": 180 },
+          "unitCode": "GRAM",
           "best": ["GRILL", "BRAISE"], "worst": ["OVERCOOK"],
           "en": { "name": "Short rib", "alt": "牛小排", "desc": "Heavily marbled rib-end meat. Superb grilled (Korean galbi) or braised until spoon-tender." },
           "zh": { "name": "牛小排", "alt": "", "desc": "肋骨末端、油花密布。炭烤（韓式排骨）或燉至軟爛皆出色。" }
@@ -164,6 +179,7 @@
         {
           "pantryCode": "BEEF_CHUCK",
           "shelfLife": { "fridge": 5, "freezer": 240 },
+          "unitCode": "GRAM",
           "best": ["HOTPOT", "SEAR", "BRAISE"], "worst": ["OVERCOOK"],
           "en": { "name": "Chuck (flat iron)", "alt": "板腱 / 嫩肩", "desc": "Shoulder cut with a line of gristle down the middle — affordable and flavorful. Slice for hot pot, or sear as flat-iron steak." },
           "zh": { "name": "板腱", "alt": "嫩肩里肌", "desc": "肩胛部位、中央有一條筋。實惠又夠味，切片涮火鍋，或當板腱牛排香煎。" }
@@ -171,6 +187,7 @@
         {
           "pantryCode": "BEEF_SHORT_PLATE",
           "shelfLife": { "fridge": 5, "freezer": 180 },
+          "unitCode": "GRAM",
           "best": ["HOTPOT", "YAKINIKU", "STIRFRY"], "worst": ["SEAR"],
           "en": { "name": "Beef short plate (belly)", "alt": "牛五花 / 牛腹肉", "desc": "Thin, fatty belly muscle. Shaved paper-thin for hot pot, yakiniku, and gyudon beef bowls." },
           "zh": { "name": "牛五花", "alt": "牛腹肉", "desc": "腹部薄層帶油的肉。刨成薄片用於火鍋、燒肉與牛丼。" }
@@ -178,6 +195,7 @@
         {
           "pantryCode": "GROUND_BEEF",
           "shelfLife": { "fridge": 2, "freezer": 90 },
+          "unitCode": "GRAM",
           "best": ["GRILL", "STIRFRY", "MEATBALL"], "worst": ["RARE"],
           "en": { "name": "Ground beef", "alt": "牛絞肉", "desc": "Minced chuck or trim. For burgers, meat sauce (Bolognese), and meatballs." },
           "zh": { "name": "牛絞肉", "alt": "", "desc": "多由肩肉或修清肉絞成。漢堡排、肉醬、肉丸都用得上。" }
@@ -199,6 +217,7 @@
         {
           "pantryCode": "CHICKEN_THIGH",
           "shelfLife": { "fridge": 2, "freezer": 270 },
+          "unitCode": "GRAM",
           "best": ["DEEPFRY", "BRAISE", "GRILL"], "worst": ["OVERCOOK"],
           "en": { "name": "Chicken thigh", "alt": "去骨雞腿 / 腿排", "desc": "Juicy dark meat that stays tender. The cut for crispy chicken cutlet (雞排), teriyaki, three-cup chicken, and braises." },
           "zh": { "name": "雞腿肉", "alt": "去骨腿排", "desc": "多汁的腿部紅肉，久煮仍嫩。炸雞排、照燒、三杯與滷雞都用這塊。" }
@@ -206,6 +225,7 @@
         {
           "pantryCode": "CHICKEN_DRUMSTICK",
           "shelfLife": { "fridge": 2, "freezer": 270 },
+          "unitCode": "GRAM",
           "best": ["DEEPFRY", "BRAISE", "ROAST"], "worst": ["STIRFRY"],
           "en": { "name": "Drumstick", "alt": "棒棒腿 / 雞小腿", "desc": "The lower leg on the bone — forgiving and flavorful. Fried chicken, soy-braised, and roast." },
           "zh": { "name": "棒棒腿", "alt": "雞小腿", "desc": "帶骨的下腿部位，不易乾柴。炸雞、滷味、烤雞都合適。" }
@@ -213,6 +233,7 @@
         {
           "pantryCode": "CHICKEN_WINGS",
           "shelfLife": { "fridge": 2, "freezer": 270 },
+          "unitCode": "GRAM",
           "best": ["DEEPFRY", "GRILL"], "worst": ["STEW"],
           "en": { "name": "Chicken wings", "alt": "三節翅 / 二節翅", "desc": "Skin-rich and gelatinous. Fry, grill, or glaze — honey-garlic wings, salt-and-pepper, stuffed wings." },
           "zh": { "name": "雞翅", "alt": "三節翅 / 二節翅", "desc": "皮多、膠質豐富。油炸、燒烤或裹醬皆宜——蜜汁雞翅、鹽酥、糯米雞翅。" }
@@ -220,6 +241,7 @@
         {
           "pantryCode": "CHICKEN_TENDERLOIN",
           "shelfLife": { "fridge": 2, "freezer": 270 },
+          "unitCode": "GRAM",
           "best": ["DEEPFRY", "STIRFRY"], "worst": ["OVERCOOK"],
           "en": { "name": "Chicken tenderloin", "alt": "雞里肌 / 雞柳", "desc": "The slim strip under the breast — even more tender. Great for chicken strips, nuggets, and quick stir-fries." },
           "zh": { "name": "雞里肌", "alt": "雞柳條", "desc": "雞胸下方的細條肉，更為軟嫩。做雞柳、雞塊與快炒最方便。" }
@@ -227,6 +249,7 @@
         {
           "pantryCode": "WHOLE_CHICKEN",
           "shelfLife": { "fridge": 2, "freezer": 365 },
+          "unitCode": "GRAM",
           "best": ["ROAST", "STEAM", "SOUP"], "worst": ["STIRFRY"],
           "en": { "name": "Whole chicken", "alt": "全雞 / 土雞", "desc": "The whole bird. Roast or steam (Hainan chicken, drunken chicken), or simmer for stock and chicken soup." },
           "zh": { "name": "全雞", "alt": "土雞 / 仿土雞", "desc": "整隻雞。烤雞、白斬／海南雞、醉雞，或熬高湯與雞湯。" }
@@ -234,6 +257,7 @@
         {
           "pantryCode": "CHICKEN_GIZZARD",
           "shelfLife": { "fridge": 2, "freezer": 90 },
+          "unitCode": "GRAM",
           "best": ["BRAISE", "STIRFRY"], "worst": ["QUICK"],
           "en": { "name": "Chicken gizzard", "alt": "雞胗 / 雞肫", "desc": "The muscular stomach — firm and crunchy. Braised in soy (滷味) or stir-fried with basil and ginger." },
           "zh": { "name": "雞胗", "alt": "雞肫", "desc": "結實脆口的胃部肌肉。滷味必備，或與九層塔、薑片快炒。" }

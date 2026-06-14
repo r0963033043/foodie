@@ -23,18 +23,21 @@
         {
           "pantryCode": "WELSH_JAPANESE_ONION",
           "shelfLife": { "fridge": 10 },
+          "unitCode": "STICK",
           "en": { "name": "Welsh / Japanese onion", "alt": "大蔥 / 日本蔥 / naga-negi", "desc": "A thick, long white stalk, sweeter and stronger than scallion. Holds up to heat — sukiyaki, grilling and hot pot; sliced on the bias and charred it turns sweet." },
           "zh": { "name": "大蔥", "alt": "日本蔥 / 長蔥", "desc": "蔥白粗長、味道更甜濃。耐煮，常用於壽喜燒、烤物與火鍋；切斜片炙烤特別香甜。" }
         },
         {
           "pantryCode": "BABY_SCALLION",
           "shelfLife": { "fridge": 7 },
+          "unitCode": "BUNCH",
           "en": { "name": "Baby scallion", "alt": "珠蔥 / 分蔥", "desc": "Slender young scallions with a small bulb and gentle pungency. Whole in quick stir-fries, omelets, or blanched and dressed." },
           "zh": { "name": "珠蔥", "alt": "分蔥", "desc": "幼嫩小蔥，帶小球莖、辛味柔和。整株快炒、煎蛋或燙拌皆宜。" }
         },
         {
           "pantryCode": "SHALLOT",
           "shelfLife": { "pantry": 30, "fridge": 60 },
+          "unitCode": "BULB",
           "en": { "name": "Shallot", "alt": "紅蔥頭 / 火蔥", "desc": "Small purple-red bulbs, intensely fragrant and sweet. Sliced and fried into crisp shallots (油蔥酥) — the soul of Taiwanese braised-pork rice and street snacks." },
           "zh": { "name": "紅蔥頭", "alt": "火蔥 / 油蔥", "desc": "小巧的紫紅色蔥頭，香氣濃郁帶甜。切片油炸成油蔥酥，是滷肉飯、油飯與小吃的靈魂香料。" }
         },
@@ -62,12 +65,14 @@
         {
           "pantryCode": "GREEN_GARLIC",
           "shelfLife": { "fridge": 7 },
+          "unitCode": "STICK",
           "en": { "name": "Green garlic", "alt": "青蒜 / 蒜苗", "desc": "The young garlic plant before the bulb forms, with a fresh garlicky note. Sliced on the bias for twice-cooked pork, stir-fried cured meats, and finishing fish." },
           "zh": { "name": "青蒜", "alt": "蒜苗", "desc": "大蒜未結球的青嫩植株，蒜香清爽。切斜段用於回鍋肉、炒臘味與煎魚提香。" }
         },
         {
           "pantryCode": "CHINESE_CHIVES",
           "shelfLife": { "fridge": 5 },
+          "unitCode": "BUNCH",
           "en": { "name": "Chinese chives", "alt": "韭菜 (韭黃 when blanched pale)", "desc": "Flat-leaved, with a strong garlic-chive aroma. Stars in chive-and-egg, squid stir-fries, and dumpling and pancake fillings; weeps and softens if overcooked." },
           "zh": { "name": "韭菜", "alt": "韭（避光軟化即韭黃）", "desc": "扁葉、蒜韭香氣濃。炒蛋、炒花枝、包水餃與餡餅的常見主角；久炒易出水變軟。" }
         }
