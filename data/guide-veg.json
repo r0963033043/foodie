@@ -50,10 +50,10 @@
         },
         {
           "pantryCode": "POTATOES",
-          "shelfLife": { "pantry": 30 },
+          "shelfLife": { "pantry": 30, "fridge": 7 },
           "unitCode": "PCS",
-          "en": { "name": "Potato", "alt": "馬鈴薯 / 洋芋", "desc": "A starchy all-rounder. Boil, mash, fry or stew — it soaks up flavor and turns creamy.", "tip": "Dark and cool, never the fridge; keep away from onions, but a whole apple nearby slows sprouting." },
-          "zh": { "name": "馬鈴薯", "alt": "洋芋", "desc": "百搭的澱粉根莖。水煮、搗泥、油炸或燉煮皆宜，易吸味、口感綿密。", "tip": "陰涼避光、切勿冷藏；遠離洋蔥，但放顆蘋果可延緩發芽。" }
+          "en": { "name": "Potato", "alt": "馬鈴薯 / 洋芋", "desc": "A starchy all-rounder. Boil, mash, fry or stew — it soaks up flavor and turns creamy.", "tip": "Cool, dark and out of sunlight in a paper bag with an apple keeps them 1–3 months (the apple slows sprouting); in humid weather, a perforated bag in the fridge lasts 1–2 weeks. Toss any that turn green or sprout." },
+          "zh": { "name": "馬鈴薯", "alt": "洋芋", "desc": "百搭的澱粉根莖。水煮、搗泥、油炸或燉煮皆宜，易吸味、口感綿密。", "tip": "陰涼避光、裝紙袋並放顆蘋果，可存 1～3 個月（蘋果延緩發芽）；潮濕時改用打孔袋冷藏約 1～2 週。變綠或發芽的請丟棄。" }
         },
         {
           "pantryCode": "SWEET_POTATOES",

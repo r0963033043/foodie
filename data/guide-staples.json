@@ -15,7 +15,7 @@
       "items": [
         {
           "pantryCode": "BREAD",
-          "shelfLife": { "fridge": 7, "freezer": 30, "pantry": 5 },
+          "shelfLife": { "pantry": 5, "fridge": 7, "freezer": 30 },
           "unitCode": "LOAF",
           "en": { "name": "Bread", "alt": "麵包 / 吐司", "desc": "Sliced loaves and rolls. Toast, sandwich, or French-toast; stales fast at room temperature.", "tip": "Freeze sliced in a sealed bag; toast directly from frozen." },
           "zh": { "name": "麵包", "alt": "吐司", "desc": "吐司與各式麵包。烤土司、做三明治或法式吐司；常溫下易變乾變硬。", "tip": "切片密封冷凍；可直接烘烤，免退冰。" }
@@ -92,7 +92,7 @@
       "items": [
         {
           "pantryCode": "SOY_SAUCE",
-          "shelfLife": { "fridge": 365, "pantry": 365 },
+          "shelfLife": { "pantry": 365, "fridge": 365 },
           "unitCode": "BOTTLE",
           "en": { "name": "Soy sauce", "alt": "醬油", "desc": "The backbone seasoning — salty and savory. For braising, dipping, marinades and stir-fries.", "tip": "Cupboard is fine while sealed; refrigerate after opening." },
           "zh": { "name": "醬油", "alt": "", "desc": "基礎調味料，鹹香甘醇。滷煮、沾醬、醃漬與快炒都少不了。", "tip": "未開封可常溫存放；開封後請冷藏。" }

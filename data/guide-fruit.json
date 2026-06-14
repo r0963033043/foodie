@@ -15,7 +15,7 @@
       "items": [
         {
           "pantryCode": "APPLE",
-          "shelfLife": { "fridge": 30, "pantry": 7 },
+          "shelfLife": { "pantry": 7, "fridge": 30 },
           "en": { "name": "Apple", "alt": "蘋果 / 富士", "desc": "Crisp and sweet-tart, on hand year-round; Fuji (富士) is the popular sweet, juicy type. Mostly imported, with some grown high in the mountains (梨山). Store apart from other fruit — it ripens them fast.", "tip": "Refrigerate in the crisper to stay crisp for weeks; bring to room temperature for the fullest flavor." },
           "zh": { "name": "蘋果", "alt": "富士", "desc": "清脆酸甜、四季常備；富士蘋果香甜多汁最受歡迎。多為進口，部分產於梨山高山。會催熟其他水果，宜分開存放。", "tip": "放冰箱蔬果室可保持脆度數週；回溫後風味最佳。" }
         },
@@ -27,7 +27,7 @@
         },
         {
           "pantryCode": "GUAVA",
-          "shelfLife": { "fridge": 5, "pantry": 3 },
+          "shelfLife": { "pantry": 3, "fridge": 5 },
           "en": { "name": "Guava", "alt": "芭樂 / 番石榴", "desc": "Crisp and lightly sweet, eaten firm. The pearl guava (珍珠芭樂) is the everyday crunchy type; often dipped in sour-plum powder (甘梅粉).", "tip": "Refrigerate ripe ones in a bag; eat within a few days while still crisp." },
           "zh": { "name": "芭樂", "alt": "番石榴", "desc": "清脆微甜，喜吃脆口。珍珠芭樂最常見；常沾甘梅粉食用。", "tip": "熟果裝袋冷藏，趁脆數日內食用。" }
         },
@@ -39,25 +39,25 @@
         },
         {
           "pantryCode": "DRAGON_FRUIT",
-          "shelfLife": { "fridge": 7, "pantry": 3 },
+          "shelfLife": { "pantry": 3, "fridge": 7 },
           "en": { "name": "Dragon fruit", "alt": "火龍果 / 紅龍果", "desc": "Mildly sweet with crunchy seeds; red-fleshed types are sweeter and stain deeply. Best chilled before eating.", "tip": "Keep whole in the fridge up to a week; once cut, cover and eat the same day." },
           "zh": { "name": "火龍果", "alt": "紅龍果", "desc": "甜度溫和、籽粒爽脆；紅肉品種更甜、汁液染色重。冰鎮後更好吃。", "tip": "整顆冷藏可放約一週；切開後加蓋當日食用。" }
         },
         {
           "pantryCode": "MANGO",
-          "shelfLife": { "fridge": 5, "pantry": 4 },
+          "shelfLife": { "pantry": 4, "fridge": 5 },
           "en": { "name": "Mango", "alt": "芒果 (Aiwen / Jinhuang)", "desc": "Fragrant and sweet, peaking in summer. Aiwen (愛文) is small and red with silky flesh; Jinhuang (金煌) is large and golden. Eat fresh or over shaved ice (芒果冰).", "tip": "Ripen at room temperature until fragrant and yielding, then refrigerate to slow it down." },
           "zh": { "name": "芒果", "alt": "愛文 / 金煌", "desc": "香甜多汁，盛產於夏季。愛文小而紅、果肉細滑；金煌大而金黃。鮮食或做芒果冰皆宜。", "tip": "室溫催熟至散發香氣、按壓微軟，再冷藏延緩熟成。" }
         },
         {
           "pantryCode": "PINEAPPLE",
-          "shelfLife": { "fridge": 5, "pantry": 2 },
+          "shelfLife": { "pantry": 2, "fridge": 5 },
           "en": { "name": "Pineapple", "alt": "鳳梨 / 旺來", "desc": "Sweet-tart and juicy; the Golden Diamond (金鑽) variety is low in acid and barely bites the tongue. Year-round, best spring to summer; also the filling in pineapple cakes (鳳梨酥).", "tip": "Ripens little after picking — keep at room temperature a day or two, then refrigerate cut chunks." },
           "zh": { "name": "鳳梨", "alt": "旺來", "desc": "酸甜多汁，金鑽鳳梨甜度高、不咬舌。全年皆有、春夏最佳；也是鳳梨酥的內餡。", "tip": "採後幾乎不再變甜——室溫放一兩天，切塊後冷藏。" }
         },
         {
           "pantryCode": "PAPAYA",
-          "shelfLife": { "fridge": 5, "pantry": 4 },
+          "shelfLife": { "pantry": 4, "fridge": 5 },
           "en": { "name": "Papaya", "alt": "木瓜", "desc": "Soft orange flesh, sweet and musky. Eaten ripe with a squeeze of lime, or blended with milk (木瓜牛奶).", "tip": "Ripen on the counter until mostly orange, then refrigerate and eat within days." },
           "zh": { "name": "木瓜", "alt": "", "desc": "橙色果肉柔軟、香甜。可擠檸檬鮮食，或打成木瓜牛奶。", "tip": "室溫放至轉橙再冷藏，數日內食用。" }
         }
@@ -70,25 +70,25 @@
       "items": [
         {
           "pantryCode": "PONKAN",
-          "shelfLife": { "fridge": 14, "pantry": 7 },
+          "shelfLife": { "pantry": 7, "fridge": 14 },
           "en": { "name": "Ponkan", "alt": "椪柑", "desc": "Loose-skinned and easy to peel, sweet and juicy — the everyday winter orange.", "tip": "Keep cool and airy, or refrigerate loosely bagged; skip airtight wrap, which traps moisture." },
           "zh": { "name": "椪柑", "alt": "", "desc": "皮鬆好剝、甜美多汁，是冬季的日常柑橘。", "tip": "陰涼通風或鬆裝冷藏；避免密封，以免悶出水氣。" }
         },
         {
           "pantryCode": "TANKAN",
-          "shelfLife": { "fridge": 14, "pantry": 14 },
+          "shelfLife": { "pantry": 14, "fridge": 14 },
           "en": { "name": "Tankan", "alt": "桶柑 / 年柑", "desc": "Tight-skinned and richly sweet-tart, ripening around Lunar New Year — hence its 'lucky New Year orange' name.", "tip": "Stores well cool and dry for a couple of weeks; refrigerate to stretch it further." },
           "zh": { "name": "桶柑", "alt": "年柑", "desc": "皮較緊實、酸甜濃郁，農曆年前後盛產，又稱「年柑」。", "tip": "陰涼乾燥可放約兩週；冷藏可保存更久。" }
         },
         {
           "pantryCode": "POMELO",
-          "shelfLife": { "fridge": 30, "pantry": 21 },
+          "shelfLife": { "pantry": 21, "fridge": 30 },
           "en": { "name": "Pomelo", "alt": "柚子 / 文旦", "desc": "Large autumn citrus with thick rind and firm, sweet segments. Tied to the Mid-Autumn Festival.", "tip": "Keeps for weeks at cool room temperature; the thick rind protects the flesh, so no need to refrigerate whole." },
           "zh": { "name": "柚子", "alt": "文旦", "desc": "秋季大型柑橘，皮厚、果肉緊實清甜。與中秋節密不可分。", "tip": "陰涼室溫可放數週；厚皮護果肉，整顆無需冷藏。" }
         },
         {
           "pantryCode": "LEMON",
-          "shelfLife": { "fridge": 21, "pantry": 7 },
+          "shelfLife": { "pantry": 7, "fridge": 21 },
           "en": { "name": "Lemon", "alt": "檸檬", "desc": "Green and intensely sour in Taiwan; juiced into drinks or squeezed over food rather than eaten on its own.", "tip": "Refrigerate in a sealed bag to keep them juicy for weeks; zest before juicing if you need the peel." },
           "zh": { "name": "檸檬", "alt": "", "desc": "台灣多為綠皮、酸度高；榨汁調飲或擠在食物上，少直接食用。", "tip": "密封冷藏可保多汁數週；需用皮時先刨皮再榨汁。" }
         },
@@ -125,7 +125,7 @@
         },
         {
           "pantryCode": "PERSIMMON",
-          "shelfLife": { "fridge": 7, "pantry": 5 },
+          "shelfLife": { "pantry": 5, "fridge": 7 },
           "en": { "name": "Persimmon", "alt": "柿子 / 甜柿 / 柿餅", "desc": "Autumn fruit: sweet persimmons (甜柿) eaten crisp and firm, or astringent ones dried into chewy 柿餅.", "tip": "Keep crisp sweet persimmons cool and firm; ripen astringent ones until soft, or they'll pucker the mouth." },
           "zh": { "name": "柿子", "alt": "甜柿 / 柿餅", "desc": "秋季水果：甜柿脆口直接吃，澀柿則製成柔韌的柿餅。", "tip": "甜柿保持陰涼脆口；澀柿需放軟脫澀，否則口感澀麻。" }
         },
@@ -137,7 +137,7 @@
         },
         {
           "pantryCode": "SUGAR_APPLE",
-          "shelfLife": { "fridge": 4, "pantry": 3 },
+          "shelfLife": { "pantry": 3, "fridge": 4 },
           "en": { "name": "Sugar apple", "alt": "釋迦 / 番荔枝", "desc": "Knobbly green skin over creamy, custard-sweet flesh; a Taitung specialty. Ripen on the counter, then chill before eating.", "tip": "Ripen on the counter until it gives to a gentle press, then refrigerate — once soft it spoils fast." },
           "zh": { "name": "釋迦", "alt": "番荔枝 / 鳳梨釋迦", "desc": "凹凸綠皮、果肉如卡士達般綿甜，台東名產。室溫催熟後冷藏更佳。", "tip": "室溫放至輕壓微軟再冷藏；變軟後不耐放，要儘快食用。" }
         },
