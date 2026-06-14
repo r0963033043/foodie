@@ -74,7 +74,7 @@
     let dishId = null;
     let lang = "en";
     let servings = 1;          // current (adjustable) serving count
-    let showPhotos = true;     // step photo visibility
+    let showPhotos = false;    // step photo visibility (off by default)
 
     function store(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
     function load(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
@@ -208,7 +208,7 @@
       .then(function (json) {
         i18n = json.ui;
         lang = i18n[load(LANG_KEY)] ? load(LANG_KEY) : "en";
-        showPhotos = load(PHOTO_KEY) !== "0";
+        showPhotos = load(PHOTO_KEY) === "1";
         const qid = new URLSearchParams(location.search).get("id");
         return qid ? qid : FoodieApi.getDishIds().then(function (ids) { return ids[0]; });
       })
