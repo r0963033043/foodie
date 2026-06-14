@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Onions & Alliums · foodie</title>
+<title>Fruit · foodie</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,7 +18,7 @@
 
   <div id="sections"></div>
 
-  <footer>foodie · alliums</footer>
+  <footer>foodie · fruit</footer>
 
 </div>
 
@@ -27,7 +27,7 @@
     const LANG_KEY = "foodie.lang";
     const $ = function (id) { return document.getElementById(id); };
     let ui = null;             // i18n.json ui block: { en:{…}, zh:{…} }
-    let data = null;           // data/alliums.json
+    let data = null;           // data/guide-fruit.json
     let lang = "en";
 
     function store(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
@@ -41,7 +41,7 @@
     }
 
     // Group names are stored as an array of single-language objects,
-    // e.g. [{ "en": "Garlic & chives" }, { "zh": "蒜與韭" }]; pick the language.
+    // e.g. [{ "en": "Citrus" }, { "zh": "柑橘類" }]; pick the language.
     function pickLang(arr) {
       if (!Array.isArray(arr)) return "";
       for (let i = 0; i < arr.length; i++) {
@@ -82,6 +82,7 @@
           li.appendChild(nameRow);
 
           if (c.desc) li.appendChild(el("div", "cut-desc", c.desc));
+          if (c.tip) li.appendChild(el("div", "cut-tip", c.tip));
           ul.appendChild(li);
         });
         card.appendChild(ul);
@@ -91,7 +92,7 @@
 
     Promise.all([
       fetch("i18n.json").then(function (r) { return r.json(); }),
-      fetch("data/alliums.json").then(function (r) { return r.json(); })
+      fetch("data/guide-fruit.json").then(function (r) { return r.json(); })
     ])
       .then(function (res) {
         ui = res[0].ui;
@@ -101,7 +102,7 @@
       })
       .catch(function () {
         $("sections").innerHTML =
-          "<p style='color:var(--muted)'>Could not load allium data from <code>data/</code>. Serve this page over HTTP — browsers block fetch on file://.</p>";
+          "<p style='color:var(--muted)'>Could not load fruit data from <code>data/</code>. Serve this page over HTTP — browsers block fetch on file://.</p>";
       });
 
     $("langBtn").addEventListener("click", function () {

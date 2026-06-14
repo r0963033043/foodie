@@ -15,8 +15,9 @@
       "items": [
         {
           "pantryCode": "SCALLIONS",
-          "en": { "name": "Scallion", "alt": "青蔥 / 蔥", "desc": "The everyday aromatic. The white part is mild, the green tops fresh and fragrant; for tempering oil, soups, scallion-oil and raw garnish. Add late — long cooking loses the aroma." },
-          "zh": { "name": "青蔥", "alt": "蔥 / 小蔥", "desc": "最常用的辛香料。蔥白溫和、蔥綠清香；爆香、煮湯、做蔥油與生食皆宜。久煮會失去香氣，多在起鍋前下。" }
+          "unitCode": "BUNCH",
+          "en": { "name": "Scallion", "alt": "青蔥 / 蔥", "desc": "The everyday aromatic. The white part is mild, the green tops fresh and fragrant; for tempering oil, soups, scallion-oil and raw garnish. Add late — long cooking loses the aroma.", "tip": "Wrap in paper towel, then bag — or freeze chopped." },
+          "zh": { "name": "青蔥", "alt": "蔥 / 小蔥", "desc": "最常用的辛香料。蔥白溫和、蔥綠清香；爆香、煮湯、做蔥油與生食皆宜。久煮會失去香氣，多在起鍋前下。", "tip": "用紙巾包好再裝袋；或切段冷凍保存。" }
         },
         {
           "en": { "name": "Welsh / Japanese onion", "alt": "大蔥 / 日本蔥 / naga-negi", "desc": "A thick, long white stalk, sweeter and stronger than scallion. Holds up to heat — sukiyaki, grilling and hot pot; sliced on the bias and charred it turns sweet." },
@@ -32,8 +33,9 @@
         },
         {
           "pantryCode": "ONIONS",
-          "en": { "name": "Onion", "alt": "洋蔥 / 圓蔥", "desc": "A round bulb — sharp raw, sweet when slow-cooked. For salads, tempering, stews and caramelizing; a base in both Western and Chinese cooking." },
-          "zh": { "name": "洋蔥", "alt": "圓蔥", "desc": "球形鱗莖，生食辛辣、久炒回甜。涼拌、爆香、燉煮與焦糖化皆可，是中西式都用的基底。" }
+          "unitCode": "PCS",
+          "en": { "name": "Onion", "alt": "洋蔥 / 圓蔥", "desc": "A round bulb — sharp raw, sweet when slow-cooked. For salads, tempering, stews and caramelizing; a base in both Western and Chinese cooking.", "tip": "Cool, ventilated and dark; keep away from potatoes." },
+          "zh": { "name": "洋蔥", "alt": "圓蔥", "desc": "球形鱗莖，生食辛辣、久炒回甜。涼拌、爆香、燉煮與焦糖化皆可，是中西式都用的基底。", "tip": "通風、陰涼、避光；與馬鈴薯分開存放。" }
         }
       ]
     },
@@ -44,8 +46,9 @@
       "items": [
         {
           "pantryCode": "GARLIC",
-          "en": { "name": "Garlic", "alt": "蒜 / 大蒜 / 蒜頭", "desc": "A pungent, aromatic bulb. Smashed or minced to temper oil — the base of Chinese stir-fries and dipping sauces; sharp raw, sweet once cooked." },
-          "zh": { "name": "蒜", "alt": "大蒜 / 蒜頭", "desc": "辛辣濃香的鱗莖。拍碎或切末爆香，是中式熱炒與醬料的基礎；生食更嗆，加熱後轉甜。" }
+          "unitCode": "BULB",
+          "en": { "name": "Garlic", "alt": "蒜 / 大蒜 / 蒜頭", "desc": "A pungent, aromatic bulb. Smashed or minced to temper oil — the base of Chinese stir-fries and dipping sauces; sharp raw, sweet once cooked.", "tip": "Use an open mesh or basket with airflow; avoid plastic bags." },
+          "zh": { "name": "蒜", "alt": "大蒜 / 蒜頭", "desc": "辛辣濃香的鱗莖。拍碎或切末爆香，是中式熱炒與醬料的基礎；生食更嗆，加熱後轉甜。", "tip": "用網袋或籃子通風保存，避免塑膠袋。" }
         },
         {
           "en": { "name": "Green garlic", "alt": "青蒜 / 蒜苗", "desc": "The young garlic plant before the bulb forms, with a fresh garlicky note. Sliced on the bias for twice-cooked pork, stir-fried cured meats, and finishing fish." },

@@ -17,7 +17,7 @@
   </header>
 
   <div class="grid">
-    <a class="dish-card" href="cuts.html">
+    <a class="dish-card" href="guide-cuts.html">
       <div class="meta">
         <span class="ic">🥩</span>
         <span>
@@ -27,12 +27,42 @@
       </div>
       <span class="arrow">→</span>
     </a>
-    <a class="dish-card" href="alliums.html">
+    <a class="dish-card" href="guide-alliums.html">
       <div class="meta">
         <span class="ic">🧅</span>
         <span>
           <span class="name" id="navAlliums"></span>
           <span class="nav-desc" id="navAlliumsDesc"></span>
+        </span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="dish-card" href="guide-fruit.html">
+      <div class="meta">
+        <span class="ic">🍉</span>
+        <span>
+          <span class="name" id="navFruit"></span>
+          <span class="nav-desc" id="navFruitDesc"></span>
+        </span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="dish-card" href="guide-veg.html">
+      <div class="meta">
+        <span class="ic">🥬</span>
+        <span>
+          <span class="name" id="navVeg"></span>
+          <span class="nav-desc" id="navVegDesc"></span>
+        </span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="dish-card" href="guide-staples.html">
+      <div class="meta">
+        <span class="ic">🧺</span>
+        <span>
+          <span class="name" id="navStaples"></span>
+          <span class="nav-desc" id="navStaplesDesc"></span>
         </span>
       </div>
       <span class="arrow">→</span>
@@ -65,6 +95,12 @@
       $("navCutsDesc").textContent = t.navCutsDesc;
       $("navAlliums").textContent = t.navAlliums;
       $("navAlliumsDesc").textContent = t.navAlliumsDesc;
+      $("navFruit").textContent = t.navFruit;
+      $("navFruitDesc").textContent = t.navFruitDesc;
+      $("navVeg").textContent = t.navVeg;
+      $("navVegDesc").textContent = t.navVegDesc;
+      $("navStaples").textContent = t.navStaples;
+      $("navStaplesDesc").textContent = t.navStaplesDesc;
     }
 
     fetch("i18n.json")

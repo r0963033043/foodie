@@ -136,7 +136,7 @@ ul.pantry .desc { color: var(--ink); font-size: 13px; margin-top: 4px; }
 ul.pantry .tip { color: var(--muted); font-size: 13px; margin-top: 4px; }
 ul.pantry .tip::before { content: "💡 "; }
 
-/* ===== Meat cuts (cuts.html) ===== */
+/* ===== Meat cuts (guide-cuts.html) ===== */
 ul.cuts { list-style: none; margin: 0; padding: 0; }
 ul.cuts li { padding: 12px 0; border-bottom: 1px dashed var(--line); }
 ul.cuts li:last-child { border-bottom: 0; }
@@ -144,6 +144,8 @@ ul.cuts .cut-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 
 ul.cuts .cut-name { font-weight: 600; }
 ul.cuts .cut-alt { color: var(--muted); font-size: 13px; }
 ul.cuts .cut-desc { color: var(--muted); font-size: 14px; margin-top: 4px; }
+ul.cuts .cut-tip { color: var(--muted); font-size: 13px; margin-top: 4px; }
+ul.cuts .cut-tip::before { content: "💡 "; }
 ul.cuts .cut-cook { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 6px; font-size: 12px; }
 ul.cuts .cook-label {
   color: var(--muted); text-transform: uppercase; letter-spacing: .04em; margin-right: 2px;

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Onions & Alliums · foodie</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button id="langBtn" class="lang-btn" type="button">中文</button>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="crumb"><a id="backLink" href="guide.html"></a></div>
+    <h1 id="title"></h1>
+    <p class="subtitle" id="subtitle"></p>
+  </header>
+
+  <div id="sections"></div>
+
+  <footer>foodie · alliums</footer>
+
+</div>
+
+<script>
+  (function () {
+    const LANG_KEY = "foodie.lang";
+    const $ = function (id) { return document.getElementById(id); };
+    let ui = null;             // i18n.json ui block: { en:{…}, zh:{…} }
+    let data = null;           // data/guide-alliums.json
+    let lang = "en";
+
+    function store(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
+    function load(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
+
+    function el(tag, className, text) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text != null) node.textContent = text;
+      return node;
+    }
+
+    // Group names are stored as an array of single-language objects,
+    // e.g. [{ "en": "Garlic & chives" }, { "zh": "蒜與韭" }]; pick the language.
+    function pickLang(arr) {
+      if (!Array.isArray(arr)) return "";
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] && arr[i][lang] != null) return arr[i][lang];
+      }
+      return "";
+    }
+
+    function render() {
+      const t = ui[lang];
+      const meta = data[lang] || {};
+      document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+      document.title = (meta.name || "") + " · foodie";
+
+      $("langBtn").textContent = t.langToggle;
+      $("backLink").textContent = t.guideCrumb;
+      $("title").textContent = meta.name || "";
+      $("subtitle").textContent = meta.subtitle || "";
+
+      const wrap = $("sections");
+      wrap.innerHTML = "";
+
+      (data.groups || []).forEach(function (group) {
+        const card = el("section", "card");
+        const h2 = el("h2");
+        if (group.emoji) h2.appendChild(el("span", "ic", group.emoji));
+        h2.appendChild(el("span", null, pickLang(group.name)));
+        card.appendChild(h2);
+
+        const ul = el("ul", "cuts");
+        (group.items || []).forEach(function (item) {
+          const c = item[lang] || {};
+          const li = el("li");
+
+          const nameRow = el("div", "cut-head");
+          nameRow.appendChild(el("span", "cut-name", c.name || ""));
+          if (c.alt) nameRow.appendChild(el("span", "cut-alt", c.alt));
+          li.appendChild(nameRow);
+
+          if (c.desc) li.appendChild(el("div", "cut-desc", c.desc));
+          ul.appendChild(li);
+        });
+        card.appendChild(ul);
+        wrap.appendChild(card);
+      });
+    }
+
+    Promise.all([
+      fetch("i18n.json").then(function (r) { return r.json(); }),
+      fetch("data/guide-alliums.json").then(function (r) { return r.json(); })
+    ])
+      .then(function (res) {
+        ui = res[0].ui;
+        data = res[1];
+        lang = ui[load(LANG_KEY)] ? load(LANG_KEY) : "en";
+        render();
+      })
+      .catch(function () {
+        $("sections").innerHTML =
+          "<p style='color:var(--muted)'>Could not load allium data from <code>data/</code>. Serve this page over HTTP — browsers block fetch on file://.</p>";
+      });
+
+    $("langBtn").addEventListener("click", function () {
+      if (!ui) return;
+      lang = (lang === "zh") ? "en" : "zh";
+      store(LANG_KEY, lang);
+      render();
+    });
+  })();
+</script>
+</body>
+</html>

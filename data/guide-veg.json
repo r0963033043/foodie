@@ -1,0 +1,75 @@
+{
+  "en": {
+    "name": "Vegetables",
+    "subtitle": "Leafy greens, roots and everyday vegetables — how to choose and store them."
+  },
+  "zh": {
+    "name": "蔬菜",
+    "subtitle": "葉菜、根莖與日常蔬菜——挑選與保存要訣。"
+  },
+  "groups": [
+    {
+      "code": "LEAFY",
+      "emoji": "🥬",
+      "name": [{"en": "Leafy & cabbage"}, {"zh": "葉菜與甘藍"}],
+      "items": [
+        {
+          "pantryCode": "LEAFY_GREENS",
+          "unitCode": "BAG",
+          "en": { "name": "Leafy greens", "alt": "青菜 / 葉菜類", "desc": "Bok choy, spinach, A-choy and the like — quick-cooking and perishable. Stir-fry, blanch, or drop into soup.", "tip": "Wrap in dry paper towel and bag loosely; don't wash until you cook." },
+          "zh": { "name": "葉菜類", "alt": "青菜", "desc": "小白菜、菠菜、A 菜之類——易熟也易壞。快炒、汆燙或入湯皆宜。", "tip": "用乾紙巾包起鬆裝入袋，烹煮前再清洗。" }
+        },
+        {
+          "pantryCode": "CABBAGE",
+          "unitCode": "HEAD",
+          "en": { "name": "Cabbage", "alt": "高麗菜 / 甘藍", "desc": "Sweet, crunchy and versatile — Taiwan's everyday cabbage. Stir-fry, braise, or shred raw.", "tip": "Keep whole and unwashed in the crisper; wrap cut faces in plastic and use within days." },
+          "zh": { "name": "高麗菜", "alt": "甘藍", "desc": "清甜爽脆、用途廣，是台灣的日常高麗菜。快炒、滷煮或生切涼拌皆可。", "tip": "整顆不清洗放蔬果室；切開後切面包好，數日內食用。" }
+        }
+      ]
+    },
+    {
+      "code": "ROOT",
+      "emoji": "🥕",
+      "name": [{"en": "Roots & tubers"}, {"zh": "根莖類"}],
+      "items": [
+        {
+          "pantryCode": "DAIKON",
+          "unitCode": "STICK",
+          "en": { "name": "Daikon radish", "alt": "白蘿蔔 / 菜頭", "desc": "Large white winter radish, mild and juicy. Simmers into soups and braises, or pickles crisp.", "tip": "Cut off the leafy tops, wrap in damp paper towel and bag in the crisper." },
+          "zh": { "name": "白蘿蔔", "alt": "菜頭", "desc": "冬季大型白蘿蔔，清甜多汁。燉湯、滷煮，或醃漬成爽脆小菜。", "tip": "切除葉柄，以濕紙巾包好裝袋，放蔬果室冷藏。" }
+        },
+        {
+          "pantryCode": "CARROT",
+          "unitCode": "ROOT",
+          "en": { "name": "Carrot", "alt": "紅蘿蔔 / 胡蘿蔔", "desc": "Sweet orange root, good raw or cooked. Adds color and sweetness to stir-fries, soups and stews.", "tip": "Remove the green tops, bag in the crisper; keep away from apples and other ethylene fruit." },
+          "zh": { "name": "紅蘿蔔", "alt": "胡蘿蔔", "desc": "橙色甜味根菜，生熟皆宜。為快炒、湯品與燉菜增色添甜。", "tip": "去掉綠葉後裝袋放蔬果室；遠離蘋果等會釋放乙烯的水果。" }
+        },
+        {
+          "pantryCode": "POTATOES",
+          "unitCode": "PCS",
+          "en": { "name": "Potato", "alt": "馬鈴薯 / 洋芋", "desc": "A starchy all-rounder. Boil, mash, fry or stew — it soaks up flavor and turns creamy.", "tip": "Dark and cool, never the fridge; store away from onions." },
+          "zh": { "name": "馬鈴薯", "alt": "洋芋", "desc": "百搭的澱粉根莖。水煮、搗泥、油炸或燉煮皆宜，易吸味、口感綿密。", "tip": "陰涼避光、切勿冷藏；遠離洋蔥。" }
+        },
+        {
+          "pantryCode": "SWEET_POTATOES",
+          "unitCode": "PCS",
+          "en": { "name": "Sweet potato", "alt": "地瓜 / 番薯", "desc": "Sweet, dense root with orange or yellow flesh. Steam, bake or fry; the leaves are eaten too.", "tip": "Cool, dark and airy; never refrigerate — cold turns them hard and off-flavored." },
+          "zh": { "name": "地瓜", "alt": "番薯", "desc": "香甜紮實的根莖，橙肉或黃肉。蒸、烤或炸皆宜；地瓜葉也可食用。", "tip": "陰涼、避光、通風；切勿冷藏，低溫會使其變硬走味。" }
+        }
+      ]
+    },
+    {
+      "code": "MUSHROOM",
+      "emoji": "🍄",
+      "name": [{"en": "Mushroom"}, {"zh": "菇類"}],
+      "items": [
+        {
+          "pantryCode": "SHIITAKE",
+          "unitCode": "PACK",
+          "en": { "name": "Shiitake mushroom", "alt": "香菇", "desc": "Meaty, savory mushrooms, fresh or dried. Fresh ones sauté and stew; dried ones rehydrate into a deeper, umami stock.", "tip": "Keep in a paper bag, not plastic, to avoid sogginess." },
+          "zh": { "name": "香菇", "alt": "鮮香菇 / 乾香菇", "desc": "肉厚味鮮，有鮮品與乾貨。鮮香菇煎炒、燉煮；乾香菇泡發後香氣更濃，可入高湯。", "tip": "以紙袋而非塑膠袋保存，避免出水變軟。" }
+        }
+      ]
+    }
+  ]
+}

@@ -91,8 +91,7 @@
     const $ = function (id) { return document.getElementById(id); };
     let ui = null;             // i18n.json ui block: { en:{…}, zh:{…} }
     let pantry = null;         // data/pantry.json: { en:{…}, zh:{…} }
-    let tips = null;           // data/storage-tips.json: { en:[{code,unit,tip}], zh:[…] }
-    let tipIndex = {};         // { en:{code:{unit,tip}}, zh:{…} } built from tips
+    let tipIndex = {};         // { en:{code:{unit,tip}}, zh:{…} } built from the guides
     let foodTypes = [];        // data/food-types.json: [{ code, en, zh, ingredients }]
     let typeOfCode = {};       // ingredient code -> food-type code (from ingredients lists)
     let typeName = {};         // { en:{type:label}, zh:{…} } built from food-types
@@ -391,21 +390,42 @@
       });
     }
 
+    // Ingredient guides carry the unit + storage tip for the items they document,
+    // keyed by `pantryCode`. The tip index is built entirely from the guides — each
+    // pantry code lives in exactly one guide (cuts / alliums / staples).
+    function addGuideTips(guide, groupKey, itemKey, units) {
+      if (!guide) return;
+      (guide[groupKey] || []).forEach(function (grp) {
+        (grp[itemKey] || []).forEach(function (item) {
+          if (!item.pantryCode) return;
+          ["en", "zh"].forEach(function (l) {
+            const blk = item[l] || {};
+            const unit = (units && units[l] && units[l][item.unitCode]) || undefined;
+            if (!tipIndex[l]) tipIndex[l] = {};
+            tipIndex[l][item.pantryCode] = { code: item.pantryCode, unit: unit, tip: blk.tip };
+          });
+        });
+      });
+    }
+
     Promise.all([
       fetch("i18n.json").then(function (r) { return r.json(); }),
       fetch("data/pantry.json").then(function (r) { return r.json(); }),
-      fetch("data/storage-tips.json").then(function (r) { return r.json(); }),
-      fetch("data/food-types.json").then(function (r) { return r.json(); })
+      fetch("data/food-types.json").then(function (r) { return r.json(); }),
+      fetch("data/guide-cuts.json").then(function (r) { return r.json(); }),
+      fetch("data/guide-alliums.json").then(function (r) { return r.json(); }),
+      fetch("data/guide-staples.json").then(function (r) { return r.json(); }),
+      fetch("data/units.json").then(function (r) { return r.json(); }),
+      fetch("data/guide-veg.json").then(function (r) { return r.json(); })
     ])
       .then(function (res) {
         ui = res[0].ui;
         pantry = res[1];
-        tips = res[2];
-        foodTypes = res[3] || [];
-        Object.keys(tips).forEach(function (l) {
-          tipIndex[l] = {};
-          (tips[l] || []).forEach(function (e) { tipIndex[l][e.code] = e; });
-        });
+        foodTypes = res[2] || [];
+        addGuideTips(res[3], "animals", "cuts", res[6]);
+        addGuideTips(res[4], "groups", "items", res[6]);
+        addGuideTips(res[5], "groups", "items", res[6]);
+        addGuideTips(res[7], "groups", "items", res[6]);
         typeName = { en: {}, zh: {} };
         foodTypes.forEach(function (ft) {
           typeName.en[ft.code] = ft.en;
