@@ -31,17 +31,17 @@
 <dialog id="editDialog" class="edit-dialog">
   <form id="editForm" method="dialog">
     <h2 id="editTitle"></h2>
+    <div class="field">
+      <span class="field-label" id="editTypeLabel"></span>
+      <select id="editTypeSelect" class="create-only"></select>
+      <span class="type-chip edit-only" id="editType"></span>
+    </div>
     <div class="field create-only">
       <span class="field-label" id="editNameLabel"></span>
       <div class="suggest-wrap">
         <input type="text" id="editNameInput" maxlength="40" autocomplete="off">
         <div class="suggest" id="nameSuggest" hidden></div>
       </div>
-    </div>
-    <div class="field">
-      <span class="field-label" id="editTypeLabel"></span>
-      <select id="editTypeSelect" class="create-only"></select>
-      <span class="type-chip edit-only" id="editType"></span>
     </div>
     <div class="field">
       <span class="field-label" id="editStorageLabel"></span>
@@ -66,6 +66,8 @@
     <div class="field">
       <span class="field-label" id="editExpiryLabel"></span>
       <input type="date" id="editExpiry">
+      <span class="est-hint" id="shelfLifeHint" hidden></span>
+      <span class="est-hint" id="expiryEst" hidden></span>
     </div>
     <p class="edit-updated edit-only"><span id="editUpdatedLabel"></span> <span class="val" id="editUpdated"></span></p>
     <div class="edit-actions">
@@ -161,16 +163,13 @@
       return null;
     }
 
-    // Known ingredients (data file joined with their tips) for the name dropdown.
+    // Known ingredients (from the guides, via tipIndex) for the name dropdown.
     function catalogueItems() {
       const out = [];
       const info = tipIndex[lang] || {};
-      const groups = pantry.groups || [];
-      groups.forEach(function (g) {
-        g.items.forEach(function (it) {
-          const e = info[it.code] || {};
-          out.push({ code: it.code, name: (it[lang] && it[lang].name) || "", unit: e.unit });
-        });
+      Object.keys(info).forEach(function (code) {
+        const e = info[code];
+        out.push({ code: code, name: e.name || "", unit: e.unit });
       });
       return out;
     }
@@ -402,7 +401,7 @@
             const blk = item[l] || {};
             const unit = (units && units[l] && units[l][item.unitCode]) || undefined;
             if (!tipIndex[l]) tipIndex[l] = {};
-            tipIndex[l][item.pantryCode] = { code: item.pantryCode, unit: unit, tip: blk.tip };
+            tipIndex[l][item.pantryCode] = { code: item.pantryCode, name: blk.name, unit: unit, tip: blk.tip, shelfLife: item.shelfLife };
           });
         });
       });
@@ -416,7 +415,8 @@
       fetch("data/guide-alliums.json").then(function (r) { return r.json(); }),
       fetch("data/guide-staples.json").then(function (r) { return r.json(); }),
       fetch("data/units.json").then(function (r) { return r.json(); }),
-      fetch("data/guide-veg.json").then(function (r) { return r.json(); })
+      fetch("data/guide-veg.json").then(function (r) { return r.json(); }),
+      fetch("data/guide-fruit.json").then(function (r) { return r.json(); })
     ])
       .then(function (res) {
         ui = res[0].ui;
@@ -426,6 +426,7 @@
         addGuideTips(res[4], "groups", "items", res[6]);
         addGuideTips(res[5], "groups", "items", res[6]);
         addGuideTips(res[7], "groups", "items", res[6]);
+        addGuideTips(res[8], "groups", "items", res[6]);
         typeName = { en: {}, zh: {} };
         foodTypes.forEach(function (ft) {
           typeName.en[ft.code] = ft.en;
@@ -515,6 +516,51 @@
       return "";
     }
 
+    // Shelf life (days) for a code in a given storage, or undefined if that
+    // storage isn't a sensible home for it (e.g. rice in the fridge).
+    function shelfLifeOf(code, storage) {
+      const e = code && tipIndex[lang] && tipIndex[lang][code];
+      const sl = e && e.shelfLife;
+      return sl ? sl[storage] : undefined;
+    }
+    // Days -> a rounded, human "~2 wk" / "約 2 週" label for display.
+    function fmtShelfLife(days) {
+      const zh = (lang === "zh");
+      if (days >= 300) { const y = Math.round(days / 365); return zh ? ("約 " + y + " 年") : ("~" + y + " yr"); }
+      if (days >= 28) { const m = Math.round(days / 30); return zh ? ("約 " + m + " 個月") : ("~" + m + " mo"); }
+      if (days >= 14) { const w = Math.round(days / 7); return zh ? ("約 " + w + " 週") : ("~" + w + " wk"); }
+      return zh ? ("約 " + days + " 天") : ("~" + days + " days");
+    }
+    // Show the catalogue shelf life for a code (hidden when unknown).
+    function updateShelfLifeHint(code) {
+      const days = shelfLifeOf(code, editStorage);
+      const hint = $("shelfLifeHint");
+      if (days != null) {
+        hint.textContent = ui[lang].shelfLifeLabel + " " + fmtShelfLife(days);
+        hint.hidden = false;
+      } else {
+        hint.hidden = true;
+      }
+    }
+    function addDays(dateStr, days) {
+      const d = new Date(dateStr + "T00:00:00");
+      if (isNaN(d.getTime())) return "";
+      d.setDate(d.getDate() + days);
+      const p = function (n) { return (n < 10 ? "0" : "") + n; };
+      return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate());
+    }
+    // When a bought date is set and no expiry entered yet, fill an estimate
+    // from the catalogue's shelf life and flag it as approximate.
+    function fillEstimatedExpiry() {
+      const code = (editMode === "create") ? pickedCode : editingCode;
+      const days = shelfLifeOf(code, editStorage);
+      const bought = $("editBought").value;
+      if (bought && days != null && !$("editExpiry").value) {
+        $("editExpiry").value = addDays(bought, days);
+        $("expiryEst").hidden = false;
+      }
+    }
+
     // ===== Edit / create dialog =====
 
     function setEditorLabels(t) {
@@ -525,6 +571,7 @@
       $("editBoughtLabel").textContent = t.metaBought;
       $("editSourceLabel").textContent = t.metaSource;
       $("editExpiryLabel").textContent = t.metaExpiry;
+      $("expiryEst").textContent = t.expiryEstimated;
       $("editUpdatedLabel").textContent = t.metaUpdated;
       $("editReset").textContent = t.editReset;
       $("editCancel").textContent = t.editCancel;
@@ -566,7 +613,11 @@
 
     function showSuggest(query) {
       const q = query.trim().toLowerCase();
+      // Scope suggestions to the chosen food type (OTHER = the catch-all, no filter).
+      const type = $("editTypeSelect").value;
+      const filterType = (type && type !== "OTHER") ? type : null;
       const matches = catalogueItems().filter(function (c) {
+        if (filterType && typeOfCode[c.code] !== filterType) return false;
         return q === "" || c.name.toLowerCase().indexOf(q) !== -1;
       }).slice(0, 8);
       suggestItems = matches;
@@ -597,6 +648,8 @@
       $("editNameInput").value = item.name;
       $("editUnitInput").value = item.unit || "";
       if (typeOfCode[item.code]) $("editTypeSelect").value = typeOfCode[item.code];
+      updateShelfLifeHint(item.code);
+      fillEstimatedExpiry();
       hideSuggest();
     }
 
@@ -621,6 +674,8 @@
       $("editBought").value = md.bought || "";
       $("editSource").value = md.source || "";
       $("editExpiry").value = md.expiry || "";
+      $("expiryEst").hidden = true;
+      updateShelfLifeHint(code);
       $("editUpdated").textContent = md.updated ? fmtDateTime(md.updated) : "—";
 
       buildStorageChips(t);
@@ -647,6 +702,8 @@
       $("editBought").value = "";
       $("editSource").value = "";
       $("editExpiry").value = "";
+      $("expiryEst").hidden = true;
+      updateShelfLifeHint(null);
       $("editUpdated").textContent = "—";
       hideSuggest();
 
@@ -688,16 +745,33 @@
       Array.prototype.forEach.call(all, function (c) {
         c.classList.toggle("on", c.dataset.storage === editStorage);
       });
+      // Shelf life depends on storage: refresh the hint, and if the expiry was
+      // an estimate, recompute it for the newly chosen storage.
+      const code = (editMode === "create") ? pickedCode : editingCode;
+      if (!$("expiryEst").hidden) { $("editExpiry").value = ""; $("expiryEst").hidden = true; }
+      updateShelfLifeHint(code);
+      fillEstimatedExpiry();
     });
 
     // Name autocomplete: typing filters the catalogue; editing clears any pick.
     $("editNameInput").addEventListener("input", function () {
       pickedCode = null;
+      updateShelfLifeHint(null);
       showSuggest(this.value);
     });
     $("editNameInput").addEventListener("focus", function () {
       if (editMode === "create") showSuggest(this.value);
     });
+    // Picking a type re-scopes the name suggestions to that type.
+    $("editTypeSelect").addEventListener("change", function () {
+      if (editMode !== "create") return;
+      showSuggest($("editNameInput").value);
+      $("editNameInput").focus();
+    });
+    // Setting a bought date fills an estimated best-before; editing the expiry
+    // by hand drops the "estimated" flag.
+    $("editBought").addEventListener("change", fillEstimatedExpiry);
+    $("editExpiry").addEventListener("input", function () { $("expiryEst").hidden = true; });
     $("editNameInput").addEventListener("keydown", function (e) {
       if ($("nameSuggest").hidden || !suggestItems.length) return;
       if (e.key === "ArrowDown") {
@@ -734,17 +808,26 @@
         const val = raw === "" ? null : parseFloat(raw);
         const amt = (val != null && !isNaN(val)) ? val : null;
 
-        if (pickedCode) {
+        // Prefer the code from the picked suggestion; otherwise resolve a known
+        // guide ingredient by exact name, so a typed match still reuses its code.
+        let code = pickedCode;
+        if (!code) {
+          const hit = catalogueItems().filter(function (c) {
+            return c.name.trim().toLowerCase() === name.toLowerCase();
+          })[0];
+          if (hit) code = hit.code;
+        }
+
+        if (code) {
           // Re-add a known catalogue item: reuse its code so its unit/tip
           // carry through, un-hide it if it was deleted, and apply the chosen
           // storage / amount / dates as overrides.
-          const code = pickedCode;
           if (deleted[code]) { delete deleted[code]; store(DELETED_KEY, JSON.stringify(deleted)); }
           setMove(code, editStorage);
           setAmount(code, amt);
           setMeta(code, $("editBought").value, $("editExpiry").value, $("editSource").value);
         } else {
-          const code = newCode();
+          code = newCode();
           custom.push({
             code: code,
             name: name,

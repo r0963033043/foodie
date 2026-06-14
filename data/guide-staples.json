@@ -15,12 +15,14 @@
       "items": [
         {
           "pantryCode": "BREAD",
+          "shelfLife": { "fridge": 7, "freezer": 30, "pantry": 5 },
           "unitCode": "LOAF",
           "en": { "name": "Bread", "alt": "麵包 / 吐司", "desc": "Sliced loaves and rolls. Toast, sandwich, or French-toast; stales fast at room temperature.", "tip": "Freeze sliced in a sealed bag; toast directly from frozen." },
           "zh": { "name": "麵包", "alt": "吐司", "desc": "吐司與各式麵包。烤土司、做三明治或法式吐司；常溫下易變乾變硬。", "tip": "切片密封冷凍；可直接烘烤，免退冰。" }
         },
         {
           "pantryCode": "RICE",
+          "shelfLife": { "pantry": 365 },
           "unitCode": "KG",
           "en": { "name": "Rice", "alt": "白米 / 米", "desc": "The staple grain. Short-grain for everyday meals; rinse before cooking for fluffier results.", "tip": "Airtight container in a cool, dark spot; a bay leaf helps deter bugs." },
           "zh": { "name": "白米", "alt": "米", "desc": "主食穀物。日常多用短圓米；煮前淘洗，米飯更鬆軟。", "tip": "密封置於陰涼避光處；放片月桂葉可防蟲。" }
@@ -34,6 +36,7 @@
       "items": [
         {
           "pantryCode": "MILK",
+          "shelfLife": { "fridge": 7 },
           "unitCode": "CARTON",
           "en": { "name": "Milk", "alt": "鮮奶 / 牛奶", "desc": "Fresh dairy milk for drinking, cereal and cooking. Keep cold and watch the date.", "tip": "Keep at the back of the fridge, not the door; finish within 5–7 days of opening." },
           "zh": { "name": "鮮奶", "alt": "牛奶", "desc": "鮮乳，可直飲、配麥片或入菜。需全程冷藏並留意效期。", "tip": "放冷藏內側而非門邊；開封後 5–7 天內喝完。" }
@@ -47,6 +50,7 @@
       "items": [
         {
           "pantryCode": "EGGS",
+          "shelfLife": { "fridge": 28 },
           "unitCode": "PCS",
           "en": { "name": "Eggs", "alt": "雞蛋 / 蛋", "desc": "The kitchen all-rounder. Fry, boil, steam (chawanmushi), or bind and batter.", "tip": "Store in the carton, pointed end down; best within 3–4 weeks." },
           "zh": { "name": "雞蛋", "alt": "蛋", "desc": "廚房萬用食材。煎、煮、蒸（茶碗蒸）或作裹粉與黏合皆可。", "tip": "連蛋盒尖端朝下冷藏，3–4 週內食用最佳。" }
@@ -60,6 +64,7 @@
       "items": [
         {
           "pantryCode": "TOFU",
+          "shelfLife": { "fridge": 3 },
           "unitCode": "BOX",
           "en": { "name": "Tofu", "alt": "豆腐", "desc": "Soybean curd, soft to firm. Silken for soups, firm for pan-frying, braising and stir-fries.", "tip": "Once opened, submerge in water and change it daily; use within 3 days." },
           "zh": { "name": "豆腐", "alt": "", "desc": "由黃豆製成，質地由嫩到老。嫩豆腐入湯，板豆腐煎、滷、炒皆宜。", "tip": "開封後泡水冷藏並每日換水，3 天內食用完。" }
@@ -73,6 +78,7 @@
       "items": [
         {
           "pantryCode": "DUMPLINGS",
+          "shelfLife": { "fridge": 2, "freezer": 90 },
           "unitCode": "PCS",
           "en": { "name": "Dumplings", "alt": "水餃 / 餃子", "desc": "Pork- or veg-filled wrappers, usually kept frozen. Boil, pan-fry as potstickers, or steam.", "tip": "Freeze on a tray first so they don't clump, then bag; cook straight from frozen." },
           "zh": { "name": "水餃", "alt": "餃子", "desc": "包入豬肉或蔬菜的麵皮，多冷凍保存。可水煮、煎成鍋貼或蒸食。", "tip": "先平鋪冷凍定型再裝袋，避免黏在一起；可直接下鍋免解凍。" }
@@ -86,6 +92,7 @@
       "items": [
         {
           "pantryCode": "SOY_SAUCE",
+          "shelfLife": { "fridge": 365, "pantry": 365 },
           "unitCode": "BOTTLE",
           "en": { "name": "Soy sauce", "alt": "醬油", "desc": "The backbone seasoning — salty and savory. For braising, dipping, marinades and stir-fries.", "tip": "Cupboard is fine while sealed; refrigerate after opening." },
           "zh": { "name": "醬油", "alt": "", "desc": "基礎調味料，鹹香甘醇。滷煮、沾醬、醃漬與快炒都少不了。", "tip": "未開封可常溫存放；開封後請冷藏。" }
@@ -99,6 +106,7 @@
       "items": [
         {
           "pantryCode": "COOKING_OIL",
+          "shelfLife": { "pantry": 180 },
           "unitCode": "BOTTLE",
           "en": { "name": "Cooking oil", "alt": "食用油 / 沙拉油", "desc": "Neutral oil for everyday frying and stir-frying. Choose a high smoke point for high heat.", "tip": "Cool, dark place away from the stove; reseal the cap tightly." },
           "zh": { "name": "食用油", "alt": "沙拉油", "desc": "日常煎炒用的中性油。大火烹調宜選發煙點高的油。", "tip": "陰涼避光、遠離爐火，使用後旋緊瓶蓋。" }

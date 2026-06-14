@@ -1,4 +1,4 @@
 {
-  "en": { "BUNCH": "bunch", "PCS": "pcs", "BULB": "bulb", "GRAM": "g", "CARTON": "carton", "BOX": "box", "BAG": "bag", "PACK": "pack", "HEAD": "head", "STICK": "pcs", "ROOT": "pcs", "LOAF": "loaf", "KG": "kg", "BOTTLE": "bottle" },
-  "zh": { "BUNCH": "把", "PCS": "顆", "BULB": "球", "GRAM": "克", "CARTON": "瓶", "BOX": "盒", "BAG": "袋", "PACK": "包", "HEAD": "顆", "STICK": "條", "ROOT": "根", "LOAF": "條", "KG": "公斤", "BOTTLE": "瓶" }
+  "en": { "GRAM": "g", "KG": "kg", "BUNCH": "bunch", "PCS": "pcs", "BULB": "bulb", "CARTON": "carton", "BOX": "box", "BAG": "bag", "PACK": "pack", "HEAD": "head", "STICK": "pcs", "ROOT": "pcs", "LOAF": "loaf", "BOTTLE": "bottle", "EAR": "ear" },
+  "zh": { "GRAM": "克", "KG": "公斤", "BUNCH": "把", "PCS": "顆", "BULB": "球", "CARTON": "瓶", "BOX": "盒", "BAG": "袋", "PACK": "包", "HEAD": "顆", "STICK": "條", "ROOT": "根", "LOAF": "條", "BOTTLE": "瓶", "EAR": "支" }
 }

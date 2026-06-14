@@ -178,6 +178,7 @@ ul.cook-suggest .miss-chip::before { content: "✗ "; color: var(--warn); }
 
 /* Click a row to edit its storage and amount */
 .edit-hint { color: var(--muted); font-size: 13px; margin: 6px 0 0; }
+.est-hint { display: inline-block; margin-top: 4px; color: var(--muted); font-size: 12px; }
 .edit-hint::before { content: "✎ "; }
 .view-toggle { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; }
 .view-label {
