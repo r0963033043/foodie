@@ -22,6 +22,7 @@
 
 </div>
 
+<script src="links.js"></script>
 <script>
   (function () {
     const LANG_KEY = "foodie.lang";
@@ -100,6 +101,14 @@
           if (best) li.appendChild(best);
           const worst = cookRow("cook-worst", t.cookWorst, cut.worst);
           if (worst) li.appendChild(worst);
+
+          const cutRow = el("div", "cut-links");
+          const cutLink = el("a", null, t.cutVideo);
+          cutLink.href = FoodieLinks.youtubeSearch((c.name || "") + " " + t.cutKeyword);
+          cutLink.target = "_blank";
+          cutLink.rel = "noopener";
+          cutRow.appendChild(cutLink);
+          li.appendChild(cutRow);
 
           ul.appendChild(li);
         });
