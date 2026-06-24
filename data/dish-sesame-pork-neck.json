@@ -3,7 +3,7 @@
   "servings": 2,
   "main": ["PORK_NECK"],
   "uses": ["PORK_NECK", "ONIONS", "GARLIC", "SCALLIONS"],
-  "method": "PAN_SEAR",
+  "cookware": "STOVE",
   "en": {
     "name": "Sesame Pork Neck (胡麻松阪豬)",
     "ingredients": [

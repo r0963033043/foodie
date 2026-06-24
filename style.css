@@ -58,13 +58,13 @@ footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 3
   font-size: 13px; padding: 4px 12px; border-radius: 999px;
   background: var(--accent-soft); color: var(--accent); font-weight: 500;
 }
-.tag.method::before { content: "🔥 "; }
+.tag.cookware::before { content: "🍳 "; }
 
-/* Method picker — pill buttons that swap the step list */
-.method-pick { display: inline-flex; flex-wrap: wrap; gap: 6px; }
-button.tag.method { border: 0; cursor: pointer; font-family: inherit; }
-button.tag.method:hover { background: var(--accent); color: var(--bg); }
-button.tag.method[aria-pressed="true"] { background: var(--accent); color: var(--bg); }
+/* Cookware picker — pill buttons that swap the step list */
+.cookware-pick { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+button.tag.cookware { border: 0; cursor: pointer; font-family: inherit; }
+button.tag.cookware:hover { background: var(--accent); color: var(--bg); }
+button.tag.cookware[aria-pressed="true"] { background: var(--accent); color: var(--bg); }
 
 /* Serving stepper */
 .serving-stepper {

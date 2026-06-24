@@ -17,6 +17,8 @@
     <p class="subtitle" id="subtitle"></p>
   </header>
 
+  <div class="filters" id="filters"></div>
+
   <div class="grid" id="grid"></div>
 
   <footer>foodie · recipes</footer>
@@ -29,8 +31,11 @@
     const LANG_KEY = "foodie.lang";
     const $ = function (id) { return document.getElementById(id); };
     let ui = null;
-    let dishes = [];           // [{ id, name:{en,zh} }] from the API
+    let dishes = [];           // [{ id, name:{en,zh}, cookware:[code…] }] from the API
+    let cookwareNames = null;  // cookware.json: { en:{CODE:…}, zh:{CODE:…} }
+    let cookwareOrder = [];    // cookware codes present in the catalogue, in file order
     let lang = "en";
+    const selected = new Set(); // selected cookware codes (empty = show all)
 
     function store(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
     function load(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
@@ -51,9 +56,36 @@
       $("title").textContent = t.recipesTitle;
       $("subtitle").textContent = t.recipesSubtitle;
 
+      // Cookware filter — one group of toggle chips (OR within the group; an
+      // empty selection shows everything). Codes resolve to names via
+      // cookware.json; order follows the file.
+      const filters = $("filters");
+      filters.innerHTML = "";
+      if (cookwareOrder.length) {
+        const group = el("div", "filter-group");
+        group.appendChild(el("span", "filter-label", t.filterCookware));
+        cookwareOrder.forEach(function (code) {
+          const label = (cookwareNames[lang] && cookwareNames[lang][code]) || code;
+          const chip = el("button", "filter-chip" + (selected.has(code) ? " on" : ""), label);
+          chip.type = "button";
+          chip.addEventListener("click", function () {
+            if (selected.has(code)) selected.delete(code);
+            else selected.add(code);
+            render();
+          });
+          group.appendChild(chip);
+        });
+        filters.appendChild(group);
+      }
+
       const grid = $("grid");
       grid.innerHTML = "";
-      dishes.forEach(function (d) {
+      const shown = selected.size
+        ? dishes.filter(function (d) {
+            return d.cookware.some(function (c) { return selected.has(c); });
+          })
+        : dishes;
+      shown.forEach(function (d) {
         const card = el("a", "dish-card");
         card.href = "dish.html?id=" + encodeURIComponent(d.id);
 
@@ -69,12 +101,23 @@
 
     Promise.all([
       fetch("i18n.json").then(function (r) { return r.json(); }),
+      fetch("data/cookware.json").then(function (r) { return r.json(); }),
       FoodieApi.listDishes()
     ])
       .then(function (res) {
         ui = res[0].ui;
-        dishes = res[1];
+        cookwareNames = res[1];
+        dishes = res[2];
         lang = ui[load(LANG_KEY)] ? load(LANG_KEY) : "en";
+        // Build the chip order from the cookware file, keeping only codes that
+        // some dish actually uses.
+        const present = {};
+        dishes.forEach(function (d) {
+          d.cookware.forEach(function (c) { present[c] = true; });
+        });
+        cookwareOrder = Object.keys(cookwareNames.en).filter(function (c) {
+          return present[c];
+        });
         render();
       })
       .catch(function () {

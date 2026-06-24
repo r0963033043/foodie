@@ -3,7 +3,7 @@
   "servings": 4,
   "main": ["EGGS", "TOFU", "SOY_SAUCE"],
   "uses": ["EGGS", "TOFU", "DAIKON", "CARROT", "SHIITAKE", "GARLIC", "SOY_SAUCE", "SCALLIONS"],
-  "methods": ["STOVETOP", "STEAMER"],
+  "cookware": ["STOVE", "STEAMER"],
   "en": {
     "name": "Taiwanese Braised Assortment (滷味)",
     "ingredients": [
@@ -42,7 +42,7 @@
         ]
       },
       {
-        "method": "STOVETOP",
+        "cookware": "STOVE",
         "phase": "Cook the egg and meat",
         "items": [
           "Hard-boil the eggs on the stovetop, then cool and peel.",
@@ -50,7 +50,7 @@
         ]
       },
       {
-        "method": "STEAMER",
+        "cookware": "STEAMER",
         "phase": "Cook the egg and meat",
         "items": [
           "Steam the eggs in the rice cooker — 1 cup of water in the outer pot — then cool and peel.",
@@ -65,7 +65,7 @@
         ]
       },
       {
-        "method": "STOVETOP",
+        "cookware": "STOVE",
         "phase": "Start cook",
         "items": [
           "Bring to a boil, then lower to a gentle simmer for 10 minutes to open up the master sauce (滷汁).",
@@ -75,7 +75,7 @@
         ]
       },
       {
-        "method": "STEAMER",
+        "cookware": "STEAMER",
         "phase": "Cook in the rice cooker (電鍋)",
         "items": [
           "Add the daikon, carrot, and any meat to the inner pot. Add 2 cups of water to the outer pot and press the switch; let it run a full cycle (about 25 minutes).",
@@ -129,7 +129,7 @@
         ]
       },
       {
-        "method": "STOVETOP",
+        "cookware": "STOVE",
         "phase": "預煮蛋與肉",
         "items": [
           "雞蛋以爐火煮熟，放涼後去殼。",
@@ -137,7 +137,7 @@
         ]
       },
       {
-        "method": "STEAMER",
+        "cookware": "STEAMER",
         "phase": "預煮蛋與肉",
         "items": [
           "雞蛋以電鍋蒸熟（外鍋 1 杯水），放涼後去殼。",
@@ -152,7 +152,7 @@
         ]
       },
       {
-        "method": "STOVETOP",
+        "cookware": "STOVE",
         "phase": "開始烹煮",
         "items": [
           "滷汁煮滾後轉小火熬煮 10 分鐘，讓滷汁出味。",
@@ -162,7 +162,7 @@
         ]
       },
       {
-        "method": "STEAMER",
+        "cookware": "STEAMER",
         "phase": "電鍋烹煮",
         "items": [
           "內鍋放入白蘿蔔、紅蘿蔔與肉類。外鍋加 2 杯水，按下開關煮一個循環（約 25 分鐘）。",
