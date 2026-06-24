@@ -3,9 +3,9 @@
   "servings": 2,
   "main": ["PORK_NECK"],
   "uses": ["PORK_NECK", "ONIONS", "GARLIC", "SCALLIONS"],
+  "method": "PAN_SEAR",
   "en": {
     "name": "Sesame Pork Neck (胡麻松阪豬)",
-    "method": "Pan-sear",
     "ingredients": [
       {
         "group": "Main",
@@ -53,7 +53,6 @@
   },
   "zh": {
     "name": "胡麻松阪豬",
-    "method": "煎",
     "ingredients": [
       {
         "group": "主食材",

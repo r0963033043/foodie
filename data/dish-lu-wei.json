@@ -1,0 +1,181 @@
+{
+  "chefInitial": "C",
+  "servings": 4,
+  "main": ["EGGS", "TOFU", "SOY_SAUCE"],
+  "uses": ["EGGS", "TOFU", "DAIKON", "CARROT", "SHIITAKE", "GARLIC", "SOY_SAUCE", "SCALLIONS"],
+  "methods": ["STOVETOP", "STEAMER"],
+  "en": {
+    "name": "Taiwanese Braised Assortment (滷味)",
+    "ingredients": [
+      {
+        "group": "Items to braise",
+        "items": [
+          { "name": "Eggs, hard-boiled and peeled", "amount": 6, "unit": "pcs" },
+          { "name": "Dried tofu (豆乾)", "amount": 6, "unit": "pcs" },
+          { "name": "Daikon, peeled and cut in chunks", "amount": 300, "unit": "g" },
+          { "name": "Carrot, cut in chunks", "amount": 1, "unit": "pcs" },
+          { "name": "Dried shiitake, soaked until soft", "amount": 6, "unit": "pcs" },
+          { "name": "Chicken wings (optional), blanched", "amount": 6, "unit": "pcs" }
+        ]
+      }
+    ],
+    "sauce": [
+      { "name": "Water", "amount": 1000, "unit": "ml" },
+      { "name": "Soy sauce", "amount": 150, "unit": "ml" },
+      { "name": "Dark soy sauce (for colour)", "amount": 1, "unit": "tbsp" },
+      { "name": "Rock sugar", "amount": 2, "unit": "tbsp" },
+      { "name": "Rice wine (米酒)", "amount": 3, "unit": "tbsp" },
+      { "name": "Garlic cloves, smashed", "amount": 6, "unit": "cloves" },
+      { "name": "Scallions, knotted", "amount": 3, "unit": "stalks" },
+      { "name": "Ginger, sliced", "amount": 4, "unit": "slices" },
+      { "name": "Star anise", "amount": 2, "unit": "pcs" },
+      { "name": "Cinnamon stick", "amount": 1, "unit": "pcs" },
+      { "name": "Bay leaves", "amount": 2, "unit": "pcs" },
+      { "name": "Five-spice powder", "amount": 1, "unit": "tsp" }
+    ],
+    "steps": [
+      {
+        "phase": "Preparatory work",
+        "items": [
+          "Soak the dried shiitake in warm water until soft, keeping the soaking liquid.",
+          "Smash the garlic, knot the scallions, and slice the ginger."
+        ]
+      },
+      {
+        "method": "STOVETOP",
+        "phase": "Cook the egg and meat",
+        "items": [
+          "Hard-boil the eggs on the stovetop, then cool and peel.",
+          "If using chicken wings or any other meat, blanch in boiling water for 1–2 minutes to remove scum, then drain."
+        ]
+      },
+      {
+        "method": "STEAMER",
+        "phase": "Cook the egg and meat",
+        "items": [
+          "Steam the eggs in the rice cooker — 1 cup of water in the outer pot — then cool and peel.",
+          "If using chicken wings or any other meat, put it in the inner pot with water to cover and steam one cycle (1 cup in the outer pot) to draw out the scum, then rinse and drain."
+        ]
+      },
+      {
+        "phase": "Build the braise",
+        "items": [
+          "In a pot, combine the water plus reserved shiitake liquid, soy sauce, dark soy sauce, rock sugar, and rice wine.",
+          "Add the garlic, scallions, ginger, star anise, cinnamon, bay leaves, and five-spice."
+        ]
+      },
+      {
+        "method": "STOVETOP",
+        "phase": "Start cook",
+        "items": [
+          "Bring to a boil, then lower to a gentle simmer for 10 minutes to open up the master sauce (滷汁).",
+          "Add the firmest items first — daikon, carrot, and any meat — and simmer 20 minutes.",
+          "Add the tofu, shiitake, and peeled eggs. Keep at a low simmer for another 20 minutes, until everything is tender and deeply coloured.",
+          "Turn off the heat and let everything steep in the warm braise for at least 30 minutes (or refrigerate overnight) so the flavour soaks in."
+        ]
+      },
+      {
+        "method": "STEAMER",
+        "phase": "Cook in the rice cooker (電鍋)",
+        "items": [
+          "Add the daikon, carrot, and any meat to the inner pot. Add 2 cups of water to the outer pot and press the switch; let it run a full cycle (about 25 minutes).",
+          "Add the tofu, shiitake, and peeled eggs, top up the outer pot with 1 more cup of water, and run a second cycle.",
+          "When the switch pops up, leave the lid on and steep on keep-warm for at least 30 minutes (or refrigerate overnight) so the flavour soaks in."
+        ]
+      },
+      {
+        "phase": "Plate",
+        "items": [
+          "Lift the items out, slice the tofu, daikon, and eggs, and arrange on a plate. Serve warm or chilled, spooning over a little braising liquid; add chopped scallion or chilli oil if you like."
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "name": "家常滷味",
+    "ingredients": [
+      {
+        "group": "滷料",
+        "items": [
+          { "name": "水煮蛋（去殼）", "amount": 6, "unit": "顆" },
+          { "name": "豆乾", "amount": 6, "unit": "塊" },
+          { "name": "白蘿蔔（去皮切塊）", "amount": 300, "unit": "克" },
+          { "name": "紅蘿蔔（切塊）", "amount": 1, "unit": "根" },
+          { "name": "乾香菇（泡軟）", "amount": 6, "unit": "朵" },
+          { "name": "雞翅（可省略，汆燙過）", "amount": 6, "unit": "隻" }
+        ]
+      }
+    ],
+    "sauce": [
+      { "name": "水", "amount": 1000, "unit": "毫升" },
+      { "name": "醬油", "amount": 150, "unit": "毫升" },
+      { "name": "老抽（上色用）", "amount": 1, "unit": "大匙" },
+      { "name": "冰糖", "amount": 2, "unit": "大匙" },
+      { "name": "米酒", "amount": 3, "unit": "大匙" },
+      { "name": "蒜瓣（拍裂）", "amount": 6, "unit": "瓣" },
+      { "name": "青蔥（打結）", "amount": 3, "unit": "根" },
+      { "name": "薑片", "amount": 4, "unit": "片" },
+      { "name": "八角", "amount": 2, "unit": "顆" },
+      { "name": "桂皮", "amount": 1, "unit": "段" },
+      { "name": "月桂葉", "amount": 2, "unit": "片" },
+      { "name": "五香粉", "amount": 1, "unit": "茶匙" }
+    ],
+    "steps": [
+      {
+        "phase": "前置作業",
+        "items": [
+          "乾香菇以溫水泡軟，泡香菇的水留用。",
+          "蒜瓣拍裂、青蔥打結、薑切片。"
+        ]
+      },
+      {
+        "method": "STOVETOP",
+        "phase": "預煮蛋與肉",
+        "items": [
+          "雞蛋以爐火煮熟，放涼後去殼。",
+          "若使用雞翅或其他肉類，先入滾水汆燙 1～2 分鐘去除浮沫，撈起瀝乾。"
+        ]
+      },
+      {
+        "method": "STEAMER",
+        "phase": "預煮蛋與肉",
+        "items": [
+          "雞蛋以電鍋蒸熟（外鍋 1 杯水），放涼後去殼。",
+          "若使用雞翅或其他肉類，放入內鍋加水淹過，外鍋 1 杯水蒸一次去除浮沫，取出沖洗瀝乾。"
+        ]
+      },
+      {
+        "phase": "調製滷汁",
+        "items": [
+          "鍋中加入水（連同泡香菇的水）、醬油、老抽、冰糖與米酒。",
+          "再放入蒜、蔥、薑、八角、桂皮、月桂葉與五香粉。"
+        ]
+      },
+      {
+        "method": "STOVETOP",
+        "phase": "開始烹煮",
+        "items": [
+          "滷汁煮滾後轉小火熬煮 10 分鐘，讓滷汁出味。",
+          "先下最耐煮的食材——白蘿蔔、紅蘿蔔與肉類，小火滷約 20 分鐘。",
+          "再加入豆乾、香菇與去殼蛋，繼續小火滷約 20 分鐘，至食材軟透且上色。",
+          "關火後讓食材在溫熱滷汁中浸泡至少 30 分鐘（或冷藏隔夜），更入味。"
+        ]
+      },
+      {
+        "method": "STEAMER",
+        "phase": "電鍋烹煮",
+        "items": [
+          "內鍋放入白蘿蔔、紅蘿蔔與肉類。外鍋加 2 杯水，按下開關煮一個循環（約 25 分鐘）。",
+          "再放入豆乾、香菇與去殼蛋，外鍋再加 1 杯水，再跳一次。",
+          "開關跳起後不開蓋，以保溫狀態續燜至少 30 分鐘（或冷藏隔夜），更入味。"
+        ]
+      },
+      {
+        "phase": "盛盤",
+        "items": [
+          "將食材撈出，豆乾、蘿蔔與蛋切塊擺盤，淋上少許滷汁，趁溫熱或冰鎮享用；可依喜好加蔥花或辣油。"
+        ]
+      }
+    ]
+  }
+}

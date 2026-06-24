@@ -15,7 +15,7 @@
     <div class="chef"><span class="avatar" id="chefAvatar"></span> <span id="chefBy"></span></div>
     <h1 id="dishName"></h1>
     <div class="tags">
-      <span class="tag method" id="tagMethod"></span>
+      <span class="method-pick" id="methodPick"></span>
       <span class="serving-stepper">
         <span class="ic">🍽</span>
         <button type="button" id="servMinus" aria-label="Fewer servings">−</button>
@@ -70,11 +70,13 @@
     const MIN_SERVINGS = 1, MAX_SERVINGS = 20;
     const $ = function (id) { return document.getElementById(id); };
     let i18n = null;           // i18n.json ui block: { en:{…}, zh:{…} }
+    let methodNames = null;    // methods.json: { en:{CODE:…}, zh:{CODE:…} }
     let dish = null;           // currently rendered dish
     let dishId = null;
     let lang = "en";
     let servings = 1;          // current (adjustable) serving count
     let showPhotos = false;    // step photo visibility (off by default)
+    let methodIndex = 0;       // selected cooking method (for dishes with `methods`)
 
     function store(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
     function load(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
@@ -134,7 +136,34 @@
       $("chefAvatar").textContent = dish.chefInitial || "C";
       $("chefBy").textContent = ui.by;
       $("dishName").textContent = L.name;
-      $("tagMethod").textContent = L.method;
+
+      // Method picker — top-level `methods` (array of codes) lets the reader
+      // pick a cooking method; steps tagged with that method index swap
+      // accordingly. Falls back to the single `method` code. Codes resolve to
+      // names via methods.json (data layer is language-neutral).
+      const methodCodes = (dish.methods && dish.methods.length)
+        ? dish.methods : (dish.method ? [dish.method] : []);
+      if (methodIndex >= methodCodes.length) methodIndex = 0;
+      const methodLabel = function (code) {
+        return (methodNames[lang] && methodNames[lang][code]) || code;
+      };
+      const pick = $("methodPick");
+      pick.innerHTML = "";
+      if (methodCodes.length === 1) {
+        pick.appendChild(el("span", "tag method", methodLabel(methodCodes[0])));
+      } else if (methodCodes.length > 1) {
+        methodCodes.forEach(function (code, i) {
+          const b = el("button", "tag method", methodLabel(code));
+          b.type = "button";
+          b.setAttribute("aria-pressed", i === methodIndex ? "true" : "false");
+          b.addEventListener("click", function () {
+            if (methodIndex === i) return;
+            methodIndex = i;
+            render();
+          });
+          pick.appendChild(b);
+        });
+      }
 
       // Serving stepper
       $("servLabel").textContent = servings + " " + (servings === 1 ? ui.serving : ui.servings);
@@ -181,7 +210,10 @@
       const steps = $("stepsBody");
       steps.innerHTML = "";
       let offset = 0;
-      L.steps.forEach(function (phase) {
+      const activeMethod = methodCodes[methodIndex];
+      L.steps.filter(function (phase) {
+        return phase.method == null || phase.method === activeMethod;
+      }).forEach(function (phase) {
         steps.appendChild(el("div", "phase", phase.phase));
         const ol = el("ol", "steps");
         ol.style.counterReset = "step " + offset;
@@ -203,10 +235,13 @@
         "<p style='color:var(--muted)'>Could not load recipe data from <code>data/</code>. Serve this page over HTTP — browsers block fetch on file://.</p>";
     }
 
-    fetch("i18n.json")
-      .then(function (r) { return r.json(); })
-      .then(function (json) {
-        i18n = json.ui;
+    Promise.all([
+      fetch("i18n.json").then(function (r) { return r.json(); }),
+      fetch("data/methods.json").then(function (r) { return r.json(); })
+    ])
+      .then(function (res) {
+        i18n = res[0].ui;
+        methodNames = res[1];
         lang = i18n[load(LANG_KEY)] ? load(LANG_KEY) : "en";
         showPhotos = load(PHOTO_KEY) === "1";
         const qid = new URLSearchParams(location.search).get("id");

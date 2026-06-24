@@ -3,9 +3,9 @@
   "servings": 2,
   "main": ["EGGS"],
   "uses": ["EGGS", "SHIITAKE", "SCALLIONS", "SOY_SAUCE"],
+  "method": "STEAMER",
   "en": {
     "name": "Silky Steamed Egg (茶碗蒸)",
-    "method": "Steamer",
     "ingredients": [
       {
         "group": "Base",
@@ -50,7 +50,6 @@
   },
   "zh": {
     "name": "滑嫩茶碗蒸",
-    "method": "電鍋／蒸",
     "ingredients": [
       {
         "group": "基底",

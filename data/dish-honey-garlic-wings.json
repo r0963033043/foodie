@@ -3,9 +3,9 @@
   "servings": 3,
   "main": ["CHICKEN"],
   "uses": ["CHICKEN", "GARLIC", "SOY_SAUCE"],
+  "method": "OVEN",
   "en": {
     "name": "Honey Garlic Baked Chicken Wings",
-    "method": "Oven",
     "ingredients": [
       {
         "group": "Base",
@@ -44,7 +44,6 @@
   },
   "zh": {
     "name": "蜂蜜蒜香烤雞翅",
-    "method": "烤箱",
     "ingredients": [
       {
         "group": "基底",
