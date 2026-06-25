@@ -36,17 +36,17 @@
       "items": [
         {
           "pantryCode": "DAIKON",
-          "shelfLife": { "fridge": 30 },
+          "shelfLife": { "pantry": 1, "fridge": 30 },
           "unitCode": "STICK",
-          "en": { "name": "Daikon radish", "alt": "白蘿蔔 / 菜頭", "desc": "Large white winter radish, mild and juicy. Simmers into soups and braises, or pickles crisp.", "tip": "Cut off the leafy tops, peel completely, cut into chunks and seal in a bag with the air pressed out — keeps about a month in the crisper. Don't freeze whole (it turns mushy); grated is fine." },
-          "zh": { "name": "白蘿蔔", "alt": "菜頭", "desc": "冬季大型白蘿蔔，清甜多汁。燉湯、滷煮，或醃漬成爽脆小菜。", "tip": "切除葉子、削去外皮、切段後裝入夾鏈袋擠出空氣，放蔬果室冷藏可存約一個月。整條勿冷凍（易軟爛），磨成泥則可。" }
+          "en": { "name": "Daikon radish", "alt": "白蘿蔔 / 菜頭", "desc": "Large white winter radish, mild and juicy. Simmers into soups and braises, or pickles crisp.", "tip": ["Room temperature: trim off the green tops as soon as you get home so they don't keep drawing out moisture, then keep the radish whole and unwashed in a cool, airy spot — about 3–5 days in winter or an air-conditioned room (under 20°C), but only 1–2 days in humid summer heat (25–30°C+). Daikon is very watery and goes spongy or soft from the inside in summer warmth.", "Refrigerator: if you won't cook it within two days, peel it, cut into chunks, seal in a bag with the air pressed out and refrigerate — about a month in the crisper. Don't freeze whole (it turns mushy); grated is fine."] },
+          "zh": { "name": "白蘿蔔", "alt": "菜頭", "desc": "冬季大型白蘿蔔，清甜多汁。燉湯、滷煮，或醃漬成爽脆小菜。", "tip": ["室溫保存：買回後立刻切除頂部綠葉，以免葉子持續抽走水分；整條不清洗、置於陰涼通風處——冬季或冷氣房（20°C 以下）約可放 3～5 天，夏季悶熱（25～30°C 以上）最多 1～2 天。白蘿蔔水分高，夏季室溫下易從內部變糠（空心）或變軟。", "冷藏：若兩天內煮不完，建議削皮切段、裝夾鏈袋擠出空氣冷藏，可存約一個月。整條勿冷凍（易軟爛），磨成泥則可。"] }
         },
         {
           "pantryCode": "CARROT",
-          "shelfLife": { "fridge": 21 },
+          "shelfLife": { "pantry": 2, "fridge": 21 },
           "unitCode": "ROOT",
-          "en": { "name": "Carrot", "alt": "紅蘿蔔 / 胡蘿蔔", "desc": "Sweet orange root, good raw or cooked. Adds color and sweetness to stir-fries, soups and stews.", "tip": "Remove the green tops, bag in the crisper; keep away from apples and other ethylene fruit." },
-          "zh": { "name": "紅蘿蔔", "alt": "胡蘿蔔", "desc": "橙色甜味根菜，生熟皆宜。為快炒、湯品與燉菜增色添甜。", "tip": "去掉綠葉後裝袋放蔬果室；遠離蘋果等會釋放乙烯的水果。" }
+          "en": { "name": "Carrot", "alt": "紅蘿蔔 / 胡蘿蔔", "desc": "Sweet orange root, good raw or cooked. Adds color and sweetness to stir-fries, soups and stews.", "tip": ["Room temperature: cut off the green tops as soon as you get home, or the leaves keep pulling moisture and nutrients out and the whole carrot quickly goes limp. Keep them dry — don't wash or store them wet; if there's soil on them, just wrap them in newspaper or paper towel and keep them in a cool, airy box or basket. About 5–7 days in winter or an air-conditioned room (under 20°C), but only 2–3 days in humid summer heat (25–30°C+), when Taiwan's damp molds the tops and dries the skin black. Carrots are sensitive to ethylene, so keep them away from apples and tomatoes or they turn bitter.", "Refrigerator: if you have a lot or it's hot, pat them dry, wrap in newspaper and refrigerate — 2–4 weeks."] },
+          "zh": { "name": "紅蘿蔔", "alt": "胡蘿蔔", "desc": "橙色甜味根菜，生熟皆宜。為快炒、湯品與燉菜增色添甜。", "tip": ["室溫保存：買回後立刻切除頂端青綠色的莖葉，否則葉子會持續抽走全身的水分與養分，整條很快乾癟軟塌。保持乾燥、不要帶水或清洗；表面有泥土時直接用報紙或廚房紙巾包好，放在陰涼通風的紙箱或竹籃裡。冬季或冷氣房（20°C 以下）約可放 5～7 天，夏季悶熱（25～30°C 以上）大約只能放 2～3 天，台灣濕熱環境下頂端易發霉、表皮也會乾硬發黑。紅蘿蔔對乙烯敏感，勿與蘋果、番茄等同放，否則易產生苦味。", "冷藏：量多或天熱、預計 3 天內吃不完時，建議擦乾、用報紙包好冷藏，可存 2～4 週。"] }
         },
         {
           "pantryCode": "POTATOES",
@@ -96,6 +96,20 @@
           "unitCode": "PACK",
           "en": { "name": "Baby corn", "alt": "玉米筍 / 珍珠筍", "desc": "Tiny immature cobs eaten whole — tender, mildly sweet and fully edible. For stir-fries, hot pot and blanched salads.", "tip": "Refrigerate in a bag; eat within a few days while crisp." },
           "zh": { "name": "玉米筍", "alt": "珍珠筍", "desc": "幼嫩的小玉米，整支可食、清甜爽脆。快炒、火鍋或汆燙涼拌皆宜。", "tip": "裝袋冷藏，趁脆數日內食用。" }
+        }
+      ]
+    },
+    {
+      "code": "FRUITING",
+      "emoji": "🍅",
+      "name": [{"en": "Fruiting vegetables"}, {"zh": "果菜類"}],
+      "items": [
+        {
+          "pantryCode": "BEEF_TOMATO",
+          "shelfLife": { "pantry": 3, "fridge": 7, "freezer": 60 },
+          "unitCode": "PCS",
+          "en": { "name": "Beef tomato", "alt": "牛番茄 / 大番茄", "desc": "Large, meaty, low-sweetness tomato treated as a cooking vegetable in Taiwan. The base for tomato-and-egg stir-fry (番茄炒蛋), tomato beef soup and stews.", "tip": ["Room temperature: Best (3–7 days). Keep it on a cool, airy counter out of direct sun, sitting stem-side down — the stem end is hardest and the flesh thickest, so this eases pressure on the bottom and keeps it from softening or weeping, and blocks air at the stem scar. Ripening tomatoes give off a lot of ethylene, so don't bag or basket them with leafy greens, potatoes or carrots, or those rot and sprout fast.", "Refrigerator: Last resort (7–10 days). Chill only once it's deep red and soft, or after you've cut it — cold under 5°C breaks down the cell walls and aroma, turning the flesh mealy and bland. If you must, pat it dry, wrap it alone in newspaper or paper towel, put it stem-side down in a bag and keep it in the warmer crisper drawer; let it warm ~20 minutes before eating to recover some flavor.", "Freezer: For when you can't use them up (1–2 months). Wash, dry and de-stem whole, then freeze — they can't be eaten raw, but for tomato-and-egg stir-fry, tomato beef soup or sauce, rinse a frozen one under water and the skin slips right off." ] },
+          "zh": { "name": "牛番茄", "alt": "大番茄", "desc": "大顆、肉厚、甜度低，在台灣多當作料理用的蔬菜。番茄炒蛋、番茄牛肉湯與燉菜的基底。", "tip": ["室溫保存：最推薦（3～7 天）。放陰涼、通風、避免陽光直射的檯面，且「蒂頭朝下」擺放——蒂頭硬、果肉厚，朝下能減少底部受壓變軟出水，也擋住空氣進入蒂頭縫隙。番茄熟成會釋放大量乙烯，別與葉菜、馬鈴薯、紅蘿蔔放同一袋或籃，否則周邊蔬果易腐爛或發芽。", "冷藏：最後手段（7～10 天）。只在已轉深紅、摸起來變軟或切剩時才冰；低溫（5°C 以下）會破壞細胞壁與香氣，冰過果肉變粉、香甜流失。要冰就擦乾表面、單獨用報紙或紙巾包好、蒂頭朝下放保鮮袋，置於溫度較高的蔬果室；食用前先回溫約 20 分鐘可找回一點風味。", "冷凍：吃不完的終極大招（1～2 個月）。洗淨、擦乾、去蒂後整顆冷凍，雖不能生吃，但煮番茄炒蛋、番茄牛肉湯或熬醬時取出沖水，外皮一秒就能剝除。"] }
         }
       ]
     }

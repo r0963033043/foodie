@@ -131,6 +131,15 @@
       return node;
     }
 
+    // A storage tip is either a single string or an array of strings (one line
+    // per storage method); render one tip line for each.
+    function appendTip(li, tip, cls) {
+      if (!tip) return;
+      (Array.isArray(tip) ? tip : [tip]).forEach(function (text) {
+        if (text) li.appendChild(el("div", cls, text));
+      });
+    }
+
     // Flatten the data file (for the current language) and the custom items into
     // one list, each tagged with its base storage. Names come per-language from
     // the data file; custom items carry a single name used in both languages.
@@ -317,8 +326,7 @@
         const entry = info[it.code];
         const descText = entry && entry.description;
         if (descText) li.appendChild(el("div", "desc", descText));
-        const tipText = entry && entry.tip;
-        if (tipText) li.appendChild(el("div", "tip", tipText));
+        appendTip(li, entry && entry.tip, "tip");
 
         const md = meta[it.code] || {};
         if (md.bought || md.source || md.expiry || md.updated) {

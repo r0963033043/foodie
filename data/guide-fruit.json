@@ -17,8 +17,8 @@
           "pantryCode": "APPLE",
           "shelfLife": { "pantry": 7, "fridge": 30 },
           "unitCode": "PCS",
-          "en": { "name": "Apple", "alt": "蘋果 / 富士", "desc": "Crisp and sweet-tart, on hand year-round; Fuji (富士) is the popular sweet, juicy type. Mostly imported, with some grown high in the mountains (梨山). Store apart from other fruit — it ripens them fast.", "tip": "Refrigerate in the crisper to stay crisp for weeks; bring to room temperature for the fullest flavor." },
-          "zh": { "name": "蘋果", "alt": "富士", "desc": "清脆酸甜、四季常備；富士蘋果香甜多汁最受歡迎。多為進口，部分產於梨山高山。會催熟其他水果，宜分開存放。", "tip": "放冰箱蔬果室可保持脆度數週；回溫後風味最佳。" }
+          "en": { "name": "Apple", "alt": "蘋果", "desc": "Crisp and sweet-tart, on hand year-round; Fuji is the popular sweet, juicy type. Mostly imported, with some grown high in the mountains (梨山). Store apart from other fruit — it ripens them fast.", "tip": "Refrigeration is best (1–2 months): wrap each apple individually in newspaper, paper towel or a bag, then store in the crisper — apples are ethylene powerhouses, so wrapping stops them ripening and rotting your leafy greens and other produce, and it locks in moisture so the skin stays crisp. Room temperature is short-term (7–14 days): keep them cool, airy and out of direct sun; a hot kitchen over 25°C softens the flesh, dries it out and can rot it from the core. Either way, don't nestle them against leafy greens, bananas, papaya or carrots. Before storing, pull out any bruised or broken-skinned apples and eat those first (damaged fruit gives off far more ethylene), and wash only just before eating — the skin's natural wax protects it." },
+          "zh": { "name": "蘋果", "alt": "富士", "desc": "清脆酸甜、四季常備；富士蘋果香甜多汁最受歡迎。多為進口，部分產於梨山高山。會催熟其他水果，宜分開存放。", "tip": "冷藏最佳（可放 1～2 個月）：用報紙、廚房紙巾或塑膠袋將每顆蘋果單獨包好再放蔬果室——蘋果是「乙烯大魔王」，分開包才不會把葉菜及其他蔬果一起催熟腐壞，也能鎖住水分、保持脆度。室溫短期（7～14 天）：放陰涼、通風、避免陽光直射處；超過 25°C 的悶熱廚房會讓果肉變軟、失水，甚至從果心腐爛。無論室溫或冷藏都別與葉菜、香蕉、木瓜、紅蘿蔔緊貼。保存前先挑出撞傷、破皮的蘋果優先吃掉（受傷果釋放乙烯快上數倍）；表皮有天然保護蠟，要吃前再洗。" }
         },
         {
           "pantryCode": "BANANA",
@@ -119,6 +119,20 @@
       "name": [{"en": "Vine, stone & orchard"}, {"zh": "其他鮮果"}],
       "items": [
         {
+          "pantryCode": "CHERRY_TOMATO",
+          "shelfLife": { "fridge": 7 },
+          "unitCode": "PACK",
+          "en": { "name": "Cherry tomato", "alt": "小番茄 / 聖女番茄", "desc": "Bite-size, sweet-tart tomatoes eaten raw as a fruit or snack in Taiwan — the 聖女 type is the common red one. Also tossed into salads or dipped in plum powder.", "tip": "Refrigerate unwashed in a vented box and rinse just before eating; let them come to room temperature for the fullest sweetness." },
+          "zh": { "name": "小番茄", "alt": "聖女番茄", "desc": "一口大小、酸甜多汁，在台灣多當水果或零嘴生吃——聖女小番茄最常見。也可入沙拉或沾梅粉。", "tip": "不清洗放透氣盒冷藏，食用前再沖洗；回溫後甜味最足。" }
+        },
+        {
+          "pantryCode": "ASIAN_PEAR",
+          "shelfLife": { "fridge": 14 },
+          "unitCode": "PCS",
+          "en": { "name": "Asian pear", "alt": "水梨 / 高接梨", "desc": "Crisp, juicy and refreshing, eaten cold. High-mountain pears are the sweetest.", "tip": "Refrigerate and eat chilled; cushion them, as the crisp flesh bruises easily." },
+          "zh": { "name": "水梨", "alt": "高接梨", "desc": "清脆多汁、爽口回甘，冰鎮食用。高山水梨最甜。", "tip": "冷藏後冰涼食用；果肉脆嫩易傷，宜分隔防碰撞。" }
+        },
+        {
           "pantryCode": "LYCHEE",
           "shelfLife": { "fridge": 4 },
           "unitCode": "PACK",
@@ -145,13 +159,6 @@
           "unitCode": "PCS",
           "en": { "name": "Persimmon", "alt": "柿子 / 甜柿 / 柿餅", "desc": "Autumn fruit: sweet persimmons (甜柿) eaten crisp and firm, or astringent ones dried into chewy 柿餅.", "tip": "Keep crisp sweet persimmons cool and firm; ripen astringent ones until soft, or they'll pucker the mouth." },
           "zh": { "name": "柿子", "alt": "甜柿 / 柿餅", "desc": "秋季水果：甜柿脆口直接吃，澀柿則製成柔韌的柿餅。", "tip": "甜柿保持陰涼脆口；澀柿需放軟脫澀，否則口感澀麻。" }
-        },
-        {
-          "pantryCode": "ASIAN_PEAR",
-          "shelfLife": { "fridge": 14 },
-          "unitCode": "PCS",
-          "en": { "name": "Asian pear", "alt": "水梨 / 高接梨", "desc": "Crisp, juicy and refreshing, eaten cold. High-mountain pears are the sweetest.", "tip": "Refrigerate and eat chilled; cushion them, as the crisp flesh bruises easily." },
-          "zh": { "name": "水梨", "alt": "高接梨", "desc": "清脆多汁、爽口回甘，冰鎮食用。高山水梨最甜。", "tip": "冷藏後冰涼食用；果肉脆嫩易傷，宜分隔防碰撞。" }
         },
         {
           "pantryCode": "SUGAR_APPLE",

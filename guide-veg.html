@@ -51,6 +51,15 @@
       return "";
     }
 
+    // A storage tip is either a single string or an array of strings (one line
+    // per storage method); render one tip line for each.
+    function appendTip(li, tip, cls) {
+      if (!tip) return;
+      (Array.isArray(tip) ? tip : [tip]).forEach(function (text) {
+        if (text) li.appendChild(el("div", cls, text));
+      });
+    }
+
     function render() {
       const t = ui[lang];
       const meta = data[lang] || {};
@@ -83,7 +92,7 @@
           li.appendChild(nameRow);
 
           if (c.desc) li.appendChild(el("div", "cut-desc", c.desc));
-          if (c.tip) li.appendChild(el("div", "cut-tip", c.tip));
+          appendTip(li, c.tip, "cut-tip");
 
           const cutRow = el("div", "cut-links");
           const cutLink = el("a", null, t.cutVideo);
