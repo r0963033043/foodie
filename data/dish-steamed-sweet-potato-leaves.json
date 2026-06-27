@@ -1,0 +1,69 @@
+{
+  "chefInitial": "C",
+  "servings": 2,
+  "main": ["LEAFY_GREENS"],
+  "uses": ["LEAFY_GREENS", "GARLIC", "SOY_SAUCE"],
+  "cookware": "STEAMER",
+  "en": {
+    "name": "Garlic Sweet Potato Leaves, Rice-Cooker Steamed",
+    "ingredients": [
+      {
+        "group": "Base",
+        "items": [
+          { "name": "Sweet potato leaves", "amount": 1, "unit": "bunch" },
+          { "name": "Garlic", "amount": 2, "unit": "cloves" },
+          { "name": "Cooking oil", "text": "a drizzle" },
+          { "name": "Soy paste", "amount": 5, "unit": "ml" }
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Preparatory work",
+        "items": [
+          "If unsure whether the leaves are organic, soak them under running water for 15–20 minutes, then wash leaf by leaf.",
+          "Peel the outer skin off the thicker stems — this makes them more tender and much nicer to eat."
+        ]
+      },
+      {
+        "phase": "Start cook",
+        "items": [
+          "Place the leaves in the inner pot and add a drizzle of oil — steaming with a little oil removes the astringency.",
+          "Add half a cup of water to the rice cooker's outer pot and steam. As soon as the switch pops up, take the leaves out — leaving them to sit will turn the greens black.",
+          "Mince the garlic, add it with the soy paste, and toss everything together to serve."
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "name": "蒜香地瓜葉（電鍋蒸）",
+    "ingredients": [
+      {
+        "group": "基底",
+        "items": [
+          { "name": "地瓜葉", "amount": 1, "unit": "把" },
+          { "name": "蒜頭", "amount": 2, "unit": "瓣" },
+          { "name": "食用油", "text": "適量" },
+          { "name": "醬油膏", "amount": 5, "unit": "毫升" }
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "phase": "前置作業",
+        "items": [
+          "不確定是否為有機地瓜葉時，可用流動清水浸泡 15～20 分鐘，再一片一片洗乾淨。",
+          "挑揀時把較粗的梗外皮去除，這樣吃起來會比較嫩，口感更好。"
+        ]
+      },
+      {
+        "phase": "開始烹煮",
+        "items": [
+          "將地瓜葉放入內鍋，淋上適量的油——加一點油一起蒸可去除澀味。",
+          "電鍋外鍋加入半杯水蒸煮，開關跳起後要馬上取出，悶著葉菜會黑掉。",
+          "將蒜頭切碎，與醬油膏一起加入拌勻即可享用。"
+        ]
+      }
+    ]
+  }
+}
