@@ -1,0 +1,93 @@
+{
+  "chefInitial": "C",
+  "servings": 3,
+  "main": ["CHICKEN"],
+  "uses": ["CHICKEN", "SHIITAKE", "SOY_SAUCE"],
+  "cookware": "STEAMER",
+  "en": {
+    "name": "Steamed Chicken with Shiitake & Pumpkin",
+    "ingredients": [
+      {
+        "group": "Base",
+        "items": [
+          { "name": "Chicken breast", "amount": 150, "unit": "g" },
+          { "name": "Dried shiitake mushrooms", "amount": 20, "unit": "g" },
+          { "name": "Pumpkin", "amount": 300, "unit": "g" },
+          { "name": "Ginger", "amount": 4, "unit": "g" },
+          { "name": "Celery", "text": "to taste" }
+        ]
+      }
+    ],
+    "sauce": [
+      { "name": "Soy paste", "amount": 1, "unit": "tbsp" },
+      { "name": "Soy sauce", "amount": 1, "unit": "tsp" },
+      { "name": "Black vinegar", "amount": 1, "unit": "tsp" },
+      { "name": "White pepper", "amount": 0.33, "unit": "tsp" },
+      { "name": "White sesame oil", "amount": 1, "unit": "tsp" },
+      { "name": "Fried shallots", "amount": 1, "unit": "tbsp" },
+      { "name": "Salt", "amount": 0.33, "unit": "tsp" },
+      { "name": "Rice wine", "amount": 1, "unit": "tsp" },
+      { "name": "Potato starch", "amount": 1, "unit": "tbsp" }
+    ],
+    "steps": [
+      {
+        "phase": "Preparatory work",
+        "items": [
+          "Soak the dried shiitake until soft, then slice. Peel the pumpkin and cut into chunks; shred the ginger and chop the celery.",
+          "Slice the chicken breast and marinate it with all of the seasonings and the potato starch."
+        ]
+      },
+      {
+        "phase": "Start cook",
+        "items": [
+          "Layer the pumpkin in the bottom of a heatproof dish, then top with the marinated chicken and shiitake.",
+          "Add 1.5 cups of water to the rice cooker's outer pot and steam until the switch pops up (about 20 minutes).",
+          "Sprinkle with the celery and fried shallots, toss gently, and serve."
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "name": "香菇南瓜滑雞",
+    "ingredients": [
+      {
+        "group": "基底",
+        "items": [
+          { "name": "雞胸肉", "amount": 150, "unit": "克" },
+          { "name": "乾香菇", "amount": 20, "unit": "克" },
+          { "name": "南瓜", "amount": 300, "unit": "克" },
+          { "name": "薑", "amount": 4, "unit": "克" },
+          { "name": "芹菜", "text": "適量" }
+        ]
+      }
+    ],
+    "sauce": [
+      { "name": "醬油膏", "amount": 1, "unit": "大匙" },
+      { "name": "醬油", "amount": 1, "unit": "茶匙" },
+      { "name": "烏醋", "amount": 1, "unit": "茶匙" },
+      { "name": "白胡椒粉", "amount": 0.33, "unit": "茶匙" },
+      { "name": "白芝麻油", "amount": 1, "unit": "茶匙" },
+      { "name": "紅蔥酥", "amount": 1, "unit": "大匙" },
+      { "name": "鹽", "amount": 0.33, "unit": "茶匙" },
+      { "name": "米酒", "amount": 1, "unit": "茶匙" },
+      { "name": "馬鈴薯粉", "amount": 1, "unit": "大匙" }
+    ],
+    "steps": [
+      {
+        "phase": "前置作業",
+        "items": [
+          "乾香菇泡軟後切片；南瓜去皮切塊，薑切絲，芹菜切末。",
+          "雞胸肉切片，與所有調味料及馬鈴薯粉一起抓醃。"
+        ]
+      },
+      {
+        "phase": "開始烹煮",
+        "items": [
+          "將南瓜鋪在耐熱盤底部，再放上醃好的雞肉與香菇。",
+          "電鍋外鍋加入 1.5 杯水，蒸至開關跳起（約 20 分鐘）。",
+          "撒上芹菜與紅蔥酥，略為拌勻即可享用。"
+        ]
+      }
+    ]
+  }
+}

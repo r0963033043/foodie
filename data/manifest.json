@@ -1,10 +1,14 @@
 {
   "dishes": [
     "dish-chawanmushi",
+    "dish-cold-enoki",
     "dish-honey-garlic-wings",
     "dish-lu-wei",
     "dish-sesame-pork-neck",
-    "dish-steamed-sweet-potato-leaves"
+    "dish-shiitake-pumpkin-chicken",
+    "dish-steamed-sweet-potato-leaves",
+    "dish-tomato-fish-soup",
+    "dish-tuna-egg-tofu"
   ],
   "eateries": [
     "addiction-aquatic",

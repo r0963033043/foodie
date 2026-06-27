@@ -1,0 +1,79 @@
+{
+  "chefInitial": "C",
+  "servings": 3,
+  "main": ["TOFU"],
+  "uses": ["TOFU", "EGGS", "SOY_SAUCE", "SCALLIONS", "COOKING_OIL"],
+  "cookware": "STEAMER",
+  "en": {
+    "name": "Steamed Egg Tofu with Tuna",
+    "ingredients": [
+      {
+        "group": "Base",
+        "items": [
+          { "name": "Egg tofu", "amount": 300, "unit": "g" },
+          { "name": "Canned tuna", "amount": 1, "unit": "can" },
+          { "name": "Egg", "amount": 4, "unit": "pcs" },
+          { "name": "Cooking oil", "amount": 0.5, "unit": "tsp" },
+          { "name": "Chopped scallion", "text": "to taste" }
+        ]
+      }
+    ],
+    "sauce": [
+      { "name": "Soy paste", "amount": 1, "unit": "tbsp" },
+      { "name": "White sesame oil", "amount": 1, "unit": "tsp" }
+    ],
+    "steps": [
+      {
+        "phase": "Preparatory work",
+        "items": [
+          "Slice the egg tofu and lay it out in a heatproof dish.",
+          "Drain the canned tuna; beat the eggs until smooth."
+        ]
+      },
+      {
+        "phase": "Start cook",
+        "items": [
+          "Spread the tuna over the egg tofu, pour the beaten egg around it, and drizzle with the cooking oil and sesame oil.",
+          "Add 1 cup of water to the rice cooker's outer pot and steam until the switch pops up (about 15 minutes).",
+          "Drizzle with the soy paste, sprinkle the scallion over the top, and serve."
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "name": "鮪魚蒸雞蛋豆腐",
+    "ingredients": [
+      {
+        "group": "基底",
+        "items": [
+          { "name": "雞蛋豆腐", "amount": 300, "unit": "克" },
+          { "name": "鮪魚罐頭", "amount": 1, "unit": "罐" },
+          { "name": "蛋", "amount": 4, "unit": "顆" },
+          { "name": "油", "amount": 0.5, "unit": "茶匙" },
+          { "name": "蔥花", "text": "適量" }
+        ]
+      }
+    ],
+    "sauce": [
+      { "name": "醬油膏", "amount": 1, "unit": "大匙" },
+      { "name": "白芝麻油", "amount": 1, "unit": "茶匙" }
+    ],
+    "steps": [
+      {
+        "phase": "前置作業",
+        "items": [
+          "將雞蛋豆腐切片，平鋪在耐熱盤中。",
+          "鮪魚罐頭瀝去湯汁；將蛋打散。"
+        ]
+      },
+      {
+        "phase": "開始烹煮",
+        "items": [
+          "把鮪魚鋪在雞蛋豆腐上，將蛋液淋在四周，再淋上油與白芝麻油。",
+          "電鍋外鍋加入 1 杯水，蒸至開關跳起（約 15 分鐘）。",
+          "淋上醬油膏，撒上蔥花即可享用。"
+        ]
+      }
+    ]
+  }
+}

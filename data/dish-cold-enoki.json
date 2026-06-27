@@ -1,0 +1,83 @@
+{
+  "chefInitial": "C",
+  "servings": 3,
+  "main": [],
+  "uses": ["ONIONS", "GARLIC", "SCALLIONS", "SOY_SAUCE"],
+  "cookware": "STEAMER",
+  "en": {
+    "name": "Cold-Dressed Enoki Mushrooms",
+    "ingredients": [
+      {
+        "group": "Base",
+        "items": [
+          { "name": "Enoki mushrooms", "amount": 300, "unit": "g" },
+          { "name": "Onion", "amount": 60, "unit": "g" },
+          { "name": "Garlic", "amount": 15, "unit": "g" },
+          { "name": "Chopped scallion", "text": "to taste" }
+        ]
+      }
+    ],
+    "sauce": [
+      { "name": "Soy sauce", "amount": 1, "unit": "tbsp" },
+      { "name": "Black vinegar", "amount": 2, "unit": "tbsp" },
+      { "name": "White sesame oil", "amount": 1, "unit": "tsp" },
+      { "name": "Brown sugar", "amount": 1, "unit": "tsp" },
+      { "name": "Wasabi paste", "amount": 5, "unit": "g" }
+    ],
+    "steps": [
+      {
+        "phase": "Preparatory work",
+        "items": [
+          "Trim the root end off the enoki and separate the strands.",
+          "Thinly slice the onion and soak it in cold water to mellow it; mince the garlic."
+        ]
+      },
+      {
+        "phase": "Start cook",
+        "items": [
+          "Place the enoki in a heatproof dish. Add half a cup of water to the rice cooker's outer pot and steam until just cooked (the switch pops up), then drain and let cool.",
+          "Stir the minced garlic together with all the dressing ingredients.",
+          "Toss the cooled enoki with the drained onion and the dressing, top with scallion, and chill before serving."
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "name": "涼拌金針菇",
+    "ingredients": [
+      {
+        "group": "基底",
+        "items": [
+          { "name": "金針菇", "amount": 300, "unit": "克" },
+          { "name": "洋蔥", "amount": 60, "unit": "克" },
+          { "name": "蒜頭", "amount": 15, "unit": "克" },
+          { "name": "蔥花", "text": "適量" }
+        ]
+      }
+    ],
+    "sauce": [
+      { "name": "醬油", "amount": 1, "unit": "大匙" },
+      { "name": "烏醋", "amount": 2, "unit": "大匙" },
+      { "name": "白芝麻油", "amount": 1, "unit": "茶匙" },
+      { "name": "二砂糖", "amount": 1, "unit": "茶匙" },
+      { "name": "芥末醬", "amount": 5, "unit": "克" }
+    ],
+    "steps": [
+      {
+        "phase": "前置作業",
+        "items": [
+          "金針菇切除根部、撥散。",
+          "洋蔥切薄片泡冰水去嗆味；蒜頭切末。"
+        ]
+      },
+      {
+        "phase": "開始烹煮",
+        "items": [
+          "金針菇放入耐熱盤，電鍋外鍋加入半杯水，蒸至熟透（開關跳起）後瀝乾放涼。",
+          "將蒜末與所有醬汁材料拌勻。",
+          "把放涼的金針菇、瀝乾的洋蔥與醬汁拌勻，撒上蔥花，冰鎮後享用。"
+        ]
+      }
+    ]
+  }
+}

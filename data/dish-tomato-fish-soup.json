@@ -1,0 +1,91 @@
+{
+  "chefInitial": "C",
+  "servings": 4,
+  "main": ["BEEF_TOMATO"],
+  "uses": ["BEEF_TOMATO", "ONIONS"],
+  "cookware": "STEAMER",
+  "en": {
+    "name": "Tomato & Fish Slice Soup",
+    "ingredients": [
+      {
+        "group": "Base",
+        "items": [
+          { "name": "Beef tomato", "amount": 250, "unit": "g" },
+          { "name": "Chinese yam", "amount": 150, "unit": "g" },
+          { "name": "Onion", "amount": 0.5, "unit": "pcs" },
+          { "name": "Fish fillet, sliced", "amount": 200, "unit": "g" },
+          { "name": "Tofu skin", "amount": 50, "unit": "g" },
+          { "name": "Clams", "amount": 300, "unit": "g" },
+          { "name": "Water", "amount": 1000, "unit": "ml" }
+        ]
+      }
+    ],
+    "sauce": [
+      { "name": "Salt", "amount": 1, "unit": "tsp" },
+      { "name": "Mirin", "amount": 1, "unit": "tsp" },
+      { "name": "White pepper", "amount": 0.33, "unit": "tsp" },
+      { "name": "Black pepper", "amount": 0.25, "unit": "tsp" },
+      { "name": "Celery", "text": "to taste" },
+      { "name": "Chopped scallion", "text": "to taste" }
+    ],
+    "steps": [
+      {
+        "phase": "Preparatory work",
+        "items": [
+          "Cut the tomatoes into wedges, peel and dice the yam, slice the onion, and cut the tofu skin into strips.",
+          "Soak the clams in salted water to purge any sand."
+        ]
+      },
+      {
+        "phase": "Start cook",
+        "items": [
+          "Combine the tomato, yam, onion, tofu skin and water in the inner pot. Add 1.5 cups of water to the outer pot and steam until the switch pops up.",
+          "Add the fish slices and clams, season with salt, mirin and the peppers, then steam again until the clams open and the fish is cooked through.",
+          "Garnish with celery and scallion, and serve hot."
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "name": "番茄魚片湯",
+    "ingredients": [
+      {
+        "group": "基底",
+        "items": [
+          { "name": "牛蕃茄", "amount": 250, "unit": "克" },
+          { "name": "山藥", "amount": 150, "unit": "克" },
+          { "name": "洋蔥", "amount": 0.5, "unit": "顆" },
+          { "name": "魚片", "amount": 200, "unit": "克" },
+          { "name": "豆皮", "amount": 50, "unit": "克" },
+          { "name": "蛤蠣", "amount": 300, "unit": "克" },
+          { "name": "水", "amount": 1000, "unit": "毫升" }
+        ]
+      }
+    ],
+    "sauce": [
+      { "name": "鹽", "amount": 1, "unit": "茶匙" },
+      { "name": "味霖", "amount": 1, "unit": "茶匙" },
+      { "name": "白胡椒粉", "amount": 0.33, "unit": "茶匙" },
+      { "name": "黑胡椒粉", "amount": 0.25, "unit": "茶匙" },
+      { "name": "芹菜", "text": "適量" },
+      { "name": "蔥花", "text": "適量" }
+    ],
+    "steps": [
+      {
+        "phase": "前置作業",
+        "items": [
+          "牛蕃茄切塊，山藥去皮切丁，洋蔥切片，豆皮切條。",
+          "蛤蠣以鹽水浸泡吐沙。"
+        ]
+      },
+      {
+        "phase": "開始烹煮",
+        "items": [
+          "內鍋放入蕃茄、山藥、洋蔥、豆皮與水，外鍋加入 1.5 杯水，蒸至開關跳起。",
+          "加入魚片與蛤蠣，以鹽、味霖與胡椒調味，再蒸至蛤蠣開口、魚片熟透。",
+          "撒上芹菜與蔥花，趁熱享用。"
+        ]
+      }
+    ]
+  }
+}
