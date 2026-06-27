@@ -28,10 +28,9 @@
       { "name": "Garlic cloves, smashed", "amount": 6, "unit": "cloves" },
       { "name": "Scallions, knotted", "amount": 3, "unit": "stalks" },
       { "name": "Ginger, sliced", "amount": 4, "unit": "slices" },
-      { "name": "Star anise", "amount": 2, "unit": "pcs" },
-      { "name": "Cinnamon stick", "amount": 1, "unit": "pcs" },
-      { "name": "Bay leaves", "amount": 2, "unit": "pcs" },
-      { "name": "Five-spice powder", "amount": 1, "unit": "tsp" }
+      { "name": "Spices — choose one", "text": "" },
+      { "name": "Option A: 2 star anise, 1 cinnamon stick, 2 bay leaves, 1 tsp five-spice", "text": "" },
+      { "name": "Option B: 1 ready-made braise spice packet (滷包)", "text": "" }
     ],
     "steps": [
       {
@@ -61,7 +60,7 @@
         "phase": "Build the braise",
         "items": [
           "In a pot, combine the water plus reserved shiitake liquid, soy sauce, dark soy sauce, rock sugar, and rice wine.",
-          "Add the garlic, scallions, ginger, star anise, cinnamon, bay leaves, and five-spice."
+          "Add the garlic, scallions, ginger, and spices or spice packet."
         ]
       },
       {
@@ -71,7 +70,7 @@
           "Bring to a boil, then lower to a gentle simmer for 10 minutes to open up the master sauce (滷汁).",
           "Add the firmest items first — daikon, carrot, and any meat — and simmer 20 minutes.",
           "Add the tofu, shiitake, and peeled eggs. Keep at a low simmer for another 20 minutes, until everything is tender and deeply coloured.",
-          "Turn off the heat and let everything steep in the warm braise for at least 30 minutes (or refrigerate overnight) so the flavour soaks in."
+          "Turn off the heat and let everything steep in the warm braise for at least 30 minutes so the flavour soaks in."
         ]
       },
       {
@@ -80,13 +79,15 @@
         "items": [
           "Add the daikon, carrot, and any meat to the inner pot. Add 2 cups of water to the outer pot and press the switch; let it run a full cycle (about 25 minutes).",
           "Add the tofu, shiitake, and peeled eggs, top up the outer pot with 1 more cup of water, and run a second cycle.",
-          "When the switch pops up, leave the lid on and steep on keep-warm for at least 30 minutes (or refrigerate overnight) so the flavour soaks in."
+          "When the switch pops up, leave the lid on and steep on keep-warm for at least 30 minutes so the flavour soaks in."
         ]
       },
       {
         "phase": "Plate",
         "items": [
-          "Lift the items out, slice the tofu, daikon, and eggs, and arrange on a plate. Serve warm or chilled, spooning over a little braising liquid; add chopped scallion or chilli oil if you like."
+          "Fish out and discard the knotted scallions and whole spices (or the spice packet) — don't leave them in overnight, or the braise turns bitter.",
+          "Lift the items out, slice the tofu, daikon, and eggs, and arrange on a plate. Serve warm or chilled, spooning over a little braising liquid; add chopped scallion or chilli oil if you like.",
+          "For deeper flavour, refrigerate overnight in the strained braise."
         ]
       }
     ]
@@ -115,10 +116,9 @@
       { "name": "蒜瓣（拍裂）", "amount": 6, "unit": "瓣" },
       { "name": "青蔥（打結）", "amount": 3, "unit": "根" },
       { "name": "薑片", "amount": 4, "unit": "片" },
-      { "name": "八角", "amount": 2, "unit": "顆" },
-      { "name": "桂皮", "amount": 1, "unit": "段" },
-      { "name": "月桂葉", "amount": 2, "unit": "片" },
-      { "name": "五香粉", "amount": 1, "unit": "茶匙" }
+      { "name": "【香料二選一】", "text": "" },
+      { "name": "選項 A：八角 2 顆、桂皮 1 段、月桂葉 2 片、五香粉 1 茶匙", "text": "" },
+      { "name": "選項 B：現成滷包 1 包", "text": "" }
     ],
     "steps": [
       {
@@ -148,7 +148,7 @@
         "phase": "調製滷汁",
         "items": [
           "鍋中加入水（連同泡香菇的水）、醬油、老抽、冰糖與米酒。",
-          "再放入蒜、蔥、薑、八角、桂皮、月桂葉與五香粉。"
+          "再放入蒜、蔥、薑、以及香料或滷包。"
         ]
       },
       {
@@ -158,7 +158,7 @@
           "滷汁煮滾後轉小火熬煮 10 分鐘，讓滷汁出味。",
           "先下最耐煮的食材——白蘿蔔、紅蘿蔔與肉類，小火滷約 20 分鐘。",
           "再加入豆乾、香菇與去殼蛋，繼續小火滷約 20 分鐘，至食材軟透且上色。",
-          "關火後讓食材在溫熱滷汁中浸泡至少 30 分鐘（或冷藏隔夜），更入味。"
+          "關火後讓食材在溫熱滷汁中浸泡至少 30 分鐘，更入味。"
         ]
       },
       {
@@ -167,13 +167,15 @@
         "items": [
           "內鍋放入白蘿蔔、紅蘿蔔與肉類。外鍋加 2 杯水，按下開關煮一個循環（約 25 分鐘）。",
           "再放入豆乾、香菇與去殼蛋，外鍋再加 1 杯水，再跳一次。",
-          "開關跳起後不開蓋，以保溫狀態續燜至少 30 分鐘（或冷藏隔夜），更入味。"
+          "開關跳起後不開蓋，以保溫狀態續燜至少 30 分鐘，更入味。"
         ]
       },
       {
         "phase": "盛盤",
         "items": [
-          "將食材撈出，豆乾、蘿蔔與蛋切塊擺盤，淋上少許滷汁，趁溫熱或冰鎮享用；可依喜好加蔥花或辣油。"
+          "撈除打結的青蔥與香料（或滷包）——勿留置過夜，以免滷汁變苦。",
+          "將食材撈出，豆乾、蘿蔔與蛋切塊擺盤，淋上少許滷汁，趁溫熱或冰鎮享用；可依喜好加蔥花或辣油。",
+          "想更入味，可在濾淨的滷汁中冷藏隔夜。"
         ]
       }
     ]
