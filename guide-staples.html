@@ -83,7 +83,11 @@
           li.appendChild(nameRow);
 
           if (c.desc) li.appendChild(el("div", "cut-desc", c.desc));
-          if (c.tip) li.appendChild(el("div", "cut-tip", c.tip));
+          if (c.tip) {
+            (Array.isArray(c.tip) ? c.tip : [c.tip]).forEach(function (tp) {
+              li.appendChild(el("div", "cut-tip", tp));
+            });
+          }
 
           const cutRow = el("div", "cut-links");
           const cutLink = el("a", null, t.cutVideo);
