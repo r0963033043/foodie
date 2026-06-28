@@ -21,6 +21,7 @@
         { "code": "DAIKON", "amount": 1, "en": { "name": "Daikon radish" }, "zh": { "name": "白蘿蔔" } },
         { "code": "CARROT", "amount": 3, "en": { "name": "Carrots" }, "zh": { "name": "紅蘿蔔" } },
         { "code": "CHERRY_TOMATO", "amount": 1, "en": { "name": "Cherry tomatoes" }, "zh": { "name": "小番茄" } },
+        { "code": "ZUCCHINI", "amount": 2, "en": { "name": "Zucchini" }, "zh": { "name": "櫛瓜" } },
         { "code": "PORK_NECK", "amount": 190, "en": { "name": "Marbled pork neck" }, "zh": { "name": "雪花豬頸肉" } },
         { "code": "PORK_CAP", "amount": 150, "en": { "name": "Frost-marbled pork cap" }, "zh": { "name": "霜降僧帽肉" } }
       ]

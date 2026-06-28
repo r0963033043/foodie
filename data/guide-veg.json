@@ -52,8 +52,8 @@
           "pantryCode": "POTATOES",
           "shelfLife": { "pantry": 30, "fridge": 7 },
           "unitCode": "PCS",
-          "en": { "name": "Potato", "alt": "馬鈴薯 / 洋芋", "desc": "A starchy all-rounder. Boil, mash, fry or stew — it soaks up flavor and turns creamy.", "tip": "Cool, dark and out of sunlight in a paper bag with an apple keeps them 1–3 months (the apple slows sprouting); in humid weather, a perforated bag in the fridge lasts 1–2 weeks. Toss any that turn green or sprout." },
-          "zh": { "name": "馬鈴薯", "alt": "洋芋", "desc": "百搭的澱粉根莖。水煮、搗泥、油炸或燉煮皆宜，易吸味、口感綿密。", "tip": "陰涼避光、裝紙袋並放顆蘋果，可存 1～3 個月（蘋果延緩發芽）；潮濕時改用打孔袋冷藏約 1～2 週。變綠或發芽的請丟棄。" }
+          "en": { "name": "Potato", "alt": "馬鈴薯 / 洋芋", "desc": "A starchy all-rounder. Boil, mash, fry or stew — it soaks up flavor and turns creamy.", "tip": ["Room temperature (1–3 months): if your home is dry, put them in a dark paper bag with an apple and keep it somewhere cool, airy and out of sunlight — the ethylene the apple gives off slows sprouting.", "Refrigerator (1–2 weeks): if your home is humid, store them in a perforated plastic bag in the fridge, away from light so they don't sprout.", "Freezer (about 1 month): peel and cut into chunks, steam soft in the rice cooker, mash, and seal in a freezer bag for later use.", "Why it matters: potatoes sprout when exposed to light, big temperature swings or long storage, producing toxic solanine — so never eat ones that have turned green or sprouted."] },
+          "zh": { "name": "馬鈴薯", "alt": "洋芋", "desc": "百搭的澱粉根莖。水煮、搗泥、油炸或燉煮皆宜，易吸味、口感綿密。", "tip": ["常溫保存（1～3 個月）：家中環境較乾燥時，與一顆蘋果一同裝進深色紙袋，放在照不到陽光的通風陰涼處——蘋果釋放的乙烯氣體能減緩發芽。", "冷藏保存（1～2 週）：家中環境較潮濕時，裝進打洞的塑膠袋內冷藏，並避免照光以免發芽。", "冷凍保存（約 1 個月）：去皮切塊放入電鍋蒸熟，壓成泥裝入保鮮袋冷凍，供日後使用。", "為什麼要注意：馬鈴薯照到光線、溫度變化劇烈或儲藏過久就會發芽，產生有毒的龍葵鹼，因此變綠或發芽的馬鈴薯不可食用。"] }
         },
         {
           "pantryCode": "SWEET_POTATOES",
@@ -110,6 +110,13 @@
           "unitCode": "PCS",
           "en": { "name": "Beef tomato", "alt": "牛番茄 / 大番茄", "desc": "Large, meaty, low-sweetness tomato treated as a cooking vegetable in Taiwan. The base for tomato-and-egg stir-fry (番茄炒蛋), tomato beef soup and stews.", "tip": ["Room temperature: Best (3–7 days). Keep it on a cool, airy counter out of direct sun, sitting stem-side down — the stem end is hardest and the flesh thickest, so this eases pressure on the bottom and keeps it from softening or weeping, and blocks air at the stem scar. Ripening tomatoes give off a lot of ethylene, so don't bag or basket them with leafy greens, potatoes or carrots, or those rot and sprout fast.", "Refrigerator: Last resort (7–10 days). Chill only once it's deep red and soft, or after you've cut it — cold under 5°C breaks down the cell walls and aroma, turning the flesh mealy and bland. If you must, pat it dry, wrap it alone in newspaper or paper towel, put it stem-side down in a bag and keep it in the warmer crisper drawer; let it warm ~20 minutes before eating to recover some flavor.", "Freezer: For when you can't use them up (1–2 months). Wash, dry and de-stem whole, then freeze — they can't be eaten raw, but for tomato-and-egg stir-fry, tomato beef soup or sauce, rinse a frozen one under water and the skin slips right off." ] },
           "zh": { "name": "牛番茄", "alt": "大番茄", "desc": "大顆、肉厚、甜度低，在台灣多當作料理用的蔬菜。番茄炒蛋、番茄牛肉湯與燉菜的基底。", "tip": ["室溫保存：最推薦（3～7 天）。放陰涼、通風、避免陽光直射的檯面，且「蒂頭朝下」擺放——蒂頭硬、果肉厚，朝下能減少底部受壓變軟出水，也擋住空氣進入蒂頭縫隙。番茄熟成會釋放大量乙烯，別與葉菜、馬鈴薯、紅蘿蔔放同一袋或籃，否則周邊蔬果易腐爛或發芽。", "冷藏：最後手段（7～10 天）。只在已轉深紅、摸起來變軟或切剩時才冰；低溫（5°C 以下）會破壞細胞壁與香氣，冰過果肉變粉、香甜流失。要冰就擦乾表面、單獨用報紙或紙巾包好、蒂頭朝下放保鮮袋，置於溫度較高的蔬果室；食用前先回溫約 20 分鐘可找回一點風味。", "冷凍：吃不完的終極大招（1～2 個月）。洗淨、擦乾、去蒂後整顆冷凍，雖不能生吃，但煮番茄炒蛋、番茄牛肉湯或熬醬時取出沖水，外皮一秒就能剝除。"] }
+        },
+        {
+          "pantryCode": "ZUCCHINI",
+          "shelfLife": { "pantry": 2, "fridge": 10 },
+          "unitCode": "STICK",
+          "en": { "name": "Zucchini", "alt": "櫛瓜 / 夏南瓜 / 翠玉瓜", "desc": "Mild summer squash with tender, edible skin. Slice for stir-fries, soups and grills, or spiralize — it cooks fast and soaks up flavor.", "tip": ["Room temperature: only in a cool, airy spot and for a day or two at most — Taiwan's summer humidity (25–30°C+) softens and rots it fast, so the fridge is the default here.", "Refrigerator: best (about 7–10 days). Keep it whole and unwashed, pat off any surface moisture, and store it loose in a perforated or loosely-closed bag in the crisper — trapped water is what turns the skin slimy. Don't wash until you cook, and wrap the cut face of a used one and finish it within a couple of days."] },
+          "zh": { "name": "櫛瓜", "alt": "夏南瓜 / 翠玉瓜", "desc": "溫和的夏季瓜類，皮薄細嫩可連皮食用。切片快炒、入湯、煎烤或刨成麵條皆宜，易熟又容易吸味。", "tip": ["室溫保存：僅限陰涼通風處，最多放 1～2 天——台灣夏季濕熱（25～30°C 以上）會讓櫛瓜很快變軟腐爛，因此這裡建議直接冷藏。", "冷藏：最推薦（約 7～10 天）。整條不清洗、擦乾表面水分，鬆裝於打孔袋或不密封的塑膠袋放入蔬果室——殘留水氣正是表皮發黏腐爛的主因。烹煮前再清洗；切開後切面包好，數日內食用完畢。"] }
         }
       ]
     }

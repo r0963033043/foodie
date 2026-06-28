@@ -1,0 +1,69 @@
+{
+  "chefInitial": "C",
+  "servings": 2,
+  "main": ["POTATOES"],
+  "uses": ["POTATOES", "COOKING_OIL"],
+  "cookware": "MICROWAVE",
+  "en": {
+    "name": "Microwave Potato Crisps",
+    "ingredients": [
+      {
+        "group": "Base",
+        "items": [
+          { "name": "Potatoes", "amount": 2, "unit": "pcs" },
+          { "name": "Cooking oil", "text": "for brushing" },
+          { "name": "Sugar", "text": "to taste" },
+          { "name": "Salt", "text": "to taste" }
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Preparatory work",
+        "items": [
+          "Wash and peel the potatoes, then slice them about 0.2 cm thin — the thinner they are, the less microwave time they need.",
+          "Soak the slices in water for 20 minutes, then pat them dry."
+        ]
+      },
+      {
+        "phase": "Start cook",
+        "items": [
+          "Spread the slices out without overlapping on a sheet of baking paper, brush each with oil, and sprinkle with a little sugar and salt.",
+          "Microwave on high for 4 minutes, watching that they don't scorch.",
+          "Reheat any that aren't crisp yet in 1-minute bursts until done — about 5–7 minutes total."
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "name": "微波馬鈴薯脆片（洋芋片）",
+    "ingredients": [
+      {
+        "group": "基底",
+        "items": [
+          { "name": "馬鈴薯", "amount": 2, "unit": "顆" },
+          { "name": "食用油", "text": "刷油用" },
+          { "name": "砂糖", "text": "適量" },
+          { "name": "鹽巴", "text": "適量" }
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "phase": "前置作業",
+        "items": [
+          "馬鈴薯洗淨削皮後，切為約 0.2 公分薄度——愈薄所需微波時間愈短。",
+          "泡水 20 分鐘後擦乾。"
+        ]
+      },
+      {
+        "phase": "開始烹煮",
+        "items": [
+          "分散擺放於烘焙紙上、不要重疊，個別刷油，再撒上適量砂糖及鹽巴調味。",
+          "放進微波爐以大火力先加熱 4 分鐘，持續注意烤焦情況。",
+          "沒脆者再以每次加 1 分鐘為間隔慢慢加熱，約 5～7 分鐘即可全數完成。"
+        ]
+      }
+    ]
+  }
+}

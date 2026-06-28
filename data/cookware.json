@@ -1,4 +1,4 @@
 {
-  "en": { "STOVE": "Stove", "RICE_COOKER": "Rice cooker", "STEAMER": "Steamer", "OVEN": "Oven" },
-  "zh": { "STOVE": "爐具", "RICE_COOKER": "電子鍋", "STEAMER": "電鍋／蒸", "OVEN": "烤箱" }
+  "en": { "STOVE": "Stove", "RICE_COOKER": "Rice cooker", "STEAMER": "Steamer", "OVEN": "Oven", "MICROWAVE": "Microwave" },
+  "zh": { "STOVE": "爐具", "RICE_COOKER": "電子鍋", "STEAMER": "電鍋／蒸", "OVEN": "烤箱", "MICROWAVE": "微波爐" }
 }

@@ -1,0 +1,73 @@
+{
+  "chefInitial": "C",
+  "servings": 2,
+  "main": ["POTATOES"],
+  "uses": ["POTATOES", "CARROT", "EGGS"],
+  "cookware": "STEAMER",
+  "en": {
+    "name": "Potato Egg Salad",
+    "ingredients": [
+      {
+        "group": "Base",
+        "items": [
+          { "name": "Potatoes", "amount": 2, "unit": "pcs" },
+          { "name": "Carrot", "text": "half" },
+          { "name": "Eggs", "amount": 2, "unit": "pcs" },
+          { "name": "Cucumber", "amount": 1, "unit": "pc" },
+          { "name": "Salt", "text": "to taste" },
+          { "name": "Mayonnaise", "text": "to taste" }
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Preparatory work",
+        "items": [
+          "Cut the potatoes into even pieces and steam them in the rice cooker until soft, then mash into a purée.",
+          "Boil the carrot and eggs until cooked.",
+          "Salt the cucumber to draw out water (殺青), then rinse with cool water and drain well."
+        ]
+      },
+      {
+        "phase": "Start cook",
+        "items": [
+          "Dice the cooked carrot, egg and cucumber and fold everything into the mashed potato.",
+          "Mix in mayonnaise to taste, adjusting the seasoning as you go until it tastes the way you like."
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "name": "馬鈴薯蛋沙拉",
+    "ingredients": [
+      {
+        "group": "基底",
+        "items": [
+          { "name": "馬鈴薯", "amount": 2, "unit": "顆" },
+          { "name": "胡蘿蔔", "text": "半根" },
+          { "name": "雞蛋", "amount": 2, "unit": "顆" },
+          { "name": "小黃瓜", "amount": 1, "unit": "條" },
+          { "name": "鹽", "text": "適量" },
+          { "name": "美乃滋", "text": "適量" }
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "phase": "前置作業",
+        "items": [
+          "馬鈴薯切成適當大小，用電鍋蒸熟，然後壓碎成薯泥。",
+          "胡蘿蔔及雞蛋煮熟。",
+          "小黃瓜加點鹽殺青，再用開水清洗，瀝乾水分。"
+        ]
+      },
+      {
+        "phase": "開始烹煮",
+        "items": [
+          "將熟胡蘿蔔、雞蛋與小黃瓜切丁，與薯泥混合。",
+          "加入適量美乃滋拌勻，邊試口味，調至自己喜愛的味道就完成。"
+        ]
+      }
+    ]
+  }
+}
