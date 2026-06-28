@@ -1,0 +1,77 @@
+{
+  "chefInitial": "C",
+  "servings": 4,
+  "main": ["PORK_RIBS", "DAIKON"],
+  "uses": ["PORK_RIBS", "DAIKON", "CORN"],
+  "cookware": "STOVE",
+  "en": {
+    "name": "Daikon, Corn & Pork Rib Soup",
+    "ingredients": [
+      {
+        "group": "Base",
+        "items": [
+          { "name": "Pork ribs", "amount": 600, "unit": "g" },
+          { "name": "Daikon radish", "amount": 1, "unit": "pc" },
+          { "name": "Corn", "amount": 2, "unit": "ears" },
+          { "name": "Ginger", "amount": 4, "unit": "slices" },
+          { "name": "Water", "amount": 2000, "unit": "ml" },
+          { "name": "Salt", "text": "to taste" },
+          { "name": "Scallion", "text": "for garnish" }
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "phase": "Preparatory work",
+        "items": [
+          "Rinse the ribs, then blanch them in boiling water to draw out the scum; drain and rinse clean.",
+          "Peel the daikon and cut into large chunks. If the skin is old and thick (often the case outside Taiwan), salt-pickle the daikon first, squeeze out the water, and only then add it — this carries the bitterness away with the water instead of cooking it into the soup.",
+          "Cut the corn into segments and slice the ginger."
+        ]
+      },
+      {
+        "phase": "Start cook",
+        "items": [
+          "Put the ribs, ginger, corn and daikon in a pot and add the water to cover.",
+          "Bring to a boil, then lower the heat and simmer gently for 40–60 minutes, until the ribs and daikon are tender and the broth turns sweet.",
+          "Season with salt to taste just before serving and scatter scallion on top."
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "name": "蘿蔔玉米排骨湯",
+    "ingredients": [
+      {
+        "group": "基底",
+        "items": [
+          { "name": "排骨", "amount": 600, "unit": "克" },
+          { "name": "白蘿蔔", "amount": 1, "unit": "條" },
+          { "name": "玉米", "amount": 2, "unit": "支" },
+          { "name": "薑", "amount": 4, "unit": "片" },
+          { "name": "水", "amount": 2000, "unit": "毫升" },
+          { "name": "鹽", "text": "適量" },
+          { "name": "蔥", "text": "裝飾用" }
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "phase": "前置作業",
+        "items": [
+          "排骨洗淨，入滾水汆燙逼出血水與雜質，撈起沖洗乾淨。",
+          "白蘿蔔削皮、切大塊。若蘿蔔皮較老較厚（住在海外常如此），建議先用鹽醃漬、擠乾水分後再下鍋——苦澀味會隨水分流掉，不會煮進湯裡。",
+          "玉米切段，薑切片。"
+        ]
+      },
+      {
+        "phase": "開始烹煮",
+        "items": [
+          "將排骨、薑、玉米與白蘿蔔放入鍋中，加水蓋過食材。",
+          "大火煮滾後轉小火，慢燉 40～60 分鐘，至排骨與蘿蔔軟透、湯頭自然回甘。",
+          "起鍋前以鹽調味，撒上蔥花即可享用。"
+        ]
+      }
+    ]
+  }
+}

@@ -85,10 +85,10 @@
       "items": [
         {
           "pantryCode": "CORN",
-          "shelfLife": { "fridge": 2, "freezer": 240 },
+          "shelfLife": { "pantry": 2, "fridge": 7, "freezer": 180 },
           "unitCode": "EAR",
-          "en": { "name": "Corn", "alt": "玉米 / 甜玉米", "desc": "Sweet yellow kernels on the cob. Boil, grill or steam; cut the kernels for soups, stir-fries and fried rice.", "tip": "Keep in the husk and refrigerate; the sugars turn starchy fast, so eat within a day or two." },
-          "zh": { "name": "玉米", "alt": "甜玉米", "desc": "金黃香甜的玉米，連軸水煮、燒烤或蒸；剝粒則可入湯、快炒或炒飯。", "tip": "帶葉冷藏；甜分很快轉為澱粉，宜一兩日內食用。" }
+          "en": { "name": "Corn", "alt": "玉米 / 甜玉米", "desc": "Sweet yellow kernels on the cob. Boil, grill or steam; cut the kernels for soups, stir-fries and fried rice.", "tip": ["Room temperature (≤2 days): keep it under about 25°C, out of direct sun and not piled up; the sugars turn starchy fast, so cook it as soon as you can.", "Refrigerator (≤7 days): keep it in the husk and bag it so it doesn't dehydrate. Don't leave it loose and chilled for long — the cold air pulls the moisture out and the kernels go dry and shriveled.", "Freezer (about 6 months): rinse, cut into recipe-sized chunks, portion into freezer bags and freeze — next time cook straight from frozen, no thawing. Or cut the kernels off, season with a little salt, sugar and water in a box, and steam in the rice cooker for your own canned-style corn."] },
+          "zh": { "name": "玉米", "alt": "甜玉米", "desc": "金黃香甜的玉米，連軸水煮、燒烤或蒸；剝粒則可入湯、快炒或炒飯。", "tip": ["室溫保存（不超過 2 天）：置於約 25°C 以下，避免日晒與堆積；甜分很快轉為澱粉，宜盡速烹調。", "冷藏保存（不超過 7 天）：連葉並用塑膠袋包裝以免脫水。別不包裝久放冷藏，冷氣會把水分抽走，玉米粒變得乾扁。", "冷凍保存（約半年）：洗淨後切成適合料理的大小，用保鮮袋分裝冷凍，下次不用解凍就能直接下鍋。或把玉米粒切下，放保鮮盒加少許鹽、糖、水，用電鍋蒸熟，自製玉米罐頭。"] }
         },
         {
           "pantryCode": "BABY_CORN",
