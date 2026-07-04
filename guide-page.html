@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ingredient guide · foodie</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button id="langBtn" class="lang-btn" type="button">中文</button>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="crumb"><a id="backLink" href="guide.html"></a></div>
+    <h1 id="title"></h1>
+    <p class="subtitle" id="subtitle"></p>
+  </header>
+
+  <div id="sections"></div>
+
+  <footer id="footer">foodie</footer>
+
+</div>
+
+<script src="links.js"></script>
+<script>
+  /* Shared ingredient-guide renderer. Routed by ?id= (see GUIDES below).
+
+     Two data shapes are supported via `mode`:
+     - "produce" (default): groups[] -> items[], each with name/alt/desc/tip.
+       `tip` is a string or an array of strings (one line per storage method).
+     - "cuts": animals[] -> cuts[], plus a top-level methods[] index. Each cut
+       renders Best / Avoid cooking-method chip rows instead of a storage tip.
+
+     Both shapes get the same trio of search links per item (how-to-cut video,
+     how-to-store web search, how-to-store video). Requires links.js. */
+  (function () {
+    const LANG_KEY = "foodie.lang";
+
+    // Routing: guide-page.html?id=veg → which data file / renderer / footer word.
+    const GUIDES = {
+      veg:     { file: "guide-veg",                footer: "vegetables" },
+      fruit:   { file: "guide-fruit",              footer: "fruit" },
+      staples: { file: "guide-staples",            footer: "staples" },
+      alliums: { file: "guide-alliums",            footer: "alliums" },
+      cuts:    { file: "guide-cuts", mode: "cuts", footer: "cuts" }
+    };
+
+    function store(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
+    function load(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
+    function $(id) { return document.getElementById(id); }
+
+    function el(tag, className, text) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text != null) node.textContent = text;
+      return node;
+    }
+
+    // Group/animal names are stored as an array of single-language objects,
+    // e.g. [{ "en": "Roots & tubers" }, { "zh": "根莖類" }]; pick the language.
+    function pickLang(arr, lang) {
+      if (!Array.isArray(arr)) return "";
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] && arr[i][lang] != null) return arr[i][lang];
+      }
+      return "";
+    }
+
+    const id = new URLSearchParams(location.search).get("id");
+    const cfg = GUIDES[id] || GUIDES.veg;
+    const mode = cfg.mode || "produce";
+
+    let ui = null;             // i18n.json ui block: { en:{…}, zh:{…} }
+    let data = null;           // data/<cfg.file>.json
+    let lang = "en";
+    const methodIndex = {};    // cuts only: cooking-method code -> { code, en, zh }
+
+    // A storage tip is either a single string or an array of strings (one line
+    // per storage method); render one tip line for each.
+    function appendTip(li, tip) {
+      if (!tip) return;
+      (Array.isArray(tip) ? tip : [tip]).forEach(function (text) {
+        if (text) li.appendChild(el("div", "cut-tip", text));
+      });
+    }
+
+    // One "Best / Avoid" line: a label plus a chip per cooking-method code.
+    function cookRow(cls, label, codes) {
+      if (!Array.isArray(codes) || !codes.length) return null;
+      const row = el("div", "cut-cook " + cls);
+      row.appendChild(el("span", "cook-label", label));
+      codes.forEach(function (code) {
+        const m = methodIndex[code] || {};
+        row.appendChild(el("span", "cook-chip", m[lang] || code));
+      });
+      return row;
+    }
+
+    // The how-to-cut / how-to-store search links shared by every item.
+    function appendLinks(li, name, t) {
+      const row = el("div", "cut-links");
+      [
+        [t.cutVideo, FoodieLinks.youtubeSearch(name + " " + t.cutKeyword)],
+        [t.storeWeb, FoodieLinks.webSearch(name + " " + t.storeKeyword)],
+        [t.storeVideo, FoodieLinks.youtubeSearch(name + " " + t.storeKeyword)]
+      ].forEach(function (pair) {
+        const a = el("a", null, pair[0]);
+        a.href = pair[1];
+        a.target = "_blank";
+        a.rel = "noopener";
+        row.appendChild(a);
+      });
+      li.appendChild(row);
+    }
+
+    function render() {
+      const t = ui[lang];
+      const meta = data[lang] || {};
+      document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+      document.title = (meta.name || "") + " · foodie";
+
+      $("langBtn").textContent = t.langToggle;
+      $("backLink").textContent = t.guideCrumb;
+      $("title").textContent = meta.name || "";
+      $("subtitle").textContent = meta.subtitle || "";
+
+      const wrap = $("sections");
+      wrap.innerHTML = "";
+
+      const groups = mode === "cuts" ? (data.animals || []) : (data.groups || []);
+      groups.forEach(function (group) {
+        const card = el("section", "card");
+        const h2 = el("h2");
+        if (group.emoji) h2.appendChild(el("span", "ic", group.emoji));
+        h2.appendChild(el("span", null, pickLang(group.name, lang)));
+        card.appendChild(h2);
+
+        const ul = el("ul", "cuts");
+        const items = mode === "cuts" ? (group.cuts || []) : (group.items || []);
+        items.forEach(function (item) {
+          const c = item[lang] || {};
+          const li = el("li");
+
+          const nameRow = el("div", "cut-head");
+          nameRow.appendChild(el("span", "cut-name", c.name || ""));
+          if (c.alt) nameRow.appendChild(el("span", "cut-alt", c.alt));
+          li.appendChild(nameRow);
+
+          if (c.desc) li.appendChild(el("div", "cut-desc", c.desc));
+
+          if (mode === "cuts") {
+            const best = cookRow("cook-best", t.cookBest, item.best);
+            if (best) li.appendChild(best);
+            const worst = cookRow("cook-worst", t.cookWorst, item.worst);
+            if (worst) li.appendChild(worst);
+          } else {
+            appendTip(li, c.tip);
+          }
+
+          appendLinks(li, c.name || "", t);
+          ul.appendChild(li);
+        });
+        card.appendChild(ul);
+        wrap.appendChild(card);
+      });
+    }
+
+    Promise.all([
+      fetch("i18n.json").then(function (r) { return r.json(); }),
+      fetch("data/" + cfg.file + ".json").then(function (r) { return r.json(); })
+    ])
+      .then(function (res) {
+        ui = res[0].ui;
+        data = res[1];
+        if (mode === "cuts") {
+          (data.methods || []).forEach(function (m) { methodIndex[m.code] = m; });
+        }
+        if (cfg.footer) {
+          const f = $("footer");
+          if (f) f.textContent = "foodie · " + cfg.footer;
+        }
+        lang = ui[load(LANG_KEY)] ? load(LANG_KEY) : "en";
+        render();
+      })
+      .catch(function () {
+        $("sections").innerHTML =
+          "<p style='color:var(--muted)'>Could not load guide data from <code>data/</code>. Serve this page over HTTP — browsers block fetch on file://.</p>";
+      });
+
+    $("langBtn").addEventListener("click", function () {
+      if (!ui) return;
+      lang = (lang === "zh") ? "en" : "zh";
+      store(LANG_KEY, lang);
+      render();
+    });
+  })();
+</script>
+</body>
+</html>

@@ -152,7 +152,7 @@ ul.cuts .cut-alt { color: var(--muted); font-size: 13px; }
 ul.cuts .cut-desc { color: var(--muted); font-size: 14px; margin-top: 4px; }
 ul.cuts .cut-tip { color: var(--muted); font-size: 13px; margin-top: 4px; }
 ul.cuts .cut-tip::before { content: "💡 "; }
-ul.cuts .cut-links { margin-top: 6px; font-size: 13px; }
+ul.cuts .cut-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 6px; font-size: 13px; }
 ul.cuts .cut-links a { color: var(--accent); text-decoration: none; }
 ul.cuts .cut-links a:hover { text-decoration: underline; }
 ul.cuts .cut-cook { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 6px; font-size: 12px; }
