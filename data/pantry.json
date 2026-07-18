@@ -11,41 +11,41 @@
     {
       "storage": "fridge",
       "items": [
-        { "code": "EGGS", "amount": 6, "en": { "name": "Eggs" }, "zh": { "name": "雞蛋" } },
-        { "code": "MILK", "amount": 1, "en": { "name": "Milk" }, "zh": { "name": "鮮奶" } },
-        { "code": "TOFU", "amount": 1, "en": { "name": "Tofu" }, "zh": { "name": "豆腐" } },
-        { "code": "SCALLIONS", "amount": 1, "en": { "name": "Scallions" }, "zh": { "name": "蔥" } },
-        { "code": "LEAFY_GREENS", "amount": 1, "en": { "name": "Leafy greens" }, "zh": { "name": "葉菜" } },
-        { "code": "SHIITAKE", "amount": 1, "en": { "name": "Shiitake mushrooms" }, "zh": { "name": "香菇" } },
-        { "code": "CABBAGE", "amount": 1, "en": { "name": "Cabbage" }, "zh": { "name": "高麗菜" } },
-        { "code": "DAIKON", "amount": 1, "en": { "name": "Daikon radish" }, "zh": { "name": "白蘿蔔" } },
-        { "code": "CARROT", "amount": 3, "en": { "name": "Carrots" }, "zh": { "name": "紅蘿蔔" } },
-        { "code": "CHERRY_TOMATO", "amount": 1, "en": { "name": "Cherry tomatoes" }, "zh": { "name": "小番茄" } },
-        { "code": "ZUCCHINI", "amount": 2, "en": { "name": "Zucchini" }, "zh": { "name": "櫛瓜" } },
-        { "code": "PORK_NECK", "amount": 190, "en": { "name": "Marbled pork neck" }, "zh": { "name": "雪花豬頸肉" } },
-        { "code": "PORK_CAP", "amount": 150, "en": { "name": "Frost-marbled pork cap" }, "zh": { "name": "霜降僧帽肉" } }
+        { "code": "EGGS", "amount": 6 },
+        { "code": "MILK", "amount": 1 },
+        { "code": "TOFU", "amount": 1 },
+        { "code": "SCALLIONS", "amount": 1 },
+        { "code": "LEAFY_GREENS", "amount": 1 },
+        { "code": "SHIITAKE", "amount": 1 },
+        { "code": "CABBAGE", "amount": 1 },
+        { "code": "DAIKON", "amount": 1 },
+        { "code": "CARROT", "amount": 3 },
+        { "code": "CHERRY_TOMATO", "amount": 1 },
+        { "code": "ZUCCHINI", "amount": 2 },
+        { "code": "PORK_NECK", "amount": 190 },
+        { "code": "PORK_CAP", "amount": 150 }
       ]
     },
     {
       "storage": "freezer",
       "items": [
-        { "code": "DUMPLINGS", "amount": 20, "en": { "name": "Dumplings" }, "zh": { "name": "水餃" } },
-        { "code": "CHICKEN", "amount": 500, "en": { "name": "Chicken" }, "zh": { "name": "雞肉" } },
-        { "code": "BREAD", "amount": 1, "en": { "name": "Sliced bread" }, "zh": { "name": "吐司" } }
+        { "code": "DUMPLINGS", "amount": 20 },
+        { "code": "CHICKEN", "amount": 500 },
+        { "code": "BREAD", "amount": 1 }
       ]
     },
     {
       "storage": "pantry",
       "items": [
-        { "code": "RICE", "amount": 2, "en": { "name": "Rice" }, "zh": { "name": "白米" } },
-        { "code": "ONIONS", "amount": 3, "en": { "name": "Onions" }, "zh": { "name": "洋蔥" } },
-        { "code": "POTATOES", "amount": 5, "en": { "name": "Potatoes" }, "zh": { "name": "馬鈴薯" } },
-        { "code": "BEEF_TOMATO", "amount": 4, "en": { "name": "Beef tomatoes" }, "zh": { "name": "牛番茄" } },
-        { "code": "SWEET_POTATOES", "amount": 3, "en": { "name": "Sweet potatoes" }, "zh": { "name": "地瓜" } },
-        { "code": "GARLIC", "amount": 1, "en": { "name": "Garlic" }, "zh": { "name": "大蒜" } },
-        { "code": "DRIED_SHIITAKE", "amount": 1, "en": { "name": "Dried shiitake mushrooms" }, "zh": { "name": "乾香菇" } },
-        { "code": "SOY_SAUCE", "amount": 1, "en": { "name": "Soy sauce (unopened)" }, "zh": { "name": "醬油（未開封）" } },
-        { "code": "COOKING_OIL", "amount": 1, "en": { "name": "Cooking oil" }, "zh": { "name": "食用油" } }
+        { "code": "RICE", "amount": 2 },
+        { "code": "ONIONS", "amount": 3 },
+        { "code": "POTATOES", "amount": 5 },
+        { "code": "BEEF_TOMATO", "amount": 4 },
+        { "code": "SWEET_POTATOES", "amount": 3 },
+        { "code": "GARLIC", "amount": 1 },
+        { "code": "DRIED_SHIITAKE", "amount": 1 },
+        { "code": "SOY_SAUCE", "amount": 1 },
+        { "code": "COOKING_OIL", "amount": 1 }
       ]
     }
   ]

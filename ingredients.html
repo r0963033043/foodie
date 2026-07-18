@@ -142,7 +142,8 @@
 
     // Flatten the data file (for the current language) and the custom items into
     // one list, each tagged with its base storage. Names come per-language from
-    // the data file; custom items carry a single name used in both languages.
+    // the guides (via tipIndex, keyed by code) — pantry.json holds no names;
+    // custom items carry a single name used in both languages.
     function allItems() {
       const list = [];
       const info = tipIndex[lang] || {};
@@ -150,7 +151,7 @@
       groups.forEach(function (g) {
         g.items.forEach(function (it) {
           const entry = info[it.code] || {};
-          const name = (it[lang] && it[lang].name) || "";
+          const name = entry.name || it.code;
           list.push({ code: it.code, name: name, amount: it.amount, unit: entry.unit, base: g.storage, type: typeOfCode[it.code] });
         });
       });
@@ -557,16 +558,18 @@
       const p = function (n) { return (n < 10 ? "0" : "") + n; };
       return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate());
     }
-    // When a bought date is set and no expiry entered yet, fill an estimate
-    // from the catalogue's shelf life and flag it as approximate.
-    function fillEstimatedExpiry() {
+    // Fill the expiry with an estimate (bought date + the catalogue's shelf
+    // life) and flag it as approximate. By default only when no expiry is
+    // entered yet; `overwrite` replaces the current one too, for when the
+    // bought date itself changes.
+    function fillEstimatedExpiry(overwrite) {
       const code = (editMode === "create") ? pickedCode : editingCode;
       const days = shelfLifeOf(code, editStorage);
       const bought = $("editBought").value;
-      if (bought && days != null && !$("editExpiry").value) {
-        $("editExpiry").value = addDays(bought, days);
-        $("expiryEst").hidden = false;
-      }
+      if (!bought || days == null) return;
+      if ($("editExpiry").value && overwrite !== true) return;
+      $("editExpiry").value = addDays(bought, days);
+      $("expiryEst").hidden = false;
     }
 
     // ===== Edit / create dialog =====
@@ -776,9 +779,9 @@
       showSuggest($("editNameInput").value);
       $("editNameInput").focus();
     });
-    // Setting a bought date fills an estimated best-before; editing the expiry
-    // by hand drops the "estimated" flag.
-    $("editBought").addEventListener("change", fillEstimatedExpiry);
+    // Setting or changing the bought date (re)fills the estimated best-before;
+    // editing the expiry by hand drops the "estimated" flag.
+    $("editBought").addEventListener("change", function () { fillEstimatedExpiry(true); });
     $("editExpiry").addEventListener("input", function () { $("expiryEst").hidden = true; });
     $("editNameInput").addEventListener("keydown", function (e) {
       if ($("nameSuggest").hidden || !suggestItems.length) return;

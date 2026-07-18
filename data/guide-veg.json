@@ -64,7 +64,7 @@
         },
         {
           "pantryCode": "POTATOES",
-          "shelfLife": { "pantry": 30, "fridge": 7 },
+          "shelfLife": { "pantry": 30, "fridge": 7, "freezer": 30 },
           "unitCode": "PCS",
           "en": { "name": "Potato", "alt": "馬鈴薯 / 洋芋", "desc": "A starchy all-rounder. Boil, mash, fry or stew — it soaks up flavor and turns creamy.", "tip": ["Room temperature (1–3 months): if your home is dry, put them in a dark paper bag with an apple and keep it somewhere cool, airy and out of sunlight — the ethylene the apple gives off slows sprouting.", "Refrigerator (1–2 weeks): if your home is humid, store them in a perforated plastic bag in the fridge, away from light so they don't sprout.", "Freezer (about 1 month): peel and cut into chunks, steam soft in the rice cooker, mash, and seal in a freezer bag for later use.", "Why it matters: potatoes sprout when exposed to light, big temperature swings or long storage, producing toxic solanine — so never eat ones that have turned green or sprouted."] },
           "zh": { "name": "馬鈴薯", "alt": "洋芋", "desc": "百搭的澱粉根莖。水煮、搗泥、油炸或燉煮皆宜，易吸味、口感綿密。", "tip": ["常溫保存（1～3 個月）：家中環境較乾燥時，與一顆蘋果一同裝進深色紙袋，放在照不到陽光的通風陰涼處——蘋果釋放的乙烯氣體能減緩發芽。", "冷藏保存（1～2 週）：家中環境較潮濕時，裝進打洞的塑膠袋內冷藏，並避免照光以免發芽。", "冷凍保存（約 1 個月）：去皮切塊放入電鍋蒸熟，壓成泥裝入保鮮袋冷凍，供日後使用。", "為什麼要注意：馬鈴薯照到光線、溫度變化劇烈或儲藏過久就會發芽，產生有毒的龍葵鹼，因此變綠或發芽的馬鈴薯不可食用。"] }
@@ -101,15 +101,15 @@
           "pantryCode": "SHIMEJI",
           "shelfLife": { "fridge": 7, "freezer": 30 },
           "unitCode": "PACK",
-          "en": { "name": "Shimeji mushroom", "alt": "鴻喜菇 / 鴻禧菇", "desc": "Small brown-capped clusters that stay bouncy when cooked — for stir-fries, soups, hot pot and mixed-mushroom rice.", "tip": "Don't wash — wipe if needed. If you won't use it within a few days, cut off the woody base, break into small clusters and freeze raw in a bag: it cooks straight from frozen and the umami actually deepens. Or microwave it with shiitake and maitake, seasoned with a little salt, vinegar and olive oil, into a marinated-mushroom side that keeps 4–5 days in the fridge." },
-          "zh": { "name": "鴻喜菇", "alt": "鴻禧菇", "desc": "褐色小傘成叢，煮後依然彈脆——快炒、湯品、火鍋與什菇炊飯都合適。", "tip": "不水洗，必要時擦拭即可。幾天內用不到就切除根部、剝成小朵直接生凍裝袋：下鍋免解凍，鮮味反而更濃。也可以和香菇、舞菇一起微波，用少許鹽、醋、橄欖油拌成醃漬什菇常備菜，冷藏可放 4～5 天。" }
+          "en": { "name": "Shimeji mushroom", "alt": "鴻喜菇 / 鴻禧菇", "desc": "Small brown-capped clusters that stay bouncy when cooked — for stir-fries, soups, hot pot and mixed-mushroom rice.", "tip": ["Don't wash — wipe if needed.", "Freezer: if you won't use it within a few days, cut off the woody base, break into small clusters and freeze raw in a bag — it cooks straight from frozen and the umami actually deepens.", "Or microwave it with shiitake and maitake, seasoned with a little salt, vinegar and olive oil, into a marinated-mushroom side that keeps 4–5 days in the fridge."] },
+          "zh": { "name": "鴻喜菇", "alt": "鴻禧菇", "desc": "褐色小傘成叢，煮後依然彈脆——快炒、湯品、火鍋與什菇炊飯都合適。", "tip": ["不水洗，必要時擦拭即可。", "冷凍：幾天內用不到就切除根部、剝成小朵直接生凍裝袋——下鍋免解凍，鮮味反而更濃。", "也可以和香菇、舞菇一起微波，用少許鹽、醋、橄欖油拌成醃漬什菇常備菜，冷藏可放 4～5 天。"] }
         },
         {
           "pantryCode": "MAITAKE",
           "shelfLife": { "fridge": 4, "freezer": 30 },
           "unitCode": "PACK",
-          "en": { "name": "Maitake mushroom", "alt": "舞菇 / 舞茸", "desc": "Frilly, deeply savory mushroom — great pan-seared, in soups or folded into rice.", "tip": "The quickest-spoiling of the common mushrooms — if you won't cook it within a day or two, tear it into pieces and freeze it raw, or heat it right away (microwave with a little salt, vinegar and olive oil) as a marinated side for the week." },
-          "zh": { "name": "舞菇", "alt": "舞茸", "desc": "皺褶花瓣狀、鮮味濃郁——乾煎、煮湯或拌進炊飯都出色。", "tip": "常見菇類中最不耐放——一兩天內煮不到，就撕成小朵直接生凍；或立刻加熱處理（與少許鹽、醋、橄欖油微波拌勻），做成一週份的醃菇常備菜。" }
+          "en": { "name": "Maitake mushroom", "alt": "舞菇 / 舞茸", "desc": "Frilly, deeply savory mushroom — great pan-seared, in soups or folded into rice.", "tip": ["The quickest-spoiling of the common mushrooms — if you won't cook it within a day or two, tear it into pieces and freeze it raw.", "Or heat it right away (microwave with a little salt, vinegar and olive oil) as a marinated side for the week."] },
+          "zh": { "name": "舞菇", "alt": "舞茸", "desc": "皺褶花瓣狀、鮮味濃郁——乾煎、煮湯或拌進炊飯都出色。", "tip": ["常見菇類中最不耐放——一兩天內煮不到，就撕成小朵直接生凍。", "或立刻加熱處理（與少許鹽、醋、橄欖油微波拌勻），做成一週份的醃菇常備菜。"] }
         }
       ]
     },
@@ -129,8 +129,8 @@
           "pantryCode": "GREEN_BEANS",
           "shelfLife": { "fridge": 5, "freezer": 30 },
           "unitCode": "BAG",
-          "en": { "name": "Green beans", "alt": "四季豆 / 敏豆", "desc": "Crisp green pods for dry-fried beans, stir-fries and simmered dishes — they bring crunch and color.", "tip": "A summer vegetable that suffers from both dryness and fridge cold, so the standard prep is to blanch it the day you buy it: trim the ends, boil in salted water for 20–30 seconds, shock in ice water and drain. Kept on a dry paper towel in a sealed container they're grab-and-go for salads, stir-fries and lunch boxes for a few days; freeze the blanched beans (about a month) for longer." },
-          "zh": { "name": "四季豆", "alt": "敏豆", "desc": "翠綠爽脆的豆莢，乾煸、快炒與燉煮皆宜，添脆又添色。", "tip": "四季豆是夏季蔬菜，怕乾燥也怕冷藏低溫，標準做法是買回當天就汆燙：去頭尾，入加鹽滾水燙 20～30 秒，撈起冰鎮瀝乾。保鮮盒鋪乾廚房紙巾吸走多餘水分後冷藏，涼拌、快炒、帶便當隨取隨用，數日內吃完；想放更久就把燙好的豆子冷凍（約一個月）。" }
+          "en": { "name": "Green beans", "alt": "四季豆 / 敏豆", "desc": "Crisp green pods for dry-fried beans, stir-fries and simmered dishes — they bring crunch and color.", "tip": ["A summer vegetable that suffers from both dryness and fridge cold, so the standard prep is to blanch it the day you buy it: trim the ends, boil in salted water for 20–30 seconds, shock in ice water and drain. Kept on a dry paper towel in a sealed container they're grab-and-go for salads, stir-fries and lunch boxes for a few days.", "Freeze the blanched beans (about a month) for longer."] },
+          "zh": { "name": "四季豆", "alt": "敏豆", "desc": "翠綠爽脆的豆莢，乾煸、快炒與燉煮皆宜，添脆又添色。", "tip": ["四季豆是夏季蔬菜，怕乾燥也怕冷藏低溫，標準做法是買回當天就汆燙：去頭尾，入加鹽滾水燙 20～30 秒，撈起冰鎮瀝乾。保鮮盒鋪乾廚房紙巾吸走多餘水分後冷藏，涼拌、快炒、帶便當隨取隨用，數日內吃完。", "想放更久就把燙好的豆子冷凍（約一個月）。"] }
         },
         {
           "pantryCode": "OKRA",
