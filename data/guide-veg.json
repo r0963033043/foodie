@@ -17,15 +17,29 @@
           "pantryCode": "LEAFY_GREENS",
           "shelfLife": { "fridge": 7 },
           "unitCode": "BAG",
-          "en": { "name": "Leafy greens", "alt": "青菜 / 葉菜類", "desc": "Bok choy, spinach, A-choy and the like — quick-cooking and perishable. Stir-fry, blanch, or drop into soup.", "tip": "Wrap in dry paper towel and bag loosely; don't wash until you cook." },
-          "zh": { "name": "葉菜類", "alt": "青菜", "desc": "小白菜、菠菜、A 菜之類——易熟也易壞。快炒、汆燙或入湯皆宜。", "tip": "用乾紙巾包起鬆裝入袋，烹煮前再清洗。" }
+          "en": { "name": "Leafy greens", "alt": "青菜 / 葉菜類", "desc": "Bok choy, spinach, A-choy and the like — quick-cooking and perishable. Stir-fry, blanch, or drop into soup.", "tip": ["Don't wash before storing — wash just before you cook.", "Best in a cloth produce bag (the 'soy-milk bag' from hardware stores): drop the greens in unwashed, fold the top over and refrigerate — spinach, sweet-potato leaves and the rest keep two or even three weeks. The cloth breathes and absorbs moisture better than a paper-towel wrap; newspaper works too, but the ink makes it a last resort.", "Meal-prep alternative: wash and cut everything the day you shop, then keep the pieces in a lidded container lined — and topped — with a wrung-out wet cloth, so condensation from the lid never drips onto the leaves: grab-and-cook for 4–5 days. Chop and freeze whatever you won't get to (2–3 weeks); frozen greens go straight into soup, no washing or cutting."] },
+          "zh": { "name": "葉菜類", "alt": "青菜", "desc": "小白菜、菠菜、A 菜之類——易熟也易壞。快炒、汆燙或入湯皆宜。", "tip": ["保存前不清洗，下鍋前再洗。", "首選豆漿袋（五金行買得到的棉布袋）：青菜不洗直接放入、折好袋口冷藏——菠菜、地瓜葉等葉菜可放兩週甚至三週。布袋透氣又吸濕，比紙巾包更好；報紙也行，但有油墨，不得已再用。", "備餐派做法：買回當天全部洗淨、切成好用的大小，放進保鮮盒，底部鋪、上方也蓋一層擰乾的濕布——上層擋住盒蓋凝結的水珠滴到菜葉：隨取隨煮可放 4～5 天。用不完的切段冷凍（2～3 週），煮湯直接下鍋，免洗免切。"] }
         },
         {
           "pantryCode": "CABBAGE",
           "shelfLife": { "fridge": 30 },
           "unitCode": "HEAD",
-          "en": { "name": "Cabbage", "alt": "高麗菜 / 甘藍", "desc": "Sweet, crunchy and versatile — Taiwan's everyday cabbage. Stir-fry, braise, or shred raw.", "tip": "Keep whole and unwashed in the crisper; wrap cut faces in plastic and use within days." },
-          "zh": { "name": "高麗菜", "alt": "甘藍", "desc": "清甜爽脆、用途廣，是台灣的日常高麗菜。快炒、滷煮或生切涼拌皆可。", "tip": "整顆不清洗放蔬果室；切開後切面包好，數日內食用。" }
+          "en": { "name": "Cabbage", "alt": "高麗菜 / 甘藍", "desc": "Sweet, crunchy and versatile — Taiwan's everyday cabbage. Stir-fry, braise, or shred raw.", "tip": ["Keep the loose outer leaves on as a wrapper. Turn the head over and cut a deep cross into the core — or stab in a few bamboo skewers, or hollow the core out entirely and press a wet paper towel into the cavity to keep the head hydrated — so the core stops feeding on the leaves and the head stays fresh longer.", "Then keep it whole and unwashed in a cloth produce bag with a paper towel inside to absorb moisture, in the crisper. Wrap cut faces in plastic and use within days."] },
+          "zh": { "name": "高麗菜", "alt": "甘藍", "desc": "清甜爽脆、用途廣，是台灣的日常高麗菜。快炒、滷煮或生切涼拌皆可。", "tip": ["外層老葉別剝，留著當保護層。整顆翻過來，在菜芯上深深劃十字——或插入幾支竹籤，也可以整個挖除菜芯、塞入濕紙巾補水——讓菜芯停止吸取葉片養分，整顆更耐放。", "接著整顆不清洗，裝豆漿袋（棉布袋）並放一張廚房紙巾吸濕，置於蔬果室。切開後切面包好，數日內食用。"] }
+        },
+        {
+          "pantryCode": "NAPA_CABBAGE",
+          "shelfLife": { "fridge": 21 },
+          "unitCode": "HEAD",
+          "en": { "name": "Napa cabbage", "alt": "大白菜 / 結球白菜", "desc": "Sweet, tender Chinese cabbage — the base of hot pot, braised napa (白菜滷) and dumpling fillings.", "tip": "Store exactly like cabbage: keep the outer leaves, cut a deep cross into the core (or pierce it with bamboo skewers) so it stops drawing nutrients from the leaves, then refrigerate in a cloth produce bag with a paper towel inside to absorb moisture." },
+          "zh": { "name": "大白菜", "alt": "結球白菜", "desc": "清甜軟嫩的白菜，火鍋、白菜滷與水餃餡的基底。", "tip": "與高麗菜作法相同：留外葉、菜芯深劃十字（或插竹籤）使其停止吸取葉片養分，裝豆漿袋（棉布袋）並放一張廚房紙巾吸濕後冷藏。" }
+        },
+        {
+          "pantryCode": "BROCCOLI",
+          "shelfLife": { "fridge": 7, "freezer": 30 },
+          "unitCode": "HEAD",
+          "en": { "name": "Broccoli", "alt": "青花菜 / 綠花椰菜", "desc": "Dense green florets — blanch, stir-fry or roast; a weight-loss staple.", "tip": ["Soak it head-down in water and shake to flush out the bugs that hide in the florets, then dry the head well — dampness is what rots it. Stick a toothpick into the cut stem end (it stops the head from growing on and aging), wrap in a dry cloth or paper towel, bag it and refrigerate: about a week depending on freshness.", "To keep it longer, cut into florets and freeze (about a month) — the texture softens, so frozen broccoli is best in soup."] },
+          "zh": { "name": "青花菜", "alt": "綠花椰菜", "desc": "緊實的綠色花球——汆燙、快炒或烘烤皆宜，減脂餐常客。", "tip": ["花球朝下泡水搖晃，把躲在花球裡的小蟲沖出來，之後務必把花球擦乾——受潮正是腐壞主因。在莖部切口插一根牙籤（讓它停止繼續生長老化），用乾布或紙巾包好、裝袋冷藏，依新鮮度約可放一週。", "想放更久就切小朵冷凍（約一個月）——口感會變軟，冷凍青花菜最適合煮湯。"] }
         }
       ]
     },
@@ -43,10 +57,10 @@
         },
         {
           "pantryCode": "CARROT",
-          "shelfLife": { "pantry": 2, "fridge": 21 },
+          "shelfLife": { "pantry": 2, "fridge": 21, "freezer": 60 },
           "unitCode": "ROOT",
-          "en": { "name": "Carrot", "alt": "紅蘿蔔 / 胡蘿蔔", "desc": "Sweet orange root, good raw or cooked. Adds color and sweetness to stir-fries, soups and stews.", "tip": ["Room temperature: cut off the green tops as soon as you get home, or the leaves keep pulling moisture and nutrients out and the whole carrot quickly goes limp. Keep them dry — don't wash or store them wet; if there's soil on them, just wrap them in newspaper or paper towel and keep them in a cool, airy box or basket. About 5–7 days in winter or an air-conditioned room (under 20°C), but only 2–3 days in humid summer heat (25–30°C+), when Taiwan's damp molds the tops and dries the skin black. Carrots are sensitive to ethylene, so keep them away from apples and tomatoes or they turn bitter.", "Refrigerator: if you have a lot or it's hot, pat them dry, wrap in newspaper and refrigerate — 2–4 weeks."] },
-          "zh": { "name": "紅蘿蔔", "alt": "胡蘿蔔", "desc": "橙色甜味根菜，生熟皆宜。為快炒、湯品與燉菜增色添甜。", "tip": ["室溫保存：買回後立刻切除頂端青綠色的莖葉，否則葉子會持續抽走全身的水分與養分，整條很快乾癟軟塌。保持乾燥、不要帶水或清洗；表面有泥土時直接用報紙或廚房紙巾包好，放在陰涼通風的紙箱或竹籃裡。冬季或冷氣房（20°C 以下）約可放 5～7 天，夏季悶熱（25～30°C 以上）大約只能放 2～3 天，台灣濕熱環境下頂端易發霉、表皮也會乾硬發黑。紅蘿蔔對乙烯敏感，勿與蘋果、番茄等同放，否則易產生苦味。", "冷藏：量多或天熱、預計 3 天內吃不完時，建議擦乾、用報紙包好冷藏，可存 2～4 週。"] }
+          "en": { "name": "Carrot", "alt": "紅蘿蔔 / 胡蘿蔔", "desc": "Sweet orange root, good raw or cooked. Adds color and sweetness to stir-fries, soups and stews.", "tip": ["Room temperature: cut off the green tops as soon as you get home, or the leaves keep pulling moisture and nutrients out and the whole carrot quickly goes limp. Keep them dry — don't wash or store them wet; if there's soil on them, just wrap them in newspaper or paper towel and keep them in a cool, airy box or basket. About 5–7 days in winter or an air-conditioned room (under 20°C), but only 2–3 days in humid summer heat (25–30°C+), when Taiwan's damp molds the tops and dries the skin black. Carrots are sensitive to ethylene, so keep them away from apples and tomatoes or they turn bitter.", "Refrigerator: if you have a lot or it's hot, pat them dry, wrap in newspaper and refrigerate — 2–4 weeks. Trimming both the top and the tail end first stops the root from growing on and keeps it firm past a week.", "Freezer (about 2 months): dice into soup-sized pieces and freeze in a bag — straight into the pot, no thawing, and weekday soups get much easier."] },
+          "zh": { "name": "紅蘿蔔", "alt": "胡蘿蔔", "desc": "橙色甜味根菜，生熟皆宜。為快炒、湯品與燉菜增色添甜。", "tip": ["室溫保存：買回後立刻切除頂端青綠色的莖葉，否則葉子會持續抽走全身的水分與養分，整條很快乾癟軟塌。保持乾燥、不要帶水或清洗；表面有泥土時直接用報紙或廚房紙巾包好，放在陰涼通風的紙箱或竹籃裡。冬季或冷氣房（20°C 以下）約可放 5～7 天，夏季悶熱（25～30°C 以上）大約只能放 2～3 天，台灣濕熱環境下頂端易發霉、表皮也會乾硬發黑。紅蘿蔔對乙烯敏感，勿與蘋果、番茄等同放，否則易產生苦味。", "冷藏：量多或天熱、預計 3 天內吃不完時，建議擦乾、用報紙包好冷藏，可存 2～4 週。先把頭尾兩端切除，能讓它停止繼續生長，放超過一週依然硬挺。", "冷凍（約兩個月）：切成煮湯用的小丁裝袋冷凍——下鍋免解凍，平日煮湯輕鬆許多。"] }
         },
         {
           "pantryCode": "POTATOES",
@@ -73,8 +87,57 @@
           "pantryCode": "SHIITAKE",
           "shelfLife": { "fridge": 7, "freezer": 90 },
           "unitCode": "PACK",
-          "en": { "name": "Shiitake mushroom", "alt": "香菇", "desc": "Meaty, savory mushrooms, fresh or dried. Fresh ones sauté and stew; dried ones rehydrate into a deeper, umami stock.", "tip": "Keep in a paper bag, not plastic, to avoid sogginess." },
-          "zh": { "name": "香菇", "alt": "鮮香菇 / 乾香菇", "desc": "肉厚味鮮，有鮮品與乾貨。鮮香菇煎炒、燉煮；乾香菇泡發後香氣更濃，可入高湯。", "tip": "以紙袋而非塑膠袋保存，避免出水變軟。" }
+          "en": { "name": "Shiitake mushroom", "alt": "香菇", "desc": "Meaty, savory fresh mushrooms for sautés, stews and soups. For the dried kind, see Kitchen Staples.", "tip": ["Never wash — water washes the aroma away and turns them slimy. Wipe the caps with a wrung-out damp cloth or paper towel, and keep them in a paper bag (not plastic) in the fridge for about a week.", "Freezer (about 3 months): slice raw into strips, seal in a freezer bag and cook straight from frozen — freezing breaks down the cell walls, so they actually release more umami in the pan.", "Bonus: an hour of sunshine on the gills before storing boosts their vitamin D."] },
+          "zh": { "name": "香菇", "alt": "鮮香菇", "desc": "肉厚味鮮，煎炒、燉煮或入湯皆宜。乾香菇請見「廚房常備」。", "tip": ["切勿水洗——香菇一碰水香氣流失又容易變滑爛。用擰乾的濕布或紙巾把蕈傘擦乾淨，裝紙袋（勿用塑膠袋）冷藏約可放一週。", "冷凍（約三個月）：生香菇切絲或切片直接裝袋冷凍，下鍋免解凍——冷凍會破壞細胞壁，煮的時候鮮味反而釋放得更多。", "加分技：保存前把蕈褶朝上晒約一小時太陽，維生素 D 會增加。"] }
+        },
+        {
+          "pantryCode": "ENOKI",
+          "shelfLife": { "fridge": 7 },
+          "unitCode": "PACK",
+          "en": { "name": "Enoki mushroom", "alt": "金針菇", "desc": "Long, thin and springy white mushrooms — for hot pot, soups and chilled dressed dishes (涼拌).", "tip": ["Keep sealed in the original pack in the fridge and use within the week — enoki hates moisture and cold damage, and freezing ruins its texture.", "Best move is to cook it the day you buy it: snip off the root end while it's still in the bag, rinse, drain well, then microwave (600W, about 2 minutes) or blanch and season lightly with salt and sesame oil. This make-ahead side keeps 4–5 days refrigerated and drops straight into miso soup, dressings or stir-fries."] },
+          "zh": { "name": "金針菇", "alt": "金菇", "desc": "細長白嫩、口感滑脆——火鍋、湯品與涼拌的常客。", "tip": ["原包裝密封冷藏、一週內用完——金針菇怕濕氣也怕凍傷，冷凍後口感會變差，不建議。", "最推薦買回當天就處理：連袋切除根部、沖洗瀝乾，微波（600W 約 2 分鐘）或汆燙後，以少許鹽和香油拌勻調味。這道常備小菜冷藏可放 4～5 天，直接吃、加進味噌湯、涼拌或快炒都方便。"] }
+        },
+        {
+          "pantryCode": "SHIMEJI",
+          "shelfLife": { "fridge": 7, "freezer": 30 },
+          "unitCode": "PACK",
+          "en": { "name": "Shimeji mushroom", "alt": "鴻喜菇 / 鴻禧菇", "desc": "Small brown-capped clusters that stay bouncy when cooked — for stir-fries, soups, hot pot and mixed-mushroom rice.", "tip": "Don't wash — wipe if needed. If you won't use it within a few days, cut off the woody base, break into small clusters and freeze raw in a bag: it cooks straight from frozen and the umami actually deepens. Or microwave it with shiitake and maitake, seasoned with a little salt, vinegar and olive oil, into a marinated-mushroom side that keeps 4–5 days in the fridge." },
+          "zh": { "name": "鴻喜菇", "alt": "鴻禧菇", "desc": "褐色小傘成叢，煮後依然彈脆——快炒、湯品、火鍋與什菇炊飯都合適。", "tip": "不水洗，必要時擦拭即可。幾天內用不到就切除根部、剝成小朵直接生凍裝袋：下鍋免解凍，鮮味反而更濃。也可以和香菇、舞菇一起微波，用少許鹽、醋、橄欖油拌成醃漬什菇常備菜，冷藏可放 4～5 天。" }
+        },
+        {
+          "pantryCode": "MAITAKE",
+          "shelfLife": { "fridge": 4, "freezer": 30 },
+          "unitCode": "PACK",
+          "en": { "name": "Maitake mushroom", "alt": "舞菇 / 舞茸", "desc": "Frilly, deeply savory mushroom — great pan-seared, in soups or folded into rice.", "tip": "The quickest-spoiling of the common mushrooms — if you won't cook it within a day or two, tear it into pieces and freeze it raw, or heat it right away (microwave with a little salt, vinegar and olive oil) as a marinated side for the week." },
+          "zh": { "name": "舞菇", "alt": "舞茸", "desc": "皺褶花瓣狀、鮮味濃郁——乾煎、煮湯或拌進炊飯都出色。", "tip": "常見菇類中最不耐放——一兩天內煮不到，就撕成小朵直接生凍；或立刻加熱處理（與少許鹽、醋、橄欖油微波拌勻），做成一週份的醃菇常備菜。" }
+        }
+      ]
+    },
+    {
+      "code": "POD",
+      "emoji": "🫛",
+      "name": [{"en": "Pods & sprouts"}, {"zh": "豆莢與芽菜"}],
+      "items": [
+        {
+          "pantryCode": "BEAN_SPROUTS",
+          "shelfLife": { "fridge": 5 },
+          "unitCode": "BAG",
+          "en": { "name": "Bean sprouts", "alt": "豆芽菜 / 綠豆芽", "desc": "Cheap, crisp and nutritious — for stir-fries, blanched salads and noodle soups.", "tip": "The fastest-spoiling vegetable in the basket — in the store bag they barely last a day or two. Wash thoroughly, drain, then refrigerate fully submerged in drinking water in a sealed bag or container; change the water every 2 days and they stay crisp for 3–7 days depending on freshness." },
+          "zh": { "name": "豆芽菜", "alt": "綠豆芽", "desc": "便宜、爽脆又營養——快炒、汆燙涼拌與湯麵都好用。", "tip": "菜籃裡最容易壞的蔬菜——原袋冷藏頂多放一兩天。徹底洗淨、瀝乾後，放進密封袋或保鮮盒，加入蓋過豆芽的飲用水冷藏；每兩天換一次水，依新鮮度可脆放 3～7 天。" }
+        },
+        {
+          "pantryCode": "GREEN_BEANS",
+          "shelfLife": { "fridge": 5, "freezer": 30 },
+          "unitCode": "BAG",
+          "en": { "name": "Green beans", "alt": "四季豆 / 敏豆", "desc": "Crisp green pods for dry-fried beans, stir-fries and simmered dishes — they bring crunch and color.", "tip": "A summer vegetable that suffers from both dryness and fridge cold, so the standard prep is to blanch it the day you buy it: trim the ends, boil in salted water for 20–30 seconds, shock in ice water and drain. Kept on a dry paper towel in a sealed container they're grab-and-go for salads, stir-fries and lunch boxes for a few days; freeze the blanched beans (about a month) for longer." },
+          "zh": { "name": "四季豆", "alt": "敏豆", "desc": "翠綠爽脆的豆莢，乾煸、快炒與燉煮皆宜，添脆又添色。", "tip": "四季豆是夏季蔬菜，怕乾燥也怕冷藏低溫，標準做法是買回當天就汆燙：去頭尾，入加鹽滾水燙 20～30 秒，撈起冰鎮瀝乾。保鮮盒鋪乾廚房紙巾吸走多餘水分後冷藏，涼拌、快炒、帶便當隨取隨用，數日內吃完；想放更久就把燙好的豆子冷凍（約一個月）。" }
+        },
+        {
+          "pantryCode": "OKRA",
+          "shelfLife": { "fridge": 3, "freezer": 30 },
+          "unitCode": "BAG",
+          "en": { "name": "Okra", "alt": "秋葵", "desc": "Green pods with a silky, mucilaginous bite — blanched with soy sauce, in soups, or piled on cold tofu.", "tip": ["Okra hates the cold and keeps poorly raw in the fridge, so deal with it the day you buy it. Wipe dry, pare just the rim of the stem cap (don't cut into the pod), blanch in salted water about 20 seconds, shock in ice water — then eat within a couple of days.", "Freeze the rest raw: slice into thin rounds, spread flat in a freezer bag so they don't clump, and they keep about a month — thaw briefly and they're ready to eat as-is, no cooking needed."] },
+          "zh": { "name": "秋葵", "alt": "黃秋葵", "desc": "口感滑黏的綠色豆莢——汆燙淋醬油、入湯或鋪在冷豆腐上都對味。", "tip": ["秋葵怕冷又不耐生放冷藏，買回當天就處理。擦乾後削去蒂頭邊緣一圈（別切進果莢），入加鹽滾水汆燙約 20 秒、撈起冰鎮——兩三天內吃完。", "吃不完的生凍：切成薄圓片，平鋪裝進冷凍袋以免結塊，約可放一個月——稍微解凍即可直接吃，免加熱。"] }
         }
       ]
     },
@@ -117,6 +180,34 @@
           "unitCode": "STICK",
           "en": { "name": "Zucchini", "alt": "櫛瓜 / 夏南瓜 / 翠玉瓜", "desc": "Mild summer squash with tender, edible skin. Slice for stir-fries, soups and grills, or spiralize — it cooks fast and soaks up flavor.", "tip": ["Room temperature: only in a cool, airy spot and for a day or two at most — Taiwan's summer humidity (25–30°C+) softens and rots it fast, so the fridge is the default here.", "Refrigerator: best (about 7–10 days). Keep it whole and unwashed, pat off any surface moisture, and store it loose in a perforated or loosely-closed bag in the crisper — trapped water is what turns the skin slimy. Don't wash until you cook, and wrap the cut face of a used one and finish it within a couple of days."] },
           "zh": { "name": "櫛瓜", "alt": "夏南瓜 / 翠玉瓜", "desc": "溫和的夏季瓜類，皮薄細嫩可連皮食用。切片快炒、入湯、煎烤或刨成麵條皆宜，易熟又容易吸味。", "tip": ["室溫保存：僅限陰涼通風處，最多放 1～2 天——台灣夏季濕熱（25～30°C 以上）會讓櫛瓜很快變軟腐爛，因此這裡建議直接冷藏。", "冷藏：最推薦（約 7～10 天）。整條不清洗、擦乾表面水分，鬆裝於打孔袋或不密封的塑膠袋放入蔬果室——殘留水氣正是表皮發黏腐爛的主因。烹煮前再清洗；切開後切面包好，數日內食用完畢。"] }
+        },
+        {
+          "pantryCode": "CUCUMBER",
+          "shelfLife": { "fridge": 14 },
+          "unitCode": "STICK",
+          "en": { "name": "Cucumber", "alt": "小黃瓜 / 花胡瓜", "desc": "Crisp and cooling — for smacked-cucumber salads, quick pickles and stir-fries.", "tip": "Don't wash, and don't trim the ends — cucumbers are full of water and cut ends weep. Put them in a cloth produce bag or plastic bag, always with a sheet of paper towel inside to absorb moisture, and refrigerate; about two weeks." },
+          "zh": { "name": "小黃瓜", "alt": "花胡瓜", "desc": "清脆爽口，拍黃瓜、涼拌、醃漬與快炒皆宜。", "tip": "不清洗，也不建議切除頭尾——小黃瓜水分多，切口容易出水。裝豆漿袋（棉布袋）或塑膠袋，務必放一張廚房紙巾吸濕，冷藏約可放兩週。" }
+        },
+        {
+          "pantryCode": "LOOFAH",
+          "shelfLife": { "fridge": 14 },
+          "unitCode": "STICK",
+          "en": { "name": "Loofah", "alt": "絲瓜 / 菜瓜", "desc": "Silky Taiwanese gourd that cooks down sweet and tender — stir-fried with clams, in soups, or steamed.", "tip": "Don't wash — just cut off the stem end. Wrap in paper towel first, then a layer of aluminum foil (shiny or matte side, either way): the foil chills it quickly while the paper absorbs excess moisture. Keeps about two weeks in the fridge." },
+          "zh": { "name": "絲瓜", "alt": "菜瓜", "desc": "軟甜多汁的瓜類，炒蛤蜊、煮湯或清蒸都合適。", "tip": "不清洗，只切除蒂頭。先用廚房紙巾包好，外層再包一層鋁箔紙（亮面霧面皆可）——鋁箔導冷快，內層紙巾吸走多餘水氣，冷藏約可放兩週。" }
+        },
+        {
+          "pantryCode": "WINTER_MELON",
+          "shelfLife": { "fridge": 7, "freezer": 60 },
+          "unitCode": "PCS",
+          "en": { "name": "Winter melon", "alt": "冬瓜", "desc": "Mild, watery melon usually sold by the slice; melts into soups and braises.", "tip": ["Refrigerator (about 1 week): wrap the slice in paper towel, then a plastic bag.", "Freezer: peel, seed and cube, then freeze — frozen winter melon softens faster in soup and releases its flavor into the broth more readily."] },
+          "zh": { "name": "冬瓜", "alt": "", "desc": "多以切片販售，清淡多水，入湯燉煮易軟入味。", "tip": ["冷藏（約一週）：切片用廚房紙巾包好，再裝塑膠袋冷藏。", "冷凍：去皮去籽切塊冷凍——凍過的冬瓜煮湯更快軟爛，也更容易把風味釋放到湯裡。"] }
+        },
+        {
+          "pantryCode": "PUMPKIN",
+          "shelfLife": { "pantry": 30, "fridge": 4 },
+          "unitCode": "PCS",
+          "en": { "name": "Pumpkin", "alt": "南瓜 / 金瓜", "desc": "Dense, sweet squash for soups, steaming, braises and pumpkin rice noodles (金瓜米粉).", "tip": ["Whole and uncut: a cool, dark, airy spot keeps it a month or more.", "The knife-friendly prep: wash the skin, microwave the whole squash to soften the hard shell (600W, about 4 minutes — wrap it in a wet cloth or cover it in a heatproof bowl), then scoop out the seeds with a spoon while warm (careful, hot!) and cut into use-sized pieces. Boxed in the fridge, they're grab-and-cook for 3–4 days — five-minute stews, soups or salads.", "Skip the freezer — raw pumpkin turns watery and bland after freezing; if you must, steam and mash it first."] },
+          "zh": { "name": "南瓜", "alt": "金瓜", "desc": "厚實香甜的瓜類，煮湯、清蒸、燉煮與金瓜米粉都合適。", "tip": ["整顆未切：陰涼、避光、通風處可放一個月以上。", "好切訣竅：外皮洗淨，整顆微波把硬皮軟化（600W 約 4 分鐘，包上濕布或放耐熱碗加蓋），趁熱用湯匙挖籽（小心燙！），再切成料理用大小。裝保鮮盒冷藏，3～4 天內隨取隨煮——五分鐘就能變出燉菜、湯品或沙拉。", "不建議冷凍——生南瓜凍過口感變得水爛無味；真要冷凍，先蒸熟壓成泥再凍。"] }
         }
       ]
     }

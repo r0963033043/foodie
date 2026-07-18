@@ -43,6 +43,7 @@
         { "code": "BEEF_TOMATO", "amount": 4, "en": { "name": "Beef tomatoes" }, "zh": { "name": "牛番茄" } },
         { "code": "SWEET_POTATOES", "amount": 3, "en": { "name": "Sweet potatoes" }, "zh": { "name": "地瓜" } },
         { "code": "GARLIC", "amount": 1, "en": { "name": "Garlic" }, "zh": { "name": "大蒜" } },
+        { "code": "DRIED_SHIITAKE", "amount": 1, "en": { "name": "Dried shiitake mushrooms" }, "zh": { "name": "乾香菇" } },
         { "code": "SOY_SAUCE", "amount": 1, "en": { "name": "Soy sauce (unopened)" }, "zh": { "name": "醬油（未開封）" } },
         { "code": "COOKING_OIL", "amount": 1, "en": { "name": "Cooking oil" }, "zh": { "name": "食用油" } }
       ]

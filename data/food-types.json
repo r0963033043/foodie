@@ -1,5 +1,5 @@
 [
-  { "code": "VEGETABLE", "en": "Vegetable", "zh": "蔬菜", "ingredients": ["SCALLIONS", "WELSH_JAPANESE_ONION", "BABY_SCALLION", "SHALLOT", "ONIONS", "GARLIC", "GREEN_GARLIC", "CHINESE_CHIVES", "LEAFY_GREENS", "SHIITAKE", "CABBAGE", "DAIKON", "CARROT", "POTATOES", "SWEET_POTATOES", "CORN", "BABY_CORN", "BEEF_TOMATO", "ZUCCHINI"] },
+  { "code": "VEGETABLE", "en": "Vegetable", "zh": "蔬菜", "ingredients": ["SCALLIONS", "WELSH_JAPANESE_ONION", "BABY_SCALLION", "SHALLOT", "ONIONS", "GARLIC", "GREEN_GARLIC", "CHINESE_CHIVES", "GINGER", "CHILI", "CORIANDER", "BASIL", "LEAFY_GREENS", "SHIITAKE", "DRIED_SHIITAKE", "ENOKI", "SHIMEJI", "MAITAKE", "CABBAGE", "NAPA_CABBAGE", "BROCCOLI", "BEAN_SPROUTS", "GREEN_BEANS", "OKRA", "DAIKON", "CARROT", "POTATOES", "SWEET_POTATOES", "CORN", "BABY_CORN", "BEEF_TOMATO", "ZUCCHINI", "CUCUMBER", "LOOFAH", "WINTER_MELON", "PUMPKIN"] },
   { "code": "FRUIT", "en": "Fruit", "zh": "水果", "ingredients": ["APPLE", "BANANA", "GUAVA", "WAX_APPLE", "DRAGON_FRUIT", "MANGO", "PINEAPPLE", "PAPAYA", "PONKAN", "TANKAN", "POMELO", "LEMON", "KUMQUAT", "LYCHEE", "LONGAN", "GRAPE", "PERSIMMON", "ASIAN_PEAR", "SUGAR_APPLE", "LOQUAT", "CHERRY_TOMATO"] },
   { "code": "DAIRY", "en": "Dairy", "zh": "乳製品", "ingredients": ["MILK"] },
   { "code": "EGG", "en": "Egg", "zh": "蛋", "ingredients": ["EGGS"] },

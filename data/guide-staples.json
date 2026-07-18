@@ -86,6 +86,20 @@
       ]
     },
     {
+      "code": "DRIED",
+      "emoji": "🍄",
+      "name": [{"en": "Dried goods"}, {"zh": "乾貨"}],
+      "items": [
+        {
+          "pantryCode": "DRIED_SHIITAKE",
+          "shelfLife": { "pantry": 180, "fridge": 365 },
+          "unitCode": "PACK",
+          "en": { "name": "Dried shiitake mushroom", "alt": "乾香菇 / 冬菇", "desc": "Shiitake dried for a deeper, concentrated umami. Rehydrate for braises, soups, sticky rice and stir-fries; the soaking liquid doubles as stock.", "tip": ["Keep airtight with the desiccant packet in a cool, dark, dry spot; in humid weather move to the fridge or freezer to keep out moisture and bugs.", "Soak in cold water 2–4 hours (or overnight in the fridge) for the fullest umami; short on time, use warm water around 40°C for an hour — never above 50°C, which destroys the aroma. Ready when the stem has no hard core and the cap is plump.", "Quickest fix: put equal parts dried shiitake and warm water in a sealed container with a pinch of sugar (speeds absorption and keeps the umami in) and a spoonful of flour (grabs the grit), shake it up and down about 60 times, then let it sit about 10 minutes — softened and ready to use. Or microwave them in sugar water (2 cups water + 1 tsp sugar) on high for 90 seconds.", "Never discard the soaking water — it's natural stock. Let it settle 5–10 minutes, pour off the clear liquid and leave the sediment; use in soups, braises, rice or steamed egg.", "Soaked mushrooms keep about 48 hours in the fridge; don't leave them soaking at room temperature for more than 4 hours."] },
+          "zh": { "name": "乾香菇", "alt": "冬菇", "desc": "香菇乾燥後鮮味更濃。泡發後可滷、煮湯、炊油飯或快炒；泡菇水就是現成高湯。", "tip": ["連同乾燥劑密封，存放於陰涼乾燥避光處；潮濕季節改放冷藏或冷凍，防潮防蟲。", "以冷水泡發 2–4 小時（或冷藏泡隔夜）鮮味最足；趕時間可用約 40°C 溫水泡 1 小時，切勿超過 50°C，以免香氣流失。菇柄無硬芯、菇傘飽滿即泡發完成。", "最速泡發法：於可密閉容器中放入等量的乾香菇和溫水，加少許糖（加速吸水並鎖住鮮味）與一匙麵粉（吸附雜質），上蓋完全密封後上下搖晃約 60 下，再靜置約 10 分鐘，即有軟化的香菇可用。亦可用糖水（2 杯水加 1 小匙糖）微波強火 90 秒。", "泡菇水是天然高湯，別倒掉——靜置 5–10 分鐘讓雜質沉澱，取上層清液煮湯、滷菜、炊飯或蒸蛋皆宜。", "泡發後的香菇冷藏約可放 48 小時；室溫浸泡勿超過 4 小時。"] }
+        }
+      ]
+    },
+    {
       "code": "SEASONING",
       "emoji": "🧂",
       "name": [{"en": "Seasoning"}, {"zh": "調味料"}],

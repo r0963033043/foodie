@@ -32,8 +32,8 @@
      - "cuts": animals[] -> cuts[], plus a top-level methods[] index. Each cut
        renders Best / Avoid cooking-method chip rows instead of a storage tip.
 
-     Both shapes get the same trio of search links per item (how-to-cut video,
-     how-to-store web search, how-to-store video). Requires links.js. */
+     Both shapes get the same search links per item (how-to-cut video, how-to-cook
+     web search + video, how-to-store web search + video). Requires links.js. */
   (function () {
     const LANG_KEY = "foodie.lang";
 
@@ -102,6 +102,8 @@
       const row = el("div", "cut-links");
       [
         [t.cutVideo, FoodieLinks.youtubeSearch(name + " " + t.cutKeyword)],
+        [t.cookWeb, FoodieLinks.webSearch(name + " " + t.recipeKeyword)],
+        [t.cookVideo, FoodieLinks.youtubeSearch(name + " " + t.recipeKeyword)],
         [t.storeWeb, FoodieLinks.webSearch(name + " " + t.storeKeyword)],
         [t.storeVideo, FoodieLinks.youtubeSearch(name + " " + t.storeKeyword)]
       ].forEach(function (pair) {

@@ -1,11 +1,11 @@
 {
   "en": {
     "name": "Onions & Alliums",
-    "subtitle": "Scallions, garlic, onions and chives — telling the allium family apart."
+    "subtitle": "Scallions, garlic, onions, ginger and fresh herbs — telling the aromatics apart and keeping them fresh."
   },
   "zh": {
     "name": "蔥蒜家族",
-    "subtitle": "蔥、蒜、洋蔥、韭——分清這一家，料理更到位。"
+    "subtitle": "蔥、蒜、洋蔥、薑與香草辛料——分清這一家，料理更到位。"
   },
   "groups": [
     {
@@ -17,8 +17,8 @@
           "pantryCode": "SCALLIONS",
           "shelfLife": { "fridge": 7, "freezer": 90 },
           "unitCode": "BUNCH",
-          "en": { "name": "Scallion", "alt": "青蔥 / 蔥", "desc": "The everyday aromatic. The white part is mild, the green tops fresh and fragrant; for tempering oil, soups, scallion-oil and raw garnish. Add late — long cooking loses the aroma.", "tip": "Wrap in paper towel, then bag — or freeze chopped." },
-          "zh": { "name": "青蔥", "alt": "蔥 / 小蔥", "desc": "最常用的辛香料。蔥白溫和、蔥綠清香；爆香、煮湯、做蔥油與生食皆宜。久煮會失去香氣，多在起鍋前下。", "tip": "用紙巾包好再裝袋；或切段冷凍保存。" }
+          "en": { "name": "Scallion", "alt": "青蔥 / 蔥", "desc": "The everyday aromatic. The white part is mild, the green tops fresh and fragrant; for tempering oil, soups, scallion-oil and raw garnish. Add late — long cooking loses the aroma.", "tip": ["Refrigerator (about 2 weeks): don't wash — just trim off the root ends (that alone extends the keeping time), wrap in a cloth produce bag or paper towel, then a plastic bag so the smell doesn't spread.", "Freezer (about 3 months): wash, dry thoroughly and cut into sections or rings, then pack into a box or jar. The same cut scallions last only about a week refrigerated — frozen they keep three months and go into the pan straight from frozen."] },
+          "zh": { "name": "青蔥", "alt": "蔥 / 小蔥", "desc": "最常用的辛香料。蔥白溫和、蔥綠清香；爆香、煮湯、做蔥油與生食皆宜。久煮會失去香氣，多在起鍋前下。", "tip": ["冷藏（約兩週）：不清洗，只切除蔥頭根部（光這一步就能放更久），用豆漿袋（棉布袋）或廚房紙巾包好，再套塑膠袋以免蔥味擴散。", "冷凍（約三個月）：洗淨、徹底晾乾後切蔥段或蔥花，裝保鮮盒或玻璃罐。切好的蔥冷藏只能放約一週，冷凍可放三個月，下鍋免解凍。"] }
         },
         {
           "pantryCode": "WELSH_JAPANESE_ONION",
@@ -36,17 +36,17 @@
         },
         {
           "pantryCode": "SHALLOT",
-          "shelfLife": { "pantry": 30, "fridge": 60 },
+          "shelfLife": { "pantry": 30, "fridge": 30 },
           "unitCode": "BULB",
-          "en": { "name": "Shallot", "alt": "紅蔥頭 / 火蔥", "desc": "Small purple-red bulbs, intensely fragrant and sweet. Sliced and fried into crisp shallots (油蔥酥) — the soul of Taiwanese braised-pork rice and street snacks." },
-          "zh": { "name": "紅蔥頭", "alt": "火蔥 / 油蔥", "desc": "小巧的紫紅色蔥頭，香氣濃郁帶甜。切片油炸成油蔥酥，是滷肉飯、油飯與小吃的靈魂香料。" }
+          "en": { "name": "Shallot", "alt": "紅蔥頭 / 火蔥", "desc": "Small purple-red bulbs, intensely fragrant and sweet. Sliced and fried into crisp shallots (油蔥酥) — the soul of Taiwanese braised-pork rice and street snacks.", "tip": ["Room temperature (about 1 month): keep them bone dry and put them in a mesh bag somewhere cool and ventilated.", "Refrigerator (about 1 month): store in a glass jar or a sealed container.", "Don't freeze — unlike garlic, shallots weep water after thawing and turn limp in a stir-fry. For long keeping, slice thin and fry into crisp shallots (油蔥酥) instead — the tastiest way to store them."] },
+          "zh": { "name": "紅蔥頭", "alt": "火蔥 / 油蔥", "desc": "小巧的紫紅色蔥頭，香氣濃郁帶甜。切片油炸成油蔥酥，是滷肉飯、油飯與小吃的靈魂香料。", "tip": ["室溫保存（約一個月）：保持乾燥不碰水，裝網袋放陰涼通風處。", "冷藏（約一個月）：放入玻璃罐或保鮮盒冷藏。", "不建議冷凍——紅蔥頭與蒜頭性質不同，凍過易出水、炒起來口感差。想放更久，切薄片炸成油蔥酥最實用也最美味。"] }
         },
         {
           "pantryCode": "ONIONS",
-          "shelfLife": { "pantry": 30, "fridge": 60 },
+          "shelfLife": { "pantry": 45, "fridge": 14 },
           "unitCode": "PCS",
-          "en": { "name": "Onion", "alt": "洋蔥 / 圓蔥", "desc": "A round bulb — sharp raw, sweet when slow-cooked. For salads, tempering, stews and caramelizing; a base in both Western and Chinese cooking.", "tip": "Cool, ventilated and dark; keep away from potatoes." },
-          "zh": { "name": "洋蔥", "alt": "圓蔥", "desc": "球形鱗莖，生食辛辣、久炒回甜。涼拌、爆香、燉煮與焦糖化皆可，是中西式都用的基底。", "tip": "通風、陰涼、避光；與馬鈴薯分開存放。" }
+          "en": { "name": "Onion", "alt": "洋蔥 / 圓蔥", "desc": "A round bulb — sharp raw, sweet when slow-cooked. For salads, tempering, stews and caramelizing; a base in both Western and Chinese cooking.", "tip": ["Room temperature (up to 1½ months): a mesh bag in a cool, ventilated, dark spot; keep away from potatoes.", "Refrigerator (about 2 weeks): don't wash. Cut off the top and root ends first — left on, they keep drawing moisture and nutrients out of the bulb — then wrap head-to-tail in paper towel and bag or cling-film it with the air squeezed out."] },
+          "zh": { "name": "洋蔥", "alt": "圓蔥", "desc": "球形鱗莖，生食辛辣、久炒回甜。涼拌、爆香、燉煮與焦糖化皆可，是中西式都用的基底。", "tip": ["室溫保存（可達一個半月）：裝網袋放通風、陰涼、避光處；與馬鈴薯分開存放。", "冷藏（約兩週）：不清洗，先切除頭尾——留著會持續吸走養分與水分——再用廚房紙巾整顆包好，套塑膠袋或保鮮膜並擠出空氣冷藏。"] }
         }
       ]
     },
@@ -57,10 +57,10 @@
       "items": [
         {
           "pantryCode": "GARLIC",
-          "shelfLife": { "pantry": 30 },
+          "shelfLife": { "pantry": 30, "fridge": 30, "freezer": 180 },
           "unitCode": "BULB",
-          "en": { "name": "Garlic", "alt": "蒜 / 大蒜 / 蒜頭", "desc": "A pungent, aromatic bulb. Smashed or minced to temper oil — the base of Chinese stir-fries and dipping sauces; sharp raw, sweet once cooked.", "tip": "Use an open mesh or basket with airflow; avoid plastic bags." },
-          "zh": { "name": "蒜", "alt": "大蒜 / 蒜頭", "desc": "辛辣濃香的鱗莖。拍碎或切末爆香，是中式熱炒與醬料的基礎；生食更嗆，加熱後轉甜。", "tip": "用網袋或籃子通風保存，避免塑膠袋。" }
+          "en": { "name": "Garlic", "alt": "蒜 / 大蒜 / 蒜頭", "desc": "A pungent, aromatic bulb. Smashed or minced to temper oil — the base of Chinese stir-fries and dipping sauces; sharp raw, sweet once cooked.", "tip": ["Room temperature: whole heads (or unpeeled cloves) keep longest in a mesh bag, a holed plastic bag or a cloth bag, hung or set somewhere cool and ventilated.", "Refrigerator (about 1 month): peel the cloves and keep them absolutely dry — no water at all. Put a paper towel in a glass jar or box to absorb moisture, add the cloves, close the lid and refrigerate; one drop of dampness and they mold within days.", "Freezer (longest, 6 months or more): freeze the cloves unpeeled — no wrapping each one, and they don't stick together. To use, snip off the root end, soak in water for about 5 minutes and the skin slips right off. Peeled cloves in a zipper bag with the air squeezed out work too, straight from frozen. Don't freeze minced or grated garlic — it freezer-burns and loses its flavor; fry minced garlic into golden crisps instead, a delicious way to keep it."] },
+          "zh": { "name": "蒜", "alt": "大蒜 / 蒜頭", "desc": "辛辣濃香的鱗莖。拍碎或切末爆香，是中式熱炒與醬料的基礎；生食更嗆，加熱後轉甜。", "tip": ["室溫保存：整顆蒜球（或帶膜蒜瓣）裝網袋、打洞塑膠袋或布袋，吊掛或放在陰涼通風處，可放最久。", "冷藏（約一個月）：剝好的蒜瓣務必全程不碰水。玻璃罐或保鮮盒內鋪一張廚房紙巾吸潮，放入蒜瓣、蓋緊冷藏；一沾到水氣幾天內就會發霉。", "冷凍（最耐放，可達半年以上）：帶膜蒜瓣直接裝袋冷凍——不必逐顆包，也不會黏在一起；要用時剪去根部、泡水約 5 分鐘，外膜一搓就掉。剝好的蒜瓣裝夾鏈袋、擠出空氣冷凍也可以，用時免解凍。切末或磨泥後不要冷凍——容易凍傷走味，不如切末炸成金黃蒜酥，好吃又耐放。"] }
         },
         {
           "pantryCode": "GREEN_GARLIC",
@@ -71,10 +71,45 @@
         },
         {
           "pantryCode": "CHINESE_CHIVES",
-          "shelfLife": { "fridge": 5 },
+          "shelfLife": { "fridge": 5, "freezer": 21 },
           "unitCode": "BUNCH",
-          "en": { "name": "Chinese chives", "alt": "韭菜 (韭黃 when blanched pale)", "desc": "Flat-leaved, with a strong garlic-chive aroma. Stars in chive-and-egg, squid stir-fries, and dumpling and pancake fillings; weeps and softens if overcooked." },
-          "zh": { "name": "韭菜", "alt": "韭（避光軟化即韭黃）", "desc": "扁葉、蒜韭香氣濃。炒蛋、炒花枝、包水餃與餡餅的常見主角；久炒易出水變軟。" }
+          "en": { "name": "Chinese chives", "alt": "韭菜 (韭黃 when blanched pale)", "desc": "Flat-leaved, with a strong garlic-chive aroma. Stars in chive-and-egg, squid stir-fries, and dumpling and pancake fillings; weeps and softens if overcooked.", "tip": ["Chives lose freshness the fastest of the leafy aromatics — plan to use them within days. Rinse the sandy roots clean, wipe dry, trim off the tough muddy root ends and cut into usable lengths; keep them in a container lined (and topped) with a wrung-out wet cloth or paper towel, 3–4 days refrigerated.", "Not using them right away? Freeze the washed, thoroughly dried cut sections in a bag (2–3 weeks) — the texture barely changes, and they go straight into dumpling fillings, omelets and stir-fries."] },
+          "zh": { "name": "韭菜", "alt": "韭（避光軟化即韭黃）", "desc": "扁葉、蒜韭香氣濃。炒蛋、炒花枝、包水餃與餡餅的常見主角；久炒易出水變軟。", "tip": ["韭菜是最不耐放的辛香葉菜——買回就要盡快用。根部泥沙沖洗乾淨、擦乾，切除偏硬帶泥的根端、切成好用的長度；保鮮盒鋪一層擰乾的濕布或濕紙巾、上方再蓋一層，冷藏約可放 3～4 天。", "沒有馬上要用就冷凍：洗淨、徹底晾乾、切段裝袋冷凍（2～3 週）——口感幾乎不變，包水餃、煎蛋、快炒都能直接下鍋。"] }
+        }
+      ]
+    },
+    {
+      "code": "AROMATIC",
+      "emoji": "🌿",
+      "name": [{"en": "Ginger, chili & herbs"}, {"zh": "薑辣與香草"}],
+      "items": [
+        {
+          "pantryCode": "GINGER",
+          "shelfLife": { "pantry": 21, "freezer": 90 },
+          "unitCode": "ROOT",
+          "en": { "name": "Ginger", "alt": "薑 / 老薑 / 嫩薑", "desc": "Knobbly aromatic rhizome, sliced or shredded to temper oil, tame fishiness in seafood and meat, and warm up soups and teas.", "tip": ["Room temperature (about 3 weeks): keep it completely dry — no water — in a mesh bag somewhere cool and ventilated.", "Freezer: slice it first (handier than whole knobs), bag it flat with the air squeezed out, and break off just the slices you need — no thawing.", "Skip the fridge — chilled ginger molds and sours easily, so room temperature or the freezer are the two ways to go."] },
+          "zh": { "name": "薑", "alt": "老薑 / 嫩薑", "desc": "多節的辛香塊莖，切片或切絲爆香，為海鮮肉類去腥，煮湯煮茶也少不了。", "tip": ["室溫保存（約三週）：完全不碰水、保持乾燥，裝網袋放陰涼通風處。", "冷凍：建議先切片（比整塊方便），裝袋壓平、擠出空氣冷凍，要用時直接掰幾片下鍋，免解凍。", "不建議冷藏——薑放冷藏室容易發霉、變酸，室溫與冷凍才是正解。"] }
+        },
+        {
+          "pantryCode": "CORIANDER",
+          "shelfLife": { "fridge": 14 },
+          "unitCode": "BUNCH",
+          "en": { "name": "Coriander", "alt": "香菜 / 芫荽", "desc": "Cilantro — the finishing herb over soups, braises and cold dishes. Delicate: it hates moisture and stuffiness.", "tip": ["Never let it touch water before storing — wash only when you cook.", "Best home: a cloth produce bag (the 'soy-milk bag' from hardware stores — wash and dry it first). Fold the coriander in and refrigerate; it breathes and absorbs moisture better than a paper-towel wrap, and stays beautiful for two weeks."] },
+          "zh": { "name": "香菜", "alt": "芫荽", "desc": "湯品、滷味與涼拌起鍋前的靈魂香草。嬌嫩怕濕又怕悶。", "tip": ["保存前絕不碰水，下鍋前再洗。", "首選豆漿袋（五金行買得到的棉布袋，先洗淨晾乾）：香菜放入、折好袋口直接冷藏。布袋透氣又吸濕，比紙巾包更好，兩週後依然翠綠漂亮。"] }
+        },
+        {
+          "pantryCode": "BASIL",
+          "shelfLife": { "fridge": 14 },
+          "unitCode": "BUNCH",
+          "en": { "name": "Thai basil", "alt": "九層塔 / 羅勒", "desc": "Taiwanese basil, tossed in at the last second for three-cup dishes, fried chicken and stir-fried clams. Bruises, blackens and loses its scent when stuffy.", "tip": ["Handle like coriander — bone dry, into a cloth produce bag, then the fridge. Basil hates being stuffy: once the leaves blacken, the fragrance is gone.", "Its scent is strong, so slip the cloth bag into a large zipper bag, squeeze out the air and refrigerate — still fresh and green two weeks later."] },
+          "zh": { "name": "九層塔", "alt": "羅勒", "desc": "三杯料理、鹽酥雞與炒蛤蜊起鍋前的靈魂。怕悶易黑，一發黑香氣就沒了。", "tip": ["比照香菜——全程不碰水，裝豆漿袋（棉布袋）再冷藏。九層塔最怕悶，葉子一黑香氣就散了。", "九層塔味道較重，布袋外再套一個大夾鏈袋、擠出空氣冷藏，兩週後依然新鮮翠綠。"] }
+        },
+        {
+          "pantryCode": "CHILI",
+          "shelfLife": { "fridge": 14 },
+          "unitCode": "PCS",
+          "en": { "name": "Chili", "alt": "辣椒 / 朝天椒", "desc": "Fresh red or green chilies for heat and color — sliced into stir-fries, sauces and pickles.", "tip": "Green or red, same method — keep them away from water. Cut off the stems, roll them up in paper towel, put them in a plastic bag with the air squeezed out and refrigerate; they stay firm for two weeks instead of rotting." },
+          "zh": { "name": "辣椒", "alt": "朝天椒 / 青辣椒", "desc": "新鮮紅、青辣椒，切片入熱炒、醬料與醃漬，增辣添色。", "tip": "青、紅辣椒作法相同——不碰水。先切除蒂頭，用廚房紙巾捲好裝進塑膠袋、擠出空氣冷藏，放兩週依然硬挺不爛。" }
         }
       ]
     }
