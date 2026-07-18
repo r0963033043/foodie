@@ -24,8 +24,8 @@
           "pantryCode": "RICE",
           "shelfLife": { "pantry": 365 },
           "unitCode": "KG",
-          "en": { "name": "Rice", "alt": "白米 / 米", "desc": "The staple grain. Short-grain for everyday meals; rinse before cooking for fluffier results. One bowl of cooked rice ≈ half a rice-cup of raw rice (75 ml / 50 g).", "tip": ["Keep in an airtight container in a cool, dark, dry spot — away from the stove, the sink and strong-smelling foods, and out of sunlight.", "To kill weevils, freeze unopened rice for two days, then thaw at room temperature and wipe off any moisture.", "Finish the container before topping it up with new rice; rice weevils are harmless even if accidentally eaten."] },
-          "zh": { "name": "白米", "alt": "米", "desc": "主食穀物。日常多用短圓米；煮前淘洗，米飯更鬆軟。一碗飯約等於半杯米（75 毫升／50 克）。", "tip": ["以密閉容器存放於陰涼、乾燥、避光處——遠離爐具、水槽與氣味強烈的食材，避免陽光照射。", "除蟲可將未開封的米冷凍兩天，再置於室溫解凍並擦乾水氣。", "容器中的米用完再添新米；米蟲無毒，誤食無害。"] }
+          "en": { "name": "Rice", "alt": "白米 / 米", "desc": "The staple grain. Short-grain for everyday meals; rinse before cooking for fluffier results. One bowl of cooked rice ≈ half a rice-cup of raw rice (75 ml / 50 g).", "tip": ["Keep in an airtight container in a cool, dark, dry spot — away from the stove, the sink and strong-smelling foods, and out of sunlight.", "To kill weevils, freeze unopened rice for two days, then thaw at room temperature and wipe off any moisture.", "Finish the container before topping it up with new rice; rice weevils are harmless even if accidentally eaten.", "Don't pour away the rice-washing water: the second rinse is good for simmering daikon or bamboo shoots (it mellows their bite), soaking off dried-on grease from dishes, or — once cooled — watering plants."] },
+          "zh": { "name": "白米", "alt": "米", "desc": "主食穀物。日常多用短圓米；煮前淘洗，米飯更鬆軟。一碗飯約等於半杯米（75 毫升／50 克）。", "tip": ["以密閉容器存放於陰涼、乾燥、避光處——遠離爐具、水槽與氣味強烈的食材，避免陽光照射。", "除蟲可將未開封的米冷凍兩天，再置於室溫解凍並擦乾水氣。", "容器中的米用完再添新米；米蟲無毒，誤食無害。", "洗米水別倒掉：第二遍洗米水可用來煮白蘿蔔、竹筍去澀增甘，也能浸泡碗盤去油垢，放涼後還可澆花。"] }
         }
       ]
     },
